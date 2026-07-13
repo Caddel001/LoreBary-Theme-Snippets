@@ -41,15 +41,13 @@
 - [Background Effects](#background-effects)
   - [Animated Fireshine](#animated-fireshine)
   - [Animated Rain](#animated-rain)
-  - [Animated Rain](#animated-fog)
-  - [Animated Rain](#animated-snow)
-  - [Animated Rain](#animated-fireflies)
-  - [Animated Rain](#animated-dustparticle)
-  - [Animated Rain](#animated-rain)
-  - [Animated Rain](#animated-stars)
-  - [Animated Rain](#animated-sunshine-underwater)
-  - [Animated Rain](#animated-rain)
-  - [Animated Rain](#animated-soft-godly-light)
+  - [Animated Fog](#animated-fog)
+  - [Animated Snow](#animated-snow)
+  - [Animated Fireflies](#animated-fireflies)
+  - [Animated Dustparticle](#animated-dustparticle)
+  - [Animated Stars](#animated-stars)
+  - [Animated Sunshine Underwater](#animated-sunshine-underwater)
+  - [Animated Soft Godly Light](#animated-soft-godly-light)
 
 ---
 
