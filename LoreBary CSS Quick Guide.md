@@ -33,12 +33,16 @@ Select every option like the example below:
 - ☑️ Enable all available options
 - Make sure settings match the configuration shown
 
+![Description](Base64-1.png)
+
 **Step 4: Upload Your Image**
 Drop your image file into the converter tool
 
 **Step 5: Copy the Code**
 - Click the **Code** button to open the generated code
 - Click **Copy** to copy the Base64 code to your clipboard
+
+![Description](Base64-2.png)
 
 **Step 6: Use in Your CSS**
 Replace `XXX` in your CSS snippet with the copied Base64 code:
