@@ -6,12 +6,51 @@
 
 ## 📋 Table of Contents
 
+- [Converting Images to Base64](#converting-images-to-base64)
 - [Avatar Customization](#avatar-customization)
 - [Chat Bubble Effects](#chat-bubble-effects)
 - [Message Layout](#message-layout)
 - [Header & Footer](#header--footer)
 - [Input Controls](#input-controls)
 - [Background Effects](#background-effects)
+
+---
+
+## Converting Images to Base64
+
+### How to Get the data:webp Base64 Code
+
+To use custom images in your CSS snippets, you'll need to convert them to Base64 format.
+
+**Step 1: Prepare Your Image**
+Get your image file ready (PNG, JPG, WebP, etc.)
+
+**Step 2: Visit Base64 Converter**
+Go to [Base64 Converter](https://base64.guru/converter/encode/image)
+
+**Step 3: Configure Converter Settings**
+Select every option like the example below:
+- ☑️ Enable all available options
+- Make sure settings match the configuration shown
+
+**Step 4: Upload Your Image**
+Drop your image file into the converter tool
+
+**Step 5: Copy the Code**
+- Click the **Code** button to open the generated code
+- Click **Copy** to copy the Base64 code to your clipboard
+
+**Step 6: Use in Your CSS**
+Replace `XXX` in your CSS snippet with the copied Base64 code:
+
+```css
+.lab-theme-scope {
+  --character-image: url("data:image/webp;base64,XXX");
+  --user-image: url("data:image/webp;base64,XXX");
+}
+```
+
+**Done!** Your image is now embedded in your CSS. 🎉
 
 ---
 
@@ -71,7 +110,7 @@ Place custom images around your avatar frame.
 ```
 
 **Customization:**
-- Replace `XXX` with `data:webp` Base64 code
+- Replace `XXX` with `data:webp;base64,` code (see [Converting Images to Base64](#converting-images-to-base64))
 - `width` + `height`: Set the size of the image
 - `left`: Shift the image left and right
 - `top`: Shift the image up and down
