@@ -26,13 +26,13 @@ To use custom images in your CSS snippets, you'll need to convert them to Base64
 Get your image file ready (PNG, JPG, WebP, etc.)
 
 **Step 2: Visit Base64 Converter**
-Go to [Base64 Converter](https://base64.guru/converter/encode/image)
 
 **Step 3: Configure Converter Settings**
 Select every option like the example below:
 - ☑️ Enable all available options
 - Make sure settings match the configuration shown
 
+<img src="./images/Base64-1.png" alt="Theme preview">
 ![Description](Base64-1.png)
 
 **Step 4: Upload Your Image**
@@ -42,7 +42,7 @@ Drop your image file into the converter tool
 - Click the **Code** button to open the generated code
 - Click **Copy** to copy the Base64 code to your clipboard
 
-![Description](Base64-2.png)
+<img src="./images/Base64-2.png" alt="Theme preview">
 
 **Step 6: Use in Your CSS**
 Replace `XXX` in your CSS snippet with the copied Base64 code:
@@ -58,11 +58,11 @@ Replace `XXX` in your CSS snippet with the copied Base64 code:
 
 ---
 
-## Avatar Customization
+## Avatar Customization 
 
 ### Image around Avatar
 
-Place custom images around your avatar frame.
+Place custom images around your avatar frame. <img src="./images/avatar-add image to avatar.png" alt="Theme preview">
 
 ```css
 .lab-theme-scope {
@@ -124,7 +124,7 @@ Place custom images around your avatar frame.
 
 ### Avatar Glow on Hover
 
-Add a glowing effect when hovering over avatars.
+Add a glowing effect when hovering over avatars. <img src="./images/avatar-glow avatar when hover.png" alt="Theme preview">
 
 ```css
 [data-lab="avatar"]:hover {
@@ -137,7 +137,7 @@ Add a glowing effect when hovering over avatars.
 
 ### Lift Hover
 
-Lift the avatar when you hover over it with a scale effect.
+Lift the avatar when you hover over it with a scale effect. <img src="./images/avatar-lift hover avatar.png" alt="Theme preview">
 
 ```css
 [data-lab="avatar"] {
@@ -154,7 +154,7 @@ Lift the avatar when you hover over it with a scale effect.
 
 ### Greyscale to Color on Hover
 
-Transform avatar from greyscale to color when you hover over it.
+Transform avatar from greyscale to color when you hover over it. <img src="./images/avatar-greyscale avatar until hover.png" alt="Theme preview">
 
 ```css
 [data-lab="avatar"] img {
@@ -176,7 +176,7 @@ Transform avatar from greyscale to color when you hover over it.
 
 ### Remove Avatar Outline/Gradient
 
-Remove the default avatar outline styling.
+Remove the default avatar outline styling. <img src="./images/avatar-remove avatar outline.png" alt="Theme preview">
 
 ```css
 [data-lab="avatar"] {
@@ -189,7 +189,7 @@ Remove the default avatar outline styling.
 
 ### Square Avatar Boxes
 
-Change avatar corners from rounded to square.
+Change avatar corners from rounded to square. <img src="./images/avatar-sqaure avatar.png" alt="Theme preview">
 
 ```css
 [data-lab="avatar"] {
@@ -206,7 +206,7 @@ Change avatar corners from rounded to square.
 
 ### Remove Bubble Message Background
 
-Make chat bubbles completely transparent.
+Make chat bubbles completely transparent.  <img src="./images/bubble-remove message border.png" alt="Theme preview">
 
 ```css
 [data-lab="bubble"] {
@@ -221,7 +221,7 @@ Make chat bubbles completely transparent.
 
 ### Bubble Hover Lift
 
-Lift chat bubbles slightly when you hover over them.
+Lift chat bubbles slightly when you hover over them. 
 
 ```css
 [data-lab="bubble"] {
@@ -240,7 +240,9 @@ Lift chat bubbles slightly when you hover over them.
 
 ### Message Left Aligned
 
-Align user messages to the left side instead of the right.
+Align user messages to the left side instead of the right. 
+
+Default: <img src="./images/message-left left aligned.png" alt="Theme preview"> right side: <img src="./images/message-left right aligned.png" alt="Theme preview">
 
 ```css
 [data-lab-role="user"] {
@@ -265,7 +267,7 @@ Align user messages to the left side instead of the right.
 
 ### Centered Chat Messages
 
-Center chat messages with equal room on both sides.
+Center chat messages with equal room on both sides. <img src="./images/bubble-centered messages.png" alt="Theme preview">
 
 ```css
 [data-lab="message"] {
@@ -282,7 +284,7 @@ Center chat messages with equal room on both sides.
 
 ### Colorize Text Selection
 
-Add color to selected text with a custom background.
+Add color to selected text with a custom background. <img src="./images/message-colorize text.png" alt="Theme preview">
 
 ```css
 .lab-theme-scope ::selection {
@@ -298,7 +300,7 @@ Add color to selected text with a custom background.
 
 ### Hide Timestamp
 
-Hide timestamps from all messages.
+Hide timestamps from all messages. <img src="./images/message-hides timestamp at both sides.png" alt="Theme preview">
 
 ```css
 [data-lab="time"] {
@@ -310,7 +312,7 @@ Hide timestamps from all messages.
 
 ### Move Timestamp by Name (Right Side)
 
-Move timestamps to appear above the chat bubble on the right side.
+Move timestamps to appear above the chat bubble on the right side. <img src="./images/message-default moves timestamp.png" alt="Theme preview">
 
 ```css
 [data-lab="message"] > div:has([data-lab="bubble"]) {
@@ -326,6 +328,8 @@ Move timestamps to appear above the chat bubble on the right side.
 ```
 
 **For left side, change to:**
+
+<img src="./images/message-move timestamp.png" alt="Theme preview">
 
 ```css
 [data-lab="time"] {
@@ -346,7 +350,7 @@ Move timestamps to appear above the chat bubble on the right side.
 
 ### Hide Avatars in Header
 
-Remove avatar display from the chat header.
+Remove avatar display from the chat header. <img src="./images/header-hide avatar in header.png" alt="Theme preview">
 
 ```css
 [data-lab="header"] [data-lab="avatar"],
@@ -359,7 +363,7 @@ Remove avatar display from the chat header.
 
 ### Hide Chat Name
 
-Hide the chat name/title in the header.
+Hide the chat name/title in the header. <img src="./images/header-hide chatname.png" alt="Theme preview">
 
 ```css
 [data-lab="header-title"] > :first-child {
@@ -371,7 +375,7 @@ Hide the chat name/title in the header.
 
 ### Remove Header Border
 
-Remove the border or shadow beneath the header.
+Remove the border or shadow beneath the header. <img src="./images/header-remove header border.png" alt="Theme preview">
 
 ```css
 [data-lab="header"] {
@@ -384,7 +388,7 @@ Remove the border or shadow beneath the header.
 
 ### Remove Header Hairline Stripe
 
-Remove the decorative hairline stripe from the header.
+Remove the decorative hairline stripe from the header. <img src="./images/header-remove hairline.png" alt="Theme preview">
 
 ```css
 [data-lab="header"] > [aria-hidden="true"],
@@ -397,7 +401,7 @@ Remove the decorative hairline stripe from the header.
 
 ### Transparent Footer
 
-Make the footer transparent with a frosted glass effect.
+Make the footer transparent with a frosted glass effect. <img src="./images/footer-transparent footer.png" alt="Theme preview">
 
 ```css
 [data-lab="footer"] {
@@ -421,7 +425,9 @@ Make the footer transparent with a frosted glass effect.
 
 ### Smaller Visual Expression Portrait
 
-Scale down the expression portrait display.
+Scale down the expression portrait display. 
+
+Default <img src="./images/message-default character.png" alt="Theme preview"> Example: <img src="./images/message-set character.png" alt="Theme preview">
 
 ```css
 [data-lab="expression"] {
@@ -443,7 +449,7 @@ Scale down the expression portrait display.
 
 ### Hide Action Button Labels
 
-Hide labels on action buttons (regenerate, enhance, continue, listen) showing only icons.
+Hide labels on action buttons (regenerate, enhance, continue, listen) showing only icons. <img src="./images/message-hidden action buttons.png" alt="Theme preview">
 
 ```css
 [data-lab="action"] {
@@ -460,7 +466,7 @@ Hide labels on action buttons (regenerate, enhance, continue, listen) showing on
 
 ### Breathing Send Animation
 
-Make the send button dim and brighten continuously like breathing.
+Make the send button dim and brighten continuously like breathing. <img src="./images/input-breathing button.png" alt="Theme preview">
 
 ```css
 @keyframes breathe {
@@ -477,7 +483,7 @@ Make the send button dim and brighten continuously like breathing.
 
 ### Input Buttons Dim Until Hover
 
-Dim write and send buttons until you hover over them.
+Dim write and send buttons until you hover over them. <img src="./images/input-dim buttons.png" alt="Theme preview">
 
 ```css
 [data-lab="send"],
@@ -505,7 +511,7 @@ Dim write and send buttons until you hover over them.
 
 ### Input Buttons Coloring
 
-Apply custom color filters to input button icons.
+Apply custom color filters to input button icons. <img src="./images/input-coloring buttons.png" alt="Theme preview">
 
 ```css
 [data-lab="send"] img,
@@ -519,7 +525,7 @@ Apply custom color filters to input button icons.
 
 ### Coloring Menu Button
 
-Apply custom color to the menu button.
+Apply custom color to the menu button. <img src="./images/header-color menu.png" alt="Theme preview">
 
 ```css
 img[data-lab="menu"] {
@@ -538,7 +544,7 @@ img[data-lab="menu"] {
 
 ### Glowing Menu Button
 
-Add a glowing effect to the menu button.
+Add a glowing effect to the menu button. <img src="./images/header-glow menu.png" alt="Theme preview">
 
 ```css
 [data-lab="menu"] {
@@ -556,6 +562,8 @@ Add a glowing effect to the menu button.
 ### Animated Fireshine
 
 Create an animated fire effect at the bottom of the screen.
+
+<img src="./images/background-Fireshine.png" alt="Theme preview">
 
 ```css
 html, body, #app, main {
@@ -600,6 +608,8 @@ div[class*="chat"], div[class*="message"], .messages-container {
 ### Animated Rain
 
 Create a gentle animated rain effect as a background.
+
+<img src="./images/background-Rain.png" alt="Theme preview">
 
 ```css
 html, body, #app, main {
