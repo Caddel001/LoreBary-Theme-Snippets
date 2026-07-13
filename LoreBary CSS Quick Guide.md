@@ -22,6 +22,7 @@
   - [Message Left Aligned](#message-left-aligned)
   - [Centered Chat Messages](#centered-chat-messages)
   - [Colorize Text Selection](#colorize-text-selection)
+  - [Change Ratingymbols](#change-the-rating-symbol)
   - [Hide Timestamp](#hide-timestamp)
   - [Move Timestamp by Name (Right Side)](#move-timestamp-by-name-right-side)
 - [Header & Footer](#header--footer)
@@ -327,16 +328,34 @@ Add color to selected text with a custom background. <img src="./images/message-
   background: rgba(174, 153, 255, 0.3);
   color: #fff;
 }
-```
 
 **Customization:**
 - `rgba()`: Set your preferred color (RGBA format)
+
+```
+
+---
+
+### Change the Rating Symbol
+
+Changes the rating acorns to sparkles
+
+<img src="./images/message-hides timestamp at both sides.png" alt="Theme preview">
+
+```css
+[data-lab="rating"] img {
+  content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='1.6' stroke-linejoin='round'%3E%3Cpath d='M12 2l2.2 6.6L21 11l-6.8 2.4L12 20l-2.2-6.6L3 11l6.8-2.4z'/%3E%3C/svg%3E") !important;
+  width: 16px !important;
+  height: 16px !important;
+} 
+
+```
 
 ---
 
 ### Hide Timestamp
 
-Hide timestamps from all messages. <img src="./images/message-hides timestamp at both sides.png" alt="Theme preview">
+Hide timestamps from all messages. 
 
 ```css
 [data-lab="time"] {
