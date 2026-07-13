@@ -722,6 +722,8 @@ div[class*="chat"], div[class*="message"], .messages-container, .chat-layout {
 
 Create a gentle fog over the whole screen
 
+<img src="./images/animated-fog.png" alt="Theme preview">
+
 ```css
 html, body, #app, main {
     background-color: #0b0d11 !important; /* Dunkles Graublau als Basis */
@@ -800,6 +802,8 @@ div[class*="chat"], div[class*="message"], .messages-container, .chat-layout {
 ### Animated Snow
 
 Let's gentle snow fall in the background.
+
+<img src="./images/animated-snow.png" alt="Theme preview">
 
 ```css
 html, body, #app, main {
@@ -894,6 +898,8 @@ div[class*="chat"], div[class*="message"], .messages-container, .chat-layout {
 ### Animated Fireflies
 
 Let's fireflies fly through your screen
+
+<img src="./images/animated-fireflies.png" alt="Theme preview">
 
 ```css
 html, body, #app, main {
@@ -1044,6 +1050,8 @@ div[class*="chat"], div[class*="message"], .messages-container, .chat-layout {
 
 Let's stars twinkle in your background
 
+<img src="./images/animated-sterne.png" alt="Theme preview">
+
 ```css
 html, body, #app, main {
     background-color: #020204 !important; 
@@ -1123,6 +1131,8 @@ div[class*="chat"], div[class*="message"], .messages-container, .chat-layout {
 ### AnimatedSun underwater with bubbles
 
 Sunshine under water with small rising bubbles
+
+<img src="./images/animated-sunshine and water.png" alt="Theme preview">
 
 ```css
 html, body, #app, main {
@@ -1215,6 +1225,8 @@ div[class*="chat"], div[class*="message"], .messages-container, .chat-layout {
 ### Animated soft shine top
 
 Creates a soft shine at the top of the screen.
+
+<img src="./images/animated-soft shine top.png" alt="Theme preview">
 
 ```css
 html, body, #app, main {
