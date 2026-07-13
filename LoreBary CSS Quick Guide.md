@@ -7,12 +7,40 @@
 ## 📋 Table of Contents
 
 - [Converting Images to Base64](#converting-images-to-base64)
+  - [How to Get the data:webp Base64 Code](#how-to-get-the-datawebp-base64-code)
 - [Avatar Customization](#avatar-customization)
+  - [Image around Avatar](#image-around-avatar)
+  - [Avatar Glow on Hover](#avatar-glow-on-hover)
+  - [Lift Hover](#lift-hover)
+  - [Greyscale to Color on Hover](#greyscale-to-color-on-hover)
+  - [Remove Avatar Outline/Gradient](#remove-avatar-outlinegradient)
+  - [Square Avatar Boxes](#square-avatar-boxes)
 - [Chat Bubble Effects](#chat-bubble-effects)
+  - [Remove Bubble Message Background](#remove-bubble-message-background)
+  - [Bubble Hover Lift](#bubble-hover-lift)
 - [Message Layout](#message-layout)
+  - [Message Left Aligned](#message-left-aligned)
+  - [Centered Chat Messages](#centered-chat-messages)
+  - [Colorize Text Selection](#colorize-text-selection)
+  - [Hide Timestamp](#hide-timestamp)
+  - [Move Timestamp by Name (Right Side)](#move-timestamp-by-name-right-side)
 - [Header & Footer](#header--footer)
+  - [Hide Avatars in Header](#hide-avatars-in-header)
+  - [Hide Chat Name](#hide-chat-name)
+  - [Remove Header Border](#remove-header-border)
+  - [Remove Header Hairline Stripe](#remove-header-hairline-stripe)
+  - [Transparent Footer](#transparent-footer)
+  - [Smaller Visual Expression Portrait](#smaller-visual-expression-portrait)
 - [Input Controls](#input-controls)
+  - [Hide Action Button Labels](#hide-action-button-labels)
+  - [Breathing Send Animation](#breathing-send-animation)
+  - [Input Buttons Dim Until Hover](#input-buttons-dim-until-hover)
+  - [Input Buttons Coloring](#input-buttons-coloring)
+  - [Coloring Menu Button](#coloring-menu-button)
+  - [Glowing Menu Button](#glowing-menu-button)
 - [Background Effects](#background-effects)
+  - [Animated Fireshine](#animated-fireshine)
+  - [Animated Rain](#animated-rain)
 
 ---
 
@@ -26,6 +54,7 @@ To use custom images in your CSS snippets, you'll need to convert them to Base64
 Get your image file ready (PNG, JPG, WebP, etc.)
 
 **Step 2: Visit Base64 Converter**
+Go to [Base64 Converter](https://base64.guru/converter/encode/image)
 
 **Step 3: Configure Converter Settings**
 Select every option like the example below:
