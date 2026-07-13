@@ -41,6 +41,15 @@
 - [Background Effects](#background-effects)
   - [Animated Fireshine](#animated-fireshine)
   - [Animated Rain](#animated-rain)
+  - [Animated Rain](#animated-fog)
+  - [Animated Rain](#animated-snow)
+  - [Animated Rain](#animated-fireflies)
+  - [Animated Rain](#animated-dustparticle)
+  - [Animated Rain](#animated-rain)
+  - [Animated Rain](#animated-stars)
+  - [Animated Rain](#animated-sunshine-underwater)
+  - [Animated Rain](#animated-rain)
+  - [Animated Rain](#animated-soft-godly-light)
 
 ---
 
@@ -1128,7 +1137,7 @@ div[class*="chat"], div[class*="message"], .messages-container, .chat-layout {
 
 ---
 
-### AnimatedSun underwater with bubbles
+### Animated Sunshine underwater
 
 Sunshine under water with small rising bubbles
 
@@ -1222,7 +1231,7 @@ div[class*="chat"], div[class*="message"], .messages-container, .chat-layout {
 
 ---
 
-### Animated soft shine top
+### Animated soft godly light
 
 Creates a soft shine at the top of the screen.
 
