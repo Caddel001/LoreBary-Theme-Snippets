@@ -718,4 +718,555 @@ div[class*="chat"], div[class*="message"], .messages-container, .chat-layout {
 
 ---
 
+### Animated Fog
+
+Create a gentle fog over the whole screen
+
+```css
+html, body, #app, main {
+    background-color: #0b0d11 !important; /* Dunkles Graublau als Basis */
+    position: relative;
+    overflow: hidden;
+}
+
+html::before {
+    content: "" !important;
+    position: fixed !important;
+    top: -20%;
+    left: -20%;
+    width: 140vw;
+    height: 140vh;
+    pointer-events: none;
+    z-index: 1 !important;
+    opacity: 0.18; 
+
+    background-image: 
+        radial-gradient(circle at 30% 40%, rgba(200, 210, 220, 0.4) 0%, transparent 60%),
+        radial-gradient(circle at 70% 60%, rgba(180, 195, 210, 0.3) 0%, transparent 70%);
+    filter: blur(40px);
+    animation: laboratoryFogMoving1 25s ease-in-out infinite alternate !important;
+}
+
+html::after {
+    content: "" !important;
+    position: fixed !important;
+    top: -30%;
+    left: -30%;
+    width: 160vw;
+    height: 160vh;
+    pointer-events: none;
+    z-index: 2 !important;
+    opacity: 0.12;
+
+    background-image: 
+        radial-gradient(circle at 50% 50%, rgba(220, 225, 235, 0.3) 0%, transparent 65%),
+        radial-gradient(circle at 20% 80%, rgba(160, 175, 190, 0.2) 0%, transparent 55%);
+    filter: blur(60px);
+    animation: laboratoryFogMoving2 35s ease-in-out infinite alternate !important;
+}
+
+@keyframes laboratoryFogMoving1 {
+    0% {
+        transform: translate(0px, 0px) scale(1) rotate(0deg);
+    }
+    50% {
+        transform: translate(40px, 30px) scale(1.1) rotate(3deg);
+    }
+    100% {
+        transform: translate(-20px, 50px) scale(0.95) rotate(-2deg);
+    }
+}
+
+@keyframes laboratoryFogMoving2 {
+    0% {
+        transform: translate(0px, 0px) scale(1) rotate(0deg);
+    }
+    50% {
+        transform: translate(-50px, 40px) scale(1.05) rotate(-4deg);
+    }
+    100% {
+        transform: translate(30px, -20px) scale(1) rotate(2deg);
+    }
+}
+
+div[class*="chat"], div[class*="message"], .messages-container, .chat-layout {
+    position: relative;
+    z-index: 5 !important;
+}
+```
+
+---
+
+### Animated Snow
+
+Let's gentle snow fall in the background.
+
+```css
+html, body, #app, main {
+    background-color: #060810 !important;
+    position: relative;
+    overflow: hidden;
+}
+
+html::before {
+    content: "" !important;
+    position: fixed !important;
+    top: -10%;
+    left: -10%;
+    width: 120vw;
+    height: 120vh;
+    pointer-events: none;
+    z-index: 1 !important;
+    opacity: 0.22;
+    background-image: 
+        radial-gradient(circle, #ffffff 10%, transparent 11%),
+        radial-gradient(circle, #ffffff 7%, transparent 8%),
+        radial-gradient(circle, #ffffff 9%, transparent 10%),
+        radial-gradient(circle, #ffffff 6%, transparent 7%);
+    background-size: 140px 140px; 
+    background-position: 13px 27px, 89px 113px, 47px 71px, 119px 43px;
+
+    animation: 
+        endlessSnow1 22s linear infinite,
+        snowWobble1 7s ease-in-out infinite alternate !important;
+}
+
+html::after {
+    content: "" !important;
+    position: fixed !important;
+    top: -10%;
+    left: -10%;
+    width: 120vw;
+    height: 120vh;
+    pointer-events: none;
+    z-index: 2 !important;
+    opacity: 0.14;
+    background-image: 
+        radial-gradient(circle, #ffffff 6%, transparent 7%),
+        radial-gradient(circle, #ffffff 4%, transparent 5%),
+        radial-gradient(circle, #ffffff 5%, transparent 6%),
+        radial-gradient(circle, #ffffff 3%, transparent 4%);
+    background-size: 110px 110px;
+    background-position: 7px 83px, 53px 19px, 97px 61px, 29px 101px;
+
+    animation: 
+        endlessSnow2 34s linear infinite,
+        snowWobble2 11s ease-in-out infinite alternate !important;
+}
+
+@keyframes endlessSnow1 {
+    0% { 
+        background-position: 13px 27px, 89px 113px, 47px 71px, 119px 43px; 
+    }
+    100% { 
+        background-position: 13px 447px, 89px 533px, 47px 491px, 119px 463px; 
+    }
+}
+
+@keyframes endlessSnow2 {
+    0% { 
+        background-position: 7px 83px, 53px 19px, 97px 61px, 29px 101px; 
+    }
+    100% { 
+        background-position: 7px 413px, 53px 349px, 97px 391px, 29px 431px; 
+    }
+}
+
+@keyframes snowWobble1 {
+    0% { transform: translateX(0px) rotate(0deg) scale(1); }
+    50% { transform: translateX(30px) rotate(1deg) scale(1.04); }
+    100% { transform: translateX(-20px) rotate(-1deg) scale(0.96); }
+}
+
+@keyframes snowWobble2 {
+    0% { transform: translateX(15px) rotate(0deg); }
+    100% { transform: translateX(-35px) rotate(2deg); }
+}
+
+div[class*="chat"], div[class*="message"], .messages-container, .chat-layout {
+    position: relative;
+    z-index: 5 !important;
+}
+```
+
+---
+
+### Animated Fireflies
+
+Let's fireflies fly through your screen
+
+```css
+html, body, #app, main {
+    background-color: #040605 !important; /* Tiefschwarz mit einem Hauch Waldgrün */
+    position: relative;
+    overflow: hidden;
+}
+
+html::before {
+    content: "" !important;
+    position: fixed !important;
+    top: -10%;
+    left: -10%;
+    width: 120vw;
+    height: 120vh;
+    pointer-events: none;
+    z-index: 1 !important;
+    opacity: 0.35; 
+
+    background-image: 
+        radial-gradient(circle, rgba(204, 255, 51, 1) 0%, rgba(204, 255, 51, 0.3) 3%, transparent 12%),
+        radial-gradient(circle, rgba(175, 255, 40, 1) 0%, rgba(175, 255, 40, 0.2) 2%, transparent 10%),
+        radial-gradient(circle, rgba(220, 255, 80, 1) 0%, rgba(220, 255, 80, 0.3) 4%, transparent 15%),
+        radial-gradient(circle, rgba(204, 255, 51, 1) 0%, rgba(204, 255, 51, 0.1) 2%, transparent 8%);
+    background-size: 300px 300px; 
+    background-position: 43px 187px, 213px 61px, 127px 243px, 267px 19px;
+
+    animation: 
+        minimalFirefliesRise 45s linear infinite,
+        minimalFirefliesWobble 9s ease-in-out infinite alternate !important;
+}
+
+@keyframes minimalFirefliesRise {
+    0% { 
+        background-position: 43px 187px, 213px 61px, 127px 243px, 267px 19px; 
+    }
+    100% { 
+        background-position: 43px -113px, 213px -239px, 127px -57px, 267px -281px; 
+    }
+}
+
+@keyframes minimalFirefliesWobble {
+    0% { 
+        transform: translateX(0px) translateY(0px); 
+        opacity: 0.1; 
+    }
+    40% {
+        transform: translateX(20px) translateY(-10px);
+        opacity: 0.6; 
+    }
+    70% {
+        transform: translateX(-15px) translateY(15px);
+        opacity: 0.05; 
+    }
+    100% { 
+        transform: translateX(10px) translateY(-5px); 
+        opacity: 0.4;
+    }
+}
+
+div[class*="chat"], div[class*="message"], .messages-container, .chat-layout {
+    position: relative;
+    z-index: 5 !important;
+}
+```
+
+---
+
+### Animated Dustparticle
+
+Let's dust hover at the screen
+
+```css
+ position: relative;
+    overflow: hidden;html, body, #app, main {
+    background-color: #020204 !important; 
+
+}
+
+html::before {
+    content: "" !important;
+    position: fixed !important;
+    width: 1.5px !important;
+    height: 1.5px !important;
+    top: 0;
+    left: 0;
+    background: transparent;
+    pointer-events: none;
+    z-index: 2 !important;
+    box-shadow: 
+        120px 240px #ffffff,   340px 80px rgba(255,255,255,0.8),  560px 420px #ffffff,
+        780px 150px rgba(255,255,255,0.9),  910px 620px #ffffff,  210px 710px rgba(255,255,255,0.7),
+        430px 890px #ffffff,   850px 330px rgba(255,255,255,0.8),  620px 780px #ffffff,
+        150px 520px rgba(255,255,255,0.9),  950px 210px #ffffff,  710px 920px rgba(255,255,255,0.7),
+        1100px 110px #ffffff,  1250px 480px rgba(255,255,255,0.8), 1380px 750px #ffffff,
+        1520px 310px rgba(255,255,255,0.9), 1680px 820px #ffffff, 1850px 190px rgba(255,255,255,0.7),
+        50vw 25vh #ffffff,     85vw 60vh rgba(255,255,255,0.9),   15vw 75vh #ffffff;
+
+    animation: naturalCosmosTwinkle 4s ease-in-out infinite alternate !important;
+}
+
+html::after {
+    content: "" !important;
+    position: fixed !important;
+    top: -30%;
+    left: -30%;
+    width: 160vw;
+    height: 160vh;
+    pointer-events: none;
+    z-index: 1 !important;
+    opacity: 0.22;
+
+    background-image: 
+        radial-gradient(circle at 25% 25%, rgba(138, 43, 226, 0.3) 0%, transparent 55%),  
+        radial-gradient(circle at 75% 65%, rgba(0, 102, 204, 0.25) 0%, transparent 60%);  
+    
+    filter: blur(60px);
+    animation: cosmosNebulaMove 50s ease-in-out infinite alternate !important;
+}
+
+@keyframes naturalCosmosTwinkle {
+    0% {
+        opacity: 0.25;
+        transform: scale(0.98);
+    }
+    100% {
+        opacity: 0.75;
+        transform: scale(1.02); 
+    }
+}
+
+/* --- ANIMATION: NEBELWABERN --- */
+@keyframes cosmosNebulaMove {
+    0% { transform: translate(0px, 0px) rotate(0deg); }
+    100% { transform: translate(30px, 40px) rotate(1deg); }
+}
+
+div[class*="chat"], div[class*="message"], .messages-container, .chat-layout {
+    position: relative;
+    z-index: 5 !important;
+}
+
+```
+
+---
+
+### Animated Stars
+
+Let's stars twinkle in your background
+
+```css
+html, body, #app, main {
+    background-color: #020204 !important; 
+    position: relative;
+    overflow: hidden;
+}
+
+html::before {
+    content: "" !important;
+    position: fixed !important;
+    width: 1.2px !important;
+    height: 1.2px !important;
+    top: 0;
+    left: 0;
+    background: transparent;
+    pointer-events: none;
+    z-index: 2 !important;
+    border-radius: 50% !important;
+
+    box-shadow: 
+        120px 240px #ffffff,   340px 80px rgba(255,255,255,0.4),  560px 420px #ffffff,
+        780px 150px rgba(255,255,255,0.7),  910px 620px #ffffff,  210px 710px rgba(255,255,255,0.3),
+        430px 890px #ffffff,   850px 330px rgba(255,255,255,0.5),  620px 780px #ffffff,
+        150px 520px rgba(255,255,255,0.6),  950px 210px #ffffff,  710px 920px rgba(255,255,255,0.4),
+        1100px 110px #ffffff,  1250px 480px rgba(255,255,255,0.5), 1380px 750px #ffffff,
+        1520px 310px rgba(255,255,255,0.7), 1680px 820px #ffffff, 1850px 190px rgba(255,255,255,0.3),
+        50vw 25vh rgba(255,255,255,0.8),     85vw 60vh #ffffff,   15vw 75vh rgba(255,255,255,0.5),
+        250px 180px rgba(255,255,255,0.4), 680px 50px #ffffff,   1150px 800px rgba(255,255,255,0.5),
+        1420px 910px #ffffff,  1710px 430px rgba(255,255,255,0.6),
+        250px 350px 0 1.2px #ffffff,        
+        1450px 180px 0 1.5px #ffffff,       
+        650px 600px 0 1.3px rgba(255,255,255,0.9), 
+        80vw 80vh 0 1.4px #ffffff,          
+        35vw 75vh 0 1.2px rgba(255,255,255,0.9);   
+
+    animation: staticCosmosTwinkle 5s ease-in-out infinite alternate !important;
+}
+
+html::after {
+    content: "" !important;
+    position: fixed !important;
+    top: -30%;
+    left: -30%;
+    width: 160vw;
+    height: 160vh;
+    pointer-events: none;
+    z-index: 1 !important;
+    opacity: 0.20;
+
+    background-image: 
+        radial-gradient(circle at 25% 25%, rgba(138, 43, 226, 0.3) 0%, transparent 55%),  
+        radial-gradient(circle at 75% 65%, rgba(0, 102, 204, 0.25) 0%, transparent 60%);  
+    
+    filter: blur(60px);
+    animation: cosmosNebulaMove 60s ease-in-out infinite alternate !important;
+}
+
+@keyframes staticCosmosTwinkle {
+    0% { opacity: 0.3; }
+    100% { opacity: 0.85; }
+}
+
+@keyframes cosmosNebulaMove {
+    0% { transform: translate(0px, 0px) rotate(0deg); }
+    100% { transform: translate(20px, 30px) rotate(0.5deg); }
+}
+
+div[class*="chat"], div[class*="message"], .messages-container, .chat-layout {
+    position: relative;
+    z-index: 5 !important;
+}
+
+```
+
+---
+
+### AnimatedSun underwater with bubbles
+
+Sunshine under water with small rising bubbles
+
+```css
+html, body, #app, main {
+    background-color: #080a10 !important; 
+    position: relative;
+    overflow: hidden;
+}
+
+html::before {
+    content: "" !important;
+    position: fixed !important;
+    bottom: -20% !important;
+    left: -10vw !important;
+    width: 120vw !important;
+    height: 140vh !important;
+    pointer-events: none !important;
+    z-index: 1 !important;
+    opacity: 0.35;
+
+    background-image: 
+        radial-gradient(circle at 120px 280px, #ffffff 1px, transparent 2px),
+        radial-gradient(circle at 120px 280px, transparent 2px, rgba(255, 255, 255, 0.3) 3px, transparent 4px),
+        radial-gradient(circle at 380px 140px, #ffffff 0.5px, transparent 1.5px),
+        radial-gradient(circle at 380px 140px, transparent 1.5px, rgba(255, 255, 255, 0.25) 2.5px, transparent 3.5px);
+    
+    background-size: 500px 500px, 700px 700px !important;
+    background-repeat: repeat !important;
+
+    animation: 
+        bubblesUltraSlowRise 65s linear infinite,
+        bubblesUltraSlowWobble 9s ease-in-out infinite alternate !important;
+}
+
+html::after {
+    content: "" !important;
+    position: fixed !important;
+    top: -20% !important; 
+    left: 10% !important; 
+    width: 100vw !important;
+    height: 70vh !important; 
+    pointer-events: none !important;
+    z-index: 2 !important; 
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.22) 0%, 
+        rgba(255, 255, 255, 0.12) 15%, 
+        rgba(255, 255, 255, 0.04) 40%, 
+        transparent 70%
+    );
+
+    filter: blur(45px) !important;
+    animation: holyLightGlow 8s ease-in-out infinite alternate !important;
+    transform-origin: top center !important;
+}
+
+@keyframes bubblesUltraSlowRise {
+    0% { background-position: 0px 0px, 200px 0px; }
+    100% { background-position: 0px -3500px, 200px -3500px; }
+}
+
+@keyframes bubblesUltraSlowWobble {
+    0% { transform: translateX(0px); }
+    50% { transform: translateX(20px); }
+    100% { transform: translateX(-15px); }
+}
+
+@keyframes holyLightGlow {
+    0% {
+        opacity: 0.40; 
+        transform: scale(0.95) rotate(0deg);
+    }
+    50% {
+        opacity: 0.85; 
+        transform: scale(1.05) rotate(1deg); 
+    }
+    100% {
+        opacity: 0.50;
+        transform: scale(0.98) rotate(-0.5deg);
+    }
+}
+
+div[class*="chat"], div[class*="message"], .messages-container, .chat-layout {
+    position: relative;
+    z-index: 5 !important;
+}
+
+```
+
+---
+
+### Animated soft shine top
+
+Creates a soft shine at the top of the screen.
+
+```css
+html, body, #app, main {
+    background-color: #06080c !important; 
+    position: relative;
+    overflow: hidden;
+}
+
+html::after {
+    content: "" !important;
+    position: fixed !important;
+    top: -25% !important; 
+    left: 0 !important;
+    right: 0 !important;
+    margin: 0 auto !important; 
+    width: 85vw !important; 
+    height: 80vh !important; 
+    pointer-events: none !important;
+    z-index: 1 !important; 
+    background: linear-gradient(to bottom, 
+        rgba(255, 210, 120, 0.26) 0%, 
+        rgba(255, 185, 80, 0.16) 20%, 
+        rgba(230, 150, 50, 0.05) 50%, 
+        transparent 85%
+    );
+
+    filter: blur(55px) !important;
+    animation: holyGoldenGlow 9s ease-in-out infinite alternate !important;
+    transform-origin: top center !important;
+}
+
+@keyframes holyGoldenGlow {
+    0% {
+        opacity: 0.45; 
+        transform: scaleX(0.92) scaleY(0.96); 
+    }
+    50% {
+        transform: scaleX(1.06) scaleY(1.03); 
+    }
+    100% {
+        opacity: 0.55;
+        transform: scaleX(0.96) scaleY(0.98);
+    }
+}
+
+div[class*="chat"], div[class*="message"], .messages-container, .chat-layout {
+    position: relative;
+    z-index: 5 !important;
+}
+
+```
+
+---
+
 **Last Updated:** 2026-07-13
