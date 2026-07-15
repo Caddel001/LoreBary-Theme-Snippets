@@ -928,68 +928,93 @@ Let's fireflies fly through your screen
 <img src="./images/animated-fireflies.png" alt="Theme preview">
 
 ```css
-html, body, #app, main {
-    background-color: #040605 !important; /* Tiefschwarz mit einem Hauch Waldgrün */
-    position: relative;
-    overflow: hidden;
+html::before,
+html::after {
+  content: "" !important;
+  position: fixed !important;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  pointer-events: none;
+  z-index: 1 !important;
+  background-repeat: repeat;
+  will-change: background-position, opacity;
 }
 
 html::before {
-    content: "" !important;
-    position: fixed !important;
-    top: -10%;
-    left: -10%;
-    width: 120vw;
-    height: 120vh;
-    pointer-events: none;
-    z-index: 1 !important;
-    opacity: 0.35; 
-
-    background-image: 
-        radial-gradient(circle, rgba(204, 255, 51, 1) 0%, rgba(204, 255, 51, 0.3) 3%, transparent 12%),
-        radial-gradient(circle, rgba(175, 255, 40, 1) 0%, rgba(175, 255, 40, 0.2) 2%, transparent 10%),
-        radial-gradient(circle, rgba(220, 255, 80, 1) 0%, rgba(220, 255, 80, 0.3) 4%, transparent 15%),
-        radial-gradient(circle, rgba(204, 255, 51, 1) 0%, rgba(204, 255, 51, 0.1) 2%, transparent 8%);
-    background-size: 300px 300px; 
-    background-position: 43px 187px, 213px 61px, 127px 243px, 267px 19px;
-
-    animation: 
-        minimalFirefliesRise 45s linear infinite,
-        minimalFirefliesWobble 9s ease-in-out infinite alternate !important;
+  background-image:
+    radial-gradient(circle, rgba(204,255,51,1) 0 1px, rgba(204,255,51,.32) 2px, transparent 7px),
+    radial-gradient(circle, rgba(175,255,40,.95) 0 1px, rgba(175,255,40,.20) 2px, transparent 6px),
+    radial-gradient(circle, rgba(220,255,80,.90) 0 1px, rgba(220,255,80,.26) 3px, transparent 8px),
+    radial-gradient(circle, rgba(204,255,51,.82) 0 1px, rgba(204,255,51,.14) 2px, transparent 5px);
+  background-size: 277px 331px, 349px 283px, 421px 367px, 313px 397px;
+  background-position: 43px 287px, 213px 161px, 127px 343px, 267px 119px;
+  animation:
+    fireflyDriftA 43s linear infinite,
+    fireflyPulseA 7.4s ease-in-out infinite !important;
+  animation-delay: -17s, -2.6s !important;
 }
 
-@keyframes minimalFirefliesRise {
-    0% { 
-        background-position: 43px 187px, 213px 61px, 127px 243px, 267px 19px; 
-    }
-    100% { 
-        background-position: 43px -113px, 213px -239px, 127px -57px, 267px -281px; 
-    }
+html::after {
+  background-image:
+    radial-gradient(circle, rgba(255,244,120,.92) 0 1px, rgba(255,244,120,.22) 2px, transparent 7px),
+    radial-gradient(circle, rgba(167,255,67,.86) 0 1px, rgba(167,255,67,.16) 3px, transparent 6px),
+    radial-gradient(circle, rgba(224,255,137,.76) 0 1px, rgba(224,255,137,.12) 2px, transparent 5px);
+  background-size: 389px 457px, 293px 419px, 463px 347px;
+  background-position: 319px 391px, 91px 247px, 241px 79px;
+  animation:
+    fireflyDriftB 58s linear infinite,
+    fireflyPulseB 10.8s ease-in-out infinite !important;
+  animation-delay: -31s, -7.1s !important;
 }
 
-@keyframes minimalFirefliesWobble {
-    0% { 
-        transform: translateX(0px) translateY(0px); 
-        opacity: 0.1; 
-    }
-    40% {
-        transform: translateX(20px) translateY(-10px);
-        opacity: 0.6; 
-    }
-    70% {
-        transform: translateX(-15px) translateY(15px);
-        opacity: 0.05; 
-    }
-    100% { 
-        transform: translateX(10px) translateY(-5px); 
-        opacity: 0.4;
-    }
+@keyframes fireflyDriftA {
+  0% {
+    background-position: 43px 287px, 213px 161px, 127px 343px, 267px 119px;
+  }
+  36% {
+    background-position: 72px 91px, 187px -31px, 158px 172px, 239px -102px;
+  }
+  71% {
+    background-position: 31px -142px, 249px -271px, 109px -79px, 296px -314px;
+  }
+  100% {
+    background-position: 86px -389px, 169px -497px, 181px -286px, 231px -541px;
+  }
 }
 
-div[class*="chat"], div[class*="message"], .messages-container, .chat-layout {
-    position: relative;
-    z-index: 5 !important;
+@keyframes fireflyDriftB {
+  0% {
+    background-position: 319px 391px, 91px 247px, 241px 79px;
+  }
+  44% {
+    background-position: 281px 103px, 128px -17px, 207px -186px;
+  }
+  76% {
+    background-position: 337px -151px, 73px -273px, 269px -397px;
+  }
+  100% {
+    background-position: 263px -487px, 146px -612px, 219px -731px;
+  }
 }
+
+@keyframes fireflyPulseA {
+  0%, 100% { opacity: .12; }
+  18% { opacity: .42; }
+  37% { opacity: .20; }
+  61% { opacity: .50; }
+  79% { opacity: .16; }
+}
+
+@keyframes fireflyPulseB {
+  0%, 100% { opacity: .08; }
+  26% { opacity: .30; }
+  49% { opacity: .12; }
+  73% { opacity: .36; }
+  89% { opacity: .10; }
+}
+
 ```
 
 ---
