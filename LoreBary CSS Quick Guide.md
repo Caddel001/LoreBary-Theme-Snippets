@@ -15,16 +15,21 @@
   - [Greyscale to Color on Hover](#greyscale-to-color-on-hover)
   - [Remove Avatar Outline/Gradient](#remove-avatar-outlinegradient)
   - [Square Avatar Boxes](#square-avatar-boxes)
+  - [Small Avatars with Glowing Effect](#small-avatars-with-glowing-effect)
+  - [Large Avatars Filling Portrait](#large-avatars-filling-portrait)
+  - [Avatar Ring Glow](#avatar-ring-glow)
 - [Chat Bubble Effects](#chat-bubble-effects)
   - [Remove Bubble Message Background](#remove-bubble-message-background)
   - [Bubble Hover Lift](#bubble-hover-lift)
+  - [Button Bubbles](#button-bubbles)
 - [Message Layout](#message-layout)
   - [Message Left Aligned](#message-left-aligned)
   - [Centered Chat Messages](#centered-chat-messages)
   - [Colorize Text Selection](#colorize-text-selection)
-  - [Change Ratingymbols](#change-the-rating-symbol)
+  - [Change Rating Symbols](#change-the-rating-symbol)
   - [Hide Timestamp](#hide-timestamp)
   - [Move Timestamp by Name (Right Side)](#move-timestamp-by-name-right-side)
+  - [Time and Page Number Styling](#time-and-page-number-styling)
 - [Header & Footer](#header--footer)
   - [Hide Avatars in Header](#hide-avatars-in-header)
   - [Hide Chat Name](#hide-chat-name)
@@ -32,6 +37,8 @@
   - [Remove Header Hairline Stripe](#remove-header-hairline-stripe)
   - [Transparent Footer](#transparent-footer)
   - [Smaller Visual Expression Portrait](#smaller-visual-expression-portrait)
+  - [Small Button Footer](#small-button-footer)
+  - [Small Button Header](#small-button-header)
 - [Input Controls](#input-controls)
   - [Hide Action Button Labels](#hide-action-button-labels)
   - [Breathing Send Animation](#breathing-send-animation)
@@ -39,6 +46,9 @@
   - [Input Buttons Coloring](#input-buttons-coloring)
   - [Coloring Menu Button](#coloring-menu-button)
   - [Glowing Menu Button](#glowing-menu-button)
+- [Write Menu & Voice Bubble](#write-menu--voice-bubble)
+  - [Background in Write Menu](#background-in-write-menu)
+  - [Text Color in Write Submenu](#text-color-in-write-submenu)
 - [Background Effects](#background-effects)
   - [Animated Fireshine](#animated-fireshine)
   - [Animated Rain](#animated-rain)
@@ -239,6 +249,88 @@ Change avatar corners from rounded to square. <img src="./images/avatar-sqaure a
 
 ---
 
+### Small Avatars with Glowing Effect
+
+Create small circular avatars with a glowing colored ring effect.
+
+```css
+/* Small Avatars glowing */
+[data-lab="avatar"] {
+  border-radius: 50% !important;
+  border: 1px solid rgba(255, 112, 74, 0.78) !important;
+  box-shadow: 0 0 4px rgba(255,112,74,.88),
+              0 0 14px rgba(255,112,74,.36),
+              0 0 24px rgba(255,59,220,.16) !important;
+}
+
+[data-lab-role="user"] [data-lab="avatar"] {
+  border-color: rgba(0, 223, 255, 0.82) !important;
+  box-shadow: 0 0 4px rgba(0,223,255,.92),
+              0 0 14px rgba(0,223,255,.42),
+              0 0 24px rgba(255,59,220,.16) !important;
+}
+```
+
+**Customization:**
+- Change the `rgba()` values to customize the glow colors
+- Adjust the `border-radius` for different shapes
+
+---
+
+### Large Avatars Filling Portrait
+
+Make portrait avatars larger and fill the bubble space with no frame.
+
+```css
+/* Big Avatars filling Portrait */
+[data-lab="portrait"],
+[data-lab="portrait"] img {
+  border: none !important;
+  border-radius: 10px !important;
+  box-shadow: none !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  background-size: contain !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+
+[data-lab="bubble"]:has([data-lab="portrait"]) {
+  min-height: clamp(260px, 20vw, 400px) !important;
+}
+```
+
+**Customization:**
+- `border-radius`: Adjust corner roundness
+- `min-height`: Adjust the height of the portrait bubble
+
+---
+
+### Avatar Ring Glow
+
+Add colored glowing rings to user and character avatars.
+
+```css
+[data-lab-role="user"] [data-lab="avatar"] {
+  border-color: rgba(0, 223, 255, 0.82) !important;
+  box-shadow: 0 0 4px rgba(0,223,255,.92),
+              0 0 14px rgba(0,223,255,.42),
+              0 0 24px rgba(255,59,220,.16) !important;
+}
+
+[data-lab-role="character"] [data-lab="avatar"] {
+  border-color: rgba(0, 223, 255, 0.82) !important;
+  box-shadow: 0 0 4px rgba(0,223,255,.92),
+              0 0 14px rgba(0,223,255,.42),
+              0 0 24px rgba(255,59,220,.16) !important;
+}
+```
+
+**Customization:**
+- Modify `rgba()` values to change glow colors for each role
+
+---
+
 ## Chat Bubble Effects
 
 ### Remove Bubble Message Background
@@ -268,6 +360,60 @@ Lift chat bubbles slightly when you hover over them.
 [data-lab="bubble"]:hover {
   transform: translateY(-2px) !important;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+}
+```
+
+---
+
+### Button Bubbles
+
+Style swipe buttons and mini actions on chat bubbles with custom colors and hover effects.
+
+```css
+/* Swipe-Buttons and mini actions on the chat bubbles */
+[data-lab="swipe"],
+[data-lab="action"] {
+  color: #fff0d4 !important;
+  background: linear-gradient(
+    145deg,
+    rgba(65, 48, 40, .91),
+    rgba(31, 38, 37, .91)
+  ) !important;
+  border: 1px solid rgba(235, 173, 117, .48) !important;
+  border-radius: 999px !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .16),
+    0 4px 12px rgba(44, 27, 19, .25) !important;
+}
+
+/* Hover */
+[data-lab="swipe"]:hover,
+[data-lab="action"]:hover {
+  background: linear-gradient(
+    145deg,
+    rgba(90, 58, 42, .94),
+    rgba(37, 79, 74, .92)
+  ) !important;
+  border-color: rgba(71, 145, 136, .78) !important;
+}
+
+/* Image icons */
+[data-lab="swipe"] img,
+[data-lab="action"] img,
+img[data-lab="swipe"],
+img[data-lab="action"] {
+  filter: sepia(.62) saturate(.72) hue-rotate(335deg)
+    brightness(1.18) contrast(.96) !important;
+  opacity: 1 !important;
+}
+
+/* SVG icons */
+[data-lab="swipe"] svg,
+[data-lab="swipe"] svg *,
+[data-lab="action"] svg,
+[data-lab="action"] svg * {
+  color: #fff0d4 !important;
+  stroke: #fff0d4 !important;
 }
 ```
 
@@ -328,11 +474,10 @@ Add color to selected text with a custom background. <img src="./images/message-
   background: rgba(174, 153, 255, 0.3);
   color: #fff;
 }
+```
 
 **Customization:**
 - `rgba()`: Set your preferred color (RGBA format)
-
-```
 
 ---
 
@@ -344,11 +489,10 @@ Changes the rating acorns to sparkles
 
 ```css
 [data-lab="rating"] img {
-  content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='1.6' stroke-linejoin='round'%3E%3Cpath d='M12 2l2.2 6.6L21 11l-6.8 2.4L12 20l-2.2-6.6L3 11l6.8-2.4z'/%3E%3C/svg%3E") !important;
+  content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='1.6' stroke-linejoin='round'%3E%3Cpath d='M12 2l2.2 6.6L21[...]
   width: 16px !important;
   height: 16px !important;
 } 
-
 ```
 
 ---
@@ -398,6 +542,32 @@ Move timestamps to appear above the chat bubble on the right side. <img src="./i
 - `font-size`: Changes the timestamp size
 - `right`: Delete to set the timestamp to the left
 - `top`: Delete to set the timestamp below the chat bubble
+
+---
+
+### Time and Page Number Styling
+
+Style the time display and page numbering between swipe buttons with custom fonts and colors.
+
+```css
+/* Time and Page number between the swipe buttons */
+[data-lab="time"],
+.lab-theme-scope :has(> [data-lab="swipe"]) {
+  color: #f1e5cf !important;
+  -webkit-text-fill-color: #f1e5cf !important;
+  font-family: 'Kalam', 'Trebuchet MS', sans-serif !important;
+  font-size: .82rem !important;
+  font-weight: 600 !important;
+  letter-spacing: .03em !important;
+  text-shadow: none !important;
+  opacity: .9 !important;
+}
+```
+
+**Customization:**
+- `color`: Change the text color
+- `font-family`: Use different fonts
+- `font-size`: Adjust text size
 
 ---
 
@@ -497,6 +667,51 @@ Default <img src="./images/message-default character.png" alt="Theme preview"> E
 - `scale`: Set the scale factor
 - `margin-left`: Set further left/right
 - `margin-bottom`: Set further up/down
+
+---
+
+### Small Button Footer
+
+Style small buttons in the footer with custom text color.
+
+```css
+[data-lab="input"] > :is(button, [role="button"])
+:not([data-lab="write"])
+:not([data-lab="send"])
+:not(:has([data-lab="write"], [data-lab="send"])),
+[data-lab="input"] [data-lab*="image"] {
+  color: #de3517 !important;
+}
+
+[data-lab="time-skip"] {
+  color: #de3517 !important;
+}
+
+[data-lab="input"] button:not([data-lab]),
+[data-lab="input"] [role="button"]:not([data-lab]) {
+  color: #de3517 !important;
+}
+```
+
+**Customization:**
+- Change `#de3517` to your desired button color
+
+---
+
+### Small Button Header
+
+Style small buttons in the header with custom text color.
+
+```css
+[data-lab="header"] button,
+[data-lab="header"] [role="button"],
+[data-lab="back"] {
+  color: #de3517 !important;
+}
+```
+
+**Customization:**
+- Change `#de3517` to your desired button color
 
 ---
 
@@ -609,6 +824,66 @@ Add a glowing effect to the menu button. <img src="./images/header-glow menu.png
 
 **Customization:**
 - `rgba()`: Set the glow color
+
+---
+
+## Write Menu & Voice Bubble
+
+### Background in Write Menu
+
+Add a custom gradient background to the write menu and voice bubble.
+
+```css
+[data-lab="voice-bubble"],
+[data-lab="write-menu"] {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(31, 16, 7, 0.92),
+      rgba(18, 9, 4, 0.90)
+    ) !important;
+
+  border: 1px solid rgba(194, 138, 54, 0.42) !important;
+  border-radius: 12px !important;
+
+  box-shadow:
+    0 8px 18px rgba(10, 5, 2, 0.44) !important;
+}
+```
+
+**Customization:**
+- Modify the gradient colors in `linear-gradient()`
+- Adjust `border-color` and `border-radius` values
+
+---
+
+### Text Color in Write Submenu
+
+Change the text color in the write submenu completely.
+
+```css
+[data-lab="write-menu"] > .px-3.py-2.text-\[10px\].leading-snug.text-gray-300 {
+  color: #526b56 !important;
+  -webkit-text-fill-color: #526b56 !important;
+}
+
+[data-lab="write-menu"] button,
+[data-lab="write-menu"] button *,
+[data-lab="write-menu"] [role="button"],
+[data-lab="write-menu"] [role="button"] * {
+  color: #526b56 !important;
+  -webkit-text-fill-color: #526b56 !important;
+}
+
+/* For the info text at the bottom */
+[data-lab="write-menu"] > .px-3.py-2.text-\[10px\].leading-snug.text-gray-300 {
+    color: #000;
+}
+```
+
+**Customization:**
+- Replace `#526b56` with your desired color
+- Replace `#000` with your desired bottom text color
 
 ---
 
@@ -752,7 +1027,7 @@ Create a gentle fog over the whole screen
 
 ```css
 html, body, #app, main {
-    background-color: #0b0d11 !important; /* Dunkles Graublau als Basis */
+    background-color: #0b0d11 !important; /* Dark blue-gray as base */
     position: relative;
     overflow: hidden;
 }
@@ -827,7 +1102,7 @@ div[class*="chat"], div[class*="message"], .messages-container, .chat-layout {
 
 ### Animated Snow
 
-Let's gentle snow fall in the background.
+Let gentle snow fall in the background.
 
 <img src="./images/animated-snow.png" alt="Theme preview">
 
@@ -923,7 +1198,7 @@ div[class*="chat"], div[class*="message"], .messages-container, .chat-layout {
 
 ### Animated Fireflies
 
-Let's fireflies fly through your screen
+Let fireflies fly through your screen
 
 <img src="./images/animated-fireflies.png" alt="Theme preview">
 
@@ -1014,20 +1289,19 @@ html::after {
   73% { opacity: .36; }
   89% { opacity: .10; }
 }
-
 ```
 
 ---
 
 ### Animated Dustparticle
 
-Let's dust hover at the screen
+Let dust hover across the screen
 
 ```css
- position: relative;
-    overflow: hidden;html, body, #app, main {
+html, body, #app, main {
     background-color: #020204 !important; 
-
+    position: relative;
+    overflow: hidden;
 }
 
 html::before {
@@ -1082,7 +1356,7 @@ html::after {
     }
 }
 
-/* --- ANIMATION: NEBELWABERN --- */
+/* --- ANIMATION: NEBULA SWIRL --- */
 @keyframes cosmosNebulaMove {
     0% { transform: translate(0px, 0px) rotate(0deg); }
     100% { transform: translate(30px, 40px) rotate(1deg); }
@@ -1092,14 +1366,13 @@ div[class*="chat"], div[class*="message"], .messages-container, .chat-layout {
     position: relative;
     z-index: 5 !important;
 }
-
 ```
 
 ---
 
 ### Animated Stars
 
-Let's stars twinkle in your background
+Let stars twinkle in your background
 
 <img src="./images/animated-sterne.png" alt="Theme preview">
 
@@ -1174,12 +1447,11 @@ div[class*="chat"], div[class*="message"], .messages-container, .chat-layout {
     position: relative;
     z-index: 5 !important;
 }
-
 ```
 
 ---
 
-### Animated Sunshine underwater
+### Animated Sunshine Underwater
 
 Sunshine under water with small rising bubbles
 
@@ -1268,12 +1540,11 @@ div[class*="chat"], div[class*="message"], .messages-container, .chat-layout {
     position: relative;
     z-index: 5 !important;
 }
-
 ```
 
 ---
 
-### Animated soft godly light
+### Animated Soft Godly Light
 
 Creates a soft shine at the top of the screen.
 
@@ -1327,9 +1598,8 @@ div[class*="chat"], div[class*="message"], .messages-container, .chat-layout {
     position: relative;
     z-index: 5 !important;
 }
-
 ```
 
 ---
 
-**Last Updated:** 2026-07-13
+**Last Updated:** 2026-07-17
