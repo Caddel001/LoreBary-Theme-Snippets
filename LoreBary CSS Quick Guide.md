@@ -4,10 +4,27 @@
 
 ---
 
+## Choose the Correct Theme Area
+
+LoreBary currently has two separate CSS surfaces. Their selectors are **not interchangeable**.
+
+| Theme area | Root scope | Main attributes | Use it for |
+| --- | --- | --- | --- |
+| Laboratory / Chat Themes | `.lab-theme-scope` | `[data-lab]`, `[data-lab-role]` | Chat messages, the Laboratory header and footer, input controls, voice bubbles, and chat effects |
+| Profile Themes | `.profile-theme-scope` | `[data-profile]`, ARIA states and labels | Profile avatars, navigation tabs, About Me, Write a Post, Gallery, Popular Creations, and feed posts |
+
+> **Safe workflow:** Preview first. A working preview is not the same as a saved theme, and a saved draft is not the same as a published update. Keep a copy of the current CSS before larger changes.
+
+Use narrow, stable selectors. Avoid broad rules such as `button { ... }` or `.profile-theme-scope img { ... }` unless every matching element should really change.
+
+---
+
 ## 📋 Table of Contents
 
+- [Choose the Correct Theme Area](#choose-the-correct-theme-area)
 - [Converting Images to Base64](#converting-images-to-base64)
   - [How to Get the data:webp Base64 Code](#how-to-get-the-datawebp-base64-code)
+- [Part I — Laboratory / Chat Themes](#part-i--laboratory--chat-themes)
 - [Avatar Customization](#avatar-customization)
   - [Image around Avatar](#image-around-avatar)
   - [Avatar Glow on Hover](#avatar-glow-on-hover)
@@ -49,6 +66,20 @@
 - [Write Menu & Voice Bubble](#write-menu--voice-bubble)
   - [Background in Write Menu](#background-in-write-menu)
   - [Text Color in Write Submenu](#text-color-in-write-submenu)
+- [Part II — Profile Themes](#part-ii--profile-themes)
+  - [Profile Theme Structure and Palette](#profile-theme-structure-and-palette)
+  - [Fonts and Typography](#fonts-and-typography)
+  - [Profile Avatar Frame](#profile-avatar-frame)
+  - [Stickers and Decorative Images](#stickers-and-decorative-images)
+  - [Main Profile Tabs and About Tabs](#main-profile-tabs-and-about-tabs)
+  - [Moving and Framing a Status Block](#moving-and-framing-a-status-block)
+  - [Write a Post](#write-a-post)
+  - [SEE ALL and Popular Creations Buttons](#see-all-and-popular-creations-buttons)
+  - [Comment, Share, and Like Buttons](#comment-share-and-like-buttons)
+  - [Mobile Profile Repairs](#mobile-profile-repairs)
+  - [Profile Selector Quick Reference](#profile-selector-quick-reference)
+  - [Profile CSS Troubleshooting](#profile-css-troubleshooting)
+- [Part III — Shared Animations](#part-iii--shared-animations-for-laboratory-and-profile-themes)
 - [Background Effects](#background-effects)
   - [Animated Fireshine](#animated-fireshine)
   - [Animated Rain](#animated-rain)
@@ -59,6 +90,7 @@
   - [Animated Stars](#animated-stars)
   - [Animated Sunshine Underwater](#animated-sunshine-underwater)
   - [Animated Soft Godly Light](#animated-soft-godly-light)
+  - [Shared Scrollable Foreground Fireflies and Stars](#shared-scrollable-foreground-fireflies-and-stars)
 
 ---
 
@@ -80,7 +112,7 @@ Select every option like the example below:
 - Make sure settings match the configuration shown
 
 <img src="./images/Base64-1.png" alt="Theme preview">
-![Description](Base64-1.png)
+![Base64 converter settings](./images/Base64-1.png)
 
 **Step 4: Upload Your Image**
 Drop your image file into the converter tool
@@ -104,6 +136,10 @@ Replace `XXX` in your CSS snippet with the copied Base64 code:
 **Done!** Your image is now embedded in your CSS. 🎉
 
 ---
+
+# Part I — Laboratory / Chat Themes
+
+All snippets in Part I use `.lab-theme-scope` and belong to the Laboratory chat theme editor.
 
 ## Avatar Customization 
 
@@ -887,6 +923,986 @@ Change the text color in the write submenu completely.
 
 ---
 
+# Part II — Profile Themes
+
+Profile themes use `.profile-theme-scope` and `[data-profile="..."]`. Keep every profile rule inside the profile scope so it does not recolor LoreBary navigation, dialogs, or Laboratory chats.
+
+## Profile Theme Structure and Palette
+
+### Core component map
+
+| Selector | Component |
+| --- | --- |
+| `[data-profile="scope"]` | Root of the themed profile |
+| `[data-profile="hero"]` | Banner and identity area |
+| `[data-profile="avatar-wrap"]` | Positioning anchor for a decorative avatar frame |
+| `[data-profile="avatar"]` | Clipped avatar circle or shape |
+| `[data-profile="avatar-img"]` | Actual portrait image |
+| `[data-profile="tabs"]` / `[data-profile="tab"]` | Main profile navigation |
+| `[data-profile="about"]` | About Me area and its icon tabs |
+| `[data-profile="composer-slot"]` | Write a Post placement area |
+| `[data-profile="gallery-preview"]` | Gallery preview panel |
+| `[data-profile="popular-content"]` | Popular Creations panel and carousel |
+| `[data-profile="feed-list"]` | Profile post feed |
+
+### Reusable color variables
+
+Change this small palette first. The component snippets below reuse these values.
+
+```css
+.profile-theme-scope[data-profile="scope"] {
+  --theme-bg: #171512;
+  --theme-panel: #2c241c;
+  --theme-panel-2: #3b2e21;
+  --theme-text: #fff1cf;
+  --theme-muted: #c9b58f;
+  --theme-edge: #a77b3f;
+  --theme-accent: #d7ad63;
+  --theme-shadow: 0 8px 24px rgba(0, 0, 0, .45);
+
+  color: var(--theme-text) !important;
+  background-color: var(--theme-bg) !important;
+}
+```
+
+### Safe hover and keyboard focus
+
+Use `:hover` for pointers and `:focus-visible` for keyboard navigation. Do not remove the focus outline without providing a visible replacement.
+
+```css
+@media (hover: hover) {
+  .profile-theme-scope .theme-button:hover {
+    color: #ffffff !important;
+    background: #765034 !important;
+    border-color: #f0cc83 !important;
+    transform: translateY(-1px);
+  }
+}
+
+.profile-theme-scope .theme-button:focus-visible {
+  outline: 2px solid #fff1a8 !important;
+  outline-offset: 2px;
+}
+
+.profile-theme-scope .theme-button:active {
+  transform: translateY(1px);
+}
+```
+
+---
+
+## Fonts and Typography
+
+Use a readable body font and reserve decorative fonts for names, headings, and selected labels. Always include fallback fonts because remote fonts can fail to load or may be blocked by the editor.
+
+### Safe system-font setup
+
+This method needs no external font file and works offline.
+
+```css
+.profile-theme-scope[data-profile="scope"] {
+  --profile-font-body: Georgia, "Times New Roman", serif;
+  --profile-font-title: "Trebuchet MS", Arial, sans-serif;
+  font-family: var(--profile-font-body) !important;
+}
+
+.profile-theme-scope [data-profile="display-name"],
+.profile-theme-scope [data-profile="display-name"] *,
+.profile-theme-scope [data-profile="composer-header"] h3,
+.profile-theme-scope section:has([data-profile="about-card"])
+  > header :is(h2, span),
+.profile-theme-scope [data-profile="gallery-preview"] h2,
+.profile-theme-scope [data-profile="popular-content"] h2 {
+  font-family: var(--profile-font-title) !important;
+  letter-spacing: .08em;
+}
+
+.profile-theme-scope [data-profile="tab"],
+.profile-theme-scope [data-profile="about-card"],
+.profile-theme-scope [data-profile="composer-editor"] {
+  font-family: var(--profile-font-body) !important;
+}
+```
+
+### Laboratory font variables
+
+Laboratory already exposes useful font variables. Set them on the Laboratory scope instead of repeating `font-family` on every message element.
+
+```css
+.lab-theme-scope {
+  --lab-font-family: Georgia, "Times New Roman", serif;
+  --lab-char-name-font: "Trebuchet MS", Arial, sans-serif;
+  --lab-persona-name-font: "Trebuchet MS", Arial, sans-serif;
+}
+```
+
+### Optional web font
+
+Remote imports work only when the theme editor and the font host permit them. An `@import` rule must sit at the very top of the stylesheet, before normal CSS rules. Keep the fallback stack even when the import works.
+
+```css
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Lexend:wght@400;600&display=swap");
+
+.profile-theme-scope[data-profile="scope"] {
+  --profile-font-body: Lexend, Arial, sans-serif;
+  --profile-font-title: Cinzel, Georgia, serif;
+}
+```
+
+If `@import` is rejected by the safety checker, use system fonts or embed a properly licensed WOFF2 file with `@font-face` and a Base64 data URL. Do not remove the fallback fonts.
+
+### Useful typography properties
+
+| Property | Purpose |
+| --- | --- |
+| `font-family` | Selects the font and fallbacks |
+| `font-size` | Changes text size |
+| `font-weight` | Controls regular, semibold, or bold text |
+| `font-style` | Adds or removes italics |
+| `letter-spacing` | Opens or tightens heading letters |
+| `line-height` | Improves paragraph readability |
+| `text-transform` | Uppercase, lowercase, or normal case |
+| `text-shadow` | Separates text from textured backgrounds |
+
+---
+
+## Profile Avatar Frame
+
+The most reliable profile frame is a transparent PNG or WebP attached to the outer avatar wrapper. Keep the portrait, the decorative frame, and the action buttons on separate layers.
+
+| Before: portrait without the decorative frame | After: transparent frame aligned to the portrait |
+| --- | --- |
+| <img src="./images/profile/avatar-frame-before.png" alt="Profile avatar before adding the decorative frame"> | <img src="./images/profile/avatar-frame-after.png" alt="Profile avatar after adding the decorative frame"> |
+
+### Centered decorative frame
+
+```css
+.profile-theme-scope [data-profile="avatar-wrap"] {
+  position: relative;
+  overflow: visible !important;
+  isolation: isolate;
+}
+
+.profile-theme-scope [data-profile="avatar"] {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  border: 2px solid #d1b781 !important;
+  background: #2e261d !important;
+}
+
+.profile-theme-scope [data-profile="avatar-wrap"]::after {
+  content: "";
+  position: absolute;
+  inset: -5%;
+  z-index: 3;
+  pointer-events: none;
+  background: url("YOUR-TRANSPARENT-FRAME.png") center / contain no-repeat;
+}
+
+.profile-theme-scope [data-profile="avatar-actions"] {
+  position: relative;
+  z-index: 5;
+}
+```
+
+`pointer-events: none` is important: the transparent rectangle around the artwork must not block avatar or remove-button clicks.
+
+### Fit the portrait inside the frame opening
+
+Use the same inset for the portrait and its click overlay. Absolute positioning is more reliable than compensating with margins.
+
+```css
+.profile-theme-scope [data-profile="avatar"]
+  > [data-profile="avatar-img"] {
+  position: absolute !important;
+  inset: 14% !important;
+  width: 72% !important;
+  height: 72% !important;
+  margin: 0 !important;
+  object-fit: cover !important;
+  border-radius: 50% !important;
+}
+
+.profile-theme-scope [data-profile="avatar"] > div.absolute {
+  inset: 14% !important;
+}
+```
+
+### Asymmetrical frame artwork
+
+Use this pattern when flowers, horns, a lantern, a skull, or another ornament extends farther on one side. Align the visible opening, not the full transparent image bounds.
+
+```css
+.profile-theme-scope [data-profile="avatar-wrap"]::after {
+  content: "";
+  position: absolute;
+  width: 150%;
+  height: 150%;
+  left: -33%;
+  top: -39%;
+  z-index: 3;
+  pointer-events: none;
+  background: url("ASYMMETRICAL-FRAME.png") center / 100% 100% no-repeat;
+}
+```
+
+### Mobile avatar alignment
+
+```css
+@media (max-width: 767px) {
+  .profile-theme-scope [data-profile="avatar-wrap"]::after {
+    inset: -5%;
+  }
+
+  .profile-theme-scope [data-profile="avatar"]
+    > [data-profile="avatar-img"],
+  .profile-theme-scope [data-profile="avatar"] > div.absolute {
+    inset: 14% !important;
+  }
+}
+```
+
+If the artwork is asymmetrical, give its mobile rule its own `width`, `height`, `left`, and `top` values instead of reusing `inset`.
+
+---
+
+## Stickers and Decorative Images
+
+The cleanest CSS-only sticker is a transparent PNG or WebP placed in a pseudo-element. Attach it to the nearest stable component, make that component `position: relative`, and keep the sticker click-through.
+
+<img src="./images/profile/responsive-desktop-example.png" alt="Profile example with decorative character artwork and themed panels">
+
+### Reusable sticker variable
+
+```css
+.profile-theme-scope[data-profile="scope"] {
+  --profile-sticker: url("YOUR-TRANSPARENT-STICKER.png");
+}
+```
+
+### Sticker above the About Me panel
+
+```css
+.profile-theme-scope section:has([data-profile="about-card"]) {
+  position: relative;
+  overflow: visible !important;
+  isolation: isolate;
+}
+
+.profile-theme-scope
+  section:has([data-profile="about-card"])::after {
+  content: "";
+  position: absolute;
+  top: -54px;
+  right: 18px;
+  width: clamp(74px, 8vw, 108px);
+  aspect-ratio: 1 / 1;
+  z-index: 20;
+  pointer-events: none;
+  background: var(--profile-sticker) center / contain no-repeat;
+  transform: rotate(8deg);
+  filter: drop-shadow(0 7px 6px rgba(0, 0, 0, .55));
+}
+```
+
+### Sticker in the center of the profile body
+
+```css
+.profile-theme-scope [data-profile="body-inner"] {
+  position: relative;
+  overflow: visible !important;
+}
+
+.profile-theme-scope [data-profile="body-inner"]::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 330px;
+  width: 340px;
+  aspect-ratio: 4 / 3;
+  z-index: 60;
+  pointer-events: none;
+  transform: translateX(-50%);
+  background: var(--profile-sticker) center / contain no-repeat;
+  filter: drop-shadow(0 12px 14px rgba(0, 0, 0, .66));
+}
+```
+
+### How to move the sticker
+
+| Change | Property |
+| --- | --- |
+| Move down | Increase `top` |
+| Move up | Decrease `top` or use a negative value |
+| Move right | Increase `left`, or decrease `right` |
+| Move left | Decrease `left`, or increase `right` |
+| Resize | Change `width`; keep `height: auto` or an `aspect-ratio` |
+| Tilt | Change `rotate(...)` inside `transform` |
+| Place above other layers | Increase `z-index` on the sticker and its positioned parent |
+
+Do not set `left` and `right` together unless you intentionally want the browser to stretch the box. When centering with `left: 50%`, keep `translateX(-50%)` in the same `transform` declaration as any rotation.
+
+### Mobile sticker rule
+
+Large desktop stickers often overlap the composer on mobile. Reposition or hide them deliberately.
+
+```css
+@media (max-width: 767px) {
+  .profile-theme-scope
+    section:has([data-profile="about-card"])::after {
+    top: -32px;
+    right: 8px;
+    width: 70px;
+    transform: rotate(5deg);
+  }
+
+  .profile-theme-scope [data-profile="body-inner"]::after {
+    display: none;
+  }
+}
+```
+
+One element provides only one `::before` and one `::after`. If both are already used for borders or particles, anchor the sticker to another stable container instead of overwriting the existing decoration.
+
+### Laboratory sticker equivalent
+
+The same positioning system works in Laboratory. Only the anchor changes.
+
+```css
+.lab-theme-scope {
+  --lab-sticker: url("YOUR-TRANSPARENT-STICKER.png");
+}
+
+.lab-theme-scope [data-lab="header"] {
+  position: relative;
+  overflow: visible !important;
+}
+
+.lab-theme-scope [data-lab="header"]::after {
+  content: "";
+  position: absolute;
+  top: -28px;
+  right: 18px;
+  width: 84px;
+  aspect-ratio: 1 / 1;
+  z-index: 20;
+  pointer-events: none;
+  background: var(--lab-sticker) center / contain no-repeat;
+  transform: rotate(6deg);
+}
+```
+
+---
+
+## Main Profile Tabs and About Tabs
+
+The main profile navigation and the five About Me icon tabs are separate components. Style them independently.
+
+<img src="./images/profile/profile-tabs-example.png" alt="Example of fully styled profile navigation tabs">
+
+### Main profile tabs, selected state, and counts
+
+```css
+.profile-theme-scope [data-profile="tab"] {
+  min-height: 36px;
+  padding: 7px 12px !important;
+  margin: 0 2px;
+  color: #eadcc7 !important;
+  background: linear-gradient(#3f3328, #2c241d) !important;
+  border: 1px solid rgba(205, 164, 95, .45) !important;
+  border-radius: 7px !important;
+}
+
+@media (hover: hover) {
+  .profile-theme-scope [data-profile="tab"]:hover {
+    background: #594634 !important;
+    border-color: #d9b978 !important;
+  }
+}
+
+.profile-theme-scope
+  [data-profile="tab"][aria-selected="true"] {
+  color: #fff4d2 !important;
+  background: linear-gradient(#7c8766, #535f4d) !important;
+  border-color: #d8c49d !important;
+}
+
+.profile-theme-scope [data-profile="tab-count"] {
+  color: #fff4d2 !important;
+  background: #6d5e4b !important;
+}
+```
+
+### About Me icon tabs
+
+```css
+.profile-theme-scope [data-profile="about"] [role="tab"] {
+  margin-left: 0 !important;
+  color: #f0e5d0 !important;
+  background: linear-gradient(#4b3c2c, #33291f) !important;
+  border: 1px solid rgba(213, 168, 93, .55) !important;
+  border-radius: 8px 8px 0 0 !important;
+}
+
+/* Hide only the paper plate, not the visible tab icons. */
+.profile-theme-scope [data-profile="about"]
+  [role="tab"] img[src*="paper-tab.webp"] {
+  opacity: 0 !important;
+}
+
+.profile-theme-scope [data-profile="about"]
+  [role="tab"][aria-selected="true"] {
+  background: #6c7656 !important;
+  border-color: #ebcd8c !important;
+}
+```
+
+---
+
+## Moving and Framing a Status Block
+
+There are two different cases: moving the complete native About Me card, or styling only a custom status block inside your About content.
+
+### Move and frame the complete native About Me card
+
+Margins keep the card in the normal page flow and are the safest way to move it.
+
+```css
+.profile-theme-scope section:has([data-profile="about-card"]) {
+  position: relative;
+  margin-top: 18px;
+  margin-left: 24px;
+  width: calc(100% - 24px);
+  padding: 8px;
+  border: 1px solid var(--theme-edge) !important;
+  border-radius: 16px !important;
+  background: rgba(23, 21, 18, .72) !important;
+  box-shadow: var(--theme-shadow) !important;
+}
+
+.profile-theme-scope [data-profile="about-card"] {
+  overflow: hidden;
+  border: 1px solid rgba(215, 173, 99, .55) !important;
+  border-radius: 12px !important;
+  background: var(--theme-panel) !important;
+}
+```
+
+For a small visual adjustment that should not change document flow, use `transform`. Remember that the original layout space remains where it was.
+
+```css
+.profile-theme-scope [data-profile="about-card"] {
+  transform: translate(18px, -10px);
+}
+```
+
+### Create a separate custom status box
+
+If the About editor accepts custom HTML, give the status its own class. CSS cannot reliably select an element only because its visible text says “STATUS”.
+
+```html
+<section class="lb-profile-status">
+  <h3 class="lb-profile-status__title">STATUS</h3>
+  <p><strong>Currently working on</strong><br>Updating plugins</p>
+  <p><strong>Coming next</strong><br>N/A</p>
+  <p><strong>Energy level</strong><br>Tired</p>
+</section>
+```
+
+```css
+.profile-theme-scope .lb-profile-status {
+  box-sizing: border-box;
+  width: min(100%, 360px);
+  margin: 22px auto;
+  padding: 18px 20px;
+  color: var(--theme-text);
+  background:
+    linear-gradient(145deg, rgba(59, 46, 33, .97), rgba(31, 25, 20, .97));
+  border: 1px solid var(--theme-edge);
+  border-left: 4px solid var(--theme-accent);
+  border-radius: 14px;
+  box-shadow: var(--theme-shadow);
+}
+
+.profile-theme-scope .lb-profile-status__title {
+  margin: 0 0 12px;
+  color: var(--theme-accent);
+  font-family: var(--profile-font-title, Georgia, serif);
+  letter-spacing: .12em;
+}
+
+.profile-theme-scope .lb-profile-status p {
+  margin: 10px 0;
+  line-height: 1.45;
+}
+```
+
+### Move only the custom status box
+
+```css
+@media (min-width: 1024px) {
+  .profile-theme-scope .lb-profile-status {
+    position: relative;
+    left: 28px;
+    top: -14px;
+  }
+}
+
+@media (max-width: 767px) {
+  .profile-theme-scope section:has([data-profile="about-card"]) {
+    margin-left: 0;
+    width: 100%;
+    padding: 5px;
+  }
+
+  .profile-theme-scope [data-profile="about-card"],
+  .profile-theme-scope .lb-profile-status {
+    left: auto;
+    top: auto;
+    width: 100%;
+    transform: none;
+  }
+}
+```
+
+If the status is a single image rather than HTML, apply the frame to its wrapper and use `object-fit: contain` on the image so it remains readable instead of being cropped.
+
+---
+
+## Write a Post
+
+The composer is not one box. It contains a card shell, header, option buttons, body, formatting toolbar, editor, placeholder, footer, switch, and Post button. Style each layer explicitly.
+
+<img src="./images/profile/write-a-post-example.png" alt="Example of a themed Write a Post composer">
+
+### Component map
+
+| Selector | Component |
+| --- | --- |
+| `[data-profile="composer-slot"] > .surface-post` | Outer composer card |
+| `[data-profile="composer-header"]` | WRITE A POST title row and top controls |
+| `[data-profile="composer-header"] button` | Public and Notify followers buttons |
+| `[data-profile="composer-body"]` | Avatar and editor area |
+| `[data-profile="composer-toolbar"]` | Formatting toolbar |
+| `[data-profile="composer-toolbar"] button` | Bold, italic, underline, attachment, emoji, and more |
+| `[data-profile="composer-editor"]` | Editable text field |
+| `[data-placeholder]::before` | Placeholder text |
+| `[data-profile="composer-footer"]` | Terms, switch, and Post button area |
+
+### Card shell and header
+
+```css
+.profile-theme-scope [data-profile="composer-slot"]
+  > .surface-post {
+  overflow: hidden;
+  color: var(--theme-text) !important;
+  background: var(--theme-panel) !important;
+  border: 1px solid var(--theme-edge) !important;
+  border-radius: 12px !important;
+  box-shadow: var(--theme-shadow) !important;
+}
+
+.profile-theme-scope [data-profile="composer-header"] {
+  color: #fff1cf !important;
+  background: linear-gradient(100deg, #5b3a24, #38251a) !important;
+  border-bottom: 1px solid rgba(213, 168, 93, .65) !important;
+  border-radius: 11px 11px 0 0 !important;
+}
+
+.profile-theme-scope [data-profile="composer-header"] h3 {
+  color: inherit !important;
+  letter-spacing: .08em;
+}
+
+.profile-theme-scope [data-profile="composer-header"] button {
+  color: #fff1cf !important;
+  background: #30291f !important;
+  border: 1px solid rgba(213, 168, 93, .55) !important;
+}
+```
+
+### Body, toolbar, editor, and placeholder
+
+```css
+.profile-theme-scope [data-profile="composer-body"] {
+  background: #c7ddeb !important;
+  padding: 12px !important;
+}
+
+.profile-theme-scope [data-profile="composer-toolbar"] {
+  color: #f6ead2 !important;
+  background: #3b3026 !important;
+  border-color: rgba(213, 168, 93, .55) !important;
+}
+
+.profile-theme-scope [data-profile="composer-toolbar"] button {
+  color: #f6ead2 !important;
+  background: #564331 !important;
+  border: 1px solid rgba(235, 205, 140, .55) !important;
+}
+
+.profile-theme-scope [data-profile="composer-toolbar"]
+  button[aria-pressed="true"] {
+  color: #ffffff !important;
+  background: #7c8766 !important;
+  border-color: #f0d99f !important;
+}
+
+.profile-theme-scope [data-profile="composer-editor"] {
+  min-height: 150px;
+  color: #2b231d !important;
+  background: #fff8e9 !important;
+  border-color: rgba(137, 101, 48, .55) !important;
+  caret-color: #6f3138;
+}
+
+.profile-theme-scope [data-profile="composer-editor"]
+  [data-placeholder]::before {
+  color: #7e746c !important;
+  opacity: 1 !important;
+}
+```
+
+### Footer switch
+
+```css
+.profile-theme-scope [data-profile="composer-footer"] {
+  color: var(--theme-muted) !important;
+}
+
+.profile-theme-scope [data-profile="composer-footer"]
+  input[type="checkbox"] + div {
+  background: #665744 !important;
+  border-color: #a78f6a !important;
+}
+
+.profile-theme-scope [data-profile="composer-footer"]
+  input[type="checkbox"] + div::after {
+  background: #fff3d3 !important;
+}
+
+.profile-theme-scope [data-profile="composer-footer"]
+  input[type="checkbox"]:checked + div {
+  background: #71805c !important;
+}
+```
+
+Keep editor text and placeholder contrast high. Decorative textures should never make typed text difficult to read.
+
+---
+
+## SEE ALL and Popular Creations Buttons
+
+These controls contain raster image plates and icons. Style the button image and the label separately.
+
+| SEE ALL button | Popular Creations carousel arrow |
+| --- | --- |
+| <img src="./images/profile/see-all-example.png" alt="Themed SEE ALL button"> | <img src="./images/profile/carousel-arrow-example.png" alt="Themed Popular Creations carousel arrow"> |
+
+### SEE ALL plate and label
+
+```css
+.profile-theme-scope [data-profile="gallery-preview"]
+  .dashboard-action-button img[src*="btn_pixel_plate"],
+.profile-theme-scope [data-profile="popular-content"]
+  .dashboard-action-button img[src*="btn_pixel_plate"] {
+  filter: sepia(.92) saturate(1.75) hue-rotate(346deg)
+          brightness(.86) contrast(1.28)
+          drop-shadow(0 2px 2px rgba(0, 0, 0, .5)) !important;
+}
+
+.profile-theme-scope [data-profile="gallery-preview"]
+  .dashboard-action-button span,
+.profile-theme-scope [data-profile="popular-content"]
+  .dashboard-action-button span {
+  color: #fff1cf !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, .88) !important;
+}
+```
+
+### Popular Creations scroll arrows
+
+```css
+.profile-theme-scope
+  button[aria-label^="Scroll popular creations"] {
+  background: #5b3a24 !important;
+  border: 1px solid #d5a85d !important;
+  box-shadow: inset 0 1px rgba(255, 241, 200, .35),
+              0 2px 5px rgba(0, 0, 0, .5) !important;
+}
+
+.profile-theme-scope
+  button[aria-label^="Scroll popular creations"] img {
+  filter: sepia(1) saturate(1.8) hue-rotate(345deg)
+          brightness(1.35) contrast(1.1) !important;
+}
+
+@media (hover: hover) {
+  .profile-theme-scope
+    button[aria-label^="Scroll popular creations"]:hover {
+    background: #765034 !important;
+    border-color: #f0cc83 !important;
+  }
+}
+```
+
+The `^=` operator matches both arrow labels because both begin with the same phrase.
+
+---
+
+## Comment, Share, and Like Buttons
+
+```css
+.profile-theme-scope [data-profile="post-like"],
+.profile-theme-scope [data-profile="post-likes"],
+.profile-theme-scope [data-profile="post-engagement"]
+  button[aria-label="Comments"],
+.profile-theme-scope [data-profile="post-engagement"]
+  button[aria-label="Share"] {
+  color: #fff1cf !important;
+  background: linear-gradient(#5a432f, #3a2b20) !important;
+  border: 1px solid #bd9457 !important;
+  border-radius: 8px !important;
+}
+
+.profile-theme-scope [data-profile="post-engagement"]
+  img[src*="feed_action_"],
+.profile-theme-scope [data-profile="post-engagement"]
+  img[src*="feed_filter_"] {
+  filter: sepia(1) saturate(1.4) hue-rotate(345deg)
+          brightness(1.35) !important;
+}
+
+.profile-theme-scope [data-profile="post-like"][aria-pressed="true"] {
+  color: #ffffff !important;
+  background: #71805c !important;
+  border-color: #f0d99f !important;
+}
+```
+
+### Recoloring raster UI icons
+
+CSS `color` does not recolor the pixels of a PNG or WebP. Use a scoped `filter` on known UI assets instead.
+
+```css
+/* Good: only pixel icons inside the main profile tabs. */
+.profile-theme-scope [data-profile="tab"]
+  img[src*="/img/pixel/"] {
+  filter: grayscale(1) sepia(.5) saturate(.6)
+          brightness(1.9) contrast(.8) !important;
+}
+
+/* Avoid: this would also recolor portraits and gallery covers. */
+/* .profile-theme-scope img { filter: sepia(1); } */
+```
+
+Useful starting points:
+
+| Target | Filter |
+| --- | --- |
+| Warm gold | `sepia(1) saturate(1.8) hue-rotate(345deg) brightness(1.35) contrast(1.1)` |
+| Cream | `grayscale(1) sepia(.5) saturate(.6) brightness(1.9) contrast(.8)` |
+| Muted moss | `sepia(.8) saturate(.8) hue-rotate(55deg) brightness(.85) contrast(1.15)` |
+| Burgundy | `sepia(1) saturate(2.2) hue-rotate(305deg) brightness(.72) contrast(1.25)` |
+| Moon blue | `grayscale(.3) sepia(.4) saturate(1.7) hue-rotate(165deg) brightness(1.05)` |
+
+Filter functions run from left to right. The same filter can look different on a blue plate and a gray icon.
+
+---
+
+## Mobile Profile Repairs
+
+Start with the desktop component and override only what becomes too wide, clipped, or misaligned below the breakpoint.
+
+### Responsive result example
+
+**Desktop**
+
+<img src="./images/profile/responsive-desktop-example.png" alt="Completed profile theme on desktop">
+
+**Mobile**
+
+<img src="./images/profile/responsive-mobile-example.png" alt="The same profile theme adapted for mobile" width="390">
+
+```css
+@media (max-width: 767px) {
+  .profile-theme-scope [data-profile="tabs"] {
+    display: flex !important;
+    overflow-x: auto;
+    gap: 4px;
+    scrollbar-width: none;
+  }
+
+  .profile-theme-scope [data-profile="tab"] {
+    flex: 0 0 auto;
+    min-width: 52px;
+    padding: 6px 8px !important;
+    font-size: 10px !important;
+  }
+
+  .profile-theme-scope [data-profile="composer-header"] {
+    display: flex !important;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 9px !important;
+  }
+
+  .profile-theme-scope [data-profile="composer-body"] {
+    padding: 9px !important;
+  }
+
+  .profile-theme-scope [data-profile="composer-editor"] {
+    min-height: 140px;
+  }
+
+  .profile-theme-scope [data-profile="about"] [role="tablist"] {
+    display: grid !important;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 3px;
+  }
+
+  .profile-theme-scope [data-profile="about"] [role="tab"] {
+    width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+  }
+}
+```
+
+Mobile failure checklist:
+
+- A fixed pixel width is wider than the viewport.
+- A flex row cannot wrap.
+- A decorative pseudo-element creates horizontal overflow.
+- The frame was scaled but the portrait inset was not.
+- A desktop margin still pushes the avatar or composer sideways.
+- Text is present but has insufficient contrast on the mobile background.
+- The browser window looks narrow, but the real viewport is still wider than `767px`.
+
+## Profile Selector Quick Reference
+
+### Identity and navigation
+
+| Selector | Use |
+| --- | --- |
+| `[data-profile="hero"]` | Banner and identity block |
+| `[data-profile="avatar-wrap"]` | Decorative avatar-frame anchor |
+| `[data-profile="avatar"]` | Avatar crop, border, and shadow |
+| `[data-profile="avatar-img"]` | Portrait size and `object-fit` |
+| `[data-profile="avatar-actions"]` | Avatar action controls and stacking layer |
+| `[data-profile="avatar-remove"]` | Remove-avatar control |
+| `[data-profile="level"]` / `[data-profile="level-icon"]` | Level label and icon |
+| `[data-profile="streak"]` / `[data-profile="streak-icon"]` | Streak counter and icon |
+| `[data-profile="member-since-icon"]` | Calendar icon |
+| `[data-profile="count-followers"]` | Followers button |
+| `[data-profile="count-following"]` | Following button |
+| `[data-profile="tabs"]` / `[data-profile="tab"]` | Main navigation |
+| `[data-profile="tab-notch"]` | Decorative tab notch |
+| `[data-profile="tab-count"]` | Number shown on a tab |
+
+### Content, composer, and actions
+
+| Selector | Use |
+| --- | --- |
+| `[data-profile="about"]` | About Me section root |
+| `[data-profile="about-card"]` | Native About Me content card |
+| `[data-profile="body-inner"]` | Main body positioning anchor for large stickers |
+| `[data-profile="about-edit"]` | Edit About Me button |
+| `[data-profile="about-more"]` | Show more button |
+| `[data-profile="additional-info"]` | Role, availability, gender, and relationship information |
+| `[data-profile="gallery-preview"]` | Gallery preview shell |
+| `[data-profile="gallery-grid"]` | Gallery image grid |
+| `[data-profile="popular-content"]` | Popular Creations shell and carousel |
+| `[data-profile="feed-list"]` | Post feed container |
+| `[data-profile="post"]` | One post card |
+| `[data-profile="post-header"]` | Post author and metadata row |
+| `[data-profile="post-body"]` | Main post content |
+| `[data-profile="post-engagement"]` | Like, comment, and share row |
+| `[data-profile="post-like"]` / `[data-profile="post-likes"]` | Like controls and reactions |
+| `[data-profile="post-comment-count"]` | Comment count text |
+| `[data-profile="composer-slot"]` | Write a Post placement area |
+| `[data-profile="composer-header"]` | Composer title and options row |
+| `[data-profile="composer-body"]` | Composer avatar and editor body |
+| `[data-profile="composer-toolbar"]` | Formatting controls |
+| `[data-profile="composer-editor"]` | Editable text field |
+| `[data-profile="composer-footer"]` | Terms, switch, and Post action area |
+
+### Useful attribute patterns
+
+| Pattern | Use |
+| --- | --- |
+| `[aria-selected="true"]` | Currently selected tab |
+| `[aria-pressed="true"]` | Pressed toolbar or like button |
+| `button[aria-label="Comments"]` | Comment action |
+| `button[aria-label="Share"]` | Share action |
+| `button[aria-label^="Scroll popular creations"]` | Both Popular Creations arrows |
+| `img[src*="btn_pixel_plate"]` | Pixel plate behind dashboard buttons |
+| `img[src*="pixel_arrow.webp"]` | Pixel arrow image |
+| `img[src*="paper-tab.webp"]` | Paper plate behind About icons |
+| `input[type="checkbox"] + div` | Visual track after a custom checkbox |
+| `[data-placeholder]::before` | Editor placeholder pseudo-element |
+
+Attribute matching operators:
+
+```css
+[attr="exact value"]   /* exact match */
+[attr^="starts with"]  /* begins with */
+[attr$="ends with"]    /* ends with */
+[attr*="contains"]     /* contains text */
+```
+
+---
+
+## Profile CSS Troubleshooting
+
+### If the safety checker reports incomplete CSS
+
+1. Look at the end of the CSS first. An abrupt ending often identifies the broken rule.
+2. Search for a property with no value, such as `background-color:` followed by `}` or the end of the file.
+3. Check that every opening `{` has a closing `}`.
+4. Check that comments contain both `/*` and `*/`.
+5. Check that every quoted `url("...")` has a closing quote and parenthesis.
+6. Remove only the newest block temporarily and preview again. Keep the original draft intact.
+
+```css
+/* Broken: missing value */
+.card { background-color: }
+
+/* Broken: missing closing brace */
+.card {
+  color: #fff;
+
+/* Broken: unfinished URL */
+.frame { background-image: url("frame.png; }
+
+/* Valid */
+.card {
+  color: #fff;
+  background-color: #231d18;
+}
+```
+
+### Final profile test checklist
+
+- Test desktop and a verified viewport at or below `767px`.
+- Check every main tab and every About Me icon tab.
+- Check Write a Post while empty, focused, and containing text.
+- Check Public, Notify followers, the switch, and the Post button.
+- Check SEE ALL, both carousel arrows, comment, share, and like states.
+- Confirm that avatar art does not cover the remove button, level, or streak badge.
+- Confirm that decorative layers do not block clicks.
+- Confirm that portraits and gallery covers are not caught by broad image filters.
+- Preview, save, and publish as separate deliberate steps.
+
+---
+
+# Part III — Shared Animations for Laboratory and Profile Themes
+
+CSS animation mechanics and @keyframes work in both editors. The visual effect can stay the same; only the element that carries the pseudo-element may differ. The collection below remains unchanged and is now grouped at the end of the handbook.
+
+> The existing full-page examples use html::before and html::after, so the same snippet can run from either editor. For a component-scoped, scrollable foreground layer, use the final shared firefly/star recipe in this section.
+
 ## Background Effects
 
 ### Animated Fireshine
@@ -1602,4 +2618,70 @@ div[class*="chat"], div[class*="message"], .messages-container, .chat-layout {
 
 ---
 
-**Last Updated:** 2026-07-17
+## Shared Scrollable Foreground Fireflies and Stars
+
+The `@keyframes` and gradient particles are identical in Laboratory and Profile Themes. Only the two mounting selectors differ. Use `position: absolute`, not `fixed`, when the particles should move with the themed content while scrolling.
+
+```css
+/* The scrolling container in each theme area. */
+.lab-theme-scope,
+.profile-theme-scope[data-profile="scope"] {
+  position: relative;
+}
+
+/* The same visual layer is mounted on both theme roots. */
+.lab-theme-scope::before,
+.profile-theme-scope[data-profile="scope"]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 40;
+  pointer-events: none;
+  background:
+    radial-gradient(circle, #fff6a9 0 18%, #d7ff75 24%, transparent 65%)
+      12% 18% / 10px 10px no-repeat,
+    radial-gradient(circle, #fff8bf 0 16%, #b9ff75 26%, transparent 67%)
+      72% 42% / 8px 8px no-repeat,
+    radial-gradient(circle, #ffffff 0 15%, #ffe89a 25%, transparent 68%)
+      88% 74% / 7px 7px no-repeat;
+  animation: shared-particle-drift 7s ease-in-out infinite alternate,
+             shared-particle-blink 2.4s ease-in-out infinite;
+}
+
+@keyframes shared-particle-drift {
+  from { transform: translate3d(-5px, 0, 0); }
+  to   { transform: translate3d(8px, -12px, 0); }
+}
+
+@keyframes shared-particle-blink {
+  0%, 100% { opacity: .35; filter: brightness(.9); }
+  45%      { opacity: 1; filter: brightness(1.6); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lab-theme-scope::before,
+  .profile-theme-scope[data-profile="scope"]::before {
+    animation: none !important;
+    opacity: .65;
+  }
+}
+```
+
+Keep the particle count and size modest on mobile. `pointer-events: none` prevents the foreground layer from blocking controls. `transform`, `filter`, and `opacity` can create stacking contexts, so check that menus and dialogs still appear above the decoration.
+
+### Reusing any animation in both editors
+
+1. Keep the visual properties and `@keyframes` unchanged.
+2. Replace the original mounting selector with both theme roots, separated by a comma.
+3. Use `absolute` for an effect that scrolls with the themed content.
+4. Use `fixed` only when an effect should remain attached to the viewport.
+5. Add a `prefers-reduced-motion` rule for moving effects.
+
+---
+
+## Changelog
+
+- **2026-10-10:** Added Part II for Profile Themes with example images, typography, sticker positioning, status-card layout, and before/after comparisons. Moved the animation collection to Part III and added a shared Laboratory/Profile foreground-particle recipe.
+- **2026-07-17:** Previous Laboratory / Chat Themes guide update.
+
+**Last Updated:** 2026-10-10
