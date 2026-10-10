@@ -10,7 +10,7 @@ LoreBary currently has two separate CSS surfaces. Their selectors are **not inte
 
 | Theme area | Root scope | Main attributes | Use it for |
 | --- | --- | --- | --- |
-| Laboratory / Chat Themes | `.lab-theme-scope` | `[data-lab]`, `[data-lab-role]` | Chat messages, the Laboratory header and footer, input controls, voice bubbles, and chat effects |
+| Laboratory / Chat Themes | `.lab-theme-scope` | `[data-lab]`, `[data-lab-role]` | Chat messages, the Laboratory header and footer, 2.5 composer controls, long-press menus, and chat effects |
 | Profile Themes | `.profile-theme-scope` | `[data-profile]`, ARIA states and labels | Profile avatars, navigation tabs, About Me, Write a Post, Gallery, Popular Creations, and feed posts |
 
 > **Safe workflow:** Preview first. A working preview is not the same as a saved theme, and a saved draft is not the same as a published update. Keep a copy of the current CSS before larger changes.
@@ -54,18 +54,21 @@ Use narrow, stable selectors. Avoid broad rules such as `button { ... }` or `.pr
   - [Remove Header Hairline Stripe](#remove-header-hairline-stripe)
   - [Transparent Footer](#transparent-footer)
   - [Smaller Visual Expression Portrait](#smaller-visual-expression-portrait)
-  - [Small Button Footer](#small-button-footer)
+  - [LoreBary 2.5 Footer Button Map](#lorebary-25-footer-button-map)
   - [Small Button Header](#small-button-header)
 - [Input Controls](#input-controls)
-  - [Hide Action Button Labels](#hide-action-button-labels)
+  - [Message Action Buttons](#message-action-buttons)
+  - [Composer Buttons](#composer-buttons)
   - [Breathing Send Animation](#breathing-send-animation)
   - [Input Buttons Dim Until Hover](#input-buttons-dim-until-hover)
   - [Input Buttons Coloring](#input-buttons-coloring)
   - [Coloring Menu Button](#coloring-menu-button)
   - [Glowing Menu Button](#glowing-menu-button)
-- [Write Menu & Voice Bubble](#write-menu--voice-bubble)
-  - [Background in Write Menu](#background-in-write-menu)
-  - [Text Color in Write Submenu](#text-color-in-write-submenu)
+- [Long-Press Menus — LoreBary 2.5](#long-press-menus--lorebary-25)
+  - [Menu and Dialog Selector Map](#menu-and-dialog-selector-map)
+  - [Style the Write for Me Menu](#style-the-write-for-me-menu)
+  - [Style Long-Press Settings Dialogs](#style-long-press-settings-dialogs)
+  - [Style Dropdowns Inside Settings](#style-dropdowns-inside-settings)
 - [Part II — Profile Themes](#part-ii--profile-themes)
   - [Profile Theme Structure and Palette](#profile-theme-structure-and-palette)
   - [Fonts and Typography](#fonts-and-typography)
@@ -140,6 +143,8 @@ Replace `XXX` in your CSS snippet with the copied Base64 code:
 # Part I — Laboratory / Chat Themes
 
 All snippets in Part I use `.lab-theme-scope` and belong to the Laboratory chat theme editor.
+
+> **LoreBary 2.5 check:** The composer, tool-row, and long-press selectors below were verified in a live 2.5 Test Chat on 2026-10-10. Legacy selectors such as `[data-lab="write-options"]` and `[data-lab="voice-bubble"]`, plus old assumptions about Enhance, Continue, and Listen buttons, have been removed.
 
 ## Avatar Customization 
 
@@ -706,31 +711,77 @@ Default <img src="./images/message-default character.png" alt="Theme preview"> E
 
 ---
 
-### Small Button Footer
+### LoreBary 2.5 Footer Button Map
 
-Style small buttons in the footer with custom text color.
+LoreBary 2.5 gives every composer and toolbar control a stable `data-lab` selector. Use these instead of old class-based selectors or title-text guesses.
+
+#### Composer row
+
+| Control | Selector |
+| --- | --- |
+| Write for me | `[data-lab="write"]` |
+| Scene notes | `[data-lab="guidance-toggle"]` |
+| Attach a file | `[data-lab="attach-image"]` |
+| Send / hold to talk | `[data-lab="send"]` |
+| Composer action group | `[data-lab="composer-actions"]` |
+
+#### Tool row
+
+| Control | Selector | Long-press settings |
+| --- | --- | --- |
+| Time skip | `[data-lab="time-skip"]` | Yes |
+| Dice roll | `[data-lab="dice-roll"]` | Yes |
+| Auto conversation | `[data-lab="auto-mode"]` | No |
+| Director Pass | `[data-lab="director-pass"]` | No |
+| HTML Mode | `[data-lab="html-mode"]` | Yes |
+| Visual Expressions | `[data-lab="visual-expressions"]` | Yes |
+| Web Search | `[data-lab="web-search"]` | No |
+| Polish replies | `[data-lab="review-mode"]` | Yes |
+| Scene music | `[data-lab="scene-music"]` | Yes |
+| Reply choices | `[data-lab="reply-options"]` | Yes |
 
 ```css
-[data-lab="input"] > :is(button, [role="button"])
-:not([data-lab="write"])
-:not([data-lab="send"])
-:not(:has([data-lab="write"], [data-lab="send"])),
-[data-lab="input"] [data-lab*="image"] {
-  color: #de3517 !important;
+/* Complete LoreBary 2.5 tool row */
+.lab-theme-scope [data-lab="toolbar"] {
+  gap: 0.55rem !important;
 }
 
-[data-lab="time-skip"] {
-  color: #de3517 !important;
+.lab-theme-scope :is(
+  [data-lab="time-skip"],
+  [data-lab="dice-roll"],
+  [data-lab="auto-mode"],
+  [data-lab="director-pass"],
+  [data-lab="html-mode"],
+  [data-lab="visual-expressions"],
+  [data-lab="web-search"],
+  [data-lab="review-mode"],
+  [data-lab="scene-music"],
+  [data-lab="reply-options"]
+) {
+  color: #f6dfb5 !important;
+  background: #2f2418 !important;
+  border: 1px solid #b8894f !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .14),
+              0 3px 8px rgba(0, 0, 0, .34) !important;
 }
 
-[data-lab="input"] button:not([data-lab]),
-[data-lab="input"] [role="button"]:not([data-lab]) {
-  color: #de3517 !important;
+/* Enabled controls and controls whose settings are open */
+.lab-theme-scope [data-lab="toolbar"] button[aria-pressed="true"],
+.lab-theme-scope [data-lab="toolbar"] button[aria-expanded="true"] {
+  color: #fff7dc !important;
+  background: #76512f !important;
+  border-color: #e8bf78 !important;
+  box-shadow: 0 0 0 1px rgba(255, 230, 170, .28),
+              0 0 12px rgba(232, 191, 120, .32) !important;
+}
+
+.lab-theme-scope [data-lab="toolbar"] button:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.12);
 }
 ```
 
-**Customization:**
-- Change `#de3517` to your desired button color
+The `aria-pressed="true"` state marks enabled toggle buttons. `aria-expanded="true"` marks controls whose pop-up or settings panel is currently open.
 
 ---
 
@@ -753,18 +804,82 @@ Style small buttons in the header with custom text color.
 
 ## Input Controls
 
-### Hide Action Button Labels
+### Message Action Buttons
 
-Hide labels on action buttons (regenerate, enhance, continue, listen) showing only icons. <img src="./images/message-hidden action buttons.png" alt="Theme preview">
+`[data-lab="action"]` now targets the controls attached to individual messages, such as Bookmark, Edit, Delete, Branch, Regenerate, and More actions. It does **not** target the LoreBary 2.5 composer toolbar.
+
+Use the shared selector for a consistent appearance:
 
 ```css
-[data-lab="action"] {
-  font-size: 0 !important;
+.lab-theme-scope [data-lab="action"] {
+  color: #f6dfb5 !important;
+  background: rgba(47, 36, 24, .92) !important;
+  border: 1px solid rgba(184, 137, 79, .7) !important;
+  border-radius: 999px !important;
 }
 
-[data-lab="action"] img {
-  width: 14px !important;
-  height: 14px !important;
+.lab-theme-scope [data-lab="action"]:hover {
+  color: #fff7dc !important;
+  background: #76512f !important;
+  border-color: #e8bf78 !important;
+}
+```
+
+In LoreBary 2.5, Enhance, Continue, and Listen are no longer separate visible message buttons. They are inside the **More actions** menu:
+
+```css
+[role="menu"][aria-label="More actions"] {
+  color: #f6dfb5 !important;
+  background: #1d1710 !important;
+  border: 1px solid #b8894f !important;
+  border-radius: 12px !important;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, .5) !important;
+}
+
+[role="menu"][aria-label="More actions"] [role="menuitem"] {
+  color: #d8c49d !important;
+  background: transparent !important;
+}
+
+[role="menu"][aria-label="More actions"] [role="menuitem"]:hover,
+[role="menu"][aria-label="More actions"] [role="menuitem"][aria-expanded="true"] {
+  color: #fff7dc !important;
+  background: rgba(118, 81, 47, .82) !important;
+}
+```
+
+Enhance opens a second menu containing More details, More dialogue, and More action. That submenu currently has no unique `data-lab` or ARIA label, so avoid targeting its temporary utility classes. A broad `[role="menu"] [role="menuitem"]` rule will reach it, but may also affect other LoreBary menus.
+
+---
+
+### Composer Buttons
+
+Style the four controls inside the message box without affecting the separate tool row below it.
+
+```css
+.lab-theme-scope :is(
+  [data-lab="write"],
+  [data-lab="guidance-toggle"],
+  [data-lab="attach-image"],
+  [data-lab="send"]
+) {
+  color: #f6dfb5 !important;
+  background: #2f2418 !important;
+  border: 1px solid rgba(184, 137, 79, .72) !important;
+  border-radius: 999px !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .12),
+              0 3px 8px rgba(0, 0, 0, .3) !important;
+}
+
+.lab-theme-scope :is(
+  [data-lab="write"],
+  [data-lab="guidance-toggle"],
+  [data-lab="attach-image"],
+  [data-lab="send"]
+):hover {
+  color: #fff7dc !important;
+  border-color: #e8bf78 !important;
+  filter: brightness(1.12);
 }
 ```
 
@@ -789,23 +904,29 @@ Make the send button dim and brighten continuously like breathing. <img src="./i
 
 ### Input Buttons Dim Until Hover
 
-Dim write and send buttons until you hover over them. <img src="./images/input-dim buttons.png" alt="Theme preview">
+Dim the current LoreBary 2.5 composer and toolbar buttons until hover.
 
 ```css
-[data-lab="send"],
-[data-lab="write"],
-[data-lab="write-options"],
-[data-lab="attach-image"],
-[data-lab="input"] button[title*="auto" i] {
+.lab-theme-scope :is(
+  [data-lab="write"],
+  [data-lab="guidance-toggle"],
+  [data-lab="attach-image"],
+  [data-lab="send"],
+  [data-lab="toolbar"] button
+) {
   opacity: 0.4 !important;
   transition: opacity 0.2s !important;
 }
 
-[data-lab="send"]:hover,
-[data-lab="write"]:hover,
-[data-lab="write-options"]:hover,
-[data-lab="attach-image"]:hover,
-[data-lab="input"] button[title*="auto" i]:hover {
+.lab-theme-scope :is(
+  [data-lab="write"],
+  [data-lab="guidance-toggle"],
+  [data-lab="attach-image"],
+  [data-lab="send"],
+  [data-lab="toolbar"] button
+):hover,
+.lab-theme-scope [data-lab="toolbar"] button[aria-pressed="true"],
+.lab-theme-scope [data-lab="toolbar"] button[aria-expanded="true"] {
   opacity: 1 !important;
 }
 ```
@@ -817,11 +938,16 @@ Dim write and send buttons until you hover over them. <img src="./images/input-d
 
 ### Input Buttons Coloring
 
-Apply custom color filters to input button icons. <img src="./images/input-coloring buttons.png" alt="Theme preview">
+Apply a custom color filter to the icons in both LoreBary 2.5 button rows.
 
 ```css
-[data-lab="send"] img,
-[data-lab="write"] img {
+.lab-theme-scope :is(
+  [data-lab="write"],
+  [data-lab="guidance-toggle"],
+  [data-lab="attach-image"],
+  [data-lab="send"],
+  [data-lab="toolbar"] button
+) :is(img, svg) {
   filter: brightness(1) sepia(0) saturate(1) hue-rotate(170deg) brightness(1.2) !important;
   opacity: 1 !important;
 }
@@ -863,63 +989,150 @@ Add a glowing effect to the menu button. <img src="./images/header-glow menu.png
 
 ---
 
-## Write Menu & Voice Bubble
+## Long-Press Menus — LoreBary 2.5
 
-### Background in Write Menu
+Several LoreBary 2.5 controls perform one action on a normal click and open settings when held. The settings panels may be rendered outside `.lab-theme-scope`, so target their dedicated root selectors directly.
 
-Add a custom gradient background to the write menu and voice bubble.
+### Menu and Dialog Selector Map
+
+| Control | Menu or settings selector | Notes |
+| --- | --- | --- |
+| Write for me | `[data-lab="write-menu"]` | Inline menu with point of view, length, provider, and enhance instructions |
+| Write for me choices | `[data-lab="write-option"]` | Uses `aria-checked="true"` for the selected choice |
+| Scene notes panel | `[data-lab="input"] > div:has(#lab-scene-notes)` | Inline panel opened by Scene notes |
+| Scene notes field | `#lab-scene-notes` | Hidden guidance textarea |
+| Time skip | `[data-lab="time-skip-menu"]` | Dialog-style form |
+| Time skip details | `[data-lab="time-skip-details"]` | Optional mood/location input |
+| Time skip submit | `[data-lab="time-skip-submit"]` | Skip button |
+| Dice roll | `[data-lab="dice-roll-menu"]` | Dialog-style form |
+| HTML Mode | `[data-lab="html-settings"]` | Fixed settings dialog |
+| Polish replies | `[data-lab="review-settings"]` | Fixed settings dialog |
+| Scene music | `[data-lab="scene-music-settings"]` | Fixed settings dialog |
+| Reply choices | `[data-lab="reply-settings"]` | Fixed settings dialog |
+| Visual Expressions | `[role="dialog"][aria-label="Expression Studio"]` | Uses an accessible dialog label instead of `data-lab` |
+| More actions | `[role="menu"][aria-label="More actions"]` | Contains Enhance, Continue, and Listen |
+| Select dropdown | `[role="listbox"]` | Portaled menu used by settings fields |
+| Select option | `[role="option"]` | Uses `aria-selected="true"` for the selected item |
+
+Auto conversation, Director Pass, and Web Search are direct toggles and currently have no separate long-press settings panel.
+
+The Bookmark hold menu exposes Quick bookmark and Manual bookmark, but its panel currently has no stable `data-lab`, role, or ARIA label. Style the Bookmark trigger through `[data-lab="action"][aria-label="Bookmark message"]`; avoid copying the menu's generated utility classes into a theme.
+
+### Style the Write for Me Menu
 
 ```css
-[data-lab="voice-bubble"],
 [data-lab="write-menu"] {
-  background:
-    linear-gradient(
-      135deg,
-      rgba(31, 16, 7, 0.92),
-      rgba(18, 9, 4, 0.90)
-    ) !important;
+  color: #f6dfb5 !important;
+  background: linear-gradient(
+    135deg,
+    rgba(47, 36, 24, .98),
+    rgba(22, 17, 12, .98)
+  ) !important;
+  border: 1px solid rgba(184, 137, 79, .78) !important;
+  border-radius: 14px !important;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, .48) !important;
+}
 
-  border: 1px solid rgba(194, 138, 54, 0.42) !important;
-  border-radius: 12px !important;
+[data-lab="write-menu"] [data-lab="write-option"] {
+  color: #ead8b2 !important;
+  background: transparent !important;
+  border-radius: 9px !important;
+}
 
-  box-shadow:
-    0 8px 18px rgba(10, 5, 2, 0.44) !important;
+[data-lab="write-menu"] [data-lab="write-option"]:hover,
+[data-lab="write-menu"] [data-lab="write-option"][aria-checked="true"] {
+  color: #fff7dc !important;
+  background: rgba(118, 81, 47, .78) !important;
 }
 ```
-
-**Customization:**
-- Modify the gradient colors in `linear-gradient()`
-- Adjust `border-color` and `border-radius` values
 
 ---
 
-### Text Color in Write Submenu
+### Style Long-Press Settings Dialogs
 
-Change the text color in the write submenu completely.
+This grouped rule keeps every new settings panel visually consistent. Remove any selector from `:is()` when that panel should keep LoreBary's default design.
 
 ```css
-[data-lab="write-menu"] > .px-3.py-2.text-\[10px\].leading-snug.text-gray-300 {
-  color: #526b56 !important;
-  -webkit-text-fill-color: #526b56 !important;
+:is(
+  [data-lab="input"] > div:has(#lab-scene-notes),
+  [data-lab="time-skip-menu"],
+  [data-lab="dice-roll-menu"],
+  [data-lab="html-settings"],
+  [data-lab="review-settings"],
+  [data-lab="scene-music-settings"],
+  [data-lab="reply-settings"],
+  [role="dialog"][aria-label="Expression Studio"]
+) {
+  color: #f6dfb5 !important;
+  background: linear-gradient(
+    145deg,
+    rgba(47, 36, 24, .99),
+    rgba(20, 16, 12, .99)
+  ) !important;
+  border: 1px solid #b8894f !important;
+  border-radius: 16px !important;
+  box-shadow: 0 18px 44px rgba(0, 0, 0, .58) !important;
 }
 
-[data-lab="write-menu"] button,
-[data-lab="write-menu"] button *,
-[data-lab="write-menu"] [role="button"],
-[data-lab="write-menu"] [role="button"] * {
-  color: #526b56 !important;
-  -webkit-text-fill-color: #526b56 !important;
+:is(
+  [data-lab="input"] > div:has(#lab-scene-notes),
+  [data-lab="time-skip-menu"],
+  [data-lab="dice-roll-menu"],
+  [data-lab="html-settings"],
+  [data-lab="review-settings"],
+  [data-lab="scene-music-settings"],
+  [data-lab="reply-settings"]
+) :is(input, textarea) {
+  color: #fff1cf !important;
+  caret-color: #e8bf78 !important;
+  background: rgba(18, 14, 10, .9) !important;
+  border: 1px solid rgba(184, 137, 79, .62) !important;
 }
 
-/* For the info text at the bottom */
-[data-lab="write-menu"] > .px-3.py-2.text-\[10px\].leading-snug.text-gray-300 {
-    color: #000;
+:is(
+  [data-lab="input"] > div:has(#lab-scene-notes),
+  [data-lab="time-skip-menu"],
+  [data-lab="dice-roll-menu"],
+  [data-lab="html-settings"],
+  [data-lab="review-settings"],
+  [data-lab="scene-music-settings"],
+  [data-lab="reply-settings"]
+) :is(input, textarea)::placeholder {
+  color: #9f8d72 !important;
+  opacity: 1 !important;
 }
 ```
 
-**Customization:**
-- Replace `#526b56` with your desired color
-- Replace `#000` with your desired bottom text color
+The Save, Skip, toggle, slider, and close controls remain functional because these examples change presentation only.
+
+---
+
+### Style Dropdowns Inside Settings
+
+Prompt mode, sound choice, time choice, and similar dropdowns are portaled to the document body. Style them through their ARIA roles rather than unstable utility classes.
+
+```css
+[role="listbox"] {
+  color: #f6dfb5 !important;
+  background: #1d1710 !important;
+  border: 1px solid #b8894f !important;
+  border-radius: 12px !important;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, .5) !important;
+}
+
+[role="listbox"] [role="option"] {
+  color: #d8c49d !important;
+  background: transparent !important;
+}
+
+[role="listbox"] [role="option"]:hover,
+[role="listbox"] [role="option"][aria-selected="true"] {
+  color: #fff7dc !important;
+  background: rgba(118, 81, 47, .82) !important;
+}
+```
+
+Use `[aria-selected="true"]`, `[aria-checked="true"]`, `[aria-pressed="true"]`, and `[aria-expanded="true"]` to style selected choices, enabled tools, and open menus without relying on temporary CSS class names.
 
 ---
 
@@ -2681,6 +2894,7 @@ Keep the particle count and size modest on mobile. `pointer-events: none` preven
 
 ## Changelog
 
+- **2026-10-10:** Replaced legacy Laboratory button snippets with the live-verified LoreBary 2.5 composer and tool-row selectors. Added dedicated styling maps for Write for me, Time skip, Dice roll, HTML Mode, Visual Expressions, Polish replies, Scene music, Reply choices, and their long-press settings and dropdowns.
 - **2026-10-10:** Added Part II for Profile Themes with example images, typography, sticker positioning, status-card layout, and before/after comparisons. Moved the animation collection to Part III and added a shared Laboratory/Profile foreground-particle recipe.
 - **2026-07-17:** Previous Laboratory / Chat Themes guide update.
 

@@ -10,7 +10,7 @@ Open the [LoreBary CSS Quick Guide](./LoreBary%20CSS%20Quick%20Guide.md) for the
 
 | Theme area | Root scope | Use it for |
 | --- | --- | --- |
-| Laboratory / Chat Themes | `.lab-theme-scope` | Chat messages, Laboratory avatars, header, footer, input controls, voice bubbles, and chat effects |
+| Laboratory / Chat Themes | `.lab-theme-scope` | Chat messages, Laboratory avatars, header, footer, LoreBary 2.5 controls, long-press menus, and chat effects |
 | Profile Themes | `.profile-theme-scope` | Profile avatar frames, tabs, About Me, Write a Post, Gallery, Popular Creations, and feed posts |
 
 The two areas use different selectors. A Laboratory snippet will usually not affect a profile page until its selector is adapted for the profile structure.
@@ -39,4 +39,5 @@ Thanks to **@harp** for the original collection of useful LoreBary snippets. ðŸ«
 
 ## Latest Guide Update
 
+- **2026-10-10:** Replaced the legacy Laboratory button examples with the live-verified LoreBary 2.5 composer, toolbar, active/open states, long-press settings dialogs, and dropdown selectors.
 - **2026-10-10:** Added a dedicated Profile Themes section, font recipes, sticker placement, movable status cards, example images, avatar before/after framing, desktop/mobile previews, selector references, and a shared animation section for both theme editors.
