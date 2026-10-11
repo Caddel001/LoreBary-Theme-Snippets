@@ -24,6 +24,7 @@ Use narrow, stable selectors. Avoid broad rules such as `button { ... }` or `.pr
 - [Choose the Correct Theme Area](#choose-the-correct-theme-area)
 - [Converting Images to Base64](#converting-images-to-base64)
   - [How to Get the data:webp Base64 Code](#how-to-get-the-datawebp-base64-code)
+- [How to Import CSS Images in Lorebary](#how-to-import-css-images-in-lorebary)
 - [Part I — Laboratory / Chat Themes](#part-i--laboratory--chat-themes)
 - [Avatar Customization](#avatar-customization)
   - [Image around Avatar](#image-around-avatar)
@@ -35,18 +36,38 @@ Use narrow, stable selectors. Avoid broad rules such as `button { ... }` or `.pr
   - [Small Avatars with Glowing Effect](#small-avatars-with-glowing-effect)
   - [Large Avatars Filling Portrait](#large-avatars-filling-portrait)
   - [Avatar Ring Glow](#avatar-ring-glow)
+- [Visual Expressions](#visual-expressions)
+  - [Custom Visual Expression Icons](#custom-visual-expression-icons)
+  - [Glowing Expression Portraits](#glowing-expression-portraits)
+  - [Move Expression Portraits to the Right](#move-expression-portraits-to-the-right)
+  - [Floating Expression Portraits](#floating-expression-portraits)
+  - [Expression Toggle Button Colors](#expression-toggle-button-colors)
 - [Chat Bubble Effects](#chat-bubble-effects)
   - [Remove Bubble Message Background](#remove-bubble-message-background)
   - [Bubble Hover Lift](#bubble-hover-lift)
   - [Button Bubbles](#button-bubbles)
+  - [Custom Message Bubble Backgrounds](#custom-message-bubble-backgrounds)
+  - [Different User and Character Message Bubbles](#different-user-and-character-message-bubbles)
+  - [Bubble Tail Effects and Removal](#bubble-tail-effects-and-removal)
+  - [Bubble Transparency Without Fading Text](#bubble-transparency-without-fading-text)
+  - [Decorative Message Bubble Ornaments](#decorative-message-bubble-ornaments)
+  - [Message Bubble Hover Glow](#message-bubble-hover-glow)
 - [Message Layout](#message-layout)
   - [Message Left Aligned](#message-left-aligned)
   - [Centered Chat Messages](#centered-chat-messages)
   - [Colorize Text Selection](#colorize-text-selection)
-  - [Change Rating Symbols](#change-the-rating-symbol)
+  - [Change the Rating Symbol](#change-the-rating-symbol)
   - [Hide Timestamp](#hide-timestamp)
   - [Move Timestamp by Name (Right Side)](#move-timestamp-by-name-right-side)
   - [Time and Page Number Styling](#time-and-page-number-styling)
+  - [Message Text, Bold, and Italic](#message-text-bold-and-italic)
+  - [Dialogue, Dividers, and Headings](#dialogue-dividers-and-headings)
+  - [Message List Items](#message-list-items)
+  - [Thinking Panel Background and Text](#thinking-panel-background-and-text)
+  - [Thinking Panel Hover Effects](#thinking-panel-hover-effects)
+- [Message Footer and Ratings](#message-footer-and-ratings)
+  - [Message Footer and Timestamp Styling](#message-footer-and-timestamp-styling)
+  - [Custom Rating Icons](#custom-rating-icons)
 - [Header & Footer](#header--footer)
   - [Hide Avatars in Header](#hide-avatars-in-header)
   - [Hide Chat Name](#hide-chat-name)
@@ -56,6 +77,23 @@ Use narrow, stable selectors. Avoid broad rules such as `button { ... }` or `.pr
   - [Smaller Visual Expression Portrait](#smaller-visual-expression-portrait)
   - [LoreBary 2.5 Footer Button Map](#lorebary-25-footer-button-map)
   - [Small Button Header](#small-button-header)
+  - [Custom Header Button Icons](#custom-header-button-icons)
+  - [Custom Navigation Icons](#custom-navigation-icons)
+  - [Custom Footer Button Icons](#custom-footer-button-icons)
+  - [Icon Glow — Search Example](#icon-glow--search-example)
+  - [Rainbow Button Background — Search Example](#rainbow-button-background--search-example)
+  - [Icon Hover Enlargement — Gallery Example](#icon-hover-enlargement--gallery-example)
+  - [Animated Rainbow Button — Gallery Example](#animated-rainbow-button--gallery-example)
+  - [Multicolor Icon Glow — Bookmarks Example](#multicolor-icon-glow--bookmarks-example)
+  - [Rotating Rainbow Button Border — Bookmarks Example](#rotating-rainbow-button-border--bookmarks-example)
+  - [Solid Button Border — Voice Call Example](#solid-button-border--voice-call-example)
+  - [Gradient Button Border — Fullscreen Example](#gradient-button-border--fullscreen-example)
+  - [Pulsing Button Glow — Fullscreen Example](#pulsing-button-glow--fullscreen-example)
+  - [Bobbing Icon Animation — Statistics Example](#bobbing-icon-animation--statistics-example)
+  - [Button Hover Glow — Statistics Example](#button-hover-glow--statistics-example)
+  - [Shared Button Hover Brightness — Header Examples](#shared-button-hover-brightness--header-examples)
+  - [Button Keyboard Focus Outlines — Header Examples](#button-keyboard-focus-outlines--header-examples)
+  - [Rainbow Icon Recoloring — Gallery Example](#rainbow-icon-recoloring--gallery-example)
 - [Input Controls](#input-controls)
   - [Message Action Buttons](#message-action-buttons)
   - [Composer Buttons](#composer-buttons)
@@ -64,11 +102,52 @@ Use narrow, stable selectors. Avoid broad rules such as `button { ... }` or `.pr
   - [Input Buttons Coloring](#input-buttons-coloring)
   - [Coloring Menu Button](#coloring-menu-button)
   - [Glowing Menu Button](#glowing-menu-button)
+  - [Individual Message Action Colors and Hover](#individual-message-action-colors-and-hover)
+  - [Custom Menu Button Icon](#custom-menu-button-icon)
+  - [Custom Input Button Icons](#custom-input-button-icons)
+  - [Custom Draft Version Controls](#custom-draft-version-controls)
+  - [Custom Message Action Icons](#custom-message-action-icons)
+  - [Managing Tinting, Filters, and Icon Replacements](#managing-tinting-filters-and-icon-replacements)
 - [Long-Press Menus — LoreBary 2.5](#long-press-menus--lorebary-25)
-  - [Menu and Dialog Selector Map](#menu-and-dialog-selector-map)
+  - [Menu and Dialog Selector Map Quick Reference](#menu-and-dialog-selector-map-quick-reference)
   - [Style the Write for Me Menu](#style-the-write-for-me-menu)
+  - [Write Menu Heading Colors](#write-menu-heading-colors)
+  - [Write Menu Actions and Help Text](#write-menu-actions-and-help-text)
+  - [Write Menu Selected, Unselected, and Keyboard-Focus States](#write-menu-selected-unselected-and-keyboard-focus-states)
+  - [Custom Write Menu Action Icons](#custom-write-menu-action-icons)
   - [Style Long-Press Settings Dialogs](#style-long-press-settings-dialogs)
   - [Style Dropdowns Inside Settings](#style-dropdowns-inside-settings)
+  - [Custom Scene Notes Window](#custom-scene-notes-window)
+  - [Scene Notes Title and Close Button](#scene-notes-title-and-close-button)
+  - [Scene Notes Template Colors](#scene-notes-template-colors)
+  - [Scene Notes Selected and Hover Effects](#scene-notes-selected-and-hover-effects)
+  - [Scene Notes Text Box Colors and Focus](#scene-notes-text-box-colors-and-focus)
+  - [Scene Notes Additional Buttons](#scene-notes-additional-buttons)
+  - [Scene Notes Keyboard Focus](#scene-notes-keyboard-focus)
+  - [Custom Scene Notes Template Icons](#custom-scene-notes-template-icons)
+- [Search and Bookmarks](#search-and-bookmarks)
+  - [Search & Bookmarks Panel Background](#search--bookmarks-panel-background)
+  - [Search & Bookmarks Header Styling](#search--bookmarks-header-styling)
+  - [Search & Bookmarks Title and Description](#search--bookmarks-title-and-description)
+  - [Search & Bookmarks Header Icon Glow](#search--bookmarks-header-icon-glow)
+  - [Custom Search & Bookmarks Header Icons](#custom-search--bookmarks-header-icons)
+  - [Custom Search Bar Colors](#custom-search-bar-colors)
+  - [Search Bar Focus Effect](#search-bar-focus-effect)
+  - [Bookmarks Tab Bar Background](#bookmarks-tab-bar-background)
+  - [Bookmarks Tab Colors](#bookmarks-tab-colors)
+  - [Selected Bookmarks Tab Styling](#selected-bookmarks-tab-styling)
+  - [Bookmarks Tab Hover and Keyboard Focus](#bookmarks-tab-hover-and-keyboard-focus)
+  - [Bookmarks Tab Counters](#bookmarks-tab-counters)
+  - [Bookmarks Empty-State Text](#bookmarks-empty-state-text)
+  - [Custom Search Empty-State Illustration](#custom-search-empty-state-illustration)
+  - [Search & Bookmarks Close Button](#search--bookmarks-close-button)
+  - [Search & Bookmarks Footer Styling](#search--bookmarks-footer-styling)
+  - [Custom Copy and Download Icons](#custom-copy-and-download-icons)
+  - [Custom Search & Bookmarks Background Images](#custom-search--bookmarks-background-images)
+  - [Custom Bookmarks Tab Icons](#custom-bookmarks-tab-icons)
+- [Laboratory Selector and Native Asset Reference](#laboratory-selector-and-native-asset-reference)
+  - [Native Image Asset Paths](#native-image-asset-paths)
+  - [UI Selector and Customization Reference](#ui-selector-and-customization-reference)
 - [Part II — Profile Themes](#part-ii--profile-themes)
   - [Profile Theme Structure and Palette](#profile-theme-structure-and-palette)
   - [Fonts and Typography](#fonts-and-typography)
@@ -82,18 +161,9 @@ Use narrow, stable selectors. Avoid broad rules such as `button { ... }` or `.pr
   - [Mobile Profile Repairs](#mobile-profile-repairs)
   - [Profile Selector Quick Reference](#profile-selector-quick-reference)
   - [Profile CSS Troubleshooting](#profile-css-troubleshooting)
-- [Part III — Shared Animations](#part-iii--shared-animations-for-laboratory-and-profile-themes)
+- [Part III — Shared Animations for Laboratory and Profile Themes](#part-iii--shared-animations-for-laboratory-and-profile-themes)
 - [Background Effects](#background-effects)
-  - [Animated Fireshine](#animated-fireshine)
-  - [Animated Rain](#animated-rain)
-  - [Animated Fog](#animated-fog)
-  - [Animated Snow](#animated-snow)
-  - [Animated Fireflies](#animated-fireflies)
-  - [Animated Dustparticle](#animated-dustparticle)
-  - [Animated Stars](#animated-stars)
-  - [Animated Sunshine Underwater](#animated-sunshine-underwater)
-  - [Animated Soft Godly Light](#animated-soft-godly-light)
-  - [Shared Scrollable Foreground Fireflies and Stars](#shared-scrollable-foreground-fireflies-and-stars)
+- [Shared Scrollable Foreground Fireflies and Stars](#shared-scrollable-foreground-fireflies-and-stars)
 
 ---
 
@@ -137,6 +207,63 @@ Replace `XXX` in your CSS snippet with the copied Base64 code:
 ```
 
 **Done!** Your image is now embedded in your CSS. 🎉
+
+---
+
+## How to Import CSS Images in Lorebary
+
+Learn how to upload artwork to Lorebary and use its image URL in your Laboratory CSS. ![Uploading artwork and using its URL in Laboratory CSS](./images/css-upload-custom-image.png)
+
+1. Upload your image using Lorebary's image upload feature. Copy the image's Lorebary-hosted URL; an uploaded image may have a path resembling `/api/images/IMAGE_ID`.
+2. Open your Laboratory CSS editor and find the selector for the element you want to customize.
+3. Paste the URL into `content: url(...)` when replacing an existing `<img>` element, or into `background-image: url(...)` when decorating an element's background.
+4. Save your CSS and refresh or revisit the affected Laboratory screen to check the result.
+
+**Choosing an image source:** You can use either a LoreBary-uploaded `/api/images/...` path or a Base64 image data URL. For Base64, replace `XXX` with the complete `data:webp;base64,...` value (or the corresponding data URL for your image format). See [Converting Images to Base64](https://github.com/Caddel001/LoreBary-Theme-Snippets/blob/main/LoreBary%20CSS%20Quick%20Guide.md#converting-images-to-base64). No externally hosted image URL is required or supported here.
+
+**Optional: Store an image source in a CSS variable**
+
+```css
+/* Set the image source once: uploaded path or Base64 data URL */
+.lab-theme-scope {
+  --menu-icon-image: url("XXX");
+}
+
+/* Reuse that image source on the matching icon */
+img[data-lab="menu"] {
+  content: var(--menu-icon-image) !important;
+  object-fit: contain !important;
+}
+```
+
+Replace `XXX` with `/api/images/YOUR_IMAGE_ID` or your complete Base64 data URL. The variable is optional: the direct `content: url(...)` method below works too. For other icons, choose a descriptive variable name and update the selector.
+
+**Example: Replace an icon**
+
+```css
+img[data-lab="menu"] {
+  content: url("/api/images/YOUR_IMAGE_ID") !important;
+  object-fit: contain !important;
+}
+```
+
+**Example: Add a background image**
+
+```css
+[data-lab="bookmarks-panel"] {
+  background-image: url("/api/images/YOUR_IMAGE_ID") !important;
+  background-position: center !important;
+  background-size: cover !important;
+}
+```
+
+**Customization:**
+- `YOUR_IMAGE_ID` = replace this placeholder with the path of your uploaded image.
+- `content: url(...)` = substitutes the visible image in an existing image element.
+- `background-image: url(...)` = paints artwork behind the element's contents.
+- `object-fit: contain` = keeps replacement artwork within its image box without stretching it.
+- `background-size: cover` = fills a background area, potentially cropping its edges.
+- A file path on your own computer is not a Lorebary-hosted image URL. You can also use Base64 image data instead of an uploaded image path.
 
 ---
 
@@ -372,6 +499,152 @@ Add colored glowing rings to user and character avatars.
 
 ---
 
+## Visual Expressions
+
+### Custom Visual Expression Icons
+
+Replace the Visual Expressions toggle and management icon; optionally add an image overlay to the expression portrait.
+
+![Custom Visual Expression Icons](./images/expression-decorative-portrait-overlay.png)
+
+```css
+/* Hide the original expression toggle image */
+[data-lab="expression-toggle"] img {
+  visibility: hidden !important;
+}
+
+/* Expression toggle replacement artwork */
+[data-lab="expression-toggle"] span {
+  width: 20px !important;
+  height: 20px !important;
+  background-image:
+    url("/api/images/6ac8997342880c652f056e23") !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: contain !important;
+}
+
+/* Manage Expressions */
+[data-lab="expression-manage"] img {
+  content: url("/api/images/6ac8997ed2d7799fdce4e72a") !important;
+  object-fit:contain!important;
+}
+
+/* Optional portrait decoration */
+[data-lab="expression"]::after {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background:
+    url("/api/images/6ac8999c42880c652f0572b8")
+    center bottom / contain no-repeat !important;
+  pointer-events: none !important;
+}
+```
+
+**Customization:**
+- `visibility: hidden` = hides the original toggle image while keeping the element present.
+- `background-image` = displays replacement artwork on the toggle span.
+- `content: url(...)` = replaces the Manage icon.
+- `::after` = overlays decorative artwork without blocking pointer interactions.
+- Replace the sample image URLs with your own.
+
+**Note:** The portrait overlay is decorative rather than a button icon; remove its block if you only want icon replacements.
+
+---
+
+---
+
+### Glowing Expression Portraits
+
+Add a layered neon glow around a character expression image. ![Glowing Expression Portraits preview](./images/expression-glowing-portraits.png)
+
+```css
+[data-lab="expression"] img {
+  filter: drop-shadow(0 0 8px #ff69c9)
+          drop-shadow(0 0 14px #70dfff)
+          drop-shadow(0 0 20px #a78bfa) !important;
+}
+```
+
+**Customization:**
+- Each `drop-shadow` adds another color and blur radius.
+- Reduce the radii or remove layers for a subtler effect.
+
+---
+
+---
+
+### Move Expression Portraits to the Right
+
+Anchor the expression portrait on the right side of the chat. ![Move Expression Portraits to the Right preview](./images/expression-floating-portraits.png)
+
+```css
+[data-lab="expression"] {
+  left: auto !important;
+  right: 0 !important;
+  bottom: 0 !important;
+}
+```
+
+**Customization:**
+- `right: 0` anchors the portrait to the right.
+- `bottom: 0` aligns it to the bottom.
+- `left: auto` releases the original left positioning.
+
+**Compatibility:** Portrait placement examples are alternatives. Combine their positioning declarations deliberately rather than pasting all portrait-position rules together.
+
+---
+
+---
+
+### Floating Expression Portraits
+
+Lift and resize the portrait to create a floating side accent.
+
+```css
+[data-lab="expression"] {
+  left: auto !important;
+  right: 0 !important;
+  bottom: 50px !important;
+  width: clamp(16rem, 30vw, 28rem) !important;
+  height: min(55dvh / var(--content-ui-scale, 1), 100%) !important;
+  max-height: 32rem !important;
+}
+```
+
+**Customization:**
+- `bottom` controls how high the portrait floats.
+- `width: clamp(...)` makes its width responsive.
+- `max-height` limits its size.
+
+---
+
+---
+
+### Expression Toggle Button Colors
+
+Recolor the visual-expression toggle and its active state. ![Expression Toggle Button Colors preview](./images/expression-toggle-button-colors.png)
+
+```css
+[data-lab="expression-toggle"] {
+  background: #27214c !important;
+  border: 2px solid #ff84d5 !important;
+  box-shadow: 0 0 8px #ff84d566 !important;
+}
+
+[data-lab="expression-toggle"][aria-pressed="true"] {
+  background: #623c7d !important;
+}
+```
+
+**Customization:**
+- `background` sets the normal button color.
+- `border` and `box-shadow` provide the pink accent.
+- `aria-pressed="true"` changes the background while active.
+
+---
+
 ## Chat Bubble Effects
 
 ### Remove Bubble Message Background
@@ -457,6 +730,167 @@ img[data-lab="action"] {
   stroke: #fff0d4 !important;
 }
 ```
+
+---
+
+### Custom Message Bubble Backgrounds
+
+Change the default message bubble background and border without changing the text. ![Custom Message Bubble Backgrounds preview](./images/bubble-custom-backgrounds.png)
+
+```css
+[data-lab="bubble"] {
+  background: #232047 !important;
+  border: 1px solid #7063a4 !important;
+}
+```
+
+**Customization:**
+- `background` sets the bubble fill.
+- `border` adds an outline; change its color and width to match your theme.
+
+
+---
+
+---
+
+### Different User and Character Message Bubbles
+
+Give user and character messages different colors using LoreBary's built-in bubble variables. ![Different User and Character Message Bubbles preview](./images/bubble-user-character-colors.png)
+
+```css
+[data-lab="bubble"] {
+  --lab-bubble-user-bg: #ff79ca;
+  --lab-bubble-user-border-color: #8deaff;
+  --lab-bubble-bg: #211b31;
+  --lab-bubble-border-color: #ff79ca;
+  --lab-bubble-border-width: 3px;
+  --lab-bubble-border-style: solid;
+}
+```
+
+**Customization:**
+- `--lab-bubble-user-bg` and `--lab-bubble-user-border-color` style user messages.
+- `--lab-bubble-bg` and `--lab-bubble-border-color` style character messages.
+- `--lab-bubble-border-width` and `--lab-bubble-border-style` are shared by both.
+- Bubble tails use the corresponding background variable, so their fill follows the bubble color.
+
+
+---
+
+---
+
+### Bubble Tail Effects and Removal
+
+LoreBary exposes the speech-bubble pointer as `[data-lab="bubble-tail"]`. Add a glow, or hide the pointer entirely.
+
+```css
+/* Optional glowing tails */
+[data-lab="bubble-tail"] {
+  filter: drop-shadow(0 0 5px #ff79ca) !important;
+  transition: filter .2s ease !important;
+}
+@media (hover: hover) {
+  [data-lab="bubble"]:hover > [data-lab="bubble-tail"] {
+    filter: drop-shadow(0 0 9px #8deaff) !important;
+  }
+}
+```
+
+To **hide tails instead**, use this alternative:
+
+```css
+[data-lab="bubble-tail"] { display: none !important; }
+```
+
+
+---
+
+---
+
+### Bubble Transparency Without Fading Text
+
+`--lab-bubble-opacity` controls the **entire bubble**, including its text and action buttons. For translucent backgrounds with crisp text, use alpha-transparent background colors and restore full opacity:
+
+```css
+[data-lab="bubble"] {
+  --lab-bubble-opacity: 1;
+  --lab-bubble-user-bg: #ff79ca55;
+  --lab-bubble-bg: #8deaff33;
+  --lab-bubble-user-border-color: #ff79ca;
+  --lab-bubble-border-color: #8deaff;
+  --lab-bubble-border-width: 2px;
+  --lab-bubble-border-style: solid;
+}
+```
+
+
+---
+
+---
+
+### Decorative Message Bubble Ornaments
+
+Add a line of decorative symbols above each message. ![Decorative Message Bubble Ornaments preview](./images/bubble-decorative-ornaments.png)
+
+```css
+[data-lab="bubble"] {
+  position: relative !important;
+  padding-top: 48px !important;
+}
+
+[data-lab="bubble"]::before {
+  content: "✦ · ✧ · ✦" !important;
+  position: absolute !important;
+  top: 12px;
+  left: 18px;
+  right: 18px;
+  text-align: center;
+  color: #ff8bd8;
+  pointer-events: none;
+}
+```
+
+**Customization:**
+- `content` sets the decorative characters.
+- `padding-top` makes room so the ornament does not overlap text.
+- `top`, `left`, and `right` control placement.
+- `color` recolors the symbols.
+
+**Note:** Check long messages and narrow/mobile layouts. This is an ornament above the text, not an uploaded-image replacement.
+
+---
+
+---
+
+### Message Bubble Hover Glow
+
+Highlight a message bubble when a pointer moves over it.
+
+```css
+[data-lab="bubble"] {
+  transition: box-shadow .2s ease !important;
+}
+
+@media (hover: hover) {
+  [data-lab="bubble"]:hover {
+    box-shadow: 0 0 12px #ff85c466 !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-lab="bubble"] {
+    transition: none !important;
+  }
+}
+```
+
+**Customization:**
+- `box-shadow` sets the hover glow.
+- `.2s` controls transition speed.
+- `@media (hover: hover)` limits the effect to hover-capable devices.
+
+
+**Compatibility:** This is an alternative hover shadow to **Bubble Hover Lift** above. Both set the bubble’s hover `box-shadow`; combine their shadow values if you want both effects.
 
 ---
 
@@ -609,6 +1043,214 @@ Style the time display and page numbering between swipe buttons with custom font
 - `color`: Change the text color
 - `font-family`: Use different fonts
 - `font-size`: Adjust text size
+
+---
+
+### Message Text, Bold, and Italic
+
+```css
+[data-lab="message-body"] > div[data-selection-root="true"] [data-lab="text"] {
+  color: #ff79ca !important;
+  text-shadow: 0 0 5px #ff79ca88 !important;
+}
+[data-lab="message-body"] > div[data-selection-root="true"] [data-lab="bold"] {
+  color: #8deaff !important;
+}
+[data-lab="message-body"] > div[data-selection-root="true"] [data-lab="italic"] {
+  color: #ffe17b !important;
+}
+```
+
+
+---
+
+---
+
+### Dialogue, Dividers, and Headings
+
+```css
+[data-lab="message-body"] > div[data-selection-root="true"] [data-lab="dialog"] {
+  color: #ff79ca !important;
+  text-shadow: 0 0 5px #ff79ca88 !important;
+}
+[data-lab="message-body"] > div[data-selection-root="true"] [data-lab="rule"] {
+  background: #ffe17b !important;
+  height: 3px !important;
+  box-shadow: 0 0 7px #ffe17b !important;
+}
+[data-lab="message-body"] > div[data-selection-root="true"] [data-lab="heading"] {
+  border-bottom: 2px solid #8deaff !important;
+  padding-bottom: 4px !important;
+}
+```
+
+
+---
+
+---
+
+### Message List Items
+
+```css
+[data-lab="message-body"] > div[data-selection-root="true"] [data-lab="list-item"] {
+  background: #ff79ca22 !important;
+  border-left: 3px solid #ff79ca !important;
+  border-radius: 6px !important;
+  padding: 5px 8px !important;
+  margin: 5px 0 !important;
+  transition: background-color .2s ease !important;
+}
+@media (hover: hover) {
+  [data-lab="message-body"] > div[data-selection-root="true"] [data-lab="list-item"]:hover {
+    background: #8deaff33 !important;
+  }
+}
+```
+
+
+---
+
+### Thinking Panel Background and Text
+
+Recolor the Thinking panel independently of the main message body. ![Thinking Panel Background and Text preview](./images/panel-thinking-panel-background-and-text.png)
+
+```css
+/* Panel and header */
+[data-lab="thoughts"] {
+  background: #211b31 !important;
+  border: 2px solid #ff79ca !important;
+  border-radius: 12px !important;
+  box-shadow: 0 0 10px #ff79ca55 !important;
+}
+[data-lab="thoughts-toggle"] {
+  background: #ff79ca33 !important;
+  border-bottom: 1px solid #ff79ca !important;
+}
+/* Header title and icons */
+[data-lab="thoughts-toggle"] > span {
+  color: #ff79ca !important;
+  font-weight: 700 !important;
+  text-shadow: 0 0 6px #ff79ca !important;
+}
+[data-lab="thoughts-toggle"] > i {
+  color: #8deaff !important;
+  filter: drop-shadow(0 0 4px #8deaff) !important;
+}
+/* Thinking content */
+[data-lab="thoughts-text"] {
+  background: #211b31 !important;
+  border-left: 3px solid #ff79ca !important;
+  border-radius: 6px !important;
+  padding: 10px !important;
+}
+[data-lab="thoughts-text"] [data-lab="text"] {
+  color: #8deaff !important;
+  text-shadow: 0 0 4px #8deaff88 !important;
+}
+[data-lab="thoughts-text"] [data-lab="italic"] {
+  color: #ffe17b !important;
+}
+```
+
+
+---
+
+---
+
+### Thinking Panel Hover Effects
+
+```css
+[data-lab="thoughts"] {
+  transition: box-shadow .25s ease, border-color .25s ease !important;
+}
+@media (hover: hover) {
+  [data-lab="thoughts"]:hover {
+    border-color: #8deaff !important;
+    box-shadow: 0 0 10px #8deaff88, 0 0 20px #ff79ca55 !important;
+  }
+  [data-lab="thoughts-toggle"]:hover {
+    background: #ff79ca22 !important;
+  }
+}
+```
+
+
+---
+
+## Message Footer and Ratings
+
+### Message Footer and Timestamp Styling
+
+Style the footer container and its timestamp independently:
+
+```css
+[data-lab="message-footer"] {
+  background: #211b31 !important;
+  border: 2px solid #ff79ca !important;
+  border-radius: 10px !important;
+  padding: 6px 10px !important;
+}
+[data-lab="message-footer"] [data-lab="time"] {
+  color: #8deaff !important;
+  font-weight: 700 !important;
+  text-shadow: 0 0 6px #8deaff !important;
+  transition: color .2s ease, text-shadow .2s ease, transform .2s ease !important;
+}
+@media (hover: hover) {
+  [data-lab="message-footer"] [data-lab="time"]:hover {
+    color: #ff79ca !important;
+    text-shadow: 0 0 8px #ff79ca !important;
+    transform: scale(1.12) !important;
+  }
+}
+```
+
+
+---
+
+---
+
+### Custom Rating Icons
+
+Replace each of the five rating symbols with a different uploaded image. ![Custom Rating Icons preview](./images/message-custom-rating-icons.png)
+
+```css
+/* Rating 1 of 5 */
+[data-lab="rating"] button[aria-label="Rate 1 of 5"] img {
+  content: url("/api/images/6ac898fd42880c652f055e95") !important;
+}
+
+/* Rating 2 of 5 */
+[data-lab="rating"] button[aria-label="Rate 2 of 5"] img {
+  content: url("/api/images/6ac8991542880c652f0562cb") !important;
+}
+
+/* Rating 3 of 5 */
+[data-lab="rating"] button[aria-label="Rate 3 of 5"] img {
+  content: url("/api/images/6ac8992042880c652f05646f") !important;
+}
+
+/* Rating 4 of 5 */
+[data-lab="rating"] button[aria-label="Rate 4 of 5"] img {
+  content: url("/api/images/6ac8995ad2d7799fdce4e272") !important;
+}
+
+/* Rating 5 of 5 */
+[data-lab="rating"] button[aria-label="Rate 5 of 5"] img {
+  content: url("/api/images/6ac8996500c414e8e2a2153e") !important;
+}
+
+/* Shared rating image styling */
+[data-lab="rating"] button img {
+  object-fit:contain!important;
+  filter:none!important;
+}
+```
+
+**Customization:**
+- `Rate 1 of 5` through `Rate 5 of 5` = each individual rating button.
+- `filter: none` = preserves the original colors of the uploaded artwork.
+- Replace all five image URLs with your own images.
 
 ---
 
@@ -802,6 +1444,577 @@ Style small buttons in the header with custom text color.
 
 ---
 
+### Custom Header Button Icons
+
+Replace the six standard chat header icons without changing their buttons. ![Custom Header Button Icons preview](./images/header-custom-button-icons.png)
+
+```css
+/* Voice Call */
+[data-lab="header-action"][aria-label="Voice call"] img {
+  content: url("/api/images/6ac89c4900c414e8e2a275d5") !important;
+}
+
+/* Fullscreen */
+[data-lab="header-action"][aria-label*="fullscreen" i] img {
+  content: url("/api/images/6ac89c361a947bf5aa447504") !important;
+}
+
+/* Statistics & Export */
+[data-lab="header-action"][aria-label="Chat statistics & export"] img {
+  content: url("/api/images/6ac89c3f42880c652f05d37b") !important;
+}
+
+/* Search */
+[data-lab="header-action"][aria-label="Search this chat"] img {
+  content: url("/api/images/6ac897301a947bf5aa43d1c8") !important;
+}
+
+/* Scene Gallery */
+[data-lab="header-action"][aria-label="Scene gallery"] img {
+  content: url("/api/images/6ac896c642880c652f0508b0") !important;
+}
+
+/* Bookmarks */
+[data-lab="header-action"][aria-label="Message bookmarks"] img {
+  content: url("/api/images/6ac897231a947bf5aa43cf04") !important;
+}
+```
+
+**Customization:**
+- `aria-label` = identifies the particular header button.
+- `content: url(...)` = the replacement image.
+- You may keep only the button rules you want to customize.
+- Replace each uploaded image URL with your own.
+
+---
+
+---
+
+### Custom Navigation Icons
+
+Replace the Back, Scroll Down, Previous Version, and Next Version icons. ![Custom Navigation Icons preview](./images/header-custom-navigation-icons.png)
+
+```css
+/* Back */
+[data-lab="back"] img {
+  content: url("/api/images/6ac8975242880c652f051da0") !important;
+  object-fit:contain!important;
+}
+
+/* Scroll Down */
+[data-lab="scroll-down"] img {
+  content: url("/api/images/6ac896f900c414e8e2a1bffd") !important;
+  object-fit:contain!important;
+  transform: none !important;
+}
+
+/* Previous Version */
+[data-lab="swipe"][aria-label="Previous version"] img {
+  content: url("/api/images/6ac896e875e1eb8796dcf891") !important;
+  object-fit:contain!important;
+  transform: none !important;
+  filter:none!important;
+}
+
+/* Next Version */
+[data-lab="swipe"][aria-label="Next version"] img {
+  content: url("/api/images/6ac896dc75e1eb8796dcf708") !important;
+  object-fit:contain!important;
+  transform: none !important;
+  filter:none!important;
+}
+```
+
+**Customization:**
+- `aria-label` = distinguishes previous and next message versions.
+- `transform: none` = removes a pre-existing transformation on selected navigation images.
+- Replace the sample URLs with your own.
+
+---
+
+---
+
+### Custom Footer Button Icons
+
+Replace the footer control icons for Web Search, Director Pass, Auto Mode, Review Mode, Scene Music, Visual Expressions, Dice Roll, HTML Mode, Time Skip, and Reply Options. ![Custom Footer Button Icons preview](./images/footer-custom-button-icons.png)
+
+```css
+/* Web Search */
+[data-lab="web-search"] img {
+  content: url("/api/images/6ac89bb142880c652f05bb82") !important;
+  object-fit: contain !important;
+}
+
+/* Director Pass */
+[data-lab="director-pass"] img {
+  content: url("/api/images/6ac89bbd00c414e8e2a263df") !important;
+  object-fit: contain !important;
+}
+
+/* Auto Mode */
+[data-lab="auto-mode"] img {
+  content: url("/api/images/6ac89bc942880c652f05befd") !important;
+  object-fit: contain !important;
+}
+
+/* Review Mode */
+[data-lab="review-mode"] img {
+  content: url("/api/images/6ac89bd5aab27ff458cf5f00") !important;
+  object-fit: contain !important;
+}
+
+/* Scene Music */
+[data-lab="scene-music"] img {
+  content: url("/api/images/6ac89bffaab27ff458cf636e") !important;
+  object-fit: contain !important;
+}
+
+/* Visual Expressions */
+[data-lab="visual-expressions"] img {
+  content: url("/api/images/6ac89c09d2d7799fdce54ff7") !important;
+  object-fit: contain !important;
+}
+
+/* Dice Roll */
+[data-lab="dice-roll"] img {
+  content: url("/api/images/6ac89c1400c414e8e2a26e15") !important;
+  object-fit: contain !important;
+}
+
+/* HTML Mode */
+[data-lab="html-mode"] img {
+  content: url("/api/images/6ac8a0a61a947bf5aa45143c") !important;
+  object-fit: contain !important;
+  filter: none !important;
+}
+
+/* Time Skip */
+[data-lab="time-skip"] img {
+  content: url("/api/images/6ac89bdf75e1eb8796dd8d1a") !important;
+  object-fit: contain !important;
+}
+
+/* Reply Options / Reply Choices */
+[data-lab="reply-options"] img {
+  content: url("/api/images/6ac89bf3d2d7799fdce54db2") !important;
+  object-fit: contain !important;
+}
+```
+
+**Customization:**
+- Each `data-lab` selector targets one footer button; remove rules for controls you don't want to change.
+- `content: url(...)` = the uploaded replacement image for that button.
+- `object-fit: contain` = keeps the image proportional within its existing icon box.
+- `filter: none` = prevents inherited filters from changing HTML Mode's image colors.
+- Replace the sample `/api/images/...` URLs with your own uploaded artwork.
+
+---
+
+---
+
+### Icon Glow — Search Example
+
+Give an icon a neon halo, using Search as the example. ![Glowing Search Icon preview](./images/header-glowing-search-icon.png)
+
+```css
+[data-lab="header-action"][aria-label="Search this chat"] img {
+  filter: drop-shadow(0 0 3px #ff79ca)
+          drop-shadow(0 0 7px #ff79ca) !important;
+}
+```
+
+**Customization:**
+- Change `#ff79ca` to recolor both glow layers.
+- Increase the blur radii for a softer, wider halo.
+
+**Compatibility:** Other icon tint rules also set `filter`. Combine tint and glow in one `filter` declaration instead of applying separate competing rules.
+
+---
+
+---
+
+### Rainbow Button Background — Search Example
+
+Apply a stationary pastel rainbow to a button. Change the `aria-label` selector to target a different button. ![Rainbow button background preview](./images/header-rainbow-button-background.png)
+
+```css
+[data-lab="header-action"][aria-label="Search this chat"] {
+  background: linear-gradient(135deg,
+    #ff7a9c 0%, #ffdc79 20%, #8ee8b3 40%,
+    #7fdfff 60%, #b69cff 80%, #ff8bd3 100%) !important;
+  border: 1px solid #ffe2f3 !important;
+}
+```
+
+**Customization:**
+- Edit the gradient stops to choose a different rainbow.
+- Change `135deg` to turn the gradient.
+- Adjust `border` for a stronger or subtler outline.
+
+---
+
+---
+
+### Icon Hover Enlargement — Gallery Example
+
+Enlarge an icon on hover. The Scene gallery selector below is one example; change the `aria-label` to target another header action.
+
+```css
+[data-lab="header-action"][aria-label="Scene gallery"] img {
+  transition: transform .2s ease !important;
+}
+@media (hover: hover) {
+  [data-lab="header-action"][aria-label="Scene gallery"]:hover img {
+    transform: scale(1.35) !important;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-lab="header-action"][aria-label="Scene gallery"] img {
+    transition: none !important;
+  }
+}
+```
+
+**Customization:**
+- `scale(1.35)` determines the hover enlargement.
+- `.2s` controls the transition speed.
+
+---
+
+---
+
+### Animated Rainbow Button — Gallery Example
+
+Cycle the colors of a rainbow button background, using Gallery as the example. ![Animated Rainbow Gallery Button preview](./images/header-animated-rainbow-gallery-button.png)
+
+```css
+[data-lab="header-action"][aria-label="Scene gallery"] {
+  background: conic-gradient(from 0deg,
+    #ff7a9c, #ffdc79, #8ee8b3,
+    #7fdfff, #b69cff, #ff8bd3, #ff7a9c) !important;
+  background-size: 100% 100% !important;
+  border: 1px solid #d5b8f5 !important;
+  animation: lab-gallery-rainbow-spin 4s linear infinite !important;
+}
+@keyframes lab-gallery-rainbow-spin {
+  0% { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(360deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-lab="header-action"][aria-label="Scene gallery"] {
+    animation: none !important;
+  }
+}
+```
+
+**Customization:**
+- `4s` sets the full color-cycle duration.
+- Change the gradient colors to customize the palette.
+
+**Note:** This confirmed method animates `filter` on the whole button, so the icon colors can shift too. A separate hover `filter: brightness(...)` rule can interrupt the hue-cycle while hovered; see the optional shared hover tutorial below.
+
+---
+
+---
+
+### Multicolor Icon Glow — Bookmarks Example
+
+Surround an icon with multicolor light on hover, using Bookmarks as the example. ![Multicolor Bookmarks Icon Glow preview](./images/header-multicolor-bookmarks-glow.png)
+
+```css
+[data-lab="header-action"][aria-label="Message bookmarks"] img {
+  transition: filter .2s ease !important;
+}
+@media (hover: hover) {
+  [data-lab="header-action"][aria-label="Message bookmarks"]:hover img {
+    filter: drop-shadow(-3px 0 3px #ff6b9e)
+            drop-shadow(3px 0 3px #75e8ff)
+            drop-shadow(0 3px 4px #b78aff) !important;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-lab="header-action"][aria-label="Message bookmarks"] img {
+    transition: none !important;
+  }
+}
+```
+
+**Customization:**
+- The three hex values set the left, right, and lower glow colors.
+- The shadow offsets determine where each color appears.
+
+---
+
+---
+
+### Rotating Rainbow Button Border — Bookmarks Example
+
+Build a rotating rainbow ring around a button while keeping its icon stationary, using Bookmarks as the example. ![Rotating Rainbow Bookmarks Border preview](./images/header-rotating-rainbow-bookmarks-border.png)
+
+```css
+[data-lab="header-action"][aria-label="Message bookmarks"] {
+  position: relative !important;
+  isolation: isolate !important;
+  overflow: visible !important;
+  background: #242b3c !important;
+  border: 2px solid transparent !important;
+  border-radius: 50% !important;
+  animation: none !important;
+}
+[data-lab="header-action"][aria-label="Message bookmarks"]::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: -2px !important;
+  border-radius: 50% !important;
+  pointer-events: none !important;
+  z-index: -1 !important;
+  background: conic-gradient(
+    #ff7a9c, #ffdc79, #8ee8b3,
+    #7fdfff, #b69cff, #ff8bd3, #ff7a9c) !important;
+  -webkit-mask: radial-gradient(farthest-side,
+    transparent calc(100% - 3px), #000 calc(100% - 2px)) !important;
+  mask: radial-gradient(farthest-side,
+    transparent calc(100% - 3px), #000 calc(100% - 2px)) !important;
+  animation: lab-bookmark-ring-spin 3s linear infinite !important;
+}
+@keyframes lab-bookmark-ring-spin {
+  to { transform: rotate(360deg); }
+}
+@media (hover: hover) {
+  [data-lab="header-action"][aria-label="Message bookmarks"]:hover::before {
+    animation-play-state: paused !important;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-lab="header-action"][aria-label="Message bookmarks"]::before {
+    animation: none !important;
+  }
+}
+```
+
+**Customization:**
+- `3s` controls rotation speed.
+- Change the conic-gradient colors for a different ring.
+- The mask creates the narrow ring; its pixel values control thickness.
+
+**Note:** The pseudo-element and its mask are both needed. Keep this tutorial together; replacing only the gradient will not reproduce the ring.
+
+---
+
+---
+
+### Solid Button Border — Voice Call Example
+
+Frame a button with a solid circular border, using Voice Call as the example. ![Custom Voice Call Button Border preview](./images/header-voice-call-button-border.png)
+
+```css
+[data-lab="header-action"][aria-label="Voice call"] {
+  background: #242b3c !important;
+  border: 2px solid #ff88c8 !important;
+  border-radius: 50% !important;
+}
+```
+
+**Customization:**
+- `#242b3c` sets the inner fill.
+- `#ff88c8` sets the outline color.
+- `2px` sets the border thickness.
+
+---
+
+---
+
+### Gradient Button Border — Fullscreen Example
+
+Give a button a gradient border without filling its center with a gradient, using Fullscreen as the example. ![Gradient Fullscreen Button Border preview](./images/header-gradient-fullscreen-button-border.png)
+
+```css
+[data-lab="header-action"][aria-label*="fullscreen" i] {
+  border: 2px solid transparent !important;
+  border-radius: 50% !important;
+  background: linear-gradient(#242b3c, #242b3c) padding-box,
+              linear-gradient(135deg, #ff89ca, #76e7ff) border-box !important;
+}
+```
+
+**Customization:**
+- Change the two `border-box` colors to alter the gradient.
+- Change `#242b3c` in both positions to recolor the center.
+- `135deg` controls the gradient direction.
+
+---
+
+---
+
+### Pulsing Button Glow — Fullscreen Example
+
+Add a gentle two-color pulse around a button, using Fullscreen as the example. ![Pulsing Fullscreen Button preview](./images/header-pulsing-fullscreen-button.png)
+
+```css
+[data-lab="header-action"][aria-label*="fullscreen" i] {
+  animation: lab-border-pulse 2.8s ease-in-out infinite !important;
+}
+@keyframes lab-border-pulse {
+  0%, 100% {
+    box-shadow: 0 0 3px #ff89ca55, 0 0 6px #76e7ff33;
+  }
+  50% {
+    box-shadow: 0 0 8px #ff89caaa, 0 0 15px #76e7ff88;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-lab="header-action"][aria-label*="fullscreen" i] {
+    animation: none !important;
+  }
+}
+```
+
+**Customization:**
+- `2.8s` sets the pulse period.
+- The two `box-shadow` colors set pink and cyan glows.
+
+**Note:** Pairs with the Gradient Fullscreen Button Border tutorial; the border itself is not animated.
+
+---
+
+---
+
+### Bobbing Icon Animation — Statistics Example
+
+Give an icon a gentle floating motion, using Statistics as the example.
+
+```css
+[data-lab="header-action"][aria-label="Chat statistics & export"] img {
+  animation: lab-icon-float 2.6s ease-in-out infinite !important;
+}
+@keyframes lab-icon-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-lab="header-action"][aria-label="Chat statistics & export"] img {
+    animation: none !important;
+  }
+}
+```
+
+**Customization:**
+- `-3px` controls how far the icon rises.
+- `2.6s` controls the motion speed.
+
+---
+
+---
+
+### Button Hover Glow — Statistics Example
+
+Outline a button only while hovered, using Statistics as the example. ![Statistics Button Hover Glow preview](./images/header-statistics-button-hover-glow.png)
+
+```css
+[data-lab="header-action"][aria-label="Chat statistics & export"] {
+  border: 2px solid transparent !important;
+  border-radius: 50% !important;
+  transition: border-color .2s ease, box-shadow .2s ease !important;
+}
+@media (hover: hover) {
+  [data-lab="header-action"][aria-label="Chat statistics & export"]:hover {
+    border-color: #8de8c0 !important;
+    box-shadow: 0 0 9px #8de8c066 !important;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-lab="header-action"][aria-label="Chat statistics & export"] {
+    transition: none !important;
+  }
+}
+```
+
+**Customization:**
+- Change `#8de8c0` to recolor the mint border.
+- `9px` adjusts glow spread.
+
+---
+
+---
+
+### Shared Button Hover Brightness — Header Examples
+
+Lighten selected header buttons when hovered.
+
+```css
+@media (hover: hover) {
+  [data-lab="header-action"]:is(
+    [aria-label="Voice call"],
+    [aria-label*="fullscreen" i],
+    [aria-label="Search this chat"],
+    [aria-label="Scene gallery"]
+  ):hover {
+    filter: brightness(1.12) !important;
+  }
+}
+```
+
+**Customization:**
+- `brightness(1.12)` controls the intensity.
+- Remove a button label from `:is(...)` to exclude that control.
+
+**Note:** Optional source rule. It sets `filter` on the Gallery button, the same property used by the Gallery hue-cycle animation; test their combined hover behavior before publishing them together.
+
+---
+
+---
+
+### Button Keyboard Focus Outlines — Header Examples
+
+Give keyboard users a visible pale-yellow outline on the main header actions.
+
+```css
+[data-lab="header-action"]:is(
+  [aria-label="Voice call"],
+  [aria-label*="fullscreen" i],
+  [aria-label="Search this chat"],
+  [aria-label="Scene gallery"],
+  [aria-label="Chat statistics & export"],
+  [aria-label="Message bookmarks"]
+):focus-visible {
+  outline: 2px solid #fff0a6 !important;
+  outline-offset: 3px !important;
+}
+```
+
+**Customization:**
+- `#fff0a6` sets the focus-ring color.
+- `outline-offset: 3px` adds breathing room around the button.
+
+**Note:** This is keyboard focus, not a selected or toggled state. A screenshot may require navigating with Tab rather than clicking.
+
+---
+
+---
+
+### Rainbow Icon Recoloring — Gallery Example
+
+
+
+![Rainbow recolored Gallery icon example](./images/header-rainbow-recolored-gallery-icon.png)
+```css
+/* Recolor the icon itself. */
+[data-lab="header-action"][aria-label="Scene gallery"] img {
+  filter: hue-rotate(145deg) saturate(1.8) contrast(1.2) !important;
+}
+
+/* Add this to the animated Gallery button tutorial above:
+   its existing parent-button hue-rotate animation remains in place. */
+```
+
+**Customization:**
+- `hue-rotate(145deg)` shifts the icon's colors before the button animation runs.
+- `saturate(1.8)` strengthens the icon colors; `contrast(1.2)` sharpens their separation.
+- The existing **Animated Rainbow Gallery Button** tutorial animates `filter: hue-rotate(...)` on the *parent button*. This icon filter is static on the child image; together they create the observed changing rainbow icon.
+
+
+---
+
 ## Input Controls
 
 ### Message Action Buttons
@@ -989,11 +2202,269 @@ Add a glowing effect to the menu button. <img src="./images/header-glow menu.png
 
 ---
 
+### Individual Message Action Colors and Hover
+
+Target the individual actions by their confirmed labels. Branch is present on character messages in the supplied sample but not on the user message.
+
+```css
+[data-lab="bubble"] [data-lab="action"][aria-label="Bookmark message"] { background: #ff79ca !important; }
+[data-lab="bubble"] [data-lab="action"][aria-label="Edit message"] { background: #8deaff !important; }
+[data-lab="bubble"] [data-lab="action"][aria-label="Delete message"] { background: #ffb36b !important; }
+[data-lab="bubble"] [data-lab="action"][aria-label="Branch chat"] { background: #b49aff !important; }
+
+[data-lab="bubble"] [data-lab="action"] {
+  transition: transform .2s ease, box-shadow .2s ease, filter .2s ease !important;
+}
+@media (hover: hover) {
+  [data-lab="bubble"] [data-lab="action"]:hover {
+    transform: scale(1.2) !important;
+    box-shadow: 0 0 10px #ff79ca !important;
+    filter: brightness(1.3) !important;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-lab="bubble"] [data-lab="action"] { transition: none !important; }
+}
+```
+
+
+---
+
+---
+
+### Custom Menu Button Icon
+
+Replace the standard menu icon and the mobile More Chat Tools icon with your own artwork. ![Custom Menu Button Icon preview](./images/input-custom-menu-button-icon.png)
+
+```css
+/* Menu */
+img[data-lab="menu"] {
+  content: url("/api/images/6ac8974542880c652f051b0e") !important;
+  object-fit:contain!important;
+}
+
+/* Mobile More Chat Tools */
+[data-lab="header-action"][aria-label="More chat tools"] img {
+  content: url("/api/images/6ac8cbd875e1eb8796e3a987") !important;
+  object-fit: contain !important;
+  filter: none !important;
+}
+```
+
+**Customization:**
+- `content: url(...)` = your uploaded menu artwork.
+- `object-fit: contain` = preserves the image proportions.
+- The mobile **More Chat Tools** control is a separate button from the main menu; each can use different artwork.
+- Replace the sample `/api/images/...` URLs with your own.
+
+---
+
+---
+
+### Custom Input Button Icons
+
+Replace the composer icons for Send, Stop, Write, Upload Image, Scene Notes, and Toolbar Toggle. ![Custom Input Button Icons preview](./images/input-custom-input-button-icons.png)
+
+```css
+/* Send (excluding Stop) */
+[data-lab="send"] img:not([src*="icon_stop"]) {
+  content: url("/api/images/6ac8971700c414e8e2a1c37b") !important;
+  object-fit:contain!important;
+}
+
+/* Stop */
+[data-lab="send"] img[src*="icon_stop"],
+[data-lab="stop"] img {
+  content: url("/api/images/6ac8a09475e1eb8796de21e5") !important;
+  object-fit:contain!important;
+  filter:none!important;
+}
+
+/* Write */
+[data-lab="write"] img {
+  content: url("/api/images/6ac8970875e1eb8796dcfc4f") !important;
+  object-fit:contain!important;
+}
+
+/* Upload Image */
+[data-lab="attach-image"] img {
+  content: url("/api/images/6ac89c2575e1eb8796dd935f") !important;
+  object-fit:contain!important;
+}
+
+/* Scene Notes / Guidance */
+[data-lab="guidance-toggle"] img {
+  content: url("/api/images/6ac8967a1a947bf5aa43be05") !important;
+  object-fit:contain!important;
+}
+
+/* Toolbar Toggle */
+[data-lab="toolbar-toggle"] img {
+  content: url("/api/images/6ac896b91a947bf5aa43c355") !important;
+  object-fit:contain!important;
+}
+```
+
+**Customization:**
+- `data-lab` = identifies each composer control.
+- The Send and Stop selectors are separated so their artwork can differ.
+- `content: url(...)` = the image you uploaded.
+- Replace the sample URLs with your own.
+
+---
+
+---
+
+### Custom Draft Version Controls
+
+Customize the separate draft-version navigation row, including its Previous, Next, Regenerate, and Keep Draft controls. This row uses `[data-lab="draft-versions"]` and is **not** the same as the normal message-version swipe controls. ![Draft version controls preview](./images/input-custom-draft-version-controls.png)
+
+```css
+/* Previous draft — use artwork facing left */
+[data-lab="draft-versions"] button[aria-label="Previous draft version"] img {
+  content: url("/api/images/6ac896e875e1eb8796dcf891") !important;
+  object-fit: contain !important;
+  transform: none !important;
+  filter: none !important;
+}
+
+/* Next draft — use artwork facing right */
+[data-lab="draft-versions"] button[aria-label="Next draft version"] img {
+  content: url("/api/images/6ac896dc75e1eb8796dcf708") !important;
+  object-fit: contain !important;
+  transform: none !important;
+  filter: none !important;
+}
+
+/* Regenerate draft — this is a Font Awesome <i>, not an <img> */
+[data-lab="draft-versions"] button[aria-label="Regenerate draft versions"] i {
+  color: #7fdfff !important;
+  font-size: 14px !important;
+  text-shadow: 0 0 5px #7fdfff88 !important;
+}
+
+/* Keep draft and close — also a Font Awesome <i> */
+[data-lab="draft-versions"] button[aria-label="Keep draft and close versions"] i {
+  color: #ff89ca !important;
+  font-size: 14px !important;
+  text-shadow: 0 0 5px #ff89ca88 !important;
+}
+```
+
+**Customization:**
+- `draft-versions` = limits changes to the draft-version controls, not ordinary message swipes or message regeneration.
+- `Previous draft version` and `Next draft version` = separate buttons with their own images.
+- `transform: none` = removes the default mirrored-arrow transformation; use correctly oriented replacement artwork.
+- `Regenerate draft versions` and `Keep draft and close versions` = Font Awesome icons rendered with `<i>`, so `content: url(...)` image replacement is **not** used for them here.
+- `color`, `font-size`, and `text-shadow` = recolor and emphasize those two icons without changing their symbols.
+
+**Tip:** These controls belong to the draft-version row, not the regular message actions. Preview the example with draft versions visible before keeping it.
+
+---
+
+---
+
+### Custom Message Action Icons
+
+Desktop and mobile controls may use different images. For example, desktop Regenerate uses `/img/Icons/icon_regenerate.webp`, while mobile Regenerate uses `/img/pixel/msg-regenerate.webp` with a separate `/img/pixel/settings.webp` badge.
+
+Replace the icons on individual chat messages, including Bookmark, Regenerate, Branch, Delete, Edit, and More Actions. ![Custom Message Action Icons preview](./images/input-custom-message-action-icons.png)
+
+```css
+/* Bookmark Message */
+[data-lab="action"][aria-label="Bookmark message"] img {
+  content: url("/api/images/6ac897231a947bf5aa43cf04") !important;
+  object-fit:contain!important;
+  filter:none!important;
+}
+
+/* Regenerate */
+[data-lab="action"][aria-label="Regenerate"]
+> span > img {
+  content: url("/api/images/6ac8cba55a1227b9442bfe5a") !important;
+  object-fit:contain!important;
+  filter:none!important;
+}
+
+/* Branch Chat */
+[data-lab="action"][aria-label="Branch chat"] img {
+  content: url("/api/images/6ac8cbb442880c652f0bc31f") !important;
+  object-fit:contain!important;
+  filter:none!important;
+}
+
+/* Delete Message */
+[data-lab="action"][aria-label="Delete message"] img {
+  content: url("/api/images/6ac8cbc275e1eb8796e3a83d") !important;
+  object-fit:contain!important;
+  filter:none!important;
+}
+
+/* Edit Message */
+[data-lab="action"][aria-label="Edit message"] img {
+  content: url("/api/images/6ac8cbcf5a1227b9442c03e1") !important;
+  object-fit:contain!important;
+  filter:none!important;
+}
+
+/* More Actions */
+[data-lab="action"][aria-label="More actions"] img {
+  content: url("/api/images/6ac8cbd875e1eb8796e3a987") !important;
+  object-fit:contain!important;
+  filter:none!important;
+}
+```
+
+**Customization:**
+- `aria-label` = selects the message action to replace.
+- The Regenerate selector targets the main image inside its button rather than other nested artwork.
+- `filter: none` = preserves your image colors.
+- Replace each sample image URL with your own.
+
+---
+
+---
+
+### Managing Tinting, Filters, and Icon Replacements
+
+A quick reference for choosing an approach.
+
+| Goal | Use | Important distinction |
+|---|---|---|
+| Change the button's background | `background` / gradients on the button | Does not recolor the icon pixels |
+| Tint the icon image | `filter` on `img` | Affects all visible image pixels together |
+| Invert the icon | `invert()` on `img` | Reverses original colors, not a guaranteed target tint |
+| Glow around icon artwork | `drop-shadow()` on `img` | Follows the image's visible silhouette |
+| Rainbow-cycle icon and button together | `hue-rotate()` animation on the parent button | Also shifts the colors of rendered children |
+| Replace the icon artwork entirely | `content: url(...)` on `img` | Covered in Phase 1; new artwork may respond differently to filters |
+
+**Combining filters:** A single element has one computed `filter` property. Two matching CSS rules do **not** merge their filter functions automatically: the winning declaration replaces the other. For example, a tint and glow on the same icon must be combined:
+
+```css
+[data-lab="header-action"][aria-label="Search this chat"] img {
+  filter: brightness(0) saturate(100%)
+          invert(60%) sepia(75%) saturate(2500%)
+          hue-rotate(290deg) brightness(105%)
+          drop-shadow(0 0 3px #ff79ca)
+          drop-shadow(0 0 7px #ff79ca) !important;
+}
+```
+
+**Customization:**
+- Put color-changing functions **before** `drop-shadow()` if you want to preserve the specified shadow color.
+- If Phase 1 replaces an icon, test the filter again: the replacement image's starting colors affect the result.
+- A multicolored image is not converted into a clean, independently controlled rainbow by `hue-rotate()` alone. True gradient-filled icon silhouettes generally require an asset-specific mask technique; our earlier icon-mask idea was **not validated**, so no working mask recipe is claimed here.
+
+
+**Tip:** Combine icon replacement with filters and glow when you want a different finish without changing the surrounding button.
+
+---
+
 ## Long-Press Menus — LoreBary 2.5
 
 Several LoreBary 2.5 controls perform one action on a normal click and open settings when held. The settings panels may be rendered outside `.lab-theme-scope`, so target their dedicated root selectors directly.
 
-### Menu and Dialog Selector Map
+### Menu and Dialog Selector Map Quick Reference
 
 | Control | Menu or settings selector | Notes |
 | --- | --- | --- |
@@ -1047,6 +2518,118 @@ The Bookmark hold menu exposes Quick bookmark and Manual bookmark, but its panel
 ```
 
 ---
+
+### Write Menu Heading Colors
+
+Recolor the two section headings inside the Write menu. ![Write Menu Heading Colors preview](./images/write-write-menu-heading-colors.png)
+
+```css
+[data-lab="write-menu"] > div:first-child
+> div > div:first-child {
+  color: #ffb4db !important;
+}
+[data-lab="write-menu"] > div:nth-child(2)
+> div > div:first-child {
+  color: #84dff0 !important;
+}
+```
+
+**Customization:**
+- `color` changes each heading independently.
+
+**Tip:** These selectors depend on the menu’s child order and may need updating if the layout changes.
+
+---
+
+---
+
+### Write Menu Actions and Help Text
+
+
+![Write Menu option and hover styling example](./images/write-write-menu-options-and-hover-effects.png)
+Recolor menu action rows and the information area at the bottom of the Write menu. ![Write Menu Actions and Help Text preview](./images/write-write-menu-actions-and-help-text.png)
+
+```css
+[data-lab="write-menu"] [data-lab="write-option"] {
+  color: #f1d9ec !important;
+}
+[data-lab="write-menu"] [data-lab="write-option"]:hover {
+  background: #3c3050 !important;
+  border-color: #b88ddd !important;
+}
+[data-lab="write-menu"] > div:last-child {
+  background: #141b2c !important;
+  border: 1px solid #645477 !important;
+  border-radius: 10px !important;
+  color: #b9b7d0 !important;
+}
+```
+
+**Customization:** `[data-lab="write-option"]` targets the menu options. The help-text area uses a structural selector.
+
+---
+
+### Write Menu Selected, Unselected, and Keyboard-Focus States
+
+
+![Write Menu selected option styling example](./images/write-write-menu-selected-options.png)
+Use the tested `aria-checked` state to distinguish the active choice from inactive choices. Keyboard focus remains independently visible.
+
+```css
+[data-lab="write-menu"] [data-lab="write-option"][aria-checked="true"] {
+  background: #ff79ca !important;
+  color: #211b31 !important;
+  outline: 2px solid #8deaff !important;
+  outline-offset: -2px !important;
+  border-radius: 8px !important;
+}
+[data-lab="write-menu"] [data-lab="write-option"][aria-checked="false"] {
+  opacity: .65 !important;
+}
+[data-lab="write-menu"] [data-lab="write-option"]:focus-visible {
+  outline: 2px solid #8deaff !important;
+  outline-offset: 2px !important;
+}
+```
+
+**Customization:** `aria-checked="true"` styles the selected option, while `aria-checked="false"` styles the others. `:focus-visible` adds keyboard feedback. Use this in place of the earlier selected-state example if the colors conflict.
+
+---
+
+---
+
+### Custom Write Menu Action Icons
+
+Replace the Write menu pencil and arrow icons with uploaded artwork. ![Custom Write Menu Action Icons preview](./images/write-custom-write-menu-action-icons.png)
+
+```css
+[data-lab="write-menu"]
+[data-lab="write-option"]
+img[src*="/pixel/pencil.webp"] {
+  content: url("/api/images/6ac8cbcf5a1227b9442c03e1") !important;
+  object-fit: contain !important;
+  filter: none !important;
+}
+[data-lab="write-menu"]
+[data-lab="write-option"]
+img[src*="/pixel/arrow-right-v2.webp"] {
+  content: url("/api/images/6ac896dc75e1eb8796dcf708") !important;
+  object-fit: contain !important;
+  transform: none !important;
+  filter: none !important;
+}
+```
+
+**Customization:**
+- `content: url(...)` sets the replacement artwork.
+- `object-fit: contain` maintains image proportions.
+- `filter: none` prevents existing filters from recoloring the images.
+- `transform: none` removes the arrow image’s inherited transform.
+
+**2.5 selector note:** The updated guide uses `[data-lab="write-menu"]` and `[data-lab="write-option"]` for the Write for Me menu. Verify any older icon-specific selectors against the current menu.
+
+---
+
 
 ### Style Long-Press Settings Dialogs
 
@@ -1133,6 +2716,983 @@ Prompt mode, sound choice, time choice, and similar dropdowns are portaled to th
 ```
 
 Use `[aria-selected="true"]`, `[aria-checked="true"]`, `[aria-pressed="true"]`, and `[aria-expanded="true"]` to style selected choices, enabled tools, and open menus without relying on temporary CSS class names.
+
+---
+
+### Custom Scene Notes Window
+
+Change the Scene Notes window background, outline, corners, and shadow. ![Custom Scene Notes Window preview](./images/panel-custom-scene-notes-window.png)
+
+```css
+[data-lab="input"] > div:has(#lab-scene-notes) {
+  background: #211b31 !important;
+  border: 1px solid #ee8ec9 !important;
+  border-radius: 16px !important;
+  box-shadow: 0 0 14px #ed83c32b, 0 12px 32px #00000080 !important;
+}
+```
+
+**Customization:** The verified Scene Notes panel selector replaces the older label-wrapper traversal. Change `background`, `border`, `border-radius`, and `box-shadow` to customize the window.
+
+---
+
+---
+
+### Scene Notes Title and Close Button
+
+
+![Scene Notes close button styling comparison](./images/scene-notes-close-button.png)
+Recolor the Scene Notes title and close button.
+
+```css
+[data-lab="input"] > div:has(#lab-scene-notes)
+label[for="lab-scene-notes"] {
+  color: #ffd5ec !important;
+  text-shadow: 0 0 7px #f98ac566 !important;
+}
+[data-lab="input"] > div:has(#lab-scene-notes)
+label[for="lab-scene-notes"] + button {
+  background: #49304f !important;
+  color: #ffc5e6 !important;
+  border: 1px solid #dc85c3 !important;
+}
+```
+
+**Customization:** Style the Scene Notes heading and its close button independently. The close button follows the heading in the current panel layout and also has `aria-label="Close scene notes"`.
+
+---
+
+---
+
+### Scene Notes Template Colors
+
+Assign different accent colors to the eight Scene Notes templates and their icon frames. ![Scene Notes Template Colors preview](./images/panel-scene-notes-template-colors.png)
+
+```css
+[aria-label="Scene note templates"]
+button {
+  color: #d8cbe2 !important;
+}
+[aria-label="Scene note templates"]
+button > span:first-child {
+  background: #302b42 !important;
+  border: 1px solid #7f719d !important;
+  box-shadow: 0 2px 6px #0006 !important;
+}
+[aria-label="Select Talk more template"] {
+  --note-color: #ff89b7;
+}
+[aria-label="Select Stay real template"] {
+  --note-color: #ffc38b;
+}
+[aria-label="Select Living world template"] {
+  --note-color: #f6df83;
+}
+[aria-label="Select Your move template"] {
+  --note-color: #88e5b1;
+}
+[aria-label="Select Slow burn template"] {
+  --note-color: #80dfff;
+}
+[aria-label="Select Romance template"] {
+  --note-color: #b99aff;
+}
+[aria-label="Select Sex template"] {
+  --note-color: #f39bdf;
+}
+[aria-label="Select Kink template"] {
+  --note-color: #ff9a9f;
+}
+[aria-label="Scene note templates"]
+button > span:first-child {
+  border-color: var(--note-color, #7f719d) !important;
+}
+```
+
+**Customization:**
+- `--note-color` is the accent color assigned to each template.
+- `button > span:first-child` styles the template icon frame.
+- Change individual hex values to build your own palette.
+
+---
+
+---
+
+### Scene Notes Selected and Hover Effects
+
+Give the selected Scene Notes template a clearly visible pink glow and a slight enlargement, with a separate hover highlight for other templates. ![Scene Notes Selected and Hover Effects preview](./images/panel-scene-notes-selected-and-hover-effects.png)
+
+```css
+/* Selected template — confirmed working */
+[aria-label="Scene note templates"]
+button[aria-pressed="true"] > span:first-child {
+  background: #674467 !important;
+  border: 2px solid #ff89b7 !important;
+  box-shadow:
+    0 0 0 2px #ff89b755,
+    0 0 12px 4px #ff89b7aa,
+    0 0 22px #ff89b766 !important;
+  transform: scale(1.08) !important;
+}
+
+/* Hover over templates that are not selected */
+@media (hover: hover) {
+  [aria-label="Scene note templates"]
+  button:not([aria-pressed="true"]):hover > span:first-child {
+    background: #3a304d !important;
+    box-shadow: 0 0 9px var(--note-color, #ff89b7) !important;
+  }
+}
+```
+
+**Customization:**
+- `[aria-pressed="true"]` identifies the selected template.
+- `#674467` sets the selected icon circle's background; `#ff89b7` is the selected border color.
+- The three `box-shadow` layers create a visible pink ring and glow. Reduce their blur, spread, or opacity for a softer effect.
+- `scale(1.08)` enlarges the selected circle slightly; use `scale(1)` to remove the enlargement.
+- The hover rule uses each template's `--note-color` when **Scene Notes Template Colors** is also installed, with pink as a fallback.
+- `:not([aria-pressed="true"])` keeps hover styling from overriding the selected appearance.
+
+**Tip:** The hover adjustment keeps the selected glow visible while the pointer is over a template.
+
+---
+
+---
+
+### Scene Notes Text Box Colors and Focus
+
+Customize the Scene Notes text area, placeholder, and focused appearance. ![Scene Notes Text Box Colors and Focus preview](./images/panel-scene-notes-text-box-colors-and-focus.png)
+
+```css
+[data-lab="input"] #lab-scene-notes {
+  background: #121b2b !important;
+  color: #f3e7f6 !important;
+  border: 1px solid #6bcde5 !important;
+  border-radius: 12px !important;
+  box-shadow: inset 0 2px 6px #0007 !important;
+}
+[data-lab="input"] #lab-scene-notes::placeholder {
+  color: #a9b8ce !important;
+}
+[data-lab="input"] #lab-scene-notes:focus-visible {
+  outline: 2px solid #ff92d0 !important;
+  outline-offset: 2px !important;
+}
+```
+
+**Customization:**
+- `background` and `color` set the editor colors.
+- `::placeholder` styles the hint text.
+- `:focus-visible` shows the focus outline when the browser determines a visible focus indicator is needed.
+
+---
+
+---
+
+### Scene Notes Additional Buttons
+
+
+![Scene Notes Apply to dropdown styling comparison](./images/scene-notes-apply-to-dropdown.png)
+Recolor the saved-template button and the Apply To control, including its hover state. 
+
+```css
+[data-lab="input"] > div:has(#lab-scene-notes)
+button[aria-label="Open saved scene note templates"] {
+  background: #453457 !important;
+  border: 1px solid #c49bff !important;
+  color: #f0cfff !important;
+  border-radius: 50% !important;
+}
+@media (hover: hover) {
+  [data-lab="input"] > div:has(#lab-scene-notes)
+  button[aria-label="Open saved scene note templates"]:hover {
+    background: #674467 !important;
+  }
+}
+/* Apply To dropdown: inspected structure, verified live */
+[data-lab="input"] > div:has(#lab-scene-notes)
+div:has(> #lab-scene-notes) ~ div button {
+  background: #121b2b !important;
+  border: 1px solid #846aa9 !important;
+  color: #e8d7f2 !important;
+  border-radius: 12px !important;
+}
+```
+
+**Customization:** Use the lightbulb button selector to style its appearance. The Apply To dropdown uses a structural selector in this example; its `aria-label="Apply to"` can also be used for more direct targeting.
+
+---
+
+---
+
+### Scene Notes Keyboard Focus
+
+Give Scene Notes controls a visible keyboard-focus outline.
+
+```css
+[aria-label="Scene note templates"] button:focus-visible,
+[data-lab="input"] > div:has(#lab-scene-notes) button[aria-label="Apply to"]:focus-visible,
+[data-lab="input"] > div:has(#lab-scene-notes) button[aria-label="Close scene notes"]:focus-visible {
+  outline: 2px solid #ff92d0 !important;
+  outline-offset: 2px !important;
+}
+```
+
+**Customization:**
+- `focus-visible` shows the outline during keyboard navigation.
+- `outline-offset` creates space between the outline and control.
+
+---
+
+---
+
+### Custom Scene Notes Template Icons
+
+The eight native template icons are `scene-talk-more.webp`, `scene-stay-real.webp`, `scene-living-world.webp`, `scene-your-move.webp`, `scene-slow-burn.webp`, `scene-romance.webp`, `scene-intimacy.webp` (Sex), and `scene-kink.webp`, all under `/img/pixel/`.
+
+Replace the artwork for all eight Scene Notes templates. ![Custom Scene Notes Template Icons preview](./images/panel-custom-scene-notes-template-icons.png)
+
+```css
+[aria-label="Select Talk more template"] img {
+  content: url("/api/images/6ac933d9774248b6e840f548") !important;
+  object-fit: contain !important;
+}
+[aria-label="Select Stay real template"] img {
+  content: url("/api/images/6ac933bc774248b6e840f1a4") !important;
+  object-fit: contain !important;
+}
+[aria-label="Select Living world template"] img {
+  content: url("/api/images/6ac9337f71408e65b12b8235") !important;
+  object-fit: contain !important;
+}
+[aria-label="Select Your move template"] img {
+  content: url("/api/images/6ac9339a774248b6e840ec7c") !important;
+  object-fit: contain !important;
+}
+[aria-label="Select Slow burn template"] img {
+  content: url("/api/images/6ac933e874200038737ef983") !important;
+  object-fit: contain !important;
+}
+[aria-label="Select Romance template"] img {
+  content: url("/api/images/6ac933a88825371476f13213") !important;
+  object-fit: contain !important;
+}
+[aria-label="Select Sex template"] img {
+  content: url("/api/images/6ac93403041fbd15cfcc8e14") !important;
+  object-fit: contain !important;
+}
+[aria-label="Select Kink template"] img {
+  content: url("/api/images/6ac933f742849615a40a8ab3") !important;
+  object-fit: contain !important;
+}
+```
+
+**Customization:**
+- Each `aria-label` selects one template.
+- `content: url(...)` replaces its icon.
+- Replace each `/api/images/...` address with your own uploaded image URL.
+
+---
+
+## Search and Bookmarks
+
+### Search & Bookmarks Panel Background
+
+Change the main background, side border, and shadow of the shared Search and Bookmarks panel. ![Search & Bookmarks Panel Background preview](./images/panel-search-and-bookmarks-panel-background.png)
+
+```css
+:is([data-lab="search-panel"], [data-lab="bookmarks-panel"]) {
+  background: #171b2b !important;
+  border-left: 2px solid #73d9ff !important;
+  box-shadow: -8px 0 24px #0009, inset 2px 0 0 #ff7ecb55 !important;
+}
+```
+
+**Customization:** `background`, `border-left`, and `box-shadow` style both panels. Both panel hooks were verified in the live tester.
+
+---
+
+---
+
+### Search & Bookmarks Header Styling
+
+Customize the panel header background, divider, and shadow. ![Search & Bookmarks Header Styling preview](./images/panel-search-and-bookmarks-header-styling.png)
+
+```css
+:is([data-lab="search-panel"], [data-lab="bookmarks-panel"]) .surface-header {
+  background: #29243e !important;
+  border-bottom: 1px solid #ff88c7 !important;
+  box-shadow: 0 4px 12px #0006 !important;
+}
+```
+
+**Customization:** Change the header `background`, divider, and `box-shadow`. The `.surface-header` class was verified in both panels.
+
+---
+
+---
+
+### Search & Bookmarks Title and Description
+
+Recolor the panel heading and its supporting description. ![Search & Bookmarks Title and Description preview](./images/panel-search-and-bookmarks-title-and-description.png)
+
+```css
+:is([data-lab="search-panel"], [data-lab="bookmarks-panel"]) .surface-header h3 {
+  color: #ffe3f4 !important;
+  text-shadow: 0 0 8px #ff7fc866 !important;
+}
+:is([data-lab="search-panel"], [data-lab="bookmarks-panel"]) .surface-header p {
+  color: #d7c5e7 !important;
+}
+```
+
+**Customization:** `h3` targets the title; `p` targets the supporting description. Both were verified.
+
+---
+
+---
+
+### Search & Bookmarks Header Icon Glow
+
+Resize and glow the pixel-art icons in both panel headers.
+
+```css
+:is([data-lab="search-panel"], [data-lab="bookmarks-panel"]) .surface-header img {
+  width: 28px !important;
+  height: 28px !important;
+  object-fit: contain !important;
+  image-rendering: pixelated !important;
+  filter: drop-shadow(0 0 5px #ff79ca) !important;
+  transition: transform .2s ease !important;
+}
+@media (hover: hover) {
+  :is([data-lab="search-panel"], [data-lab="bookmarks-panel"]) .surface-header img:hover {
+    transform: scale(1.2) !important;
+  }
+}
+```
+
+**Tip:** This glow affects the header icons, not the search-field magnifying glass or empty-state illustration.
+
+---
+
+---
+
+### Custom Search & Bookmarks Header Icons
+
+Replace the large artwork beside the **Search chat** and **Bookmarks** titles. These are the **panel header icons**, not the smaller icons inside the Messages and Marked tabs. ![Search and Bookmarks header icons before and after replacement](./images/panel-custom-bookmarks-tab-icons.png)
+
+```css
+/* Search panel — header icon artwork */
+[data-lab="search-panel"] .surface-header img {
+  content: url("/api/images/6ac897301a947bf5aa43d1c8") !important;
+  object-fit: contain !important;
+  filter: none !important;
+}
+
+/* Bookmarks panel — header icon artwork */
+[data-lab="bookmarks-panel"] .surface-header img {
+  content: url("/api/images/6ac897231a947bf5aa43cf04") !important;
+  object-fit: contain !important;
+  filter: none !important;
+}
+```
+
+**Customization:** Replace the sample image URLs with your own artwork. The `.surface-header img` selector changes panel header icons; [Custom Bookmarks Tab Icons](#custom-bookmarks-tab-icons) changes the Messages and Marked tab images. For glow effects, see [Search & Bookmarks Header Icon Glow](#search--bookmarks-header-icon-glow).
+
+---
+
+---
+
+### Custom Search Bar Colors
+
+Style the search field, typed text, cursor, placeholder, and search icon. ![Custom Search Bar Colors preview](./images/panel-custom-search-bar-colors.png)
+
+```css
+.header-search:has(
+  .header-search-input:is(
+    [aria-label="Search this chat"],
+    [aria-label="Search marked text"]
+  )
+) {
+  background: #202a3b !important;
+  border: 1px solid #79d9ef !important;
+  border-radius: 10px !important;
+  box-shadow: inset 0 1px 5px #0005 !important;
+}
+.header-search-input:is(
+    [aria-label="Search this chat"],
+    [aria-label="Search marked text"]
+  ) {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+  color: #f1eaff !important;
+  caret-color: #ff8dd3 !important;
+}
+.header-search-input:is(
+    [aria-label="Search this chat"],
+    [aria-label="Search marked text"]
+  )::placeholder {
+  color: #a9bdd5 !important;
+  opacity: 1 !important;
+}
+.header-search:has(
+  .header-search-input:is(
+    [aria-label="Search this chat"],
+    [aria-label="Search marked text"]
+  )
+) > i.fa-search {
+  color: #82e5ed !important;
+  filter: drop-shadow(0 0 5px #82e5ed) !important;
+}
+```
+
+**Customization:** The outer `.header-search` wrapper controls the full visible box, including the icon area. The input controls typed text, caret, and placeholder; `> i.fa-search` controls the magnifying glass. Both search variants were verified by their distinct ARIA labels. For placeholder styling, the tested `::placeholder` selector also supports `font-style: italic` and `letter-spacing: .4px` alongside `color` and `opacity`; add those declarations if desired.
+
+---
+
+---
+
+### Search Bar Focus Effect
+
+Highlight the search field when someone clicks or tabs into it.
+
+```css
+.header-search:has(
+  .header-search-input:is(
+    [aria-label="Search this chat"],
+    [aria-label="Search marked text"]
+  ):focus-visible
+) {
+  outline: 2px solid #ff92d5 !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 10px #ff92d555 !important;
+}
+```
+
+**Customization:** Keyboard focus on either input highlights the entire outer search box. Verified in both Search and Bookmarks.
+
+---
+
+---
+
+### Bookmarks Tab Bar Background
+
+Customize the container behind the Messages and Marks tabs.
+
+```css
+[data-lab="bookmarks-panel"] [role="tablist"] {
+  background: #121b2c !important;
+  border: 1px solid #6a83a6 !important;
+  border-radius: 12px !important;
+}
+```
+
+**Customization:**
+- `background` changes the tab-bar backdrop.
+- `border` defines its outline.
+
+---
+
+---
+
+### Bookmarks Tab Colors
+
+
+![Bookmarks Messages and Marked tab border and background comparison](./images/bookmarks-tab-border-and-background.png)
+Set the normal appearance of the Messages and Marks tabs.
+
+```css
+[data-lab="bookmarks-panel"] [role="tab"] {
+  color: #b5c4db !important;
+  border: 1px solid transparent !important;
+  border-radius: 9px !important;
+  background: transparent !important;
+}
+```
+
+**Customization:**
+- `color` changes the tab labels.
+- `background` controls the unselected fill.
+- `[role="tab"]` applies the same rule to both Messages and Marked tabs.
+
+---
+
+---
+
+### Selected Bookmarks Tab Styling
+
+
+![Selected Bookmarks tab highlight comparison](./images/bookmarks-selected-tab-highlight.png)
+Give the active Messages or Marks tab its own color, border, and glow.
+
+```css
+[data-lab="bookmarks-panel"] [role="tab"][aria-selected="true"] {
+  color: #fff0f8 !important;
+  background: #563454 !important;
+  border-color: #ff8dc8 !important;
+  box-shadow: inset 0 1px 0 #ffffff24, 0 0 9px #ff8dc844 !important;
+}
+```
+
+**Customization:**
+- `[aria-selected="true"]` targets whichever tab is currently active.
+- `background` and `border-color` identify the active tab.
+- `box-shadow` adds a subtle highlight and glow.
+
+---
+
+---
+
+### Bookmarks Tab Hover and Keyboard Focus
+
+Add separate visual feedback for mouse hover and keyboard navigation.
+
+```css
+@media (hover: hover) {
+  [data-lab="bookmarks-panel"] [role="tab"]:hover {
+    color: #fff0f8 !important;
+    border-color: #a4a4eb !important;
+  }
+}
+[data-lab="bookmarks-panel"] [role="tab"]:focus-visible {
+  outline: 2px solid #8be8ed !important;
+  outline-offset: 2px !important;
+}
+```
+
+**Customization:**
+- `@media (hover: hover)` limits hover styling to hover-capable devices.
+- `:focus-visible` highlights keyboard focus.
+- `outline-offset` adds breathing room around the focus outline.
+
+---
+
+---
+
+### Bookmarks Tab Counters
+
+Style the number badges independently of their tabs. The selected counter follows the active tab.
+
+```css
+[data-lab="bookmarks-panel"] [role="tab"] > span:last-child {
+  background: #211b31 !important;
+  color: #ff79ca !important;
+  border: 1px solid #8deaff !important;
+  border-radius: 999px !important;
+  box-shadow: 0 0 8px #ff79ca66 !important;
+}
+[data-lab="bookmarks-panel"] [role="tab"][aria-selected="true"] > span:last-child {
+  background: #ff79ca !important;
+  color: #211b31 !important;
+  border-color: #ff79ca !important;
+  box-shadow: 0 0 10px #ff79ca88 !important;
+}
+```
+
+**Tip:** The final direct `span` inside each tab is its counter.
+
+---
+
+---
+
+### Bookmarks Empty-State Text
+
+Recolor the message shown when the Bookmarks list has no saved entries.
+
+```css
+#lab-bookmarks-list > div:has(> p + p) {
+  background: #171b2b !important;
+  border: 2px dashed #8deaff !important;
+  border-radius: 12px !important;
+  padding: 16px !important;
+}
+#lab-bookmarks-list > div:has(> p + p) > p:first-of-type {
+  color: #f3dcf4 !important;
+  font-weight: 800 !important;
+}
+#lab-bookmarks-list > div:has(> p + p) > p:nth-of-type(2) {
+  color: #b8c5dc !important;
+}
+```
+
+**Customization:** These selectors style the empty-state content box and its two text lines rather than the whole panel. They depend on the empty-state HTML structure, so check them if the interface changes.
+
+---
+
+---
+
+### Custom Search Empty-State Illustration
+
+Replace the Search view’s default Bary illustration with uploaded artwork. ![Custom Search Empty-State Illustration preview](./images/panel-custom-search-empty-state-illustration.png)
+
+```css
+[data-lab="bookmarks-panel"] img[src*="bary_search.webp"] {
+  content: url("/api/images/6ac899a700c414e8e2a21d73") !important;
+  width: 112px !important;
+  height: 138px !important;
+  object-fit: contain !important;
+  filter: none !important;
+}
+```
+
+**Customization:**
+- `img[src*="bary_search.webp"]` selects the Search illustration.
+- `content: url(...)` replaces the image.
+- `width` and `height` control its display box.
+- `object-fit: contain` preserves the replacement proportions.
+
+**Tip:** The Search empty-state illustration lives inside the shared `bookmarks-panel` wrapper. Its native image is `/img/bary/bary_search.webp`.
+
+---
+
+---
+
+### Search & Bookmarks Close Button
+
+
+![Search and Bookmarks close button styling comparison](./images/panel-search-and-bookmarks-close-button.png)
+Recolor the panel’s close button and add a hover glow.
+
+```css
+:is([data-lab="search-panel"], [data-lab="bookmarks-panel"]) .surface-header button[aria-label="Close bookmarks"] {
+  background: #393049 !important;
+  color: #ffd8ee !important;
+  border: 1px solid #d58dcb !important;
+  border-radius: 8px !important;
+}
+@media (hover: hover) {
+  :is([data-lab="search-panel"], [data-lab="bookmarks-panel"]) .surface-header button[aria-label="Close bookmarks"]:hover {
+    background: #583a62 !important;
+    box-shadow: 0 0 10px #ff89d266 !important;
+  }
+}
+```
+
+**Customization:** Both Search and Bookmarks currently use `Close bookmarks` as the close button’s ARIA label.
+
+---
+
+---
+
+### Search & Bookmarks Footer Styling
+
+Change the footer background, text, and top border. ![Search & Bookmarks Footer Styling preview](./images/panel-search-and-bookmarks-footer-styling.png)
+
+```css
+:is([data-lab="search-panel"], [data-lab="bookmarks-panel"]) .surface-footer {
+  background: #29243e !important;
+  border-top: 1px solid #74d9f0 !important;
+  box-shadow: 0 -4px 12px #ff89d244 !important;
+}
+:is([data-lab="search-panel"], [data-lab="bookmarks-panel"]) .surface-footer > span {
+  color: #d4c9e9 !important;
+  font-style: italic !important;
+  text-shadow: 0 0 6px #8deaff66 !important;
+}
+```
+
+**Customization:** `.surface-footer` styles the strip; its direct `span` styles the message text. Change or remove `font-style` and `text-shadow` to control the optional italic/glow treatment. Tested across the displayed footer variants.
+
+---
+
+---
+
+### Custom Copy and Download Icons
+
+Replace the action images used to copy or download marked passages. ![Custom Copy and Download Icons preview](./images/bookmarks-copy-download-icons.png)
+
+```css
+[data-lab="bookmarks-panel"]
+button[aria-label="Copy marked passages"]
+img[src="/img/pixel/copy.webp"] {
+  content: url("/api/images/6ac8970875e1eb8796dcfc4f") !important;
+  object-fit: contain !important;
+  filter: none !important;
+}
+
+[data-lab="bookmarks-panel"]
+button[aria-label="Download marked passages"]
+img[src="/img/pixel/download.webp"] {
+  content: url("/api/images/6ac896f900c414e8e2a1bffd") !important;
+  object-fit: contain !important;
+  filter: none !important;
+  transform: none !important;
+}
+```
+
+**Customization:**
+- `Copy marked passages` targets the Copy control.
+- `Download marked passages` targets the Download control.
+- `content: url(...)` selects the replacement artwork.
+- `transform: none` prevents the Download image from inheriting an unwanted transform.
+
+---
+
+---
+
+### Custom Search & Bookmarks Background Images
+
+
+![Search and Bookmarks custom background image example](./images/search-bookmarks-image-background.png)
+Optionally use uploaded artwork beneath a translucent color overlay instead of a solid panel background. 
+
+```css
+/* Optional variation: use instead of the solid panel background */
+[data-lab="bookmarks-panel"] {
+  background: linear-gradient(#171b2bcc, #171b2bcc),
+              url("/api/images/YOUR_IMAGE_ID")
+              center / cover no-repeat !important;
+  border-left: 2px solid #73d9ff !important;
+}
+
+/* Optional: allow the image to show through the list area */
+[data-lab="bookmarks-panel"] #lab-bookmarks-list {
+  background: transparent !important;
+}
+```
+
+**Customization:**
+- `YOUR_IMAGE_ID` is the reader’s own uploaded image.
+- `linear-gradient(...)` adds a translucent readability overlay.
+- `cover` fills the panel and may crop the artwork.
+- `background: transparent` allows the list area to reveal the panel artwork.
+
+**Optional / not yet tested:** The header and footer have independent opaque backgrounds in the source theme. Keep them solid for readability or customize them separately. This example is a proposed image-background variation, not a verified finished effect.
+
+---
+
+---
+
+### Custom Bookmarks Tab Icons
+
+The original Messages icon is `/img/pixel/lab-bookmark.webp`; the Marked icon is `/img/pixel/lab-mark.webp`. Each tab can use different replacement artwork.
+
+Replace the small artwork inside the **Messages** and **Marked** tabs in the Bookmarks panel. The **Marked** icon is the pencil beside the MARKED label—not the Copy or Download controls. The screenshot for the separate [header icon replacement tutorial](#custom-search--bookmarks-header-icons) does **not** show these tab icons.
+
+```css
+/* Messages tab icon */
+[data-lab="bookmarks-panel"]
+#lab-bookmarks-tab-messages img {
+  content: url("/api/images/YOUR_MESSAGES_ICON_ID") !important;
+  object-fit: contain !important;
+  filter: none !important;
+}
+
+/* Marked tab icon (pencil beside MARKED) */
+[data-lab="bookmarks-panel"]
+#lab-bookmarks-tab-marks img {
+  content: url("/api/images/YOUR_MARKED_ICON_ID") !important;
+  object-fit: contain !important;
+  filter: none !important;
+}
+```
+
+**Customization:**
+- `YOUR_MESSAGES_ICON_ID` replaces the Messages tab artwork.
+- `YOUR_MARKED_ICON_ID` replaces the Marked tab artwork.
+- The tab IDs target each button independently (`#lab-bookmarks-tab-messages` and `#lab-bookmarks-tab-marks`); `content` supplies your replacement artwork.
+- These examples use [LoreBary-uploaded images](#how-to-import-css-images-in-lorebary). You can also use [Base64 image data](https://github.com/Caddel001/LoreBary-Theme-Snippets/blob/main/LoreBary%20CSS%20Quick%20Guide.md#converting-images-to-base64).
+- Tab colors, counters, hover, and selected states have their own tutorials above. Copy and Download icon replacements are covered in [Custom Copy and Download Icons](#custom-copy-and-download-icons).
+
+## Laboratory Selector and Native Asset Reference
+
+The following tables provide a quick reference to LoreBary’s native image paths and Laboratory UI selectors. The first lists built-in image assets; the second identifies interface elements and CSS targets for customization. The numbered UI groups organize the selector table by interface area.
+
+> **Compatibility note:** Native asset paths and selectors may change between LoreBary versions. Inspect the current interface and test a selector before relying on it in a published theme.
+
+### Native Image Asset Paths
+
+| **Image / function** | **Native asset path** | **File type** | **Area** |
+| --- | --- | --- | --- |
+| Settings gear | `/img/Icons/Icon_Settings.webp` | WEBP | Interface / inspect context |
+| Pixel plate artwork | `/img/Icons/btn_pixel_plate_24.webp` | WEBP | Interface / inspect context |
+| Empty icon placeholder | `/img/Icons/icon_acon_emtpy.webp` | WEBP | Interface / inspect context |
+| Regenerate | `/img/Icons/icon_regenerate.webp` | WEBP | Interface / inspect context |
+| Send | `/img/Icons/icon_send.webp` | WEBP | Interface / inspect context |
+| Analytics | `/img/pixel/analytics.webp` | WEBP | Interface / inspect context |
+| Copy | `/img/pixel/copy.webp` | WEBP | Interface / inspect context |
+| Dialogue | `/img/pixel/dialogue.webp` | WEBP | Interface / inspect context |
+| Download | `/img/pixel/download.webp` | WEBP | Interface / inspect context |
+| Expression upload | `/img/pixel/expression-upload.webp` | WEBP | Interface / inspect context |
+| Fork / branch | `/img/pixel/fork-v1.webp` | WEBP | Interface / inspect context |
+| Headphones | `/img/pixel/headphones.webp` | WEBP | Interface / inspect context |
+| Auto chat | `/img/pixel/lab-autochat.webp` | WEBP | Interface / inspect context |
+| Bookmarks → Messages tab | `/img/pixel/lab-bookmark.webp` | WEBP | Bookmarks |
+| Call | `/img/pixel/lab-call.webp` | WEBP | Interface / inspect context |
+| Dice roll | `/img/pixel/lab-d20.webp` | WEBP | Interface / inspect context |
+| Director | `/img/pixel/lab-director.webp` | WEBP | Interface / inspect context |
+| Expressions | `/img/pixel/lab-expressions.webp` | WEBP | Interface / inspect context |
+| Fullscreen | `/img/pixel/lab-fullscreen.webp` | WEBP | Interface / inspect context |
+| Scene gallery | `/img/pixel/lab-gallery.webp` | WEBP | Interface / inspect context |
+| Guidance | `/img/pixel/lab-guidance.webp` | WEBP | Interface / inspect context |
+| HTML | `/img/pixel/lab-html.webp` | WEBP | Interface / inspect context |
+| Bookmarks → Marked tab | `/img/pixel/lab-mark.webp` | WEBP | Bookmarks |
+| More actions | `/img/pixel/lab-more.webp` | WEBP | Interface / inspect context |
+| Review | `/img/pixel/lab-review.svg` | SVG | Interface / inspect context |
+| Search chat | `/img/pixel/lab-search.webp` | WEBP | Interface / inspect context |
+| Time skip | `/img/pixel/lab-timeskip.webp` | WEBP | Interface / inspect context |
+| Web search | `/img/pixel/lab-web-search.webp` | WEBP | Interface / inspect context |
+| Write menu | `/img/pixel/lab-write.webp` | WEBP | Interface / inspect context |
+| Pencil / edit | `/img/pixel/pencil.webp` | WEBP | Interface / inspect context |
+| Scene talk more | `/img/pixel/scene-talk-more.webp` | WEBP | Scene Notes / scene |
+| Trash / delete | `/img/pixel/trash.webp` | WEBP | Interface / inspect context |
+| Down arrow | `/img/sketch/arrow_down.webp` | WEBP | Interface / inspect context |
+| Bary — empty Search panel | `/img/bary/bary_search.webp` | WEBP | Search panel |
+| Scene Notes — Stay real | `/img/pixel/scene-stay-real.webp` | WEBP | Scene Notes |
+| Scene Notes — Living world | `/img/pixel/scene-living-world.webp` | WEBP | Scene Notes |
+| Scene Notes — Your move | `/img/pixel/scene-your-move.webp` | WEBP | Scene Notes |
+| Scene Notes — Slow burn | `/img/pixel/scene-slow-burn.webp` | WEBP | Scene Notes |
+| Scene Notes — Romance | `/img/pixel/scene-romance.webp` | WEBP | Scene Notes |
+| Scene Notes — Sex (asset named intimacy) | `/img/pixel/scene-intimacy.webp` | WEBP | Scene Notes |
+| Scene Notes — Kink | `/img/pixel/scene-kink.webp` | WEBP | Scene Notes |
+| Write menu — selected indicator | `/img/pixel/check.webp` | WEBP | Write menu |
+| Write menu — submenu arrow | `/img/pixel/arrow-right-v2.webp` | WEBP | Write menu |
+| Marked passage — Share as quote | `/img/Icons/feed_action_share.webp` | WEBP | Bookmarks |
+| Mobile — Regenerate | `/img/pixel/msg-regenerate.webp` | WEBP | Mobile message actions |
+| Mobile — Regenerate options badge | `/img/pixel/settings.webp` | WEBP | Mobile message actions |
+| Composer — chat tools | `/img/pixel/box.webp` | WEBP | Composer |
+| Composer — Send | `/img/pixel/lab-send.webp` | WEBP | Composer |
+
+### UI Selector and Customization Reference
+
+| **UI area**                        | **Individual asset**           | **CSS selector / target**                                             | **What can change**                                              |
+| ---------------------------------- | ------------------------------ | --------------------------------------------------------------------- | ---------------------------------------------------------------- |
+| 01 Header & navigation             | Back button                    | `[data-lab="back"]` | Icon replacement or tint; button surface, glow, hover, animation |
+| 01 Header & navigation             | Header shell                   | `[data-lab="header"]` | Icon replacement or tint; button surface, glow, hover, animation |
+| 01 Header & navigation             | Chat title                     | `[data-lab="header-title"]` | Icon replacement or tint; button surface, glow, hover, animation |
+| 01 Header & navigation             | Voice call                     | `[data-lab="header-action"][aria-label="Voice call"]` | Icon replacement or tint; button surface, glow, hover, animation |
+| 01 Header & navigation             | Fullscreen                     | `[data-lab="header-action"][aria-label*="fullscreen" i]` | Icon replacement or tint; button surface, glow, hover, animation |
+| 01 Header & navigation             | Statistics & export            | `[data-lab="header-action"][aria-label="Chat statistics & export"]` | Icon replacement or tint; button surface, glow, hover, animation |
+| 01 Header & navigation             | Search                         | `[data-lab="header-action"][aria-label="Search this chat"]` | Icon replacement or tint; button surface, glow, hover, animation |
+| 01 Header & navigation             | Scene gallery                  | `[data-lab="header-action"][aria-label="Scene gallery"]` | Icon replacement or tint; button surface, glow, hover, animation |
+| 01 Header & navigation             | Bookmarks                      | `[data-lab="header-action"][aria-label="Message bookmarks"]` | Icon replacement or tint; button surface, glow, hover, animation |
+| 01 Header & navigation             | Menu icon                      | `img[data-lab="menu"]` | Icon replacement or tint; button surface, glow, hover, animation |
+| 01 Header & navigation             | Scroll down                    | `[data-lab="scroll-down"]` | Icon replacement or tint; button surface, glow, hover, animation |
+| 02 Messages & bubbles              | Chat message                   | `[data-lab="message"]` | Colors, layout, typography, spacing, transparency, effects       |
+| 02 Messages & bubbles              | Bubble shell                   | `[data-lab="bubble"]` | Colors, layout, typography, spacing, transparency, effects       |
+| 02 Messages & bubbles              | User bubble                    | `[data-lab-role="user"] [data-lab="bubble"]` | Colors, layout, typography, spacing, transparency, effects       |
+| 02 Messages & bubbles              | Character bubble               | `[data-lab-role="character"] [data-lab="bubble"]` | Colors, layout, typography, spacing, transparency, effects       |
+| 02 Messages & bubbles              | Avatar                         | `[data-lab="avatar"]` | Colors, layout, typography, spacing, transparency, effects       |
+| 02 Messages & bubbles              | User avatar                    | `[data-lab-role="user"] [data-lab="avatar"]` | Colors, layout, typography, spacing, transparency, effects       |
+| 02 Messages & bubbles              | Character avatar               | `[data-lab-role="character"] [data-lab="avatar"]` | Colors, layout, typography, spacing, transparency, effects       |
+| 02 Messages & bubbles              | Portrait                       | `[data-lab="portrait"]` | Colors, layout, typography, spacing, transparency, effects       |
+| 02 Messages & bubbles              | Message text                   | `[data-lab="text"]` | Colors, layout, typography, spacing, transparency, effects       |
+| 02 Messages & bubbles              | Timestamp                      | `[data-lab="time"]` | Colors, layout, typography, spacing, transparency, effects       |
+| 02 Messages & bubbles              | Rating                         | `[data-lab="rating"]` | Colors, layout, typography, spacing, transparency, effects       |
+| 02 Messages & bubbles              | Previous version               | `[data-lab="swipe"][aria-label="Previous version"]` | Colors, layout, typography, spacing, transparency, effects       |
+| 02 Messages & bubbles              | Next version                   | `[data-lab="swipe"][aria-label="Next version"]` | Colors, layout, typography, spacing, transparency, effects       |
+| 02 Messages & bubbles              | Message footer                 | `[data-lab="message-footer"]` | Colors, layout, typography, spacing, transparency, effects       |
+| 03 Thinking                        | Thinking panel                 | `[data-lab="thoughts"]` | Background, text, icons, hover                                   |
+| 03 Thinking                        | Thinking toggle                | `[data-lab="thoughts-toggle"]` | Background, text, icons, hover                                   |
+| 03 Thinking                        | Thinking text                  | `[data-lab="thoughts-text"]` | Background, text, icons, hover                                   |
+| 04 Message actions                 | Bookmark message               | `[data-lab="action"][aria-label="Bookmark message"]` | Icon replacement, tint, background, hover                        |
+| 04 Message actions                 | Edit message                   | `[data-lab="action"][aria-label="Edit message"]` | Icon replacement, tint, background, hover                        |
+| 04 Message actions                 | Delete message                 | `[data-lab="action"][aria-label="Delete message"]` | Icon replacement, tint, background, hover                        |
+| 04 Message actions                 | Branch message                 | `[data-lab="action"][aria-label="Branch message"]` | Icon replacement, tint, background, hover                        |
+| 04 Message actions                 | Regenerate message             | `[data-lab="action"][aria-label="Regenerate message"]` | Icon replacement, tint, background, hover                        |
+| 04 Message actions                 | More actions                   | `[data-lab="action"][aria-label="More actions"]` | Icon replacement, tint, background, hover                        |
+| 04 Message actions                 | All message actions            | `[data-lab="action"]` | Color, background, border, shadow, size, hover/focus             |
+| 04 Message actions                 | More actions menu              | `[role="menu"][aria-label="More actions"]` | Surface, items, hover                                            |
+| 04 Message actions                 | More actions items             | `[role="menu"][aria-label="More actions"] [role="menuitem"]` | Text, hover, background                                          |
+| 05 Composer & toolbar              | Footer shell                   | `[data-lab="footer"]` | Button icon, color, background, border, glow, selected state     |
+| 05 Composer & toolbar              | Textbox                        | `[data-lab="textbox"]` | Button icon, color, background, border, glow, selected state     |
+| 05 Composer & toolbar              | Composer action group          | `[data-lab="composer-actions"]` | Button icon, color, background, border, glow, selected state     |
+| 05 Composer & toolbar              | Write for Me                   | `[data-lab="write"]` | Button icon, color, background, border, glow, selected state     |
+| 05 Composer & toolbar              | Scene Notes toggle             | `[data-lab="guidance-toggle"]` | Button icon, color, background, border, glow, selected state     |
+| 05 Composer & toolbar              | Attach image                   | `[data-lab="attach-image"]` | Button icon, color, background, border, glow, selected state     |
+| 05 Composer & toolbar              | Send / talk                    | `[data-lab="send"]` | Button icon, color, background, border, glow, selected state     |
+| 05 Composer & toolbar              | Toolbar shell                  | `[data-lab="toolbar"]` | Button icon, color, background, border, glow, selected state     |
+| 05 Composer & toolbar              | Time skip                      | `[data-lab="time-skip"]` | Button icon, color, background, border, glow, selected state     |
+| 05 Composer & toolbar              | Dice roll                      | `[data-lab="dice-roll"]` | Button icon, color, background, border, glow, selected state     |
+| 05 Composer & toolbar              | Auto conversation              | `[data-lab="auto-mode"]` | Button icon, color, background, border, glow, selected state     |
+| 05 Composer & toolbar              | Director Pass                  | `[data-lab="director-pass"]` | Button icon, color, background, border, glow, selected state     |
+| 05 Composer & toolbar              | HTML Mode                      | `[data-lab="html-mode"]` | Button icon, color, background, border, glow, selected state     |
+| 05 Composer & toolbar              | Visual Expressions             | `[data-lab="visual-expressions"]` | Button icon, color, background, border, glow, selected state     |
+| 05 Composer & toolbar              | Web Search                     | `[data-lab="web-search"]` | Button icon, color, background, border, glow, selected state     |
+| 05 Composer & toolbar              | Polish replies                 | `[data-lab="review-mode"]` | Button icon, color, background, border, glow, selected state     |
+| 05 Composer & toolbar              | Scene music                    | `[data-lab="scene-music"]` | Button icon, color, background, border, glow, selected state     |
+| 05 Composer & toolbar              | Reply choices                  | `[data-lab="reply-options"]` | Button icon, color, background, border, glow, selected state     |
+| 06 Write for Me                    | Write menu                     | `[data-lab="write-menu"]` | Text, icon, background, border, hover, focus                     |
+| 06 Write for Me                    | Write choice                   | `[data-lab="write-option"]` | Text, icon, background, border, hover, focus                     |
+| 06 Write for Me                    | Selected choice                | `[data-lab="write-option"][aria-checked="true"]` | Text, icon, background, border, hover, focus                     |
+| 06 Write for Me                    | Unselected choice              | `[data-lab="write-option"][aria-checked="false"]` | Text, icon, background, border, hover, focus                     |
+| 06 Write for Me                    | Choice hover                   | `[data-lab="write-option"]:hover` | Text, icon, background, border, hover, focus                     |
+| 06 Write for Me                    | Choice focus                   | `[data-lab="write-option"]:focus-visible` | Text, icon, background, border, hover, focus                     |
+| 06 Write for Me                    | Enhance instruction            | `[data-lab="write-menu"] [role="menuitem"]` | Text, icon, background, border, hover, focus                     |
+| 07 Search & bookmarks              | Search panel                   | `[data-lab="search-panel"]` | Text, surface, icon, background, hover, focus                    |
+| 07 Search & bookmarks              | Bookmarks panel                | `[data-lab="bookmarks-panel"]` | Text, surface, icon, background, hover, focus                    |
+| 07 Search & bookmarks              | Panel header                   | `[data-lab="search-panel"] .surface-header` | Text, surface, icon, background, hover, focus                    |
+| 07 Search & bookmarks              | Panel title                    | `[data-lab="search-panel"] .surface-header h3` | Text, surface, icon, background, hover, focus                    |
+| 07 Search & bookmarks              | Panel description              | `[data-lab="search-panel"] .surface-header p` | Text, surface, icon, background, hover, focus                    |
+| 07 Search & bookmarks              | Search field                   | `[data-lab="search-panel"] .header-search-input` | Text, surface, icon, background, hover, focus                    |
+| 07 Search & bookmarks              | Search field icon              | `[data-lab="search-panel"] .header-search > i.fa-search` | Text, surface, icon, background, hover, focus                    |
+| 07 Search & bookmarks              | Search field focus             | `[data-lab="search-panel"] .header-search:focus-within` | Text, surface, icon, background, hover, focus                    |
+| 07 Search & bookmarks              | Bookmarks tab strip            | `[data-lab="bookmarks-panel"] [role="tablist"]` | Text, surface, icon, background, hover, focus                    |
+| 07 Search & bookmarks              | Bookmarks tab                  | `[data-lab="bookmarks-panel"] [role="tab"]` | Text, surface, icon, background, hover, focus                    |
+| 07 Search & bookmarks              | Selected tab                   | `[data-lab="bookmarks-panel"] [role="tab"][aria-selected="true"]` | Text, surface, icon, background, hover, focus                    |
+| 07 Search & bookmarks              | Unselected tab                 | `[data-lab="bookmarks-panel"] [role="tab"][aria-selected="false"]` | Text, surface, icon, background, hover, focus                    |
+| 07 Search & bookmarks              | Tab hover                      | `[data-lab="bookmarks-panel"] [role="tab"]:hover` | Text, surface, icon, background, hover, focus                    |
+| 07 Search & bookmarks              | Tab keyboard focus             | `[data-lab="bookmarks-panel"] [role="tab"]:focus-visible` | Text, surface, icon, background, hover, focus                    |
+| 07 Search & bookmarks              | Bookmarks empty state          | `#lab-bookmarks-list > div:has(> p + p)` | Text, surface, icon, background, hover, focus                    |
+| 07 Search & bookmarks              | Panel footer                   | `[data-lab="bookmarks-panel"] .surface-footer` | Text, surface, icon, background, hover, focus                    |
+| 07 Search & bookmarks              | Search panel footer            | `[data-lab="search-panel"] .surface-footer` | Text, surface, icon, background, hover, focus                    |
+| 07 Search & bookmarks              | Search header image            | `[data-lab="search-panel"] .surface-header img` | Text, surface, icon, background, hover, focus                    |
+| 07 Search & bookmarks              | Bookmarks header image         | `[data-lab="bookmarks-panel"] .surface-header img` | Text, surface, icon, background, hover, focus                    |
+| 08 Scene Notes                     | Scene Notes window             | `[data-lab="input"] > div:has(#lab-scene-notes)` | Colors, border, icon, focus, surface                             |
+| 08 Scene Notes                     | Scene Notes textarea           | `#lab-scene-notes` | Colors, border, icon, focus, surface                             |
+| 08 Scene Notes                     | Scene Notes label              | `[for="lab-scene-notes"]` | Colors, border, icon, focus, surface                             |
+| 08 Scene Notes                     | Open saved templates           | `button[aria-label="Open saved scene note templates"]` | Colors, border, icon, focus, surface                             |
+| 08 Scene Notes                     | Scene Notes focus              | `#lab-scene-notes:focus` | Colors, border, icon, focus, surface                             |
+| 09 Visual Expressions              | Expression portrait            | `[data-lab="expression"]` | Size, position, glow, icon, colors                               |
+| 09 Visual Expressions              | Expression toggle              | `[data-lab="visual-expressions"]` | Size, position, glow, icon, colors                               |
+| 09 Visual Expressions              | Expression Studio dialog       | `[role="dialog"][aria-label="Expression Studio"]` | Size, position, glow, icon, colors                               |
+| 10 Settings panels                 | Time skip dialog               | `[data-lab="time-skip-menu"]` | Background, text, borders, inputs, states                        |
+| 10 Settings panels                 | Time skip details              | `[data-lab="time-skip-details"]` | Background, text, borders, inputs, states                        |
+| 10 Settings panels                 | Time skip submit               | `[data-lab="time-skip-submit"]` | Background, text, borders, inputs, states                        |
+| 10 Settings panels                 | Dice roll dialog               | `[data-lab="dice-roll-menu"]` | Background, text, borders, inputs, states                        |
+| 10 Settings panels                 | HTML settings                  | `[data-lab="html-settings"]` | Background, text, borders, inputs, states                        |
+| 10 Settings panels                 | Polish settings                | `[data-lab="review-settings"]` | Background, text, borders, inputs, states                        |
+| 10 Settings panels                 | Music settings                 | `[data-lab="scene-music-settings"]` | Background, text, borders, inputs, states                        |
+| 10 Settings panels                 | Reply settings                 | `[data-lab="reply-settings"]` | Background, text, borders, inputs, states                        |
+| 10 Settings panels                 | Dropdown list                  | `[role="listbox"]` | Text, background, selected state                                 |
+| 10 Settings panels                 | Dropdown option                | `[role="option"]` | Text, background, selected state                                 |
+| 10 Settings panels                 | Selected dropdown option       | `[role="option"][aria-selected="true"]` | Text, background, selected state                                 |
+| 11 Additional documented selectors | Bold                           | `[data-lab="bold"]` | Inspect matching tutorial for supported CSS properties           |
+| 11 Additional documented selectors | Bubble Tail                    | `[data-lab="bubble-tail"]` | Inspect matching tutorial for supported CSS properties           |
+| 11 Additional documented selectors | Dialog                         | `[data-lab="dialog"]` | Inspect matching tutorial for supported CSS properties           |
+| 11 Additional documented selectors | Draft Versions                 | `[data-lab="draft-versions"]` | Inspect matching tutorial for supported CSS properties           |
+| 11 Additional documented selectors | Expression Manage              | `[data-lab="expression-manage"]` | Inspect matching tutorial for supported CSS properties           |
+| 11 Additional documented selectors | Expression Toggle              | `[data-lab="expression-toggle"]` | Inspect matching tutorial for supported CSS properties           |
+| 11 Additional documented selectors | Heading                        | `[data-lab="heading"]` | Inspect matching tutorial for supported CSS properties           |
+| 11 Additional documented selectors | Italic                         | `[data-lab="italic"]` | Inspect matching tutorial for supported CSS properties           |
+| 11 Additional documented selectors | List Item                      | `[data-lab="list-item"]` | Inspect matching tutorial for supported CSS properties           |
+| 11 Additional documented selectors | Message Body                   | `[data-lab="message-body"]` | Inspect matching tutorial for supported CSS properties           |
+| 11 Additional documented selectors | Rule                           | `[data-lab="rule"]` | Inspect matching tutorial for supported CSS properties           |
+| 11 Additional documented selectors | Stop                           | `[data-lab="stop"]` | Inspect matching tutorial for supported CSS properties           |
+| 11 Additional documented selectors | Toolbar Toggle                 | `[data-lab="toolbar-toggle"]` | Inspect matching tutorial for supported CSS properties           |
+| 01 Header & navigation             | Voice call icon image          | `[data-lab="header-action"][aria-label="Voice call"] img` | content: url(/api/images/...) or data URL; filter, transform     |
+| 01 Header & navigation             | Fullscreen icon image          | `[data-lab="header-action"][aria-label*="fullscreen" i] img` | content: url(/api/images/...) or data URL; filter, transform     |
+| 01 Header & navigation             | Statistics & export icon image | `[data-lab="header-action"][aria-label="Chat statistics & export"] img` | content: url(/api/images/...) or data URL; filter, transform     |
+| 01 Header & navigation             | Search icon image              | `[data-lab="header-action"][aria-label="Search this chat"] img` | content: url(/api/images/...) or data URL; filter, transform     |
+| 01 Header & navigation             | Gallery icon image             | `[data-lab="header-action"][aria-label="Scene gallery"] img` | content: url(/api/images/...) or data URL; filter, transform     |
+| 01 Header & navigation             | Bookmarks icon image           | `[data-lab="header-action"][aria-label="Message bookmarks"] img` | content: url(/api/images/...) or data URL; filter, transform     |
+| 05 Composer & toolbar              | Send icon image                | `[data-lab="send"] img` | Replace artwork via content:url(...); tint, scale, glow          |
+| 05 Composer & toolbar              | Write icon image               | `[data-lab="write"] img` | Replace artwork via content:url(...); tint, scale, glow          |
+| 05 Composer & toolbar              | Scene Notes icon image         | `[data-lab="guidance-toggle"] img` | Replace artwork via content:url(...); tint, scale, glow          |
+| 05 Composer & toolbar              | Attach icon image              | `[data-lab="attach-image"] img` | Replace artwork via content:url(...); tint, scale, glow          |
+| 05 Composer & toolbar              | Time skip icon image           | `[data-lab="time-skip"] img` | Replace artwork via content:url(...); tint, scale, glow          |
+| 05 Composer & toolbar              | Dice roll icon image           | `[data-lab="dice-roll"] img` | Replace artwork via content:url(...); tint, scale, glow          |
+| 05 Composer & toolbar              | Auto mode icon image           | `[data-lab="auto-mode"] img` | Replace artwork via content:url(...); tint, scale, glow          |
+| 05 Composer & toolbar              | Director Pass icon image       | `[data-lab="director-pass"] img` | Replace artwork via content:url(...); tint, scale, glow          |
+| 05 Composer & toolbar              | HTML mode icon image           | `[data-lab="html-mode"] img` | Replace artwork via content:url(...); tint, scale, glow          |
+| 05 Composer & toolbar              | Visual Expressions icon image  | `[data-lab="visual-expressions"] img` | Replace artwork via content:url(...); tint, scale, glow          |
+| 05 Composer & toolbar              | Web Search icon image          | `[data-lab="web-search"] img` | Replace artwork via content:url(...); tint, scale, glow          |
+| 05 Composer & toolbar              | Review icon image              | `[data-lab="review-mode"] img` | Replace artwork via content:url(...); tint, scale, glow          |
+| 05 Composer & toolbar              | Scene Music icon image         | `[data-lab="scene-music"] img` | Replace artwork via content:url(...); tint, scale, glow          |
+| 05 Composer & toolbar              | Reply Options icon image       | `[data-lab="reply-options"] img` | Replace artwork via content:url(...); tint, scale, glow          |
 
 ---
 
@@ -2894,8 +5454,9 @@ Keep the particle count and size modest on mobile. `pointer-events: none` preven
 
 ## Changelog
 
+- **2026-10-11:** Added a number of snippets from @pikachuthehedgehogtheherooftime
 - **2026-10-10:** Replaced legacy Laboratory button snippets with the live-verified LoreBary 2.5 composer and tool-row selectors. Added dedicated styling maps for Write for me, Time skip, Dice roll, HTML Mode, Visual Expressions, Polish replies, Scene music, Reply choices, and their long-press settings and dropdowns.
 - **2026-10-10:** Added Part II for Profile Themes with example images, typography, sticker positioning, status-card layout, and before/after comparisons. Moved the animation collection to Part III and added a shared Laboratory/Profile foreground-particle recipe.
 - **2026-07-17:** Previous Laboratory / Chat Themes guide update.
 
-**Last Updated:** 2026-10-10
+**Last Updated:** 2026-10-11
