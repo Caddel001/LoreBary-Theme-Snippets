@@ -1446,7 +1446,9 @@ Style small buttons in the header with custom text color.
 
 ### Custom Header Button Icons
 
-Replace the six standard chat header icons without changing their buttons. ![Custom Header Button Icons preview](./images/header-custom-button-icons.png)
+Replace the six standard chat header icons without changing their buttons. 
+
+![Custom Header Button Icons preview](./images/header-custom-button-icons.png)
 
 ```css
 /* Voice Call */
@@ -1492,7 +1494,9 @@ Replace the six standard chat header icons without changing their buttons. ![Cus
 
 ### Custom Navigation Icons
 
-Replace the Back, Scroll Down, Previous Version, and Next Version icons. ![Custom Navigation Icons preview](./images/header-custom-navigation-icons.png)
+Replace the Back, Scroll Down, Previous Version, and Next Version icons. 
+
+![Custom Navigation Icons preview](./images/header-custom-navigation-icons.png)
 
 ```css
 /* Back */
@@ -1536,7 +1540,9 @@ Replace the Back, Scroll Down, Previous Version, and Next Version icons. ![Custo
 
 ### Custom Footer Button Icons
 
-Replace the footer control icons for Web Search, Director Pass, Auto Mode, Review Mode, Scene Music, Visual Expressions, Dice Roll, HTML Mode, Time Skip, and Reply Options. ![Custom Footer Button Icons preview](./images/footer-custom-button-icons.png)
+Replace the footer control icons for Web Search, Director Pass, Auto Mode, Review Mode, Scene Music, Visual Expressions, Dice Roll, HTML Mode, Time Skip, and Reply Options. 
+
+![Custom Footer Button Icons preview](./images/footer-custom-button-icons.png)
 
 ```css
 /* Web Search */
@@ -1635,7 +1641,9 @@ Give an icon a neon halo, using Search as the example. ![Glowing Search Icon pre
 
 ### Rainbow Button Background — Search Example
 
-Apply a stationary pastel rainbow to a button. Change the `aria-label` selector to target a different button. ![Rainbow button background preview](./images/header-rainbow-button-background.png)
+Apply a stationary pastel rainbow to a button. Change the `aria-label` selector to target a different button. 
+
+![Rainbow button background preview](./images/header-rainbow-button-background.png)
 
 ```css
 [data-lab="header-action"][aria-label="Search this chat"] {
@@ -1687,9 +1695,7 @@ Enlarge an icon on hover. The Scene gallery selector below is one example; chang
 
 Cycle the colors of a rainbow button background, using Gallery as the example. 
 
-![Animated Rainbow Gallery Button preview](./images/header-animated-rainbow-gallery-button.png)
-
-![Animated rainbow enlargement on hover](./images/animated-Rainbow-Enlarge-on-Hover.gif)
+![Animated rainbow enlargement on hover](./images/animated-rainbow-enlarge-on-hover.gif)
 
 ```css
 [data-lab="header-action"][aria-label="Scene gallery"] {
@@ -1723,7 +1729,9 @@ Cycle the colors of a rainbow button background, using Gallery as the example.
 
 ### Multicolor Icon Glow — Bookmarks Example
 
-Surround an icon with multicolor light on hover, using Bookmarks as the example. ![Multicolor Bookmarks Icon Glow preview](./images/header-multicolor-bookmarks-glow.png)
+Surround an icon with multicolor light on hover, using Bookmarks as the example. 
+
+![Multicolor Bookmarks Icon Glow preview](./images/header-multicolor-bookmarks-glow.png)
 
 ```css
 [data-lab="header-action"][aria-label="Message bookmarks"] img {
@@ -1754,8 +1762,6 @@ Surround an icon with multicolor light on hover, using Bookmarks as the example.
 ### Rotating Rainbow Button Border — Bookmarks Example
 
 Build a rotating rainbow ring around a button while keeping its icon stationary, using Bookmarks as the example. 
-
-![Rotating Rainbow Bookmarks Border preview](./images/header-rotating-rainbow-bookmarks-border.png)
 
 ![Animated rainbow border](./images/animated-rainbow-border.gif)
 
@@ -1856,7 +1862,9 @@ Give a button a gradient border without filling its center with a gradient, usin
 
 ### Pulsing Button Glow — Fullscreen Example
 
-Add a gentle two-color pulse around a button, using Fullscreen as the example. ![Pulsing Fullscreen Button preview](./images/header-pulsing-fullscreen-button.png)
+Add a gentle two-color pulse around a button, using Fullscreen as the example.
+
+![Animated pulsing icon](./images/animated-pulsing-icon.gif)
 
 ```css
 [data-lab="header-action"][aria-label*="fullscreen" i] {
@@ -2532,7 +2540,9 @@ The Bookmark hold menu exposes Quick bookmark and Manual bookmark, but its panel
 
 ### Write Menu Heading Colors
 
-Recolor the two section headings inside the Write menu. ![Write Menu Heading Colors preview](./images/write-write-menu-heading-colors.png)
+Recolor the two section headings inside the Write menu. 
+
+![Write Menu Heading Colors preview](./images/write-write-menu-heading-colors.png)
 
 ```css
 [data-lab="write-menu"] > div:first-child
@@ -2557,8 +2567,9 @@ Recolor the two section headings inside the Write menu. ![Write Menu Heading Col
 ### Write Menu Actions and Help Text
 
 
-![Write Menu option and hover styling example](./images/write-write-menu-options-and-hover-effects.png)
-Recolor menu action rows and the information area at the bottom of the Write menu. ![Write Menu Actions and Help Text preview](./images/write-write-menu-actions-and-help-text.png)
+Recolor menu action rows and the information area at the bottom of the Write menu. 
+
+![Write Menu Actions and Help Text preview](./images/write-write-menu-actions-and-help-text.png)
 
 ```css
 [data-lab="write-menu"] [data-lab="write-option"] {
@@ -2582,9 +2593,9 @@ Recolor menu action rows and the information area at the bottom of the Write men
 
 ### Write Menu Selected, Unselected, and Keyboard-Focus States
 
+Use the tested `aria-checked` state to distinguish the active choice from inactive choices. Keyboard focus remains independently visible.
 
 ![Write Menu selected option styling example](./images/write-write-menu-selected-options.png)
-Use the tested `aria-checked` state to distinguish the active choice from inactive choices. Keyboard focus remains independently visible.
 
 ```css
 [data-lab="write-menu"] [data-lab="write-option"][aria-checked="true"] {
@@ -2611,7 +2622,8 @@ Use the tested `aria-checked` state to distinguish the active choice from inacti
 
 ### Custom Write Menu Action Icons
 
-Replace the Write menu pencil and arrow icons with uploaded artwork. ![Custom Write Menu Action Icons preview](./images/write-custom-write-menu-action-icons.png)
+Replace the Write menu pencil and arrow icons with uploaded artwork. 
+![Custom Write Menu Action Icons preview](./images/write-custom-write-menu-action-icons.png)
 
 ```css
 [data-lab="write-menu"]
@@ -2732,7 +2744,8 @@ Use `[aria-selected="true"]`, `[aria-checked="true"]`, `[aria-pressed="true"]`, 
 
 ### Custom Scene Notes Window
 
-Change the Scene Notes window background, outline, corners, and shadow. ![Custom Scene Notes Window preview](./images/panel-custom-scene-notes-window.png)
+Change the Scene Notes window background, outline, corners, and shadow.
+![Custom Scene Notes Window preview](./images/panel-custom-scene-notes-window.png)
 
 ```css
 [data-lab="input"] > div:has(#lab-scene-notes) {
@@ -2751,9 +2764,9 @@ Change the Scene Notes window background, outline, corners, and shadow. ![Custom
 
 ### Scene Notes Title and Close Button
 
+Recolor the Scene Notes title and close button.
 
 ![Scene Notes close button styling comparison](./images/scene-notes-close-button.png)
-Recolor the Scene Notes title and close button.
 
 ```css
 [data-lab="input"] > div:has(#lab-scene-notes)
@@ -2777,7 +2790,8 @@ label[for="lab-scene-notes"] + button {
 
 ### Scene Notes Template Colors
 
-Assign different accent colors to the eight Scene Notes templates and their icon frames. ![Scene Notes Template Colors preview](./images/panel-scene-notes-template-colors.png)
+Assign different accent colors to the eight Scene Notes templates and their icon frames. 
+![Scene Notes Template Colors preview](./images/panel-scene-notes-template-colors.png)
 
 ```css
 [aria-label="Scene note templates"]
@@ -2831,7 +2845,8 @@ button > span:first-child {
 
 ### Scene Notes Selected and Hover Effects
 
-Give the selected Scene Notes template a clearly visible pink glow and a slight enlargement, with a separate hover highlight for other templates. ![Scene Notes Selected and Hover Effects preview](./images/panel-scene-notes-selected-and-hover-effects.png)
+Give the selected Scene Notes template a clearly visible pink glow and a slight enlargement, with a separate hover highlight for other templates. 
+![Scene Notes Selected and Hover Effects preview](./images/panel-scene-notes-selected-and-hover-effects.png)
 
 ```css
 /* Selected template — confirmed working */
@@ -2872,7 +2887,8 @@ button[aria-pressed="true"] > span:first-child {
 
 ### Scene Notes Text Box Colors and Focus
 
-Customize the Scene Notes text area, placeholder, and focused appearance. ![Scene Notes Text Box Colors and Focus preview](./images/panel-scene-notes-text-box-colors-and-focus.png)
+Customize the Scene Notes text area, placeholder, and focused appearance. 
+![Scene Notes Text Box Colors and Focus preview](./images/panel-scene-notes-text-box-colors-and-focus.png)
 
 ```css
 [data-lab="input"] #lab-scene-notes {
@@ -2902,9 +2918,9 @@ Customize the Scene Notes text area, placeholder, and focused appearance. ![Scen
 
 ### Scene Notes Additional Buttons
 
+Recolor the saved-template button and the Apply To control, including its hover state. 
 
 ![Scene Notes Apply to dropdown styling comparison](./images/scene-notes-apply-to-dropdown.png)
-Recolor the saved-template button and the Apply To control, including its hover state. 
 
 ```css
 [data-lab="input"] > div:has(#lab-scene-notes)
@@ -2961,7 +2977,9 @@ Give Scene Notes controls a visible keyboard-focus outline.
 
 The eight native template icons are `scene-talk-more.webp`, `scene-stay-real.webp`, `scene-living-world.webp`, `scene-your-move.webp`, `scene-slow-burn.webp`, `scene-romance.webp`, `scene-intimacy.webp` (Sex), and `scene-kink.webp`, all under `/img/pixel/`.
 
-Replace the artwork for all eight Scene Notes templates. ![Custom Scene Notes Template Icons preview](./images/panel-custom-scene-notes-template-icons.png)
+Replace the artwork for all eight Scene Notes templates. 
+
+![Custom Scene Notes Template Icons preview](./images/panel-custom-scene-notes-template-icons.png)
 
 ```css
 [aria-label="Select Talk more template"] img {
@@ -3009,7 +3027,9 @@ Replace the artwork for all eight Scene Notes templates. ![Custom Scene Notes Te
 
 ### Search & Bookmarks Panel Background
 
-Change the main background, side border, and shadow of the shared Search and Bookmarks panel. ![Search & Bookmarks Panel Background preview](./images/panel-search-and-bookmarks-panel-background.png)
+Change the main background, side border, and shadow of the shared Search and Bookmarks panel. 
+
+![Search & Bookmarks Panel Background preview](./images/panel-search-and-bookmarks-panel-background.png)
 
 ```css
 :is([data-lab="search-panel"], [data-lab="bookmarks-panel"]) {
@@ -3027,7 +3047,9 @@ Change the main background, side border, and shadow of the shared Search and Boo
 
 ### Search & Bookmarks Header Styling
 
-Customize the panel header background, divider, and shadow. ![Search & Bookmarks Header Styling preview](./images/panel-search-and-bookmarks-header-styling.png)
+Customize the panel header background, divider, and shadow. 
+
+![Search & Bookmarks Header Styling preview](./images/panel-search-and-bookmarks-header-styling.png)
 
 ```css
 :is([data-lab="search-panel"], [data-lab="bookmarks-panel"]) .surface-header {
@@ -3045,7 +3067,9 @@ Customize the panel header background, divider, and shadow. ![Search & Bookmarks
 
 ### Search & Bookmarks Title and Description
 
-Recolor the panel heading and its supporting description. ![Search & Bookmarks Title and Description preview](./images/panel-search-and-bookmarks-title-and-description.png)
+Recolor the panel heading and its supporting description. 
+
+![Search & Bookmarks Title and Description preview](./images/panel-search-and-bookmarks-title-and-description.png)
 
 ```css
 :is([data-lab="search-panel"], [data-lab="bookmarks-panel"]) .surface-header h3 {
@@ -3091,7 +3115,9 @@ Resize and glow the pixel-art icons in both panel headers.
 
 ### Custom Search & Bookmarks Header Icons
 
-Replace the large artwork beside the **Search chat** and **Bookmarks** titles. These are the **panel header icons**, not the smaller icons inside the Messages and Marked tabs. ![Search and Bookmarks header icons before and after replacement](./images/panel-custom-bookmarks-tab-icons.png)
+Replace the large artwork beside the **Search chat** and **Bookmarks** titles. These are the **panel header icons**, not the smaller icons inside the Messages and Marked tabs. 
+
+![Search and Bookmarks header icons before and after replacement](./images/panel-custom-bookmarks-tab-icons.png)
 
 ```css
 /* Search panel — header icon artwork */
@@ -3117,7 +3143,9 @@ Replace the large artwork beside the **Search chat** and **Bookmarks** titles. T
 
 ### Custom Search Bar Colors
 
-Style the search field, typed text, cursor, placeholder, and search icon. ![Custom Search Bar Colors preview](./images/panel-custom-search-bar-colors.png)
+Style the search field, typed text, cursor, placeholder, and search icon. 
+
+![Custom Search Bar Colors preview](./images/panel-custom-search-bar-colors.png)
 
 ```css
 .header-search:has(
@@ -3211,9 +3239,9 @@ Customize the container behind the Messages and Marks tabs.
 
 ### Bookmarks Tab Colors
 
+Set the normal appearance of the Messages and Marks tabs.
 
 ![Bookmarks Messages and Marked tab border and background comparison](./images/bookmarks-tab-border-and-background.png)
-Set the normal appearance of the Messages and Marks tabs.
 
 ```css
 [data-lab="bookmarks-panel"] [role="tab"] {
@@ -3235,9 +3263,9 @@ Set the normal appearance of the Messages and Marks tabs.
 
 ### Selected Bookmarks Tab Styling
 
+Give the active Messages or Marks tab its own color, border, and glow.
 
 ![Selected Bookmarks tab highlight comparison](./images/bookmarks-selected-tab-highlight.png)
-Give the active Messages or Marks tab its own color, border, and glow.
 
 ```css
 [data-lab="bookmarks-panel"] [role="tab"][aria-selected="true"] {
@@ -3363,9 +3391,9 @@ Replace the Search view’s default Bary illustration with uploaded artwork. ![C
 
 ### Search & Bookmarks Close Button
 
+Recolor the panel’s close button and add a hover glow.
 
 ![Search and Bookmarks close button styling comparison](./images/panel-search-and-bookmarks-close-button.png)
-Recolor the panel’s close button and add a hover glow.
 
 ```css
 :is([data-lab="search-panel"], [data-lab="bookmarks-panel"]) .surface-header button[aria-label="Close bookmarks"] {
@@ -3446,9 +3474,9 @@ img[src="/img/pixel/download.webp"] {
 
 ### Custom Search & Bookmarks Background Images
 
+Optionally use uploaded artwork beneath a translucent color overlay instead of a solid panel background. 
 
 ![Search and Bookmarks custom background image example](./images/search-bookmarks-image-background.png)
-Optionally use uploaded artwork beneath a translucent color overlay instead of a solid panel background. 
 
 ```css
 /* Optional variation: use instead of the solid panel background */
