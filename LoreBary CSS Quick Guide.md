@@ -1686,6 +1686,7 @@ Enlarge an icon on hover. The Scene gallery selector below is one example; chang
 ### Animated Rainbow Button — Gallery Example
 
 Cycle the colors of a rainbow button background, using Gallery as the example. ![Animated Rainbow Gallery Button preview](./images/header-animated-rainbow-gallery-button.png)
+![Animated rainbow enlargement on hover](./images/animated-Rainbow-Enlarge-on-Hover.gif)
 
 ```css
 [data-lab="header-action"][aria-label="Scene gallery"] {
@@ -1750,6 +1751,7 @@ Surround an icon with multicolor light on hover, using Bookmarks as the example.
 ### Rotating Rainbow Button Border — Bookmarks Example
 
 Build a rotating rainbow ring around a button while keeping its icon stationary, using Bookmarks as the example. ![Rotating Rainbow Bookmarks Border preview](./images/header-rotating-rainbow-bookmarks-border.png)
+![Animated rainbow border](./images/animated-rainbow-border.gif)
 
 ```css
 [data-lab="header-action"][aria-label="Message bookmarks"] {
@@ -1882,6 +1884,7 @@ Add a gentle two-color pulse around a button, using Fullscreen as the example. !
 ### Bobbing Icon Animation — Statistics Example
 
 Give an icon a gentle floating motion, using Statistics as the example.
+![Animated bobbing icon](./images/animated-bobbing-icon.gif)
 
 ```css
 [data-lab="header-action"][aria-label="Chat statistics & export"] img {
@@ -1909,6 +1912,7 @@ Give an icon a gentle floating motion, using Statistics as the example.
 ### Button Hover Glow — Statistics Example
 
 Outline a button only while hovered, using Statistics as the example. ![Statistics Button Hover Glow preview](./images/header-statistics-button-hover-glow.png)
+
 
 ```css
 [data-lab="header-action"][aria-label="Chat statistics & export"] {
@@ -4683,6 +4687,7 @@ CSS animation mechanics and @keyframes work in both editors. The visual effect c
 Create an animated fire effect at the bottom of the screen.
 
 <img src="./images/background-Fireshine.png" alt="Theme preview">
+![Animated fire shine](./images/animated-fireshine.gif)
 
 ```css
 html, body, #app, main {
@@ -4729,6 +4734,7 @@ div[class*="chat"], div[class*="message"], .messages-container {
 Create a gentle animated rain effect as a background.
 
 <img src="./images/background-Rain.png" alt="Theme preview">
+![Animated rain](./images/animated-rain.gif)
 
 ```css
 html, body, #app, main {
@@ -4813,6 +4819,7 @@ div[class*="chat"], div[class*="message"], .messages-container, .chat-layout {
 Create a gentle fog over the whole screen
 
 <img src="./images/animated-fog.png" alt="Theme preview">
+![Animated fog](./images/animated-fog.gif)
 
 ```css
 html, body, #app, main {
@@ -4894,6 +4901,7 @@ div[class*="chat"], div[class*="message"], .messages-container, .chat-layout {
 Let gentle snow fall in the background.
 
 <img src="./images/animated-snow.png" alt="Theme preview">
+![Animated snow](./images/animated-snow.gif)
 
 ```css
 html, body, #app, main {
@@ -4990,6 +4998,7 @@ div[class*="chat"], div[class*="message"], .messages-container, .chat-layout {
 Let fireflies fly through your screen
 
 <img src="./images/animated-fireflies.png" alt="Theme preview">
+![Animated fireflies](./images/animated-fireflies.gif)
 
 ```css
 html::before,
@@ -5085,6 +5094,7 @@ html::after {
 ### Animated Dustparticle
 
 Let dust hover across the screen
+![Animated dust particles](./images/animated-dustparticle.gif)
 
 ```css
 html, body, #app, main {
@@ -5164,6 +5174,7 @@ div[class*="chat"], div[class*="message"], .messages-container, .chat-layout {
 Let stars twinkle in your background
 
 <img src="./images/animated-sterne.png" alt="Theme preview">
+![Animated twinkling stars](./images/animated-star-twinkle.gif)
 
 ```css
 html, body, #app, main {
@@ -5245,6 +5256,7 @@ div[class*="chat"], div[class*="message"], .messages-container, .chat-layout {
 Sunshine under water with small rising bubbles
 
 <img src="./images/animated-sunshine and water.png" alt="Theme preview">
+![Animated sunshine and water](./images/animated-sunshine-and-water.gif)
 
 ```css
 html, body, #app, main {
@@ -5338,7 +5350,7 @@ div[class*="chat"], div[class*="message"], .messages-container, .chat-layout {
 Creates a soft shine at the top of the screen.
 
 <img src="./images/animated-soft shine top.png" alt="Theme preview">
-
+![Animated soft godly light](./images/animated-soft-godly-light.gif)
 ```css
 html, body, #app, main {
     background-color: #06080c !important; 
@@ -5394,7 +5406,7 @@ div[class*="chat"], div[class*="message"], .messages-container, .chat-layout {
 ## Shared Scrollable Foreground Fireflies and Stars
 
 The `@keyframes` and gradient particles are identical in Laboratory and Profile Themes. Only the two mounting selectors differ. Use `position: absolute`, not `fixed`, when the particles should move with the themed content while scrolling.
-
+![Animated fireflies and stars](./images/animated-fireflies-stars.gif)
 ```css
 /* The scrolling container in each theme area. */
 .lab-theme-scope,
