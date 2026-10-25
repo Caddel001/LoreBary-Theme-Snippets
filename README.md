@@ -36,7 +36,8 @@ CSS animation properties and `@keyframes` work the same in both editors. The han
 ## Credits
 
 Thanks to **@harp** for the original collection of useful LoreBary snippets. 🫶🏻
-Thanks to **@pikachuthehedgehogtheherooftime** for some of the animated previews.
+
+And **@pikachuthehedgehogtheherooftime** for some of the animated previews.
 
 ## Latest Guide Update
 - **2026-10-25:** Added a number of Profile focused snippets from @pikachuthehedgehogtheherooftime
