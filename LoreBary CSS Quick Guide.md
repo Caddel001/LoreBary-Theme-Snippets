@@ -248,6 +248,15 @@ Use narrow, stable selectors. Avoid broad rules such as `button { ... }` or `.pr
   - [Spoilers](#spoilers)
   - [Tables](#tables)
   - [Solid, Dotted, and Paw Dividers](#solid-dotted-and-paw-dividers)
+- [HTML Profile Options](#html-profile-options)
+  - [Profile HTML and Interactive CSS](https://github.com/Caddel001/LoreBary-Theme-Snippets/blob/main/LoreBary%20CSS%20Quick%20Guide.md#profile-html-and-interactive-css)
+  - [Content Warning Across the Profile](https://github.com/Caddel001/LoreBary-Theme-Snippets/blob/main/LoreBary%20CSS%20Quick%20Guide.md#content-warning-across-the-profile)
+  - [Combination Lock](https://github.com/Caddel001/LoreBary-Theme-Snippets/blob/main/LoreBary%20CSS%20Quick%20Guide.md#combination-lock)
+  - [HTML Image Setup](https://github.com/Caddel001/LoreBary-Theme-Snippets/blob/main/LoreBary%20CSS%20Quick%20Guide.md#html-image-setup)
+  - [Featured Creators & Friends](https://github.com/Caddel001/LoreBary-Theme-Snippets/blob/main/LoreBary%20CSS%20Quick%20Guide.md#featured-creators--friends)
+  - [Clickable CSS Button — LIVE / OFFLINE](https://github.com/Caddel001/LoreBary-Theme-Snippets/blob/main/LoreBary%20CSS%20Quick%20Guide.md#clickable-css-button--live--offline)
+  - [Palette Toggle](https://github.com/Caddel001/LoreBary-Theme-Snippets/blob/main/LoreBary%20CSS%20Quick%20Guide.md#palette-toggle)
+  - [Dollhouse Doors — Reveal Half the Profile](https://github.com/Caddel001/LoreBary-Theme-Snippets/blob/main/LoreBary%20CSS%20Quick%20Guide.md#dollhouse-doors--reveal-half-the-profile)
 - [Experimental Profile Dialogs](#experimental-profile-dialogs)
   - [Mobile Gallery Panel](#mobile-gallery-panel)
   - [New Folder Dialog](#new-folder-dialog)
@@ -11124,6 +11133,975 @@ Opening a full post does not by itself establish horizontal table scrolling. Kee
 
 ---
 
+## HTML Profile Options
+
+Open the HTML editor from your profile's customization menu to add a standalone HTML block.
+
+![HTML editor in the profile customization menu](./images/profile/profile-html-menu.png)
+
+Paste your markup into the HTML editor and put any matching styles in **Custom CSS**. Save both and preview your profile to see how the block appears.
+
+### Content Warning Across the Profile
+
+This entrance shows a warning and the native visitor action buttons before the rest of the profile. Clicking **Enter** reveals the profile. Clicking **Show warning again** brings the warning back.
+
+![Content warning with an Enter button and native visitor actions](./images/profile/profile-html-content-warning.png)
+
+#### Profile HTML
+
+Paste this into a standalone **Profile HTML block**. Edit the heading and warning text to match your profile.
+
+```html
+<div data-warning>
+<div data-warning-copy>
+<h2>Content Warning</h2>
+<p>This profile contains flashing images and mature themes.</p>
+</div>
+<details data-cw>
+<summary>
+<span data-enter>I understand — Enter</span>
+<span data-back>Show warning again</span>
+</summary></details>
+</div>
+```
+
+#### Profile CSS
+
+Paste this complete block at the end of your **Profile CSS**.
+
+```css
+/* Take over the profile while the warning is closed. */
+[data-profile=scope]:has([data-cw]:not([open])) {
+  display: block !important;
+  padding: 12px;
+  background: #17141c;
+}
+
+[data-profile=scope]:has([data-cw]:not([open]))
+:not(
+  :has([data-cw]),
+  [data-warning], [data-warning] *,
+  [data-profile^=action], [data-profile^=action] *,
+  [data-profile^=staff], [data-profile^=staff] *,
+  [data-profile=customize], [data-profile=customize] *,
+  :has([data-profile^=action], [data-profile^=staff], [data-profile=customize])
+) {
+  visibility: hidden;
+  height: 0;
+  min-height: 0;
+  max-height: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+}
+
+[data-profile=scope]:has([data-cw]:not([open]))
+:has([data-cw]):not([data-warning]) {
+  all: unset;
+  display: block;
+  min-width: 0;
+  min-height: 0;
+  visibility: visible;
+}
+
+[data-profile=scope]:has([data-cw]:not([open]))::before,
+[data-profile=scope]:has([data-cw]:not([open]))::after,
+[data-profile=scope]:has([data-cw]:not([open])) *::before,
+[data-profile=scope]:has([data-cw]:not([open])) *::after {
+  content: none !important;
+}
+
+/* The HTML block and the native action branch share this parent. */
+[data-profile=about]:has(> [data-profile=html-block] [data-cw]:not([open])) {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  gap: 0;
+}
+
+[data-profile=about]:has(> [data-profile=html-block] [data-cw]:not([open]))
+> [data-profile=html-block] {
+  grid-area: 1 / 1;
+  min-width: 0;
+  margin: 0 !important;
+}
+
+/* Let the action bar join the grid without its card and header boxes. */
+[data-profile=about]:has(> [data-profile=html-block] [data-cw]:not([open]))
+> :has([data-profile=action-bar]),
+[data-profile=about]:has(> [data-profile=html-block] [data-cw]:not([open]))
+> :has([data-profile=action-bar]) :has([data-profile=action-bar]) {
+  display: contents !important;
+}
+
+[data-profile=about]:has(> [data-profile=html-block] [data-cw]:not([open]))
+> :has([data-profile=action-bar])
+:not([data-profile=action-bar], [data-profile=action-bar] *, :has([data-profile=action-bar])) {
+  display: none !important;
+}
+
+/* Native Wave, Letter, Alerts, and Follow row. */
+[data-profile=about]:has(> [data-profile=html-block] [data-cw]:not([open]))
+[data-profile=action-bar] {
+  grid-area: 2 / 1;
+  display: flex !important;
+  justify-content: center !important;
+  flex-wrap: wrap !important;
+  gap: 8px;
+  width: 100%;
+  padding: 0 0 12px;
+}
+
+[data-profile=about]:has(> [data-profile=html-block] [data-cw]:not([open]))
+[data-profile=action-bar] button[data-profile^=action-] {
+  min-height: 44px;
+  padding: 8px 14px;
+  border: 1px solid #857391;
+  border-radius: 999px;
+  background: #272031;
+  color: #fff;
+  box-shadow: none;
+}
+
+/* Warning panel and entrance button. */
+[data-warning] {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 40rem;
+  margin: 2rem auto 1rem;
+  padding: 1.5rem;
+  border: 1px solid #857391;
+  border-radius: 1rem;
+  background: #272031;
+  color: #fff;
+  text-align: center;
+}
+
+[data-warning] h2 { margin: 0 0 .5rem; }
+[data-warning] p { margin: 0 0 1rem; }
+
+[data-warning] summary {
+  display: inline-block;
+  padding: .65rem 1rem;
+  border-radius: .5rem;
+  background: #ead6fb;
+  color: #271631;
+  cursor: pointer;
+  font-weight: 700;
+  list-style: none;
+}
+
+[data-warning] summary::-webkit-details-marker {
+  display: none;
+}
+
+[data-warning] summary:focus-visible,
+[data-profile=scope]:has([data-cw]:not([open]))
+[data-profile=action-bar] button:focus-visible {
+  outline: 2px solid #ead6fb;
+  outline-offset: 3px;
+}
+
+/* After entry, leave the button that brings the warning back. */
+[data-warning] [data-back],
+[data-warning] [data-cw][open] [data-enter],
+[data-warning]:has([data-cw][open]) [data-warning-copy] {
+  display: none;
+}
+
+[data-warning] [data-cw][open] [data-back] {
+  display: inline;
+}
+
+[data-warning]:has([data-cw][open]) {
+  width: auto;
+}
+```
+
+#### How it works
+
+The standalone HTML block and the branch containing the native action bar share a parent. While `<details data-cw>` is closed, the CSS places the warning in the first row and the action bar in the second. Wave, Letter, Alerts, and Follow use LoreBary’s native controls whenever they’re available to the visitor.
+
+Opening `<details>` restores the regular profile layout. This is a visual entrance. Content already loaded on the page remains inspectable, and views that omit the warning block can bypass it.
+
+**Preview as a visitor on desktop and mobile.** Check that the action buttons appear beneath the warning and wrap on narrow screens. Then test both **Enter** and **Show warning again**.
+
+### Combination Lock
+
+This entrance asks visitors to select the correct numbers before **Enter** appears. The native visitor action buttons stay beneath the lock.
+
+![Combination lock with the correct digits selected and Enter visible](./images/profile/profile-html-combination-lock.png)
+
+#### Profile HTML
+
+Paste this into a standalone **Profile HTML block**. The default combination is **1, 2, 4, and 8**, in any order.
+
+```html
+<div data-warning data-lock>
+  <div data-warning-copy>
+    <h2>Content Warning</h2>
+    <p>This profile contains flashing images and mature themes.</p>
+    <p>Find the correct pattern to enter.</p>
+
+    <div data-lock-keys>
+      <details data-key="1" data-on><summary>1</summary></details>
+      <details data-key="2" data-on><summary>2</summary></details>
+      <details data-key="3"><summary>3</summary></details>
+      <details data-key="4" data-on><summary>4</summary></details>
+      <details data-key="5"><summary>5</summary></details>
+      <details data-key="6"><summary>6</summary></details>
+      <details data-key="7"><summary>7</summary></details>
+      <details data-key="8" data-on><summary>8</summary></details>
+    </div>
+  </div>
+
+  <details data-cw>
+    <summary>
+      <span data-enter>I understand — Enter</span>
+      <span data-back>Show combination lock again</span>
+    </summary>
+  </details>
+</div>
+```
+
+#### Profile CSS
+
+Paste this complete block at the end of your **Profile CSS**. If you already have a warning or lock installed, replace its HTML and CSS with this pair. Use one entrance per profile.
+
+```css
+/* Take over the profile while the entrance is closed. */
+[data-profile=scope]:has([data-cw]:not([open])) {
+  display: block !important;
+  padding: 12px;
+  background: #17141c;
+}
+
+[data-profile=scope]:has([data-cw]:not([open]))
+:not(
+  :has([data-cw]),
+  [data-warning], [data-warning] *,
+  [data-profile^=action], [data-profile^=action] *,
+  [data-profile^=staff], [data-profile^=staff] *,
+  [data-profile=customize], [data-profile=customize] *,
+  :has([data-profile^=action], [data-profile^=staff], [data-profile=customize])
+) {
+  visibility: hidden;
+  height: 0;
+  min-height: 0;
+  max-height: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+}
+
+[data-profile=scope]:has([data-cw]:not([open]))
+:has([data-cw]):not([data-warning]) {
+  all: unset;
+  display: block;
+  min-width: 0;
+  min-height: 0;
+  visibility: visible;
+}
+
+[data-profile=scope]:has([data-cw]:not([open]))::before,
+[data-profile=scope]:has([data-cw]:not([open]))::after,
+[data-profile=scope]:has([data-cw]:not([open])) *::before,
+[data-profile=scope]:has([data-cw]:not([open])) *::after {
+  content: none !important;
+}
+
+/* The HTML block and the native action branch share this parent. */
+[data-profile=about]:has(> [data-profile=html-block] [data-cw]:not([open])) {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+}
+
+[data-profile=about]:has(> [data-profile=html-block] [data-cw]:not([open]))
+> [data-profile=html-block] {
+  grid-area: 1 / 1;
+  min-width: 0;
+  margin: 0 !important;
+}
+
+/* Let the action bar join the grid without its card and header boxes. */
+[data-profile=about]:has(> [data-profile=html-block] [data-cw]:not([open]))
+> :has([data-profile=action-bar]),
+[data-profile=about]:has(> [data-profile=html-block] [data-cw]:not([open]))
+> :has([data-profile=action-bar]) :has([data-profile=action-bar]) {
+  display: contents !important;
+}
+
+[data-profile=about]:has(> [data-profile=html-block] [data-cw]:not([open]))
+> :has([data-profile=action-bar])
+:not([data-profile=action-bar], [data-profile=action-bar] *, :has([data-profile=action-bar])) {
+  display: none !important;
+}
+
+/* Native Wave, Letter, Alerts, and Follow row. */
+[data-profile=about]:has(> [data-profile=html-block] [data-cw]:not([open]))
+[data-profile=action-bar] {
+  grid-area: 2 / 1;
+  display: flex !important;
+  justify-content: center !important;
+  flex-wrap: wrap !important;
+  gap: 8px;
+  width: 100%;
+  padding: 0 0 12px;
+}
+
+[data-profile=about]:has(> [data-profile=html-block] [data-cw]:not([open]))
+[data-profile=action-bar] button[data-profile^=action-] {
+  min-height: 44px;
+  padding: 8px 14px;
+  border: 1px solid #857391;
+  border-radius: 999px;
+  background: #272031;
+  color: #fff;
+  box-shadow: none;
+}
+
+/* Lock panel and keypad. */
+[data-lock] {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 40rem;
+  margin: 2rem auto 1rem;
+  padding: 1.5rem;
+  border: 1px solid #857391;
+  border-radius: 1rem;
+  background: #272031;
+  color: #fff;
+  text-align: center;
+}
+
+[data-lock] h2 { margin: 0 0 .5rem; }
+[data-lock] p { margin: 0 0 1rem; }
+
+[data-lock-keys] {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  max-width: 18rem;
+  margin: 0 auto;
+}
+
+[data-lock] :is([data-key], [data-cw]) {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+}
+
+[data-lock] summary {
+  cursor: pointer;
+  font-weight: 700;
+  list-style: none;
+}
+
+[data-lock] summary::-webkit-details-marker {
+  display: none;
+}
+
+[data-lock] [data-key] > summary {
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  min-height: 44px;
+  border: 1px solid #857391;
+  border-radius: .5rem;
+  background: #392d46;
+  color: #fff;
+}
+
+[data-lock] [data-key][open] > summary {
+  border-color: #ead6fb;
+  background: #ead6fb;
+  color: #271631;
+}
+
+[data-lock] [data-cw] > summary {
+  display: inline-block;
+  padding: .65rem 1rem;
+  border-radius: .5rem;
+  background: #ead6fb;
+  color: #271631;
+}
+
+[data-lock] summary:focus-visible,
+[data-profile=scope]:has([data-cw]:not([open]))
+[data-profile=action-bar] button:focus-visible {
+  outline: 2px solid #ead6fb;
+  outline-offset: 3px;
+}
+
+/* Hide Enter until all marked keys are on and all other keys are off. */
+[data-lock] > [data-cw]:not([open]) {
+  display: none !important;
+}
+
+[data-lock]:has([data-key][data-on]):not(:has([data-key][data-on]:not([open]), [data-key]:not([data-on])[open]))
+> [data-cw]:not([open]) {
+  display: block !important;
+  margin-top: 1rem;
+}
+
+/* After entry, show the return button and hide the keypad. */
+[data-lock] [data-back],
+[data-lock] [data-cw][open] [data-enter],
+[data-lock]:has(> [data-cw][open]) > [data-warning-copy] {
+  display: none;
+}
+
+[data-lock] [data-cw][open] [data-back] {
+  display: inline;
+}
+
+[data-lock]:has(> [data-cw][open]) {
+  width: auto;
+}
+```
+
+#### Change the combination
+
+Add `data-on` to every digit in the combination and remove it from every other digit. Keep at least one marked digit. An extra selected digit keeps **Enter** hidden.
+
+Keep `:has(...)` and `:not(...)` adjacent in the unlock selector. Whitespace between them makes the rule check a descendant and prevents **Enter** from appearing.
+
+#### Test the entrance
+
+Preview as a visitor. Select the correct combination plus one extra digit, then switch the extra digit off. **Enter** should appear beneath the keypad. Click **Enter** to reveal the profile, then click **Show combination lock again** to close it. The keypad keeps its current selections.
+
+The answer is visible in the HTML, and views that omit the standalone HTML block can bypass the entrance.
+
+### HTML Image Setup
+
+Add an image to a standalone Profile HTML block and control its size and alignment. The image keeps its original proportions and shrinks to fit on mobile.
+
+#### Profile HTML
+
+Paste this into a standalone **Profile HTML block**.
+
+```html
+<div data-dollhouse-image data-align="center">
+  <img
+    src="/api/images/UPLOADED_IMAGE_ID"
+    alt="A miniature pink dollhouse vanity with a heart-shaped mirror"
+  >
+</div>
+```
+
+#### Profile CSS
+
+Paste this at the end of your **Profile CSS**.
+
+```css
+[data-dollhouse-image] {
+  --dollhouse-image-width: 18rem;
+
+  width: min(100%, var(--dollhouse-image-width));
+  margin: 0.75rem auto;
+}
+
+[data-dollhouse-image][data-align="left"] {
+  margin-left: 0;
+}
+
+[data-dollhouse-image][data-align="right"] {
+  margin-right: 0;
+}
+
+[data-dollhouse-image] > img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0;
+}
+```
+
+#### Customize the image
+
+- **Image path.** Replace `src` with your uploaded image path. If you copied the path from a CSS `url(...)` value, paste just the path inside the `src` quotes.
+- **Alignment.** Set `data-align` to `left`, `center`, or `right` to position the image within its HTML block.
+- **Size.** Change `--dollhouse-image-width` to set the maximum width. Try `8rem` for a small decoration or `24rem` for a room illustration.
+- **Alt text.** Describe the image in `alt`, or use `alt=""` if the image is purely decorative.
+
+### Featured Creators & Friends
+
+Make a row of clickable profile cards for creators or friends you want to feature. Each card has an image, a display name, and an optional note. Clicking anywhere on the card opens the linked profile.
+
+![Example featured friend card with a display name and note](./images/profile/profile-html-featured-creators-and-friends.png)
+
+#### Profile HTML
+
+Paste this into a standalone **Profile HTML block**.
+
+```html
+<div data-friend-links>
+  <h2>Featured Creators &amp; Friends</h2>
+
+  <div data-friend-list>
+    <a data-friend-card href="FRIEND_PROFILE_URL">
+      <img src="/api/images/UPLOADED_IMAGE_ID" alt="">
+      <span data-friend-text>
+        <strong>Friend’s Display Name</strong>
+        <span>My favorite person to build worlds with.</span>
+      </span>
+    </a>
+  </div>
+</div>
+```
+
+#### Profile CSS
+
+Paste this at the end of your **Profile CSS**.
+
+```css
+[data-friend-links] {
+  --friend-bg: #281827;
+  --friend-border: #99547e;
+  --friend-text: #ffe6f4;
+  --friend-accent: #ff85ca;
+}
+
+[data-friend-links] > h2 {
+  margin: 0 0 .75rem;
+  color: var(--friend-text);
+}
+
+[data-friend-list] {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  gap: .6rem;
+}
+
+[data-friend-links] [data-friend-card] {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  padding: .65rem;
+  border: 1px solid var(--friend-border);
+  border-radius: .75rem;
+  background: var(--friend-bg);
+  color: var(--friend-text);
+  text-decoration: none;
+}
+
+[data-friend-card] > img {
+  width: 3rem;
+  height: 3rem;
+  flex: 0 0 3rem;
+  margin: 0;
+  border-radius: .5rem;
+  object-fit: cover;
+}
+
+[data-friend-text] {
+  display: grid;
+  gap: .2rem;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+[data-friend-text] > strong {
+  color: var(--friend-accent);
+}
+
+[data-friend-text] > span {
+  font-size: .85em;
+}
+
+[data-friend-links] [data-friend-card]:focus-visible {
+  outline: 2px solid var(--friend-accent);
+  outline-offset: 3px;
+}
+```
+
+#### Edit or add a featured friend
+
+- Replace `FRIEND_PROFILE_URL` with the creator’s profile URL.
+- Replace `/api/images/UPLOADED_IMAGE_ID` with your uploaded image URL.
+- Edit the display name and note. To skip the note, remove the `<span>` directly below the name.
+- To add another creator, duplicate the entire `<a data-friend-card>…</a>` inside `[data-friend-list]`.
+
+The cards sit side by side when there’s room and stack into one column on narrower screens.
+
+### Clickable CSS Button — LIVE / OFFLINE
+
+This status button starts on **OFFLINE** and switches to **LIVE** when clicked. The label, dot, and colors change together.
+
+![Status button in its OFFLINE and LIVE states](./images/profile/profile-html-live-offline-toggle.png)
+
+#### Profile HTML
+
+Paste this into a standalone **Profile HTML block**.
+
+```html
+<details data-stream-status>
+  <summary>
+    <span data-stream-dot aria-hidden="true"></span>
+    <span data-stream-offline>OFFLINE</span>
+    <span data-stream-live>LIVE</span>
+  </summary>
+</details>
+```
+
+#### Profile CSS
+
+Paste this at the end of your **Profile CSS**.
+
+```css
+[data-stream-status] {
+  --stream-bg: #211b29;
+  --stream-border: #74647c;
+  --stream-text: #eee1f2;
+  --stream-dot: #a995b2;
+}
+
+[data-stream-status][open] {
+  --stream-bg: #430e2e;
+  --stream-border: #ff72bb;
+  --stream-text: #ffe0f1;
+  --stream-dot: #ff449f;
+}
+
+[data-stream-status] > summary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .55rem;
+  min-width: 7rem;
+  min-height: 44px;
+  padding: 0 .9rem;
+  border: 1px solid var(--stream-border);
+  border-radius: 999px;
+  background: var(--stream-bg);
+  color: var(--stream-text);
+  font-weight: 700;
+  letter-spacing: .08em;
+  list-style: none;
+  cursor: pointer;
+}
+
+[data-stream-status] > summary::-webkit-details-marker {
+  display: none;
+}
+
+[data-stream-status] > summary:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+[data-stream-dot] {
+  width: .6rem;
+  height: .6rem;
+  border-radius: 50%;
+  background: var(--stream-dot);
+}
+
+[data-stream-status][open] [data-stream-dot] {
+  box-shadow: 0 0 8px var(--stream-dot);
+}
+
+[data-stream-status]:not([open]) [data-stream-live],
+[data-stream-status][open] [data-stream-offline] {
+  display: none;
+}
+```
+
+#### Change the starting state or colors
+
+To start on **LIVE**, change the opening tag to `<details data-stream-status open>`. Clicking the button changes the display for the person viewing it. The starting state comes from the HTML.
+
+Edit the first set of CSS variables for **OFFLINE** and the `[open]` set for **LIVE**. Each set controls the button background, border, text, and dot.
+
+### Palette Toggle
+
+This toggle switches the About Me panel and the button between a butter-yellow palette and a dark olive glow palette. Visitors can click again to switch back.
+
+![About Me panel before and after the palette toggle](./images/profile/profile-html-palette-toggle.png)
+
+#### Profile HTML
+
+Paste this into a standalone **Profile HTML block**.
+
+```html
+<details data-smiski-glow>
+  <summary>
+    <span data-glow-on>Turn the glow on</span>
+    <span data-glow-off>Turn the glow off</span>
+  </summary>
+</details>
+```
+
+#### Profile CSS
+
+Paste this at the end of your **Profile CSS**.
+
+```css
+/* Glow off */
+[data-profile=scope]:has([data-smiski-glow]) {
+  --glow-bg: #fff3b0;
+  --glow-text: #3e481d;
+  --glow-accent: #a9ba4e;
+}
+
+/* Glow on */
+[data-profile=scope]:has([data-smiski-glow][open]) {
+  --glow-bg: #283317;
+  --glow-text: #f0ffb0;
+  --glow-accent: #cdee70;
+}
+
+/* About Me panel and body text */
+[data-profile=scope]:has([data-smiski-glow]) [data-profile=about-card] {
+  background-color: var(--glow-bg);
+  color: var(--glow-text);
+  box-shadow: inset 0 0 0 1px var(--glow-accent);
+}
+
+[data-profile=scope]:has([data-smiski-glow])
+[data-profile=about-card] .rich-text-content {
+  color: var(--glow-text);
+}
+
+/* Palette button */
+[data-smiski-glow] > summary {
+  display: inline-block;
+  padding: .65rem 1rem;
+  border: 1px solid var(--glow-accent);
+  border-radius: 999px;
+  background-color: var(--glow-bg);
+  color: var(--glow-text);
+  font-weight: 700;
+  list-style: none;
+  cursor: pointer;
+}
+
+[data-smiski-glow] > summary::-webkit-details-marker {
+  display: none;
+}
+
+[data-smiski-glow] > summary:focus-visible {
+  outline: 2px solid var(--glow-text);
+  outline-offset: 3px;
+}
+
+/* Show the label for the next click. */
+[data-smiski-glow]:not([open]) [data-glow-off],
+[data-smiski-glow][open] [data-glow-on] {
+  display: none;
+}
+```
+
+#### Customize the colors
+
+Edit `--glow-bg` for the panel and button backgrounds, `--glow-text` for the text, and `--glow-accent` for the panel edge and button border. Each palette has its own set of values. When the toggle opens, `[open]` activates the second set.
+
+#### Preview both palettes
+
+Open **About Me** with the toggle visible. Click **Turn the glow on** to switch to dark olive, then click **Turn the glow off** to return to butter yellow. For before-and-after screenshots, keep the same view so the palette change is easy to see.
+
+### Dollhouse Doors — Reveal Half the Profile
+
+Two dollhouse doors cover the profile from top to bottom. The left door reveals the left half of the profile, and the right door reveals the right half. They open independently, so visitors can open either door or both. The profile keeps its normal layout beneath the covers.
+
+![Dollhouse doors closed and with the right half revealed](./images/profile/profile-html-dollhouse-doors.png)
+
+#### Profile HTML
+
+Paste this into a standalone **Profile HTML block**.
+
+```html
+<div data-dollhouse-overlay>
+  <details data-dollhouse-leaf="left">
+    <summary>
+      <span data-dollhouse-cover aria-hidden="true"></span>
+      <span data-dollhouse-handle>
+        <span data-door-closed>Open left door</span>
+        <span data-door-open>Close left door</span>
+      </span>
+    </summary>
+  </details>
+
+  <details data-dollhouse-leaf="right">
+    <summary>
+      <span data-dollhouse-cover aria-hidden="true"></span>
+      <span data-dollhouse-handle>
+        <span data-door-closed>Open right door</span>
+        <span data-door-open>Close right door</span>
+      </span>
+    </summary>
+  </details>
+</div>
+```
+
+#### Profile CSS
+
+Paste this complete block after your regular **Profile CSS**. If you already have CSS from an earlier door test, replace those door rules with this block.
+
+```css
+/* The full profile is the positioning reference for both doors. */
+[data-profile=scope]:has([data-dollhouse-overlay]) {
+  position: relative !important;
+}
+
+/* Release the door branch from About Me's smaller positioning boxes. */
+[data-profile=scope] :has([data-dollhouse-overlay]) {
+  position: static !important;
+  isolation: auto !important;
+  z-index: auto !important;
+  overflow: visible !important;
+  clip-path: none !important;
+  contain: none !important;
+  container-type: normal !important;
+  transform: none !important;
+  filter: none !important;
+}
+
+/* Remove the standalone HTML block's empty layout space. */
+[data-profile=html-block]:has([data-dollhouse-overlay]) {
+  display: contents !important;
+}
+
+/* Cover the full profile from top to bottom. */
+[data-profile=scope] [data-dollhouse-overlay] {
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 9999 !important;
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: minmax(0, 1fr);
+  pointer-events: none;
+}
+
+[data-dollhouse-overlay] > [data-dollhouse-leaf] {
+  position: relative !important;
+  inset: auto !important;
+  display: block !important;
+  grid-row: 1;
+  min-width: 0;
+  min-height: 0;
+  width: auto !important;
+  height: auto !important;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  overflow: visible;
+  background: transparent;
+}
+
+[data-dollhouse-leaf="left"] {
+  grid-column: 1;
+  --door-hinge: left center;
+  --door-swing: -90deg;
+}
+
+[data-dollhouse-leaf="right"] {
+  grid-column: 2;
+  --door-hinge: right center;
+  --door-swing: 90deg;
+}
+
+/* The entire closed door is a click target. */
+[data-dollhouse-leaf] > summary {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  margin: 0;
+  padding: .5rem;
+  list-style: none;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+[data-dollhouse-leaf="right"] > summary {
+  justify-content: flex-start;
+}
+
+[data-dollhouse-leaf] > summary::-webkit-details-marker {
+  display: none;
+}
+
+[data-dollhouse-cover] {
+  position: absolute;
+  inset: 0;
+  box-sizing: border-box;
+  border: clamp(4px, 1vw, 12px) solid #a66182;
+  background: repeating-linear-gradient(
+    90deg, #e7b5cb 0 2rem, #dca1bb 2rem 2.1rem
+  );
+  box-shadow: inset 0 0 0 3px #f5d7e4;
+  transform-origin: var(--door-hinge);
+  backface-visibility: hidden;
+  transition: transform .35s ease;
+}
+
+[data-dollhouse-leaf][open] [data-dollhouse-cover] {
+  transform: perspective(60rem) rotateY(var(--door-swing));
+}
+
+/* When a door opens, the profile is clickable around its handle. */
+[data-dollhouse-leaf][open] > summary {
+  justify-content: flex-start;
+  pointer-events: none;
+}
+
+[data-dollhouse-leaf="right"][open] > summary {
+  justify-content: flex-end;
+}
+
+[data-dollhouse-handle] {
+  position: sticky;
+  top: 1rem;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  box-sizing: border-box;
+  min-height: 44px;
+  padding: .5rem .75rem;
+  border: 1px solid #a66182;
+  border-radius: 999px;
+  background: #fff0f5;
+  color: #532c45;
+  font-weight: 700;
+  text-align: center;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+[data-dollhouse-leaf] > summary:focus-visible [data-dollhouse-handle] {
+  outline: 2px solid #884a6d;
+  outline-offset: 3px;
+}
+
+[data-dollhouse-leaf]:not([open]) [data-door-open],
+[data-dollhouse-leaf][open] [data-door-closed] {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-dollhouse-cover] {
+    transition: none;
+  }
+}
+```
+
+#### Customize the doors
+
+- **Door colors.** Edit the `background`, `border`, and `box-shadow` in `[data-dollhouse-cover]`.
+- **Handle text.** Edit the labels inside `[data-door-closed]` and `[data-door-open]` in the HTML.
+- **Starting state.** Add `open` to either `<details>` tag if you want that door to start open.
+- **Swing speed.** Change `.35s` in the cover’s `transition` to make the doors swing faster or slower.
+
+#### Preview the reveal
+
+Start with both doors closed. Open the left door and check that you can interact with the exposed half while the right half stays covered. Then open the right door and close the left. The covers span the full profile, including the banner, and scroll with the page.
+
+---
 ## Experimental Profile Dialogs
 
 Current mobile captures include a separate `[data-profile="scope"][data-profile-portal="true"]` wrapper. This allows Profile-scoped rules to reach those dialogs. Earlier captures below placed dialogs outside Profile scope; those placement-specific examples remain available. A rule depending on the main page’s ancestry or variables should not be assumed to cover every portal.
@@ -13773,6 +14751,7 @@ Keep the particle count and size modest on mobile. `pointer-events: none` preven
 
 ## Changelog
 
+- **2026-11-25:** Added a number of snippets for Lab and Profile
 - **2026-10-25:** Added a number of Profile focused snippets from @pikachuthehedgehogtheherooftime
 - **2026-10-11:** Added a number of Lab focused snippets from @pikachuthehedgehogtheherooftime
 - **2026-10-10:** Replaced legacy Laboratory button snippets with the live-verified LoreBary 2.5 composer and tool-row selectors. Added dedicated styling maps for Write for me, Time skip, Dice roll, HTML Mode, Visual Expressions, Polish replies, Scene music, Reply choices, and their long-press settings and dropdowns.
