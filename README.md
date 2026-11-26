@@ -40,6 +40,7 @@ Thanks to **@harp** for the original collection of useful LoreBary snippets. ðŸ«
 And **@pikachuthehedgehogtheherooftime** for some of the animated previews.
 
 ## Latest Guide Update
+- **2026-11-26:** Added and updated many profile snippets and selectors. 
 - **2026-10-25:** Added a number of Profile focused snippets from @pikachuthehedgehogtheherooftime
 - **2026-10-11:** Added a number of snippets from @pikachuthehedgehogtheherooftime
 - **2026-10-10:** Replaced the legacy Laboratory button examples with the live-verified LoreBary 2.5 composer, toolbar, active/open states, long-press settings dialogs, and dropdown selectors.
