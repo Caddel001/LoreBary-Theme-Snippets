@@ -160,6 +160,7 @@ Use narrow, stable selectors. Avoid broad rules such as `button { ... }` or `.pr
   - [Profile View-State Targets](#profile-view-state-targets)
 - [Profile Background and Layout](#profile-background-and-layout)
   - [Background Size, Position, and Tint](#background-size-position-and-tint)
+  - [Scrollable Screen Assets](#scrollable-screen-assets)
   - [Body and Grid Spacing](#body-and-grid-spacing)
 - [Fonts and Typography](#fonts-and-typography)
   - [Safe system-font setup](#safe-system-font-setup)
@@ -249,32 +250,42 @@ Use narrow, stable selectors. Avoid broad rules such as `button { ... }` or `.pr
   - [Tables](#tables)
   - [Solid, Dotted, and Paw Dividers](#solid-dotted-and-paw-dividers)
 - [HTML Profile Options](#html-profile-options)
-  - [Profile HTML and Interactive CSS](https://github.com/Caddel001/LoreBary-Theme-Snippets/blob/main/LoreBary%20CSS%20Quick%20Guide.md#profile-html-and-interactive-css)
-  - [Content Warning Across the Profile](https://github.com/Caddel001/LoreBary-Theme-Snippets/blob/main/LoreBary%20CSS%20Quick%20Guide.md#content-warning-across-the-profile)
-  - [Combination Lock](https://github.com/Caddel001/LoreBary-Theme-Snippets/blob/main/LoreBary%20CSS%20Quick%20Guide.md#combination-lock)
-  - [HTML Image Setup](https://github.com/Caddel001/LoreBary-Theme-Snippets/blob/main/LoreBary%20CSS%20Quick%20Guide.md#html-image-setup)
-  - [Featured Creators & Friends](https://github.com/Caddel001/LoreBary-Theme-Snippets/blob/main/LoreBary%20CSS%20Quick%20Guide.md#featured-creators--friends)
-  - [Clickable CSS Button — LIVE / OFFLINE](https://github.com/Caddel001/LoreBary-Theme-Snippets/blob/main/LoreBary%20CSS%20Quick%20Guide.md#clickable-css-button--live--offline)
-  - [Palette Toggle](https://github.com/Caddel001/LoreBary-Theme-Snippets/blob/main/LoreBary%20CSS%20Quick%20Guide.md#palette-toggle)
-  - [Dollhouse Doors — Reveal Half the Profile](https://github.com/Caddel001/LoreBary-Theme-Snippets/blob/main/LoreBary%20CSS%20Quick%20Guide.md#dollhouse-doors--reveal-half-the-profile)
-- [Experimental Profile Dialogs](#experimental-profile-dialogs)
+  - [Content Warning Across the Profile](#content-warning-across-the-profile)
+  - [Combination Lock](#combination-lock)
+  - [HTML Image Setup](#html-image-setup)
+  - [Featured Creators & Friends](#featured-creators--friends)
+  - [Clickable CSS Button — LIVE / OFFLINE](#clickable-css-button--live--offline)
+  - [Palette Toggle](#palette-toggle)
+  - [Dollhouse Doors — Reveal Half the Profile](#dollhouse-doors--reveal-half-the-profile)
+- [Profile Dialogs and Mobile Panels](#profile-dialogs-and-mobile-panels)
+  - [Shared Dialog Selectors](#shared-dialog-selectors)
   - [Mobile Gallery Panel](#mobile-gallery-panel)
   - [New Folder Dialog](#new-folder-dialog)
   - [Folder Color and Privacy Choices](#folder-color-and-privacy-choices)
   - [Mobile Post and Comments Sheet](#mobile-post-and-comments-sheet)
   - [Comment Reactions and Reply Controls](#comment-reactions-and-reply-controls)
+  - [Comment Rows, Replies, and List States](#comment-rows-replies-and-list-states)
   - [Mobile Comment Composer Preview](#mobile-comment-composer-preview)
   - [Mobile About Me Editor](#mobile-about-me-editor)
-  - [Experimental: Followers and Following Dialogs](#experimental-followers-and-following-dialogs)
-  - [Experimental: Followers and Following Close Button](#experimental-followers-and-following-close-button)
-  - [Experimental: Send a Wave](#experimental-send-a-wave)
-  - [Experimental: Section Dialogs](#experimental-section-dialogs)
+  - [Mobile Profile Details](#mobile-profile-details)
+  - [Followers and Following Dialogs](#followers-and-following-dialogs)
+  - [Followers and Following Close Button](#followers-and-following-close-button)
+  - [Send a Wave](#send-a-wave)
+  - [Section Dialogs](#section-dialogs)
 - [Mobile Profile Repairs](#mobile-profile-repairs)
   - [Responsive result example](#responsive-result-example)
+- [Common Fixes](#common-fixes)
+  - [Raise Avatar Controls](#raise-avatar-controls)
+  - [Fix Editor Toolbox Color Flood](#fix-editor-toolbox-color-flood)
+  - [About Me “View All”](#about-me-view-all)
+  - [Scrolling on Content Cards](#scrolling-on-content-cards)
+  - [Compact Content View — Banner on the Left or Right](#compact-content-view--banner-on-the-left-or-right)
 - [Profile Selector Quick Reference](#profile-selector-quick-reference)
   - [Identity and navigation](#identity-and-navigation)
   - [Content, composer, and actions](#content-composer-and-actions)
   - [Useful attribute patterns](#useful-attribute-patterns)
+  - [Native Profile Selectors](#native-profile-selectors)
+  - [Native CSS Custom Properties](#native-css-custom-properties)
   - [Additional Component and State Selectors](#additional-component-and-state-selectors)
   - [Current Mobile and Rail Selectors](#current-mobile-and-rail-selectors)
   - [Native Artwork Paths and Reuse](#native-artwork-paths-and-reuse)
@@ -3864,7 +3875,7 @@ The following tables provide a quick reference to LoreBary’s native image path
 
 ---
 
-# Part II — Profile Themes
+ # Part II — Profile Themes
 
 Profile themes use `.profile-theme-scope` and `[data-profile="..."]`. Keep every profile rule inside the profile scope so it does not recolor LoreBary navigation, dialogs, or Laboratory chats.
 
@@ -3953,10 +3964,10 @@ The banner has four nested containers. This example gives each a different color
 
 ```css
 /* Outer wrapper: pink background, border, and rounding. */
-[data-profile="scope"] [data-profile="hero-frame"] {
-  background: #352440 !important;
-  border: 2px solid #ed91b7 !important;
-  border-radius: 20px !important;
+[data-profile="hero-frame"] {
+  background: #352440 ;
+  border: 2px solid #ed91b7 ;
+  border-radius: 20px ;
 }
 ```
 
@@ -3968,12 +3979,12 @@ The background color sits beneath the banner artwork, so the image may cover it.
 
 ```css
 /* Banner panel: purple surface, border, rounding, and shadow. */
-[data-profile="scope"] [data-profile="hero"] {
-  background-color: #251c35 !important;
+[data-profile="hero"] {
+  background-color: #251c35 ;
   border: 2px solid #bd9bea !important;
-  border-radius: 16px !important;
-  clip-path: inset(0 round 16px) !important;
-  box-shadow: 0 6px 20px #120b2099 !important;
+  border-radius: 16px ;
+  clip-path: inset(0 round 16px) ;
+  box-shadow: 0 6px 20px #120b2099 ;
 }
 ```
 
@@ -3985,10 +3996,10 @@ A translucent blue background shows the content area while letting some artwork 
 
 ```css
 /* Banner content area: blue surface and border. */
-[data-profile="scope"] [data-profile="hero-content"] {
-  background: rgba(25, 52, 70, 0.45) !important;
-  border: 2px solid #91cfed !important;
-  border-radius: 12px !important;
+[data-profile="hero-content"] {
+  background: rgba(25, 52, 70, 0.45) ;
+  border: 2px solid #91cfed ;
+  border-radius: 12px ;
 }
 ```
 
@@ -3998,10 +4009,10 @@ A translucent blue background shows the content area while letting some artwork 
 
 ```css
 /* Avatar and identity layout row: green surface and border. */
-[data-profile="scope"] [data-profile="hero-row"] {
-  background: rgba(25, 65, 48, 0.45) !important;
-  border: 2px solid #8fd8bb !important;
-  border-radius: 12px !important;
+[data-profile="hero-row"] {
+  background: rgba(25, 65, 48, 0.45) ;
+  border: 2px solid #8fd8bb ;
+  border-radius: 12px ;
 }
 ```
 
@@ -4034,13 +4045,10 @@ The **banner artwork** and **readability tint** are separate layers. Style each 
 The captured artwork layer has no dedicated `data-profile` label. This selector finds the direct child of the hero whose inline style contains `background-image`.
 
 ```css
-/* Banner artwork: sizing, alignment, repetition, and opacity. */
-[data-profile="scope"]
+/* Banner artwork: sizing, alignment */
 [data-profile="hero"] > div[style*="background-image"] {
-  background-size: cover !important;
+  background-size: cover;
   background-position: center top !important;
-  background-repeat: no-repeat !important;
-  opacity: 0.8 !important;
 }
 ```
 
@@ -4054,19 +4062,18 @@ This example uses strong pink to make the tint easy to see. The mask rules remov
 
 ```css
 /* Banner tint: strong pink for a visible test. */
-[data-profile="scope"] [data-profile="hero-tint"] {
-  background: rgba(255, 0, 120, 0.8) !important;
-  opacity: 1 !important;
-  mask-image: none !important;
-  -webkit-mask-image: none !important;
-  pointer-events: none !important;
+[data-profile="hero-tint"] {
+  background: rgba(255, 0, 120, 0.8);
+  opacity: 1;
+  -webkit-mask-image: none;
+  pointer-events: none;
 }
 ```
 
 - `255, 0, 120` sets the tint color.
 - `0.8` sets its strength. Lower it for a softer tint.
 - Use `background: transparent` to remove this tint.
-- Remove both mask declarations to retain LoreBary’s existing fade.
+- Remove mask declarations to retain LoreBary’s existing fade.
 
 ### Identity Rows and Individual Surface Treatments
 
@@ -4088,12 +4095,12 @@ These three containers sit inside the hero row. Give each a separate style to se
 
 ```css
 /* Outer identity area: purple panel with a pink border. */
-[data-profile="scope"] [data-profile="identity-card"] {
-  background: #251c35 !important;
-  border: 2px solid #ed91b7 !important;
-  border-radius: 16px !important;
-  padding: 16px !important;
-  box-shadow: 0 4px 14px #120b2080 !important;
+[data-profile="identity-card"] {
+  background: #251c35;
+  border: 2px solid #ed91b7;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 4px 14px #120b2080
 }
 ```
 
@@ -4103,11 +4110,11 @@ These three containers sit inside the hero row. Give each a separate style to se
 
 ```css
 /* Name and metadata column: blue panel. */
-[data-profile="scope"] [data-profile="identity-col"] {
-  background: #193446 !important;
-  border: 1px solid #91cfed !important;
-  border-radius: 12px !important;
-  padding: 12px !important;
+[data-profile="identity-col"] {
+  background: #193446;
+  border: 1px solid #91cfed;
+  border-radius: 12px;
+  padding: 12px;
 }
 ```
 
@@ -4117,11 +4124,11 @@ These three containers sit inside the hero row. Give each a separate style to se
 
 ```css
 /* Display-name row: green panel. */
-[data-profile="scope"] [data-profile="identity"] {
-  background: #24483e !important;
-  border: 1px solid #8fd8bb !important;
-  border-radius: 8px !important;
-  padding: 8px !important;
+[data-profile="identity"] {
+  background: #24483e;
+  border: 1px solid #8fd8bb;
+  border-radius: 8px;
+  padding: 8px;
 }
 ```
 
@@ -4137,18 +4144,11 @@ Use these four properties to change a panel’s appearance. This example targets
 
 ```css
 /* Outer identity card: gradient, border, rounded corners, and shadow. */
-[data-profile="scope"] [data-profile="identity-card"] {
-  /* Surface: purple fading into rose. */
-  background: linear-gradient(135deg, #251c35, #562b43) !important;
-
-  /* Outline: thickness, style, and color. */
-  border: 2px solid #ed91b7 !important;
-
-  /* Corner rounding. */
-  border-radius: 18px !important;
-
-  /* Shadow: horizontal offset, vertical offset, blur, spread, color. */
-  box-shadow: 0 8px 20px 0 rgba(18, 11, 32, 0.55) !important;
+[data-profile="identity-card"] {
+  background: linear-gradient(135deg, #251c35, #562b43);
+  border: 2px solid #ed91b7;
+  border-radius: 18px;
+  box-shadow: 0 8px 20px 0 rgba(18, 11, 32, 0.55);
 }
 ```
 
@@ -4201,23 +4201,23 @@ The **level notch** sits at the top of the hero. The **navigation notch** holds 
 
 ```css
 /* Level panel: purple surface with a pink border. */
-[data-profile="scope"] [data-profile="level-notch"] {
-  background: #352440 !important;
-  border: 2px solid #ed91b7 !important;
-  border-radius: 0 0 14px 14px !important;
-  padding: 6px 14px !important;
-  box-shadow: 0 3px 8px #120b2080 !important;
+[data-profile="level-notch"] {
+  background: #352440;
+  border: 2px solid #ed91b7;
+  border-radius: 0 0 14px 14px;
+  padding: 6px 14px;
+  box-shadow: 0 3px 8px #120b2080;
 }
 
 /* Level label only. */
-[data-profile="scope"] [data-profile="level-text"] {
-  color: #ffb8d6 !important;
-  font-weight: bold !important;
+[data-profile="level-text"] {
+  color: #ffb8d6;
+  font-weight: bold;
 }
 
 /* Current level icon: tint the artwork. */
-[data-profile="scope"] [data-profile="level-icon"] {
-  filter: sepia(1) saturate(2) hue-rotate(285deg) !important;
+[data-profile="level-icon"] {
+  filter: sepia(1) saturate(2) hue-rotate(285deg);
 }
 ```
 
@@ -4229,12 +4229,12 @@ The icon selector works with whichever level image is displayed; it does not dep
 
 ```css
 /* Profile navigation panel: green surface with a mint border. */
-[data-profile="scope"] [data-profile="tab-notch"] {
-  background: #24483e !important;
-  border: 2px solid #8fd8bb !important;
-  border-radius: 14px 14px 0 0 !important;
-  padding: 6px 14px !important;
-  box-shadow: 0 -3px 8px #120b2080 !important;
+[data-profile="tab-notch"] {
+  background: #24483e;
+  border: 2px solid #8fd8bb;
+  border-radius: 14px 14px 0 0;
+  padding: 6px 14px;
+  box-shadow: 0 -3px 8px #120b2080;
 }
 ```
 
@@ -4263,9 +4263,9 @@ Style the calendar icon and membership text independently.
 
 ```css
 /* Member-since calendar: mint tint and a soft glow. */
-[data-profile="scope"] [data-profile="member-since-icon"] {
+[data-profile="member-since-icon"] {
   filter: sepia(1) saturate(2) hue-rotate(95deg)
-    drop-shadow(0 0 3px #8fd8bb) !important;
+    drop-shadow(0 0 3px #8fd8bb);
 }
 ```
 
@@ -4277,11 +4277,11 @@ The calendar is an image, so `color` does not recolor it. `filter` tints its art
 
 ```css
 /* Member-since text only: mint with a soft shadow. */
-[data-profile="scope"] [data-profile="member-since-text"] {
+[data-profile="member-since-text"] {
   color: #8fd8bb !important;
-  font-weight: 600 !important;
-  letter-spacing: 0.02em !important;
-  text-shadow: 0 1px 3px rgba(18, 11, 32, 0.6) !important;
+  font-weight: 600 ;
+  letter-spacing: 0.02em ;
+  text-shadow: 0 1px 3px rgba(18, 11, 32, 0.6) ;
 }
 ```
 
@@ -4305,17 +4305,17 @@ These are the two count buttons beneath the profile metadata. Each has its own s
 
 ```css
 /* Followers button: rose surface and pink border. */
-[data-profile="scope"] [data-profile="count-followers"] {
-  background: #562b43 !important;
-  border: 1px solid #ed91b7 !important;
-  border-radius: 10px !important;
-  padding: 6px 10px !important;
-  box-shadow: 0 2px 6px rgba(18, 11, 32, 0.4) !important;
+[data-profile="count-followers"] {
+  background: #562b43 ;
+  border: 1px solid #ed91b7 ;
+  border-radius: 10px ;
+  padding: 6px 10px ;
+  box-shadow: 0 2px 6px rgba(18, 11, 32, 0.4) ;
 }
 
 /* Followers button: brighter surface on hover. */
-[data-profile="scope"] [data-profile="count-followers"]:hover {
-  background: #713953 !important;
+[data-profile="count-followers"]:hover {
+  background: #713953 ;
 }
 ```
 
@@ -4325,17 +4325,17 @@ These are the two count buttons beneath the profile metadata. Each has its own s
 
 ```css
 /* Following button: green surface and mint border. */
-[data-profile="scope"] [data-profile="count-following"] {
-  background: #24483e !important;
-  border: 1px solid #8fd8bb !important;
-  border-radius: 10px !important;
-  padding: 6px 10px !important;
-  box-shadow: 0 2px 6px rgba(18, 11, 32, 0.4) !important;
+[data-profile="count-following"] {
+  background: #24483e ;
+  border: 1px solid #8fd8bb ;
+  border-radius: 10px ;
+  padding: 6px 10px ;
+  box-shadow: 0 2px 6px rgba(18, 11, 32, 0.4) ;
 }
 
 /* Following button: brighter surface on hover. */
-[data-profile="scope"] [data-profile="count-following"]:hover {
-  background: #306052 !important;
+[data-profile="count-following"]:hover {
+  background: #306052 ;
 }
 ```
 
@@ -4347,17 +4347,17 @@ These are the two count buttons beneath the profile metadata. Each has its own s
 
 ```css
 /* Followers icon only: pink recolor. */
-[data-profile="scope"] [data-profile="count-followers"]
+[data-profile="count-followers"]
 img[src="/img/pixel/rel_friends.webp"] {
   filter: brightness(0) saturate(100%) invert(75%) sepia(24%)
-    saturate(850%) hue-rotate(290deg) brightness(101%) contrast(91%) !important;
+    saturate(850%) hue-rotate(290deg) brightness(101%) contrast(91%) ;
 }
 
 /* Following heart icon only: mint recolor. */
-[data-profile="scope"] [data-profile="count-following"]
+[data-profile="count-following"]
 img[src="/img/pixel/heart.webp"] {
   filter: brightness(0) saturate(100%) invert(84%) sepia(20%)
-    saturate(650%) hue-rotate(100deg) brightness(96%) contrast(90%) !important;
+    saturate(650%) hue-rotate(100deg) brightness(96%) contrast(90%) ;
 }
 ```
 
@@ -4371,29 +4371,29 @@ In “2 Following,” the number has its own `count-value` element. The word is 
 
 ```css
 /* Followers label: pale pink. */
-[data-profile="scope"] [data-profile="count-followers"]
+[data-profile="count-followers"]
 > span:has(> [data-profile="count-value"]) {
-  color: #ffe9f2 !important;
+  color: #ffe9f2 ;
 }
 
 /* Followers number only: bright pink and bold. */
-[data-profile="scope"] [data-profile="count-followers"]
+[data-profile="count-followers"]
 [data-profile="count-value"] {
-  color: #ff91c8 !important;
-  font-weight: 700 !important;
+  color: #ff91c8 ;
+  font-weight: 700 ;
 }
 
 /* Following label: pale mint. */
-[data-profile="scope"] [data-profile="count-following"]
+[data-profile="count-following"]
 > span:has(> [data-profile="count-value"]) {
-  color: #e5fff3 !important;
+  color: #e5fff3 ;
 }
 
 /* Following number only: bright mint and bold. */
-[data-profile="scope"] [data-profile="count-following"]
+[data-profile="count-following"]
 [data-profile="count-value"] {
-  color: #8fd8bb !important;
-  font-weight: 700 !important;
+  color: #8fd8bb ;
+  font-weight: 700 ;
 }
 ```
 
@@ -4416,8 +4416,6 @@ The root also carries `data-profile-view`, which LoreBary updates when you navig
 
 Keep these attributes together with **no space**: they describe the same root element. A space before another selector targets something inside it.
 
----
-
 ## Profile Background and Layout
 
 ### Background Size, Position, and Tint
@@ -4435,11 +4433,11 @@ These examples adjust the background selected in LoreBary’s native settings. T
 `cover` fills the background area while keeping the image’s proportions. Some artwork may be cropped.
 
 ```css
-/* Background image: fill the area without repeating. */
-[data-profile="scope"] [data-profile="page-background"] {
-  background-size: cover !important;
-  background-position: center center !important;
-  background-repeat: no-repeat !important;
+/* Background image: repeat a 240px-wide tile. */
+[data-profile="page-background"] {
+  background-size: 240px auto !important;
+  background-position: left top !important;
+  background-repeat: repeat ;
 }
 ```
 
@@ -4476,7 +4474,7 @@ Replace the full-image block with this one. A smaller image size makes more copi
 
 ```css
 /* Background image: repeat a 240px-wide tile. */
-[data-profile="scope"] [data-profile="page-background"] {
+[data-profile="page-background"] {
   background-size: 240px auto !important;
   background-position: left top !important;
   background-repeat: repeat !important;
@@ -4500,7 +4498,7 @@ The **page tint** sits over the background artwork. Target this layer to change 
 
 ```css
 /* Page tint: translucent purple over the background. */
-[data-profile="scope"] [data-profile="page-tint"] {
+[data-profile="page-tint"] {
   background: rgba(65, 25, 90, 0.45) !important;
   opacity: 1 !important;
   pointer-events: none !important;
@@ -4522,6 +4520,71 @@ Try these backgrounds in the same rule:
 
 **Keep opacity off the profile root:** Applying `opacity` to `[data-profile="scope"]` fades everything inside it, including text and buttons. Adjust the tint’s background transparency instead.
 
+### Scrollable Screen Assets
+
+Use the Profile’s page-tint layer for foreground artwork that follows visitors as they scroll. This example puts matching artwork in the upper corners and repeats a decorative strip along the bottom. Clicks and taps pass through to the profile controls.
+
+Paste this block into **Profile CSS** and replace the two image URLs. If you installed the earlier Scrollable Screen Assets example, replace that whole block with this one.
+
+```css
+[data-profile=page-tint] {
+  --screen-corner: url("/api/images/YOUR_CORNER_IMAGE_ID");
+  --screen-border: url("/api/images/YOUR_BORDER_IMAGE_ID");
+  --screen-top: 75px;
+  --screen-corner-width: 200px;
+  --screen-border-height: 30px;
+
+  /* Start below the header and let the artwork extend past the strip. */
+  position: sticky !important;
+  inset: auto !important;
+  top: var(--screen-top) !important;
+  margin-top: -120svh !important;
+  width: 100% !important;
+  height: 120px !important;
+  overflow: visible !important;
+  background: transparent !important;
+  transform: none !important;
+  opacity: 1 !important;
+  pointer-events: none !important;
+  z-index: 80 !important;
+}
+
+/* Both layers reach from the header clearance to the visible bottom edge. */
+[data-profile=page-tint]::before,
+[data-profile=page-tint]::after {
+  content: "";
+  display: block;
+  position: absolute;
+  inset: 0 0 auto;
+  height: calc(100dvh - var(--screen-top));
+  pointer-events: none;
+  animation: none;
+}
+
+/* Upper-left corner and a repeating strip along the bottom. */
+[data-profile=page-tint]::before {
+  background:
+    var(--screen-corner) left top / var(--screen-corner-width) auto no-repeat,
+    var(--screen-border) left bottom / auto var(--screen-border-height) repeat-x;
+}
+
+/* Mirror the corner artwork on the right. */
+[data-profile=page-tint]::after {
+  background: var(--screen-corner) left top / var(--screen-corner-width) auto no-repeat;
+  transform: scaleX(-1);
+}
+
+@media (max-width: 780px) {
+  [data-profile=page-tint] {
+    --screen-top: 12px;
+    --screen-corner-width: 76px;
+    --screen-border-height: 20px;
+  }
+}
+```
+
+Adjust `--screen-top` if the upper corners overlap your header. The decoration height accounts for that same offset, so the bottom strip still reaches the visible bottom edge. For bottom artwork only, set `--screen-corner: none;`.
+
 ### Body and Grid Spacing
 
 Change outer body padding and the gaps between inner-grid sections without changing spacing inside their cards.
@@ -4541,8 +4604,8 @@ Add space between the body’s edges and the layout inside it.
 
 ```css
 /* Body: space inside the outer wrapper. */
-[data-profile="scope"] [data-profile="body"] {
-  padding: 12px !important;
+[data-profile="body"] {
+  padding: 12px ;
 }
 ```
 
@@ -4552,10 +4615,10 @@ Adjust the grid’s inner padding and the space between its direct sections.
 
 ```css
 /* Inner body: space around and between grid sections. */
-[data-profile="scope"] [data-profile="body-inner"] {
-  padding: 16px !important;
-  column-gap: 24px !important;
-  row-gap: 24px !important;
+[data-profile="body-inner"] {
+  padding: 16px ;
+  column-gap: 24px ;
+  row-gap: 24px ;
 }
 ```
 
@@ -4571,14 +4634,12 @@ For different vertical and horizontal padding:
 
 ```css
 /* Inner body: 12px top/bottom, 24px left/right. */
-[data-profile="scope"] [data-profile="body-inner"] {
-  padding: 12px 24px !important;
+[data-profile="body-inner"] {
+  padding: 12px 24px ;
 }
 ```
 
 **Gap note:** These rules space the grid’s direct sections. They do not change spacing inside individual cards.
-
----
 
 ## Fonts and Typography
 
@@ -4672,10 +4733,10 @@ The **display-name** element is the heading; **name-text** is the text inside it
 
 ```css
 /* Display-name heading: weight, letter spacing, and shadow. */
-[data-profile="scope"] [data-profile="display-name"] {
-  font-weight: 700 !important;
-  letter-spacing: 0.03em !important;
-  text-shadow: 0 2px 4px rgba(18, 11, 32, 0.65) !important;
+[data-profile="display-name"] {
+  font-weight: 700 ;
+  letter-spacing: 0.03em ;
+  text-shadow: 0 2px 4px rgba(18, 11, 32, 0.65) ;
 }
 ```
 
@@ -4685,8 +4746,8 @@ The **display-name** element is the heading; **name-text** is the text inside it
 
 ```css
 /* Name text only: bright pink. */
-[data-profile="scope"] [data-profile="name-text"] {
-  color: #ff91c8 !important;
+[data-profile="name-text"] {
+  color: #ff91c8;
 }
 ```
 
@@ -4700,13 +4761,13 @@ Replace the solid name-color block with this alternative. It paints the letters 
 
 ```css
 /* Name text only: pink, lavender, and mint gradient. */
-[data-profile="scope"] [data-profile="name-text"] {
-  background: linear-gradient(90deg, #ff91c8, #bd9bea, #8fd8bb) !important;
-  background-clip: text !important;
-  -webkit-background-clip: text !important;
-  color: transparent !important;
-  -webkit-text-fill-color: transparent !important;
-  text-shadow: none !important;
+[data-profile="name-text"] {
+  background: linear-gradient(90deg, #ff91c8, #bd9bea, #8fd8bb) ;
+  background-clip: text ;
+  -webkit-background-clip: text ;
+  color: transparent ;
+  -webkit-text-fill-color: transparent ;
+  text-shadow: none ;
 }
 ```
 
@@ -4720,12 +4781,12 @@ The captured username (`@handle`) has no dedicated `data-profile` label. It is a
 
 ```css
 /* Username paragraph directly after the identity row. */
-[data-profile="scope"] [data-profile="identity-col"]
+[data-profile="identity-col"]
 > [data-profile="identity"] + p {
   color: #8fd8bb !important;
-  font-weight: 600 !important;
-  letter-spacing: 0.04em !important;
-  text-shadow: 0 1px 3px rgba(18, 11, 32, 0.6) !important;
+  font-weight: 600 ;
+  letter-spacing: 0.04em ;
+  text-shadow: 0 1px 3px rgba(18, 11, 32, 0.6) ;
 }
 ```
 
@@ -4754,12 +4815,12 @@ Style the quote’s panel and its text separately.
 
 ```css
 /* Quote panel: purple surface, pink border, and rounded corners. */
-[data-profile="scope"] [data-profile="quote"] {
-  background: rgba(37, 28, 53, 0.85) !important;
-  border: 1px solid #ed91b7 !important;
-  border-radius: 12px !important;
-  padding: 14px !important;
-  box-shadow: 0 4px 12px rgba(18, 11, 32, 0.45) !important;
+[data-profile="quote"] {
+  background: rgba(37, 28, 53, 0.85) ;
+  border: 1px solid #ed91b7 ;
+  border-radius: 12px ;
+  padding: 14px ;
+  box-shadow: 0 4px 12px rgba(18, 11, 32, 0.45) ;
 }
 ```
 
@@ -4769,11 +4830,11 @@ Style the quote’s panel and its text separately.
 
 ```css
 /* Quote text only: pink, italic, and centered. */
-[data-profile="scope"] [data-profile="quote-text"] {
-  color: #ffb8d6 !important;
-  font-style: italic !important;
-  text-align: center !important;
-  text-shadow: 0 2px 4px rgba(18, 11, 32, 0.6) !important;
+[data-profile="quote-text"] {
+  color: #ffb8d6 ;
+  font-style: italic ;
+  text-align: center ;
+  text-shadow: 0 2px 4px rgba(18, 11, 32, 0.6) ;
 }
 ```
 
@@ -4786,8 +4847,6 @@ The captured quote text is a button. Add a quote in LoreBary if the quote area i
 Use the existing font setup for body and title fonts. For component colors, a child span with its own `color` does not inherit the parent’s color—even if the parent declaration is important.
 
 Target nested text only when you intend to replace its author-selected color. Keep optional nested paragraph/span overrides separate from a component’s base surface styling.
-
----
 
 ## Profile Avatar Frame
 
@@ -4904,12 +4963,12 @@ The captured upload label has no dedicated `data-profile` hook. `label:has(> inp
 
 ```css
 /* Change-avatar overlay: rose tint inside the portrait. */
-[data-profile="scope"] [data-profile="avatar"]
+[data-profile="avatar"]
 label:has(> input[aria-label="Change avatar"]) > span {
-  background: rgba(86, 43, 67, 0.88) !important;
-  border: 2px solid #ed91b7 !important;
-  border-radius: inherit !important;
-  box-shadow: inset 0 0 18px rgba(18, 11, 32, 0.55) !important;
+  background: rgba(86, 43, 67, 0.88) ;
+  border: 2px solid #ed91b7 ;
+  border-radius: inherit ;
+  box-shadow: inset 0 0 18px rgba(18, 11, 32, 0.55) ;
 }
 ```
 
@@ -4923,19 +4982,19 @@ In the supplied overlay, the second child span contains “Change avatar” and 
 
 ```css
 /* Change-avatar title only. */
-[data-profile="scope"] [data-profile="avatar"]
+[data-profile="avatar"]
 label:has(> input[aria-label="Change avatar"])
 > span > span:nth-child(2) {
-  color: #ffb8d6 !important;
-  text-transform: none !important;
-  letter-spacing: 0.04em !important;
+  color: #ffb8d6 ;
+  text-transform: none ;
+  letter-spacing: 0.04em ;
 }
 
 /* Upload hint only. */
-[data-profile="scope"] [data-profile="avatar"]
+[data-profile="avatar"]
 label:has(> input[aria-label="Change avatar"])
 > span > span:nth-child(3) {
-  color: #e5fff3 !important;
+  color: #e5fff3 ;
 }
 ```
 
@@ -4947,11 +5006,11 @@ These text selectors follow the captured child order; they may need updating if 
 
 ```css
 /* Upload image icon only: pink recolor. */
-[data-profile="scope"] [data-profile="avatar"]
+[data-profile="avatar"]
 label:has(> input[aria-label="Change avatar"])
 img[src="/img/pixel/expression-upload.webp"] {
   filter: brightness(0) saturate(100%) invert(75%) sepia(24%)
-    saturate(850%) hue-rotate(290deg) brightness(101%) contrast(91%) !important;
+    saturate(850%) hue-rotate(290deg) brightness(101%) contrast(91%) ;
 }
 ```
 
@@ -4979,11 +5038,11 @@ The streak beside the avatar has an outer badge, an image, and a number over the
 
 ```css
 /* Outer streak badge: blue surface and pink border. */
-[data-profile="scope"] [data-profile="streak"] {
-  background: #27576b !important;
-  border: 2px solid #ed91b7 !important;
-  border-radius: 50% !important;
-  box-shadow: 0 2px 6px rgba(18, 11, 32, 0.5) !important;
+[data-profile="streak"] {
+  background: #27576b ;
+  border: 2px solid #ed91b7 ;
+  border-radius: 50% ;
+  box-shadow: 0 2px 6px rgba(18, 11, 32, 0.5) ;
 }
 ```
 
@@ -4995,9 +5054,9 @@ The pink shape inside the badge is the filtered image itself. Changing the badge
 
 ```css
 /* Streak artwork only: pink recolor. */
-[data-profile="scope"] [data-profile="streak-icon"] {
+[data-profile="streak-icon"] {
   filter: brightness(0) saturate(100%) invert(75%) sepia(24%)
-    saturate(850%) hue-rotate(290deg) brightness(101%) contrast(91%) !important;
+    saturate(850%) hue-rotate(290deg) brightness(101%) contrast(91%) ;
 }
 ```
 
@@ -5009,10 +5068,10 @@ This recolors whichever streak image LoreBary displays. It produces an approxima
 
 ```css
 /* Number over the artwork: mint with a dark outline. */
-[data-profile="scope"] [data-profile="streak-count"] {
-  color: #8fd8bb !important;
+[data-profile="streak-count"] {
+  color: #8fd8bb ;
   font-family: Georgia, serif !important;
-  font-weight: 700 !important;
+  font-weight: 700 ;
   text-shadow:
     -1px -1px 0 #120b20,
      1px -1px 0 #120b20,
@@ -5043,21 +5102,18 @@ Every example below includes `[data-profile="identity-card"]` so it targets the 
 
 ```css
 /* Identity badge list: purple surface and pink border. */
-[data-profile="scope"] [data-profile="identity-card"]
 [data-profile="badge-list"] {
-  display: inline-block !important;
-  background: #352440 !important;
-  border: 1px solid #ed91b7 !important;
-  border-radius: 12px !important;
-  padding: 8px !important;
+  display: inline-block ;
+  background: #352440 ;
+  border: 1px solid #ed91b7 ;
+  border-radius: 12px ;
+  padding: 8px ;
 }
 
 /* Identity badge artwork: consistent size. */
-[data-profile="scope"] [data-profile="identity-card"]
 [data-profile="badge-list"] [data-profile="author-badge"] img {
   width: 32px !important;
   height: 32px !important;
-  object-fit: contain !important;
 }
 ```
 
@@ -5067,18 +5123,16 @@ Every example below includes `[data-profile="identity-card"]` so it targets the 
 
 ```css
 /* Glorp button only: green tile behind the artwork. */
-[data-profile="scope"] [data-profile="identity-card"]
-[data-profile="author-badge"][data-badge="glorp"] {
-  background: #24483e !important;
-  border: 1px solid #8fd8bb !important;
-  border-radius: 8px !important;
-  padding: 4px !important;
+[data-badge="glorp"] {
+  background: #24483e ;
+  border: 1px solid #8fd8bb ;
+  border-radius: 8px ;
+  padding: 4px ;
 }
 
 /* Glorp artwork only: mint glow, preserving original colors. */
-[data-profile="scope"] [data-profile="identity-card"]
-[data-profile="author-badge"][data-badge="glorp"] img {
-  filter: drop-shadow(0 0 3px #8fd8bb) !important;
+[data-badge="glorp"] img {
+  filter: drop-shadow(0 0 3px #8fd8bb) ;
 }
 ```
 
@@ -5134,8 +5188,6 @@ A filename-only rule such as `img[src="/img/Badges/badge_glorp.webp"]` can affec
 Use this exact tested selector, without adding `[data-profile="scope"]`. The scope-prefixed versions did not work in the user’s test; this version did. The supplied post layout places the badge group immediately after the author link.
 
 This leaves profile identity badges and artwork in post bodies visible. Remove the rule to restore the post-header badge group.
-
----
 
 ## Stickers and Decorative Images
 
@@ -5269,8 +5321,6 @@ The sticker examples already explain anchoring, positioning, and click-through l
 
 A filter on an image does not recolor a separate masked pseudo-element. If the same component already has a decorative replacement, edit that layer or select a different available anchor before adding another decoration. Keep user portraits and gallery images outside native-artwork filters.
 
----
-
 ## Main Profile Tabs and About Tabs
 
 The main profile navigation and the five About Me icon tabs are separate components. Style them independently.
@@ -5356,15 +5406,13 @@ Use the shared tab styling first. Add a data-tab condition when only one tab sho
 
 ```css
 /* Featured artwork and its existing counter. */
-[data-profile="scope"] [data-profile="tabs"]
-[data-profile="tab"][data-tab="featured"] img[src="/img/pixel/star.webp"] {
-  filter: sepia(1) saturate(2) brightness(1.15) !important;
+[data-tab="featured"] img[src="/img/pixel/star.webp"] {
+  filter: sepia(1) saturate(2) brightness(1.15) ;
 }
 
-[data-profile="scope"] [data-profile="tabs"]
-[data-profile="tab"][data-tab="featured"] [data-profile="tab-count"] {
+[data-tab="featured"] [data-profile="tab-count"] {
   color: var(--theme-accent, #d7ad63) !important;
-  text-shadow: 0 1px 3px #20180e !important;
+  text-shadow: 0 1px 3px #20180e ;
 }
 ```
 
@@ -5386,15 +5434,16 @@ The shared About-tab example provides the overall surface and selected state. To
 
 ```css
 /* Personal subtab only; the shared tab example supplies the other styling. */
-[data-profile="scope"] [data-profile="about"]
 [role="tab"][aria-label="Personal"] {
-  background: #49365e !important;
-  border-color: #bd9bea !important;
+  background: #49365e ;
+  border-color: #bd9bea ;
 }
-
-[data-profile="scope"] [data-profile="about"]
 [role="tab"][aria-label="Personal"] img[src="/img/pixel/brain.webp"] {
-  filter: sepia(1) saturate(2) hue-rotate(220deg) !important;
+  filter: sepia(1) saturate(2) hue-rotate(220deg) ;
+}
+[role=tablist][aria-label="About me sections"]
+> button[aria-label="Personal"] > img[src$="/paper-tab.webp"] {
+  display: none ;
 }
 ```
 
@@ -5420,28 +5469,28 @@ The arrows scroll the main profile-tab strip. Each direction has its own accessi
 ```css
 /* Left arrow surface. */
 button[aria-label="Scroll Profile sections left"] {
-  background: #562b43 !important;
-  border: 1px solid #ed91b7 !important;
-  border-radius: 50% !important;
-  opacity: 1 !important;
+  background: #562b43 ;
+  border: 1px solid #ed91b7 ;
+  border-radius: 50% ;
+  opacity: 1 ;
 }
 
 /* Left arrow artwork: pink tint. */
 button[aria-label="Scroll Profile sections left"] img {
-  filter: sepia(1) saturate(2) hue-rotate(285deg) !important;
+  filter: sepia(1) saturate(2) hue-rotate(285deg) ;
 }
 
 /* Enabled left arrow on hover. */
 button[aria-label="Scroll Profile sections left"]:enabled:hover {
-  background: #713953 !important;
+  background: #713953 ;
 }
 
 /* Disabled left arrow. */
 button[aria-label="Scroll Profile sections left"]:disabled {
-  background: #251c35 !important;
-  border-color: #806477 !important;
-  opacity: 0.35 !important;
-  cursor: default !important;
+  background: #251c35 ;
+  border-color: #806477 ;
+  opacity: 0.35 ;
+  cursor: default ;
 }
 ```
 
@@ -5450,28 +5499,28 @@ button[aria-label="Scroll Profile sections left"]:disabled {
 ```css
 /* Right arrow surface. */
 button[aria-label="Scroll Profile sections right"] {
-  background: #24483e !important;
-  border: 1px solid #8fd8bb !important;
-  border-radius: 50% !important;
-  opacity: 1 !important;
+  background: #24483e ;
+  border: 1px solid #8fd8bb ;
+  border-radius: 50% ;
+  opacity: 1 ;
 }
 
 /* Right arrow artwork: mint tint. */
 button[aria-label="Scroll Profile sections right"] img {
-  filter: sepia(1) saturate(2) hue-rotate(95deg) !important;
+  filter: sepia(1) saturate(2) hue-rotate(95deg) ;
 }
 
 /* Enabled right arrow on hover. */
 button[aria-label="Scroll Profile sections right"]:enabled:hover {
-  background: #306052 !important;
+  background: #306052 ;
 }
 
 /* Disabled right arrow. */
 button[aria-label="Scroll Profile sections right"]:disabled {
-  background: #251c35 !important;
-  border-color: #647c72 !important;
-  opacity: 0.35 !important;
-  cursor: default !important;
+  background: #251c35 ;
+  border-color: #647c72 ;
+  opacity: 0.35 ;
+  cursor: default ;
 }
 ```
 
@@ -5483,7 +5532,7 @@ LoreBary controls the `disabled` attribute; CSS only changes its appearance. If 
 
 ### About Chain Decorations
 
-The two chains above the About card are separate decorative elements. Both use `/img/nav/break_link.webp` as a background image.
+The two chains above the About card are separate decorative elements. Both use `/img/nav/break_link.webp` as a background image. This can also be applied to the 'content' page chains.
 
 | Selector | Targets |
 | --- | --- |
@@ -5497,11 +5546,11 @@ The two chains above the About card are separate decorative elements. Both use `
 ```css
 /* Left chain: pink tint and independent placement. */
 [data-profile="about-chain-left"] {
-  top: -28px !important;
-  left: 32px !important;
-  width: 18px !important;
-  height: 36px !important;
-  background-size: 100% 100% !important;
+  top: -28px ;
+  left: 32px ;
+  width: 18px ;
+  height: 36px ;
+  background-size: 100% 100% ;
   filter: sepia(1) saturate(2) hue-rotate(285deg)
     drop-shadow(0 1px 2px rgba(0, 0, 0, 0.55)) !important;
 }
@@ -5512,11 +5561,11 @@ The two chains above the About card are separate decorative elements. Both use `
 ```css
 /* Right chain: mint tint and independent placement. */
 [data-profile="about-chain-right"] {
-  top: -28px !important;
-  right: 32px !important;
-  width: 18px !important;
-  height: 36px !important;
-  background-size: 100% 100% !important;
+  top: -28px ;
+  right: 32px ;
+  width: 18px ;
+  height: 36px ;
+  background-size: 100% 100% ;
   filter: sepia(1) saturate(2) hue-rotate(95deg)
     drop-shadow(0 1px 2px rgba(0, 0, 0, 0.55)) !important;
 }
@@ -5526,6 +5575,7 @@ The two chains above the About card are separate decorative elements. Both use `
 - `left` or `right` changes its distance from that container’s edge.
 - `width` and `height` resize the background artwork. Keep a 1:2 ratio to preserve the captured proportions.
 - `filter` tints the artwork; `drop-shadow` adds depth.
+- `[data-profile=content-chain-x] ` for the content chains.
 
 The example uses the captured dimensions and offsets, so the tint is the main visible change. For a shadow without tint, use `filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.55)) !important;`.
 
@@ -5536,18 +5586,16 @@ Use these alternatives instead of the styling rules when you want to remove the 
 ```css
 /* Hide the left chain. */
 [data-profile="about-chain-left"] {
-  display: none !important;
+  display: none ;
 }
 
 /* Hide the right chain. */
 [data-profile="about-chain-right"] {
-  display: none !important;
+  display: none ;
 }
 ```
 
 Keep either hiding rule on its own to remove only that chain.
-
----
 
 ## Moving and Framing a Status Block
 
@@ -5669,31 +5717,31 @@ The direct-header signature confines these additions to the About card’s own h
 
 ```css
 /* Entire About panel, including its header. */
-[data-profile="scope"] [data-profile="about"]
+[data-profile="about"]
 section:has([data-profile="about-card"]) {
-  background: #251c35 !important;
+  background: #251c35 ;
   border: 2px solid #ed91b7 !important;
-  border-radius: 16px !important;
-  box-shadow: 0 6px 20px #120b2099 !important;
+  border-radius: 16px ;
+  box-shadow: 0 6px 20px #120b2099 ;
 }
 
 /* Header background and dividing line. */
-[data-profile="scope"] [data-profile="about"]
+[data-profile="about"]
 section:has([data-profile="about-card"]) > header.surface-header {
-  background: #352440 !important;
-  border-bottom: 1px solid #ed91b7 !important;
+  background: #352440 ;
+  border-bottom: 1px solid #ed91b7 ;
 }
 
 /* “About me” heading. */
-[data-profile="scope"] [data-profile="about"]
+[data-profile="about"]
 section:has([data-profile="about-card"]) > header.surface-header h2 {
-  color: #ffe4f0 !important;
+  color: #ffe4f0 ;
 }
 
 /* ID-card icon in the header only. */
-[data-profile="scope"] [data-profile="about"]
+[data-profile="about"]
 section:has([data-profile="about-card"]) > header.surface-header img[src="/img/pixel/idcard.webp"] {
-  filter: sepia(1) saturate(2) hue-rotate(285deg) !important;
+  filter: sepia(1) saturate(2) hue-rotate(285deg) ;
 }
 ```
 
@@ -5723,52 +5771,52 @@ These rules target the Role, Availability, Gender/Identity, and Relationship sum
 
 ```css
 /* Overview: Role text. */
-[data-profile="scope"] [data-profile="about-card"]
+[data-profile="about-card"]
 [data-profile="additional-info"] > span[title="Role"] {
-  color: #91cfed !important;
+  color: #91cfed ;
 }
 
 /* Overview: Role icon. */
-[data-profile="scope"] [data-profile="about-card"]
+[data-profile="about-card"]
 span[title="Role"] img {
-  filter: sepia(1) saturate(2) hue-rotate(155deg) !important;
+  filter: sepia(1) saturate(2) hue-rotate(155deg) ;
 }
 
 /* Overview: Availability text. */
-[data-profile="scope"] [data-profile="about-card"]
+[data-profile="about-card"]
 [data-profile="additional-info"] > span[title="Availability"] {
-  color: #8fd8bb !important;
+  color: #8fd8bb ;
 }
 
 /* Overview: Availability icon. */
-[data-profile="scope"] [data-profile="about-card"]
+[data-profile="about-card"]
 span[title="Availability"] img {
-  filter: sepia(1) saturate(2) hue-rotate(95deg) !important;
+  filter: sepia(1) saturate(2) hue-rotate(95deg) ;
 }
 
 /* Overview: Gender/Identity text. */
-[data-profile="scope"] [data-profile="about-card"]
+[data-profile="about-card"]
 [data-profile="additional-info"] > span[title="Gender"] {
-  color: #e0c7ff !important;
+  color: #e0c7ff ;
 }
 
 /* Overview: Gender/Identity icon only. */
-[data-profile="scope"] [data-profile="about-card"]
+[data-profile="about-card"]
 [data-profile="additional-info"] > span[title="Gender"]
 img[src="/img/pixel/idcard.webp"] {
-  filter: sepia(1) saturate(2) hue-rotate(220deg) !important;
+  filter: sepia(1) saturate(2) hue-rotate(220deg) ;
 }
 
 /* Overview: Relationship text. */
-[data-profile="scope"] [data-profile="about-card"]
+[data-profile="about-card"]
 [data-profile="additional-info"] > span[title="Relationship"] {
-  color: #ff91c8 !important;
+  color: #ff91c8 ;
 }
 
 /* Overview: Relationship icon. */
-[data-profile="scope"] [data-profile="about-card"]
+[data-profile="about-card"]
 span[title="Relationship"] img {
-  filter: sepia(1) saturate(2) hue-rotate(285deg) !important;
+  filter: sepia(1) saturate(2) hue-rotate(285deg) ;
 }
 ```
 
@@ -5780,15 +5828,15 @@ Style the button surface and its pencil icon separately.
 
 ```css
 /* Edit button background and border. */
-[data-profile="scope"] [data-profile="about-edit"] {
-  background: #562b43 !important;
-  border: 1px solid #ed91b7 !important;
+[data-profile="about-edit"] {
+  background: #562b43 ;
+  border: 1px solid #ed91b7 ;
 }
 
 /* Edit button’s pencil icon. */
-[data-profile="scope"] [data-profile="about-edit"]
+[data-profile="about-edit"]
 img[src="/img/pixel/pencil.webp"] {
-  filter: sepia(1) saturate(2) hue-rotate(285deg) !important;
+  filter: sepia(1) saturate(2) hue-rotate(285deg) ;
 }
 ```
 
@@ -5816,16 +5864,16 @@ The **About you** group uses `data-info="about"`. This is an inner information c
 
 ```css
 /* About-you panel only. */
-[data-profile="info-group"][data-info="about"] {
-  background: #49365e !important;
-  border: 1px solid #bd9bea !important;
-  border-radius: 12px !important;
+[data-info="about"] {
+  background: #49365e ;
+  border: 1px solid #bd9bea ;
+  border-radius: 12px ;
 }
 
 /* About-you heading only. */
 [data-info="about"] h3 {
-  color: #e0c7ff !important;
-  font-weight: 700 !important;
+  color: #e0c7ff ;
+  font-weight: 700 ;
 }
 ```
 
@@ -5845,7 +5893,7 @@ The heading’s circular token is background artwork. The user icon is a separat
 
 /* User heading icon only: blue tint. */
 [data-info="about"] img[src="/img/sketch/user.webp"] {
-  filter: sepia(1) saturate(2) hue-rotate(155deg) !important;
+  filter: sepia(1) saturate(2) hue-rotate(155deg) ;
 }
 ```
 
@@ -5858,13 +5906,13 @@ The token rule follows the supplied group header’s structure. Changing its bac
 ```css
 /* About-you field labels: pale lavender. */
 [data-info="about"] dt {
-  color: #d2b8f0 !important;
-  opacity: 1 !important;
+  color: #d2b8f0 ;
+  opacity: 1 ;
 }
 
 /* About-you field values: pale pink. */
 [data-info="about"] dd {
-  color: #ffe9f2 !important;
+  color: #ffe9f2 ;
 }
 ```
 
@@ -5877,12 +5925,12 @@ The token rule follows the supplied group header’s structure. Changing its bac
 ```css
 /* Also-known-as and Gender label icons. */
 [data-info="about"] dt img[src="/img/pixel/idcard.webp"] {
-  filter: sepia(1) saturate(2) hue-rotate(220deg) !important;
+  filter: sepia(1) saturate(2) hue-rotate(220deg) ;
 }
 
 /* Birthday label icon only. */
 [data-info="about"] dt img[src="/img/pixel/calendar.webp"] {
-  filter: sepia(1) saturate(2) hue-rotate(285deg) !important;
+  filter: sepia(1) saturate(2) hue-rotate(285deg) ;
 }
 ```
 
@@ -5899,15 +5947,15 @@ The Roleplay group uses `data-info="roleplay"`. Its heading icon is `/img/sketch
 ```css
 /* Roleplay panel. */
 [data-profile="info-group"][data-info="roleplay"] {
-  background: #193446 !important;
-  border: 1px solid #91cfed !important;
-  border-radius: 12px !important;
+  background: #193446 ;
+  border: 1px solid #91cfed ;
+  border-radius: 12px ;
 }
 
 /* Roleplay heading text. */
 [data-info="roleplay"] h3 {
-  color: #b9e6ff !important;
-  font-weight: 700 !important;
+  color: #b9e6ff ;
+  font-weight: 700 ;
 }
 
 /* Heading token: mint overlay on native artwork. */
@@ -5919,33 +5967,33 @@ The Roleplay group uses `data-info="roleplay"`. Its heading icon is `/img/sketch
 
 /* Dialogue heading image: blue tint. */
 [data-info="roleplay"] img[src="/img/sketch/dialogue.webp"] {
-  filter: sepia(1) saturate(2) hue-rotate(155deg) !important;
+  filter: sepia(1) saturate(2) hue-rotate(155deg) ;
 }
 
 /* Field labels: Role, Availability, and Favorite genres. */
 [data-info="roleplay"] dt {
-  color: #91cfed !important;
-  opacity: 1 !important;
+  color: #91cfed ;
+  opacity: 1 ;
 }
 
 /* Field values. */
 [data-info="roleplay"] dd {
-  color: #e2f4ff !important;
+  color: #e2f4ff ;
 }
 
 /* Role label icon. */
 [data-info="roleplay"] dt img[src="/img/pixel/script.webp"] {
-  filter: sepia(1) saturate(2) hue-rotate(220deg) !important;
+  filter: sepia(1) saturate(2) hue-rotate(220deg) ;
 }
 
 /* Availability label icon. */
 [data-info="roleplay"] dt img[src="/img/pixel/dialogue.webp"] {
-  filter: sepia(1) saturate(2) hue-rotate(95deg) !important;
+  filter: sepia(1) saturate(2) hue-rotate(95deg) ;
 }
 
 /* Favorite-genres label icon. */
 [data-info="roleplay"] dt img[src="/img/pixel/lorebooks.webp"] {
-  filter: sepia(1) saturate(2) hue-rotate(285deg) !important;
+  filter: sepia(1) saturate(2) hue-rotate(285deg) ;
 }
 ```
 
@@ -5960,24 +6008,24 @@ The tags under Favorite genres are separate pills. Their own colors can override
 ```css
 /* Roleplay genre/tag pill surfaces. */
 [data-info="roleplay"] .group\/pill {
-  background: #254b63 !important;
-  border: 1px solid #91cfed !important;
-  border-radius: 999px !important;
+  background: #254b63 ;
+  border: 1px solid #91cfed ;
+  border-radius: 999px ;
 }
 
 /* Text inside each genre/tag pill. */
 [data-info="roleplay"] .group\/pill > span {
-  color: #e2f4ff !important;
+  color: #e2f4ff ;
 }
 
 /* Genre/tag pill hover surface. */
 [data-info="roleplay"] .group\/pill:hover {
-  background: #306078 !important;
+  background: #306078 ;
 }
 
 /* Tag image icons, when present. */
 [data-info="roleplay"] .group\/pill img {
-  filter: sepia(1) saturate(2) hue-rotate(95deg) !important;
+  filter: sepia(1) saturate(2) hue-rotate(95deg) ;
 }
 ```
 
@@ -5992,15 +6040,15 @@ The Preferences group uses `data-info="preferences"`. Its heading uses a Font Aw
 ```css
 /* Preferences panel. */
 [data-profile="info-group"][data-info="preferences"] {
-  background: #24483e !important;
-  border: 1px solid #8fd8bb !important;
-  border-radius: 12px !important;
+  background: #24483e ;
+  border: 1px solid #8fd8bb ;
+  border-radius: 12px ;
 }
 
 /* Preferences heading text. */
 [data-info="preferences"] h3 {
-  color: #b8ffe0 !important;
-  font-weight: 700 !important;
+  color: #b8ffe0 ;
+  font-weight: 700 ;
 }
 
 /* Heading token: mint overlay on native artwork. */
@@ -6012,12 +6060,12 @@ The Preferences group uses `data-info="preferences"`. Its heading uses a Font Aw
 
 /* Sliders font icon only. */
 [data-info="preferences"] .fa-sliders {
-  color: #562b43 !important;
+  color: #562b43 ;
 }
 
 /* Written preferences only. */
 [data-info="preferences"] dd {
-  color: #e5fff3 !important;
+  color: #e5fff3 ;
 }
 ```
 
@@ -6034,15 +6082,15 @@ The Boundaries group uses `data-info="boundaries"`. Its heading icon is the Font
 ```css
 /* Boundaries panel. */
 [data-profile="info-group"][data-info="boundaries"] {
-  background: #513329 !important;
-  border: 1px solid #edb091 !important;
-  border-radius: 12px !important;
+  background: #513329 ;
+  border: 1px solid #edb091 ;
+  border-radius: 12px ;
 }
 
 /* Heading text. */
 [data-info="boundaries"] h3 {
-  color: #ffd0b8 !important;
-  font-weight: 700 !important;
+  color: #ffd0b8 ;
+  font-weight: 700 ;
 }
 
 /* Token background: peach overlay. */
@@ -6054,12 +6102,12 @@ The Boundaries group uses `data-info="boundaries"`. Its heading icon is the Font
 
 /* Lock font icon. */
 [data-info="boundaries"] .fa-lock {
-  color: #513329 !important;
+  color: #513329 ;
 }
 
 /* Written boundaries. */
 [data-info="boundaries"] dd {
-  color: #ffeadf !important;
+  color: #ffeadf ;
 }
 ```
 
@@ -6074,15 +6122,15 @@ The Relationships group uses `data-info="relationships"`. Its heading uses a Fon
 ```css
 /* Relationships panel. */
 [data-profile="info-group"][data-info="relationships"] {
-  background: #562b43 !important;
-  border: 1px solid #ed91b7 !important;
-  border-radius: 12px !important;
+  background: #562b43 ;
+  border: 1px solid #ed91b7 ;
+  border-radius: 12px ;
 }
 
 /* Heading text. */
 [data-info="relationships"] h3 {
-  color: #ffb8d6 !important;
-  font-weight: 700 !important;
+  color: #ffb8d6 ;
+  font-weight: 700 ;
 }
 
 /* Token background: pink overlay. */
@@ -6094,23 +6142,23 @@ The Relationships group uses `data-info="relationships"`. Its heading uses a Fon
 
 /* Heading heart: font icon. */
 [data-info="relationships"] .fa-heart {
-  color: #562b43 !important;
+  color: #562b43 ;
 }
 
 /* Status and RP-partners field labels. */
 [data-info="relationships"] dt {
-  color: #ffb8d6 !important;
-  opacity: 1 !important;
+  color: #ffb8d6 ;
+  opacity: 1 ;
 }
 
 /* Field values. */
 [data-info="relationships"] dd {
-  color: #ffe9f2 !important;
+  color: #ffe9f2 ;
 }
 
 /* Field-label hearts: image icons. */
 [data-info="relationships"] dt img[src="/img/pixel/heart.webp"] {
-  filter: sepia(1) saturate(2) hue-rotate(285deg) !important;
+  filter: sepia(1) saturate(2) hue-rotate(285deg) ;
 }
 ```
 
@@ -6121,19 +6169,19 @@ The Relationships group uses `data-info="relationships"`. Its heading uses a Fon
 ```css
 /* RP partner links. */
 [data-info="relationships"] dd a {
-  color: #8fd8bb !important;
+  color: #8fd8bb ;
 }
 
 /* RP partner links on hover. */
 [data-info="relationships"] dd a:hover {
-  color: #b8ffe0 !important;
+  color: #b8ffe0 ;
 }
 
 /* Partner portrait images only. */
 [data-info="relationships"] dd a img {
-  border: 1px solid #8fd8bb !important;
-  border-radius: 50% !important;
-  object-fit: cover !important;
+  border: 1px solid #8fd8bb ;
+  border-radius: 50% ;
+  object-fit: cover ;
 }
 ```
 
@@ -6150,15 +6198,15 @@ The visible heading is **Links & socials**, but the group’s exact `data-info` 
 ```css
 /* Links & socials panel. */
 [data-profile="info-group"][data-info="socials"] {
-  background: #193446 !important;
-  border: 1px solid #91cfed !important;
-  border-radius: 12px !important;
+  background: #193446 ;
+  border: 1px solid #91cfed ;
+  border-radius: 12px ;
 }
 
 /* Heading text. */
 [data-info="socials"] h3 {
-  color: #b9e6ff !important;
-  font-weight: 700 !important;
+  color: #b9e6ff ;
+  font-weight: 700 ;
 }
 
 /* Heading token: blue overlay on native artwork. */
@@ -6170,23 +6218,23 @@ The visible heading is **Links & socials**, but the group’s exact `data-info` 
 
 /* Heading link: font icon. */
 [data-info="socials"] .fa-link {
-  color: #193446 !important;
+  color: #193446 ;
 }
 
 /* Field labels, such as Website. */
 [data-info="socials"] dt {
-  color: #91cfed !important;
-  opacity: 1 !important;
+  color: #91cfed ;
+  opacity: 1 ;
 }
 
 /* Field values. */
 [data-info="socials"] dd {
-  color: #e2f4ff !important;
+  color: #e2f4ff ;
 }
 
 /* Website field’s chain-link image only. */
 [data-info="socials"] dt img[src="/img/pixel/chain_link.webp"] {
-  filter: sepia(1) saturate(2) hue-rotate(95deg) !important;
+  filter: sepia(1) saturate(2) hue-rotate(95deg) ;
 }
 ```
 
@@ -6197,16 +6245,16 @@ The visible heading is **Links & socials**, but the group’s exact `data-info` 
 ```css
 /* Links inside field values. */
 [data-info="socials"] dd a {
-  color: #8fd8bb !important;
-  text-decoration: underline !important;
-  text-decoration-color: #8fd8bb !important;
-  text-underline-offset: 4px !important;
+  color: #8fd8bb ;
+  text-decoration: underline ;
+  text-decoration-color: #8fd8bb ;
+  text-underline-offset: 4px ;
 }
 
 /* Link hover color. */
 [data-info="socials"] dd a:hover {
-  color: #b8ffe0 !important;
-  text-decoration-color: #b8ffe0 !important;
+  color: #b8ffe0 ;
+  text-decoration-color: #b8ffe0 ;
 }
 ```
 
@@ -6224,12 +6272,12 @@ Favorite models uses the captured `data-info="models"` target.
 
 ```css
 /* Favorite models card. */
-[data-profile="scope"] [data-profile="about"]
+[data-profile="about"]
 [data-profile="info-group"][data-info="models"] {
-  background: #493f25 !important;
-  border: 1px solid #e3ca86 !important;
-  border-radius: 12px !important;
-  color: #fff3ce !important;
+  background: #493f25 ;
+  border: 1px solid #e3ca86 ;
+  border-radius: 12px ;
+  color: #fff3ce ;
 }
 ```
 
@@ -6251,26 +6299,26 @@ Card color is inherited only where descendants have no own color. The captured m
 ![Favorite Models Pills](./images/profile/header-favorite-models-pills.png)
 
 ```css
-[data-profile="scope"] [data-profile="about"]
+[data-profile="about"]
 [data-profile="info-group"][data-info="models"] > div > h3 {
-  color: #fff3ce !important;
+  color: #fff3ce ;
 }
 
-[data-profile="scope"] [data-profile="about"]
+[data-profile="about"]
 [data-profile="info-group"][data-info="models"] > div > span > i.fa-brain {
-  color: #493f25 !important;
+  color: #493f25 ;
 }
 
-[data-profile="scope"] [data-profile="about"]
+[data-profile="about"]
 [data-profile="info-group"][data-info="models"] dd > span > span[translate="no"] {
-  background: #61522e !important;
-  border-color: #e3ca86 !important;
-  color: #fff3ce !important;
+  background: #61522e ;
+  border-color: #e3ca86 ;
+  color: #fff3ce ;
 }
 
-[data-profile="scope"] [data-profile="about"]
+[data-profile="about"]
 [data-profile="info-group"][data-info="models"] dd > span > span[translate="no"]:hover {
-  background: #756238 !important;
+  background: #756238 ;
 }
 ```
 
@@ -6300,62 +6348,62 @@ Style the About Me editing controls through their captured toolbar class, named 
 
 ```css
 /* Only the captured About card containing this editable textbox. */
-[data-profile="scope"] [data-profile="about-card"]:has(
+[data-profile="about-card"]:has(
   [contenteditable="true"][role="textbox"][aria-label="Tell us about yourself..."]
 ) {
-  background: #202332 !important;
-  color: #eee7f6 !important;
+  background: #202332 ;
+  color: #eee7f6 ;
 }
 
-[data-profile="scope"] [data-profile="about-card"]
+[data-profile="about-card"]
   > .relative > .rich-text-editor-toolbar {
-  background: #30263e !important;
-  border-color: #9675ae !important;
+  background: #30263e ;
+  border-color: #9675ae ;
 }
 
-[data-profile="scope"] [data-profile="about-card"]
+[data-profile="about-card"]
   .rich-text-editor-toolbar button {
-  background: #40304f !important;
-  border-color: #9675ae !important;
-  color: #eee7f6 !important;
+  background: #40304f ;
+  border-color: #9675ae ;
+  color: #eee7f6 ;
 }
 
-[data-profile="scope"] [data-profile="about-card"]
+[data-profile="about-card"]
   .rich-text-editor-toolbar [data-profile="icon"] {
-  color: inherit !important;
+  color: inherit ;
 }
 
-[data-profile="scope"] [data-profile="about-card"]
+[data-profile="about-card"]
   .rich-text-editor-toolbar button[aria-pressed="true"] {
-  background: #715087 !important;
-  border-color: #d8b5ec !important;
+  background: #715087 ;
+  border-color: #d8b5ec ;
 }
 
-[data-profile="scope"] [data-profile="about-card"]
+[data-profile="about-card"]
   [contenteditable="true"][role="textbox"][aria-label="Tell us about yourself..."] {
-  background: #202332 !important;
-  border-color: #9675ae !important;
-  color: #eee7f6 !important;
-  caret-color: #f4c3ec !important;
+  background: #202332 ;
+  border-color: #9675ae ;
+  color: #eee7f6 ;
+  caret-color: #f4c3ec ;
 }
 
-[data-profile="scope"] [data-profile="about-card"]:has(
+[data-profile="about-card"]:has(
   [contenteditable="true"][role="textbox"][aria-label="Tell us about yourself..."]
 ) > p {
-  color: #bfa9ce !important;
+  color: #bfa9ce ;
 }
 
 /* Captured footer signature: Save contains a direct check glyph. */
-[data-profile="scope"] [data-profile="about-card"]
+[data-profile="about-card"]
   > div:has(> button > i[data-profile="icon"][data-icon="check"]) {
-  border-color: #9675ae !important;
+  border-color: #9675ae ;
 }
 
-[data-profile="scope"] [data-profile="about-card"]
+[data-profile="about-card"]
   > div:has(> button > i[data-profile="icon"][data-icon="check"]) > button {
-  background: #40304f !important;
-  border-color: #9675ae !important;
-  color: #eee7f6 !important;
+  background: #40304f ;
+  border-color: #9675ae ;
+  color: #eee7f6 ;
 }
 ```
 
@@ -6378,9 +6426,9 @@ Within `[data-profile="scope"] [data-profile="about-card"] .rich-text-editor-too
 Save can be selected through the captured check glyph:
 
 ```css
-[data-profile="scope"] [data-profile="about-card"]
+[data-profile="about-card"]
   > div > button:has(> i[data-profile="icon"][data-icon="check"]) {
-  background: #715087 !important;
+  background: #715087 ;
 }
 ```
 
@@ -6389,10 +6437,10 @@ Cancel has no named hook or aria-label in this capture. Shared footer-button sty
 The Edit profile details control also lacks `about-edit` and a dedicated aria-label in this capture. Its observed structural target is:
 
 ```css
-[data-profile="scope"] [data-profile="about-card"]
+[data-profile="about-card"]
   > div:has(> button > span > img[src="/img/pixel/idcard.webp"]) > button {
-  background: #30263e !important;
-  border-radius: 10px !important;
+  background: #30263e ;
+  border-radius: 10px ;
 }
 ```
 
@@ -6403,14 +6451,12 @@ This selects the observed About-card action structure. Keep it distinct from the
 - Bold, Italic, Underline, Heading, Bullet List, and Numbered List are explicitly unpressed in this capture. Normal and alignment buttons lack aria-pressed; absence does not mean false.
 - Insert has aria-haspopup="menu" and aria-expanded="false". Menu contents are not captured.
 - Edit as HTML is unpressed. This capture establishes the rich-text editing view, not the HTML-mode textarea.
-- The textbox holds text and has data-placeholder on that same element. Do not copy the composer-editor placeholder pseudo-element rule to this editor unchanged; data-placeholder alone does not specify how its placeholder is rendered.
+- The textbox holds text and has data-placeholder on that same element. Empty-state markup and the actual placeholder rendering mechanism remain pending. Do not copy the composer-editor placeholder selector to this editor unchanged.
 - The textbox’s inline limits are min-height:100px and max-height:300px, with vertical scrolling and horizontal overflow hidden. Toolbar controls use clamp sizing and --content-ui-scale. Preserve those behaviors unless demonstrating an intentional change.
 - Insert Image is followed by a hidden file input accepting JPEG, PNG, WEBP, and GIF. Keep native upload behavior intact.
 - No new native image path is introduced. idcard.webp is reused; the toolbar and Save artwork are font icons.
 - Keep the generated `_r_ue_-panel` ID out of reusable selectors.
 - Editor-rich-text rules currently scoped only to composer-editor do not cover this About textbox. Extend them explicitly when documenting About editing; do not assume every editor shares the published post-decoration hooks.
-
----
 
 ## Profile Actions
 
@@ -6434,12 +6480,12 @@ The action bar contains two groups: Letter and Wave on one side, and Follow/Foll
 
 ```css
 /* Action bar: purple surface around both groups. */
-[data-profile="scope"] [data-profile="action-bar"] {
-  background: #251c35 !important;
-  border: 1px solid #bd9bea !important;
-  border-radius: 12px !important;
-  padding: 6px !important;
-  gap: 8px !important;
+[data-profile="action-bar"] {
+  background: #251c35 ;
+  border: 1px solid #bd9bea ;
+  border-radius: 12px ;
+  padding: 6px ;
+  gap: 8px ;
 }
 ```
 
@@ -6451,16 +6497,16 @@ The captured inner wrappers use `display: contents`, which gives them no visible
 
 ```css
 /* Letter and Wave wrapper: rose group surface. */
-[data-profile="scope"] [data-profile="action-bar"]
+[data-profile="action-bar"]
 [data-profile="actions"] {
-  display: inline-flex !important;
-  flex-wrap: wrap !important;
-  align-items: center !important;
-  gap: 6px !important;
-  background: #562b43 !important;
-  border: 1px solid #ed91b7 !important;
-  border-radius: 8px !important;
-  padding: 6px !important;
+  display: inline-flex ;
+  flex-wrap: wrap ;
+  align-items: center ;
+  gap: 6px ;
+  background: #562b43 ;
+  border: 1px solid #ed91b7 ;
+  border-radius: 8px ;
+  padding: 6px ;
 }
 ```
 
@@ -6470,17 +6516,16 @@ The captured inner wrappers use `display: contents`, which gives them no visible
 
 ```css
 /* Follow and Alerts wrapper: green group surface. */
-[data-profile="scope"] [data-profile="action-bar"]
 [data-profile="actions-right"] {
-  display: inline-flex !important;
-  flex-wrap: wrap !important;
-  align-items: center !important;
-  gap: 6px !important;
-  margin-left: auto !important;
-  background: #24483e !important;
-  border: 1px solid #8fd8bb !important;
-  border-radius: 8px !important;
-  padding: 6px !important;
+  display: inline-flex ;
+  flex-wrap: wrap ;
+  align-items: center ;
+  gap: 6px ;
+  margin-left: auto ;
+  background: #24483e ;
+  border: 1px solid #8fd8bb ;
+  border-radius: 8px ;
+  padding: 6px ;
 }
 ```
 
@@ -6498,17 +6543,17 @@ Style the Letter button’s surface, label, and image icon independently.
 
 ```css
 /* Letter button: rose surface and pink border. */
-[data-profile="scope"] [data-profile="action-letter"] {
-  background: #562b43 !important;
-  border: 1px solid #ed91b7 !important;
-  border-radius: 10px !important;
-  padding: 6px 10px !important;
-  box-shadow: 0 2px 6px rgba(18, 11, 32, 0.4) !important;
+[data-profile="action-letter"] {
+  background: #562b43 ;
+  border: 1px solid #ed91b7 ;
+  border-radius: 10px ;
+  padding: 6px 10px ;
+  box-shadow: 0 2px 6px rgba(18, 11, 32, 0.4) ;
 }
 
 /* Letter button: brighter surface on hover. */
-[data-profile="scope"] [data-profile="action-letter"]:hover {
-  background: #713953 !important;
+[data-profile="action-letter"]:hover {
+  background: #713953 ;
 }
 ```
 
@@ -6520,10 +6565,10 @@ The captured label is the button’s second direct child span; the first holds i
 
 ```css
 /* Letter label only. */
-[data-profile="scope"] [data-profile="action-letter"]
+[data-profile="action-letter"]
 > span:nth-child(2) {
-  color: #ffe9f2 !important;
-  font-weight: 600 !important;
+  color: #ffe9f2 ;
+  font-weight: 600 ;
 }
 ```
 
@@ -6533,10 +6578,10 @@ The captured label is the button’s second direct child span; the first holds i
 
 ```css
 /* Letterbox image only: pink recolor. */
-[data-profile="scope"] [data-profile="action-letter"]
+[data-profile="action-letter"]
 img[src="/img/pixel/letterbox.webp"] {
   filter: brightness(0) saturate(100%) invert(75%) sepia(24%)
-    saturate(850%) hue-rotate(290deg) brightness(101%) contrast(91%) !important;
+    saturate(850%) hue-rotate(290deg) brightness(101%) contrast(91%) ;
 }
 ```
 
@@ -6552,17 +6597,17 @@ Style the Wave button’s surface, label, and image icon independently.
 
 ```css
 /* Wave button: green surface and mint border. */
-[data-profile="scope"] [data-profile="action-wave"] {
-  background: #24483e !important;
-  border: 1px solid #8fd8bb !important;
-  border-radius: 10px !important;
-  padding: 6px 10px !important;
-  box-shadow: 0 2px 6px rgba(18, 11, 32, 0.4) !important;
+[data-profile="action-wave"] {
+  background: #24483e ;
+  border: 1px solid #8fd8bb ;
+  border-radius: 10px ;
+  padding: 6px 10px ;
+  box-shadow: 0 2px 6px rgba(18, 11, 32, 0.4) ;
 }
 
 /* Wave button: brighter surface on hover. */
-[data-profile="scope"] [data-profile="action-wave"]:hover {
-  background: #306052 !important;
+[data-profile="action-wave"]:hover {
+  background: #306052 ;
 }
 ```
 
@@ -6572,10 +6617,10 @@ The captured label is the button’s second direct child span; the first holds i
 
 ```css
 /* Wave label only. */
-[data-profile="scope"] [data-profile="action-wave"]
+[data-profile="action-wave"]
 > span:nth-child(2) {
-  color: #e5fff3 !important;
-  font-weight: 600 !important;
+  color: #e5fff3 ;
+  font-weight: 600 ;
 }
 ```
 
@@ -6583,10 +6628,10 @@ The captured label is the button’s second direct child span; the first holds i
 
 ```css
 /* Wave image only: mint recolor. */
-[data-profile="scope"] [data-profile="action-wave"]
+[data-profile="action-wave"]
 img[src="/img/pixel/wave.webp"] {
   filter: brightness(0) saturate(100%) invert(84%) sepia(20%)
-    saturate(650%) hue-rotate(100deg) brightness(96%) contrast(90%) !important;
+    saturate(650%) hue-rotate(100deg) brightness(96%) contrast(90%) ;
 }
 ```
 
@@ -6609,35 +6654,35 @@ Both states use the same `action-follow` button. Its `aria-label` changes from `
 
 ```css
 /* Follow surface: rose background and pink border. */
-[data-profile="scope"]
+
 [data-profile="action-follow"][aria-label="Follow"] {
-  background: #562b43 !important;
-  border: 1px solid #ed91b7 !important;
-  border-radius: 10px !important;
-  padding: 6px 10px !important;
-  box-shadow: 0 2px 6px rgba(18, 11, 32, 0.4) !important;
+  background: #562b43 ;
+  border: 1px solid #ed91b7 ;
+  border-radius: 10px ;
+  padding: 6px 10px ;
+  box-shadow: 0 2px 6px rgba(18, 11, 32, 0.4) ;
 }
 
 /* Follow surface on hover. */
-[data-profile="scope"]
+
 [data-profile="action-follow"][aria-label="Follow"]:hover {
-  background: #713953 !important;
+  background: #713953 ;
 }
 
 /* Follow label only. */
-[data-profile="scope"]
+
 [data-profile="action-follow"][aria-label="Follow"]
 > span:nth-child(2) {
-  color: #ffe9f2 !important;
-  font-weight: 600 !important;
+  color: #ffe9f2 ;
+  font-weight: 600 ;
 }
 
 /* Follow heart icon only: pink recolor. */
-[data-profile="scope"]
+
 [data-profile="action-follow"][aria-label="Follow"]
 img[src="/img/pixel/heart.webp"] {
   filter: brightness(0) saturate(100%) invert(75%) sepia(24%)
-    saturate(850%) hue-rotate(290deg) brightness(101%) contrast(91%) !important;
+    saturate(850%) hue-rotate(290deg) brightness(101%) contrast(91%) ;
 }
 ```
 
@@ -6647,35 +6692,35 @@ img[src="/img/pixel/heart.webp"] {
 
 ```css
 /* Following surface: green background and mint border. */
-[data-profile="scope"]
+
 [data-profile="action-follow"][aria-label="Following"] {
-  background: #24483e !important;
-  border: 1px solid #8fd8bb !important;
-  border-radius: 10px !important;
-  padding: 6px 10px !important;
-  box-shadow: 0 2px 6px rgba(18, 11, 32, 0.4) !important;
+  background: #24483e ;
+  border: 1px solid #8fd8bb ;
+  border-radius: 10px ;
+  padding: 6px 10px ;
+  box-shadow: 0 2px 6px rgba(18, 11, 32, 0.4) ;
 }
 
 /* Following surface on hover. */
-[data-profile="scope"]
+
 [data-profile="action-follow"][aria-label="Following"]:hover {
-  background: #306052 !important;
+  background: #306052 ;
 }
 
 /* Following label only. */
-[data-profile="scope"]
+
 [data-profile="action-follow"][aria-label="Following"]
 > span:nth-child(2) {
-  color: #e5fff3 !important;
-  font-weight: 600 !important;
+  color: #e5fff3 ;
+  font-weight: 600 ;
 }
 
 /* Following check icon only: mint recolor. */
-[data-profile="scope"]
+
 [data-profile="action-follow"][aria-label="Following"]
 img[src="/img/pixel/check.webp"] {
   filter: brightness(0) saturate(100%) invert(84%) sepia(20%)
-    saturate(650%) hue-rotate(100deg) brightness(96%) contrast(90%) !important;
+    saturate(650%) hue-rotate(100deg) brightness(96%) contrast(90%) ;
 }
 ```
 
@@ -6695,17 +6740,17 @@ The Alerts action uses `action-bell`. In the supplied HTML, its label reads “A
 
 ```css
 /* Alerts button: purple surface and lavender border. */
-[data-profile="scope"] [data-profile="action-bell"] {
-  background: #49365e !important;
-  border: 1px solid #bd9bea !important;
-  border-radius: 10px !important;
-  padding: 6px 10px !important;
-  box-shadow: 0 2px 6px rgba(18, 11, 32, 0.4) !important;
+[data-profile="action-bell"] {
+  background: #49365e ;
+  border: 1px solid #bd9bea ;
+  border-radius: 10px ;
+  padding: 6px 10px ;
+  box-shadow: 0 2px 6px rgba(18, 11, 32, 0.4) ;
 }
 
 /* Alerts button: brighter surface on hover. */
-[data-profile="scope"] [data-profile="action-bell"]:hover {
-  background: #604778 !important;
+[data-profile="action-bell"]:hover {
+  background: #604778 ;
 }
 ```
 
@@ -6713,10 +6758,10 @@ The Alerts action uses `action-bell`. In the supplied HTML, its label reads “A
 
 ```css
 /* Alerts label only. */
-[data-profile="scope"] [data-profile="action-bell"]
+[data-profile="action-bell"]
 > span:nth-child(2) {
-  color: #f0e3ff !important;
-  font-weight: 600 !important;
+  color: #f0e3ff ;
+  font-weight: 600 ;
 }
 ```
 
@@ -6726,10 +6771,10 @@ The label is the second direct child span in the supplied button; the first hold
 
 ```css
 /* Bell image only: pink recolor. */
-[data-profile="scope"] [data-profile="action-bell"]
+[data-profile="action-bell"]
 img[src="/img/pixel/bell.webp"] {
   filter: brightness(0) saturate(100%) invert(75%) sepia(24%)
-    saturate(850%) hue-rotate(290deg) brightness(101%) contrast(91%) !important;
+    saturate(850%) hue-rotate(290deg) brightness(101%) contrast(91%) ;
 }
 ```
 
@@ -6737,7 +6782,7 @@ img[src="/img/pixel/bell.webp"] {
 
 **Available state:** The Alerts button disappears after activation in the observed behavior. These rules style it while present; there is no captured visible activated state to style. CSS does not bring back an absent button.
 
----
+This example follows the supplied button structure and has not been previewed in the current test.
 
 ## Write a Post
 
@@ -6847,10 +6892,10 @@ The captured composer sits directly inside `feed-list`. Its `.surface-post` shel
 /* Outer composer card in the captured feed layout. */
 [data-profile="feed-list"]
 > .surface-post:has(> div > [data-profile="composer-header"]) {
-  background: #193446 !important;
+  background: #193446 ;
   border: 1px solid #91cfed !important;
-  border-radius: 14px !important;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35) !important;
+  border-radius: 14px ;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35) ;
 }
 ```
 
@@ -6869,19 +6914,19 @@ The header surface, title, native writing icon, and captured status text have se
 ```css
 /* Write a Post title. */
 [data-profile="composer-header"] > h3 {
-  color: #e0c7ff !important;
-  text-shadow: 0 1px 3px #24182f !important;
+  color: #e0c7ff ;
+  text-shadow: 0 1px 3px #24182f ;
 }
 
 /* Native writing artwork. */
 [data-profile="composer-header"]
 > img[src="/img/pixel/lab-write.webp"] {
-  filter: sepia(1) saturate(2) hue-rotate(220deg) !important;
+  filter: sepia(1) saturate(2) hue-rotate(220deg) ;
 }
 
 /* Captured Followers only status text. */
 [data-profile="composer-header"] > span {
-  color: #ffb8d6 !important;
+  color: #ffb8d6 ;
 }
 ```
 
@@ -6900,16 +6945,16 @@ The body wraps a row containing the avatar image and editor column. The avatar h
 ```css
 /* Avatar border and shadow. */
 [data-profile="composer-body"] > div > img {
-  border: 2px solid #8fd8bb !important;
-  border-radius: 50% !important;
-  box-shadow: 0 0 6px rgba(143, 216, 187, 0.35) !important;
-  box-sizing: border-box !important;
+  border: 2px solid #8fd8bb ;
+  border-radius: 50% ;
+  box-shadow: 0 0 6px rgba(143, 216, 187, 0.35) ;
+  box-sizing: border-box ;
 }
 
 /* Avatar image crop. */
 [data-profile="composer-body"] > div > img {
-  object-fit: cover !important;
-  object-position: center !important;
+  object-fit: cover ;
+  object-position: center ;
 }
 ```
 
@@ -6926,9 +6971,9 @@ The captured editable div carries both `composer-editor` and `data-placeholder`.
 ```css
 /* Placeholder on the editor itself. */
 [data-profile="composer-editor"][data-placeholder]::before {
-  color: #91cfed !important;
-  opacity: 1 !important;
-  text-shadow: none !important;
+  color: #91cfed ;
+  opacity: 1 ;
+  text-shadow: none ;
 }
 ```
 
@@ -6950,18 +6995,16 @@ Captured formatting buttons use `data-profile="composer-btn"` and a separate `da
 
 ```css
 /* Bold only. */
-[data-profile="composer-toolbar"]
-[data-profile="composer-btn"][data-btn="bold"] {
-  background: #49365e !important;
-  border-color: #bd9bea !important;
-  color: #e0c7ff !important;
+[data-btn="bold"] {
+  background: #49365e ;
+  border-color: #bd9bea ;
+  color: #e0c7ff ;
 }
 
 /* Attach only: surface. */
-[data-profile="composer-toolbar"]
-[data-profile="composer-btn"][data-btn="attach"] {
-  background: #193446 !important;
-  border-color: #91cfed !important;
+[data-btn="attach"] {
+  background: #193446 ;
+  border-color: #91cfed ;
 }
 ```
 
@@ -6988,7 +7031,7 @@ Button color recolors font icons through inheritance unless an icon has its own 
 
 `text-color-bar` belongs to the color indicator inside Text Color, not a separate formatting button. Its appearance represents the selected text color, so leave it separate from the button theme.
 
-Insert, Text background, and Edit as HTML lack composer-btn and data-btn in this layout. The shared base and hover rules include their exact aria-label values so all captured controls receive the same treatment. The examples below style the color controls and their palettes. Insert and Edit as HTML are covered here as toolbar buttons only.
+Insert, Text background, and Edit as HTML lack composer-btn and data-btn in this layout. The shared base and hover rules include their exact aria-label values so all captured controls receive the same treatment. Their individual examples follow later, along with pressed-state examples.
 
 **Font-Icon Targets**
 
@@ -6999,18 +7042,18 @@ Toolbar icons are font glyphs on `[data-profile="icon"]` elements. Use color rat
 ```css
 /* All captured toolbar font icons. */
 [data-profile="composer-toolbar"] [data-profile="icon"] {
-  color: #b8ffe0 !important;
-  text-shadow: 0 0 4px rgba(143, 216, 187, 0.35) !important;
+  color: #b8ffe0 ;
+  text-shadow: 0 0 4px rgba(143, 216, 187, 0.35) ;
 }
 
 /* Bold glyph only. */
 [data-profile="composer-toolbar"] [data-profile="icon"][data-icon="bold"] {
-  color: #e0c7ff !important;
+  color: #e0c7ff ;
 }
 
 /* Attach glyph only. */
 [data-profile="composer-toolbar"] [data-profile="icon"][data-icon="paperclip"] {
-  color: #91cfed !important;
+  color: #91cfed ;
 }
 ```
 
@@ -7043,16 +7086,16 @@ Some captured toolbar buttons expose `aria-pressed="false"`. These rules disting
 ```css
 /* Controls explicitly marked unpressed. */
 [data-profile="composer-toolbar"] button[aria-pressed="false"] {
-  background: #24483e !important;
-  border-color: #8fd8bb !important;
-  color: #b8ffe0 !important;
+  background: #24483e ;
+  border-color: #8fd8bb ;
+  color: #b8ffe0 ;
 }
 
 /* Font glyph inside a pressed control. */
 [data-profile="composer-toolbar"] button[aria-pressed="true"]
 [data-profile="icon"] {
-  color: #ffd580 !important;
-  text-shadow: 0 0 4px rgba(255, 213, 128, 0.35) !important;
+  color: #ffd580 ;
+  text-shadow: 0 0 4px rgba(255, 213, 128, 0.35) ;
 }
 ```
 
@@ -7061,7 +7104,6 @@ Some captured toolbar buttons expose `aria-pressed="false"`. These rules disting
 The supplied toolbar exposes aria-pressed on Bold, Italic, Underline, Heading, Bullet List, Numbered List, Insert, GIFs & Stickers, and Edit as HTML. Other captured buttons lack it and match neither state rule.
 
 An absent attribute does not equal false. These selectors style attributes; they do not set a formatting state. `aria-expanded` describes a popup’s open state and is separate from aria-pressed. The supplied toolbar capture shows false values, so true-state rules are conditional examples.
-
 
 **Text Color and Text Background**
 
@@ -7165,47 +7207,48 @@ Keep editor text and placeholder contrast high. Decorative textures should never
 
 Style privacy separately from notification state. Notify supports both its header button and footer checkbox representation.
 
+Style privacy separately from notification state. Notify supports both its header button and footer checkbox representation.
 **Privacy Controls**
 
-The supplied layouts place privacy in the header or footer. Scope the exact button labels to both locations.
+Style the Public and Private toggle in the composer footer. The Public button contains the globe artwork. The Private button contains the lock artwork and carries `aria-pressed`.
 
-![Composer Privacy Button](./images/profile/input-composer-privacy-button.png)
+![Composer privacy button](./images/profile/input-composer-privacy-button.png)
 
 ```css
-/* Privacy button: shared surface. */
-:is([data-profile="composer-header"], [data-profile="composer-footer"])
-button:is([aria-label="Private post, followers only"], [aria-label="Visible to followers only"]) {
+/* Shared footer privacy button surface. */
+[data-profile=composer-footer]
+button:is(
+  :has(> img[src$="/universes.webp"]),
+  [aria-pressed]:has(> img[src$="/lock.webp"])
+) {
   background: #24483e !important;
   border: 1px solid #8fd8bb !important;
   border-radius: 999px !important;
-  color: #b8ffe0 !important;
+  color: #b8ffe0;
 }
 
-/* Privacy marked pressed: captured Private state. */
-:is([data-profile="composer-header"], [data-profile="composer-footer"])
-button:is([aria-label="Private post, followers only"], [aria-label="Visible to followers only"])[aria-pressed="true"] {
+/* Private button surface. */
+[data-profile=composer-footer]
+button[aria-pressed]:has(> img[src$="/lock.webp"]) {
   background: #49365e !important;
   border-color: #bd9bea !important;
   color: #e0c7ff !important;
 }
 
-/* Public-state artwork. */
-:is([data-profile="composer-header"], [data-profile="composer-footer"])
-button:is([aria-label="Private post, followers only"], [aria-label="Visible to followers only"]) img[src="/img/pixel/universes.webp"] {
-  filter: sepia(1) saturate(2) hue-rotate(95deg) !important;
+/* Public globe. */
+[data-profile=composer-footer]
+button > img[src$="/universes.webp"] {
+  filter: sepia(1) saturate(2) hue-rotate(95deg);
 }
 
-/* Private-state artwork. */
-:is([data-profile="composer-header"], [data-profile="composer-footer"])
-button:is([aria-label="Private post, followers only"], [aria-label="Visible to followers only"]) img[src="/img/pixel/lock.webp"] {
-  filter: sepia(1) saturate(2) hue-rotate(220deg) !important;
+/* Private lock. */
+[data-profile=composer-footer]
+button[aria-pressed] > img[src$="/lock.webp"] {
+  filter: sepia(1) saturate(2) hue-rotate(220deg);
 }
-
 ```
 
-**Customization:** Change button surfaces, text, and privacy artwork independently. Captured privacy buttons use either Private post, followers only or Visible to followers only as their aria-label. Both variants are included. The label can remain the same while the visible state changes: false accompanies Public and true accompanies Private in these layouts.
-
-Notify followers is covered in the combined tutorial immediately below, including both its header-button and footer-switch layouts.
+**Customization.** Edit the Public and Private surfaces separately. Adjust each `filter` to recolor its icon. The Notify Followers examples below cover that control’s header and footer placements.
 
 **Notify Followers: Header Button and Footer Switch**
 
@@ -7231,37 +7274,37 @@ The footer label contains a visually hidden checkbox followed immediately by a d
 ```css
 /* Notify followers when rendered as a header button. */
 [data-profile="composer-header"] button[aria-label="Notify followers"] {
-  background: #193446 !important;
-  border: 1px solid #91cfed !important;
-  border-radius: 999px !important;
-  color: #b9e6ff !important;
+  background: #193446 ;
+  border: 1px solid #91cfed ;
+  border-radius: 999px ;
+  color: #b9e6ff ;
 }
 
 /* Header button: notifications enabled (pressed). */
 [data-profile="composer-header"]
 button[aria-label="Notify followers"][aria-pressed="true"] {
-  background: #24483e !important;
-  border-color: #8fd8bb !important;
-  color: #b8ffe0 !important;
+  background: #24483e ;
+  border-color: #8fd8bb ;
+  color: #b8ffe0 ;
 }
 
 /* Checked thumb. */
 [data-profile="composer-footer"]
 input[type="checkbox"][aria-label="Notify followers"]:checked + div::after {
-  background: #b8ffe0 !important;
+  background: #b8ffe0 ;
 }
 
 /* Keyboard-focus outline on the visible track. */
 [data-profile="composer-footer"]
 input[type="checkbox"][aria-label="Notify followers"]:focus-visible + div {
-  outline: 2px solid #ffd580 !important;
-  outline-offset: 2px !important;
+  outline: 2px solid #ffd580 ;
+  outline-offset: 2px ;
 }
 
 /* Text row containing the captured switch label. */
 [data-profile="composer-footer"]
 > div:has(> label > input[type="checkbox"][aria-label="Notify followers"]) {
-  color: #b9e6ff !important;
+  color: #b9e6ff ;
 }
 ```
 
@@ -7282,37 +7325,38 @@ The footer contains the terms paragraph, privacy/notification controls, and Subm
 ```css
 /* Terms paragraph. */
 [data-profile="composer-footer"] > p {
-  color: #91cfed !important;
+  color: #91cfed ;
 }
 
 /* Terms and Community Guidelines links. */
 [data-profile="composer-footer"] > p > a {
-  color: #b8ffe0 !important;
-  text-decoration-color: #8fd8bb !important;
+  color: #b8ffe0 ;
+  text-decoration-color: #8fd8bb ;
 }
 
 /* Terms-link hover. */
 [data-profile="composer-footer"] > p > a:hover {
-  color: #ffd580 !important;
+  color: #ffd580 ;
 }
 
 /* Submit-button shell. */
 [data-profile="composer-footer"] [data-profile="composer-submit"] {
-  background: #193446 !important;
-  border: 1px solid #8fd8bb !important;
-  border-radius: 10px !important;
+  background: #193446 ;
+  border: 1px solid #8fd8bb ;
+  border-radius: 10px ;
 }
 
 /* Foreground Post label. */
 [data-profile="composer-submit"] > span {
-  color: #b8ffe0 !important;
-  text-shadow: 0 1px 3px #10251e !important;
+  color: #b8ffe0 ;
+  text-shadow: 0 1px 3px #10251e ;
 }
 
 /* Enabled Submit hover: label. */
 [data-profile="composer-submit"]:enabled:hover > span {
-  color: #ffd580 !important;
+  color: #ffd580 ;
 }
+
 ```
 
 **Customization:** Change the footer surface, spacing, terms text, links, button shell, and label separately.
@@ -7329,26 +7373,26 @@ The captured Submit button uses one background plate and a foreground text span.
 /* Submit background plate. */
 [data-profile="composer-submit"]
 > img[src="/img/Icons/btn_pixel_plate_24.webp"] {
-  filter: sepia(1) saturate(2) hue-rotate(95deg) !important;
+  filter: sepia(1) saturate(2) hue-rotate(95deg) ;
 }
 
 /* Enabled plate hover. */
 [data-profile="composer-submit"]:enabled:hover
 > img[src="/img/Icons/btn_pixel_plate_24.webp"] {
-  filter: sepia(1) saturate(2) hue-rotate(95deg) brightness(1.15) !important;
+  filter: sepia(1) saturate(2) hue-rotate(95deg) brightness(1.15) ;
 }
 
 /* Disabled button: keep visibly subdued. */
 [data-profile="composer-submit"]:disabled {
-  opacity: 0.5 !important;
-  filter: grayscale(1) !important;
-  cursor: not-allowed !important;
+  opacity: 0.5 ;
+  filter: grayscale(1) ;
+  cursor: not-allowed ;
 }
 
 /* Disabled label. */
 [data-profile="composer-submit"]:disabled > span {
-  color: #a8b3bd !important;
-  text-shadow: none !important;
+  color: #a8b3bd ;
+  text-shadow: none ;
 }
 ```
 
@@ -7375,11 +7419,9 @@ Target the Poke Bary image rather than one source filename so the same treatment
 ![Composer Bary Ears and Cheeky Paw](./images/profile/input-composer-bary-ears-and-cheeky-paw.png)
 
 ```css
-/* Image inside the captured composer Bary control. */
-.surface-post > .relative:has(> [data-profile="composer-header"])
-> button[aria-label="Poke Bary"] > img {
+img[src$="/feed_bary_cheeky_paw.webp"], img:is([src$="/feed_bary_peeking_ears.webp"], [src$="/feed_bary_cheeky_paw.webp"]) {
   filter: sepia(1) saturate(2) hue-rotate(220deg)
-    drop-shadow(0 0 4px #bd9bea) !important;
+    drop-shadow(0 0 4px #bd9bea) ;
 }
 ```
 
@@ -7395,7 +7437,7 @@ Pseudo-element replacements are separate targets.
 /* Hide the whole Poke Bary button, including its hit area. */
 .surface-post > .relative:has(> [data-profile="composer-header"])
 > button[aria-label="Poke Bary"] {
-  display: none !important;
+  display: none ;
 }
 ```
 
@@ -7412,10 +7454,10 @@ The additional stylesheet reference identifies /img/Icons/feed_bary_cheeky_paw.w
 **Recolor the Cheeky paw**
 
 ```css
-[data-profile="scope"]
+
 img[src="/img/Icons/feed_bary_cheeky_paw.webp"] {
   filter: grayscale(1) sepia(1) saturate(8) hue-rotate(105deg)
-    brightness(1.3) drop-shadow(0 0 3px #65ffc788) !important;
+    brightness(1.3) drop-shadow(0 0 3px #65ffc788) ;
 }
 ```
 
@@ -7424,9 +7466,9 @@ img[src="/img/Icons/feed_bary_cheeky_paw.webp"] {
 **Hide the Cheeky paw image**
 
 ```css
-[data-profile="scope"]
+
 img[src="/img/Icons/feed_bary_cheeky_paw.webp"] {
-  display: none !important;
+  display: none ;
 }
 ```
 
@@ -7437,6 +7479,38 @@ Hiding the image leaves its parent intact. If that parent is interactive, this r
 The other supplied selector targets [data-profile="customize"] > button[aria-label="Profile actions"]. It styles the customization action button, not Bary artwork. No parent relationship between that button and the Cheeky paw is established by two adjacent CSS rules.
 
 The path is confirmed by the supplied stylesheet reference; its exact HTML placement and visual outcome remain to be checked.
+
+#### Optional Extra — Bary Ears Above Write a Post
+
+Mobile doesn’t render the native **Poke Bary** button. This snippet brings back the ears as decoration above **Write a Post**. The cheeky-paw animation belongs to the desktop button.
+
+```css
+@media (max-width: 780px) {
+  .surface-post:has([data-profile=composer-header]) {
+    margin-block-start: 3rem;
+    overflow: visible;
+  }
+
+  [data-profile=composer-header] {
+    position: relative;
+  }
+
+  [data-profile=composer-header]::before {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    width: 5rem;
+    height: 3rem;
+    transform: translateX(-50%);
+    background: url("/img/Icons/feed_bary_peeking_ears.webp")
+      center bottom / contain no-repeat;
+    pointer-events: none;
+  }
+}
+```
+
+If you make the ears taller, increase `margin-block-start` on the composer card to give them room above the header.
 
 ### Poll Composer, Answers, End Date, and Submission
 
@@ -7453,22 +7527,22 @@ Style the nested poll card, its fields, answer controls, end-date switch, and da
 ```css
 /* Composer card identified by its question input. */
 .surface-post:has(> .relative > div > fieldset > input[aria-label="Poll question"]) {
-  background: #193446 !important;
-  border: 1px solid #91cfed !important;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35) !important;
+  background: #193446 ;
+  border: 1px solid #91cfed ;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35) ;
 }
 
 /* Header through the supplied structural selector. */
 .surface-post:has(> .relative > div > fieldset > input[aria-label="Poll question"])
 > .relative > .surface-header {
-  background: #49365e !important;
-  border-bottom: 1px solid #bd9bea !important;
+  background: #49365e ;
+  border-bottom: 1px solid #bd9bea ;
 }
 
 /* Header title. */
 .surface-post:has(> .relative > div > fieldset > input[aria-label="Poll question"])
 > .relative > .surface-header h3 {
-  color: #e0c7ff !important;
+  color: #e0c7ff ;
 }
 ```
 
@@ -7483,33 +7557,33 @@ This identifies a composer rather than a published poll. Because it uses a desce
 ```css
 /* Question field. */
 .surface-post:has(> .relative > div > fieldset > input[aria-label="Poll question"]) input[aria-label="Poll question"] {
-  background: #122b39 !important;
-  border: 1px solid #91cfed !important;
-  color: #e2f4ff !important;
-  caret-color: #ffd580 !important;
+  background: #122b39 ;
+  border: 1px solid #91cfed ;
+  color: #e2f4ff ;
+  caret-color: #ffd580 ;
 }
 
 /* Answer fields. */
 .surface-post:has(> .relative > div > fieldset > input[aria-label="Poll question"]) input[aria-label^="Answer "] {
-  background: #173a30 !important;
-  border: 1px solid #8fd8bb !important;
-  color: #b8ffe0 !important;
-  caret-color: #ffd580 !important;
+  background: #173a30 ;
+  border: 1px solid #8fd8bb ;
+  color: #b8ffe0 ;
+  caret-color: #ffd580 ;
 }
 
 /* Placeholders in those fields. */
 .surface-post:has(> .relative > div > fieldset > input[aria-label="Poll question"])
 input:is([aria-label="Poll question"], [aria-label^="Answer "])::placeholder {
-  color: #91cfed !important;
-  opacity: 1 !important;
+  color: #91cfed ;
+  opacity: 1 ;
 }
 
 /* Field focus. */
 .surface-post:has(> .relative > div > fieldset > input[aria-label="Poll question"])
 input:is([aria-label="Poll question"], [aria-label^="Answer "]):focus {
-  border-color: #ffd580 !important;
-  outline: 1px solid #ffd580 !important;
-  outline-offset: 1px !important;
+  border-color: #ffd580 ;
+  outline: 1px solid #ffd580 ;
+  outline-offset: 1px ;
 }
 ```
 
@@ -7519,38 +7593,7 @@ These examples change appearance without changing field values, limits, answer o
 
 **Answer controls**
 
-The captured answer-row buttons have numbered accessible labels: Remove answer 1, Remove answer 2, and Remove answer 3. Match their shared label prefix inside the fieldset containing Poll question. This separates them from the header’s Remove poll control and covers existing and newly added answer rows with the same label pattern.
-
-```css
-/* Remove-answer buttons only. */
-[data-profile="scope"] fieldset:has(> input[aria-label="Poll question"])
-button[aria-label^="Remove answer "] {
-  background: #562b43 !important;
-  border: 1px solid #ed91b7 !important;
-  color: #ffe9f2 !important;
-}
-
-[data-profile="scope"] fieldset:has(> input[aria-label="Poll question"])
-button[aria-label^="Remove answer "]:enabled:hover {
-  background: #713955 !important;
-}
-
-[data-profile="scope"] fieldset:has(> input[aria-label="Poll question"])
-button[aria-label^="Remove answer "]:focus-visible {
-  outline: 2px solid #ffd580 !important;
-  outline-offset: 2px !important;
-}
-
-/* Trash artwork inside each remove-answer button. */
-[data-profile="scope"] fieldset:has(> input[aria-label="Poll question"])
-button[aria-label^="Remove answer "] img[src="/img/pixel/trash.webp"] {
-  filter: sepia(1) saturate(2) hue-rotate(285deg) !important;
-}
-```
-
-**Customization:** Change button surface, border, enabled hover, focus outline, and trash-image tint independently. Keep native dimensions and disabled behavior. The selector uses the captured fieldset relationship rather than generated IDs or a fixed answer number.
-
-See **Captured answer controls and artwork** below for the separate Add answer and Remove poll targets. Remove poll deletes the entire poll; the numbered controls above remove individual answers.
+See the next entry for the captured Add answer and Remove poll targets. The former broad shared-button example has been replaced with exact component rules. Individual remove-answer controls remain uncaptured.
 
 **Poll Composer: Labels, End-Date Switch, Date Controls, and Submission**
 
@@ -7566,17 +7609,19 @@ The poll card sits inside the outer post composer. Keep the question-field signa
 /* End date label and adjacent No time limit text. */
 .surface-post:has(> .relative > div > fieldset > input[aria-label="Poll question"])
 fieldset > div:has(> label > input[aria-label="Set end date"]) > span {
-  color: #91cfed !important;
+  color: #91cfed ;
 }
 
 /* Helper below the answer fieldset. */
 .surface-post:has(> .relative > div > fieldset > input[aria-label="Poll question"])
 fieldset + div > p {
-  color: #b8ffe0 !important;
+  color: #b8ffe0 ;
 }
 ```
 
 **Customization:** Change the date-row text and voting helper independently. The helper says One answer each. Votes can be changed. The question and answer names are accessible input labels, not separate visible label elements.
+
+No composer error or live-feedback element is present in this capture. Its selector and styling remain pending; these helper-text rules are not validation-feedback coverage.
 
 **Captured answer controls and artwork**
 
@@ -7586,31 +7631,31 @@ fieldset + div > p {
 /* Remove poll: explicit label. */
 .surface-post:has(> .relative > div > fieldset > input[aria-label="Poll question"])
 button[aria-label="Remove poll"] {
-  background: #49365e !important;
-  color: #e0c7ff !important;
+  background: #49365e ;
+  color: #e0c7ff ;
 }
 
 /* Add answer: identified by its native artwork. */
 .surface-post:has(> .relative > div > fieldset > input[aria-label="Poll question"])
 fieldset + div > button:has(img[src="/img/pixel/plus_squirrel.webp"]) {
-  background: #24483e !important;
-  color: #b8ffe0 !important;
+  background: #24483e ;
+  color: #b8ffe0 ;
 }
 
 /* Remove poll artwork. */
 .surface-post:has(> .relative > div > fieldset > input[aria-label="Poll question"])
 button[aria-label="Remove poll"] img[src="/img/pixel/trash.webp"] {
-  filter: sepia(1) saturate(2) hue-rotate(285deg) !important;
+  filter: sepia(1) saturate(2) hue-rotate(285deg) ;
 }
 
 /* Add answer artwork. */
 .surface-post:has(> .relative > div > fieldset > input[aria-label="Poll question"])
 fieldset + div > button img[src="/img/pixel/plus_squirrel.webp"] {
-  filter: sepia(1) saturate(2) hue-rotate(95deg) !important;
+  filter: sepia(1) saturate(2) hue-rotate(95deg) ;
 }
 ```
 
-**Customization:** These exact captured targets replace the earlier broad shared-button example. Remove poll deletes the whole poll; it is not a remove-answer button.
+**Customization:** These exact captured targets replace the earlier broad shared-button example. Remove poll deletes the whole poll; it is not a remove-answer button. No individual remove-answer control appears beside the two captured answer fields.
 
 **End-date checkbox, track, and thumb**
 
@@ -7620,34 +7665,34 @@ fieldset + div > button img[src="/img/pixel/plus_squirrel.webp"] {
 /* Unchecked track. */
 .surface-post:has(> .relative > div > fieldset > input[aria-label="Poll question"])
 input[type="checkbox"][aria-label="Set end date"] + div {
-  background: #122b39 !important;
-  border-color: #416b80 !important;
+  background: #122b39 ;
+  border-color: #416b80 ;
 }
 
 /* Unchecked thumb. */
 .surface-post:has(> .relative > div > fieldset > input[aria-label="Poll question"])
 input[type="checkbox"][aria-label="Set end date"] + div::after {
-  background: #91cfed !important;
+  background: #91cfed ;
 }
 
 /* Checked track. */
 .surface-post:has(> .relative > div > fieldset > input[aria-label="Poll question"])
 input[type="checkbox"][aria-label="Set end date"]:checked + div {
-  background: #24483e !important;
-  border-color: #8fd8bb !important;
+  background: #24483e ;
+  border-color: #8fd8bb ;
 }
 
 /* Checked thumb. */
 .surface-post:has(> .relative > div > fieldset > input[aria-label="Poll question"])
 input[type="checkbox"][aria-label="Set end date"]:checked + div::after {
-  background: #b8ffe0 !important;
+  background: #b8ffe0 ;
 }
 
 /* Focus on the visible track. */
 .surface-post:has(> .relative > div > fieldset > input[aria-label="Poll question"])
 input[type="checkbox"][aria-label="Set end date"]:focus-visible + div {
-  outline: 2px solid #ffd580 !important;
-  outline-offset: 2px !important;
+  outline: 2px solid #ffd580 ;
+  outline-offset: 2px ;
 }
 ```
 
@@ -7667,26 +7712,26 @@ The poll is submitted with the outer composer’s ordinary Post button. No separ
 /* Main Post label when this composer contains a poll. */
 .surface-post:has(> .relative > [data-profile="composer-header"]):has(input[aria-label="Poll question"])
 [data-profile="composer-submit"] > span {
-  color: #b8ffe0 !important;
+  color: #b8ffe0 ;
 }
 
 /* Enabled hover. */
 .surface-post:has(> .relative > [data-profile="composer-header"]):has(input[aria-label="Poll question"])
 [data-profile="composer-submit"]:enabled:hover > span {
-  color: #ffd580 !important;
+  color: #ffd580 ;
 }
 
 /* Disabled appearance. */
 .surface-post:has(> .relative > [data-profile="composer-header"]):has(input[aria-label="Poll question"])
 [data-profile="composer-submit"]:disabled {
-  opacity: 0.5 !important;
-  filter: grayscale(1) !important;
+  opacity: 0.5 ;
+  filter: grayscale(1) ;
 }
 
 /* Disabled label. */
 .surface-post:has(> .relative > [data-profile="composer-header"]):has(input[aria-label="Poll question"])
 [data-profile="composer-submit"]:disabled > span {
-  color: #a8b3bd !important;
+  color: #a8b3bd ;
 }
 ```
 
@@ -7702,26 +7747,26 @@ The supplied additional markup confirms a datetime-local input labelled Poll end
 /* End-date field surface, text, and caret. */
 .surface-post:has(> .relative > div > fieldset > input[aria-label="Poll question"])
 input[type="datetime-local"][aria-label="Poll end date"] {
-  background: #122b39 !important;
-  border: 1px solid #91cfed !important;
-  border-radius: 8px !important;
-  color: #e2f4ff !important;
-  caret-color: #ffd580 !important;
+  background: #122b39 ;
+  border: 1px solid #91cfed ;
+  border-radius: 8px ;
+  color: #e2f4ff ;
+  caret-color: #ffd580 ;
   color-scheme: dark;
 }
 
 /* End-date field focus. */
 .surface-post:has(> .relative > div > fieldset > input[aria-label="Poll question"])
 input[type="datetime-local"][aria-label="Poll end date"]:focus {
-  border-color: #ffd580 !important;
-  outline: 1px solid #ffd580 !important;
-  outline-offset: 1px !important;
+  border-color: #ffd580 ;
+  outline: 1px solid #ffd580 ;
+  outline-offset: 1px ;
 }
 
 /* Timezone caption immediately following the field. */
 .surface-post:has(> .relative > div > fieldset > input[aria-label="Poll question"])
 input[type="datetime-local"][aria-label="Poll end date"] + p {
-  color: #91cfed !important;
+  color: #91cfed ;
 }
 ```
 
@@ -7734,8 +7779,6 @@ color-scheme: dark requests a dark native control appearance where supported. Th
 The added snippet does not include the checkbox or its ancestors. It confirms the date field itself; the surrounding poll-card scope follows the earlier composer structure and should be checked with the full enabled-date layout.
 
 They do not convert timezones or set a deadline. The state and visual outcome still need checking; markup alone is not a styling demonstration.
-
----
 
 ## SEE ALL and Popular Creations Buttons
 
@@ -7809,34 +7852,34 @@ The captured `gallery-preview` hook belongs to an outer div. Its direct section 
 ```css
 /* Preview wrapper: space above the card. */
 [data-profile="gallery-preview"] {
-  margin-top: 16px !important;
+  margin-top: 16px ;
 }
 
 /* Preview card surface. */
 [data-profile="gallery-preview"] > section {
-  background: #193446 !important;
-  border: 1px solid #91cfed !important;
-  border-radius: 14px !important;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35) !important;
+  background: #193446 ;
+  border: 1px solid #91cfed ;
+  border-radius: 14px ;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35) ;
 }
 
 /* Preview header. */
 [data-profile="gallery-preview"] > section > header {
-  background: #49365e !important;
-  border-bottom: 1px solid #bd9bea !important;
-  border-radius: 13px 13px 0 0 !important;
+  background: #49365e ;
+  border-bottom: 1px solid #bd9bea ;
+  border-radius: 13px 13px 0 0 ;
 }
 
 /* Gallery heading. */
 [data-profile="gallery-preview"] > section > header h2 {
-  color: #e0c7ff !important;
-  text-shadow: 0 1px 3px #24182f !important;
+  color: #e0c7ff ;
+  text-shadow: 0 1px 3px #24182f ;
 }
 
 /* Native header artwork. */
 [data-profile="gallery-preview"] > section > header
 img[src="/img/pixel/lab-gallery.webp"] {
-  filter: sepia(1) saturate(2) hue-rotate(220deg) !important;
+  filter: sepia(1) saturate(2) hue-rotate(220deg) ;
 }
 ```
 
@@ -7897,46 +7940,46 @@ Gallery uses `data-section="gallery"` and the heading image `/img/pixel/lab-gall
 
 ```css
 /* Gallery panel. */
-[data-profile="content-panel"][data-section="gallery"] {
-  background: #193446 !important;
-  border: 1px solid #91cfed !important;
-  border-radius: 16px !important;
+[data-section="gallery"] {
+  background: #193446 ;
+  border: 1px solid #91cfed ;
+  border-radius: 16px ;
 }
 
 /* Header surface. */
 [data-section="gallery"] [data-profile="content-header"] {
-  background: #254b63 !important;
-  border-bottom: 1px solid #91cfed !important;
+  background: #254b63 ;
+  border-bottom: 1px solid #91cfed ;
 }
 
 /* Heading text. */
 [data-section="gallery"] [data-profile="content-title"] {
-  color: #b9e6ff !important;
+  color: #b9e6ff ;
 }
 
 /* Heading image only. */
 [data-section="gallery"] [data-profile="content-header"]
 img[src="/img/pixel/lab-gallery.webp"] {
-  filter: sepia(1) saturate(2) hue-rotate(155deg) !important;
+  filter: sepia(1) saturate(2) hue-rotate(155deg) ;
 }
 
 /* Heading count, when present. */
 [data-section="gallery"] [data-profile="content-count"] {
-  color: #ffd580 !important;
+  color: #ffd580 ;
 }
 
 /* Gallery grid spacing. */
 [data-section="gallery"] [data-profile="gallery-grid"] {
-  column-gap: 12px !important;
-  row-gap: 20px !important;
+  column-gap: 12px ;
+  row-gap: 20px ;
 }
 
 /* Square tile surfaces in the captured gallery structure. */
 [data-section="gallery"] [data-profile="gallery-grid"] > div > div {
-  background: #122b39 !important;
-  border: 1px solid #91cfed !important;
-  border-radius: 16px !important;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.35) !important;
+  background: #122b39 ;
+  border: 1px solid #91cfed ;
+  border-radius: 16px ;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.35) ;
 }
 ```
 
@@ -7964,52 +8007,53 @@ The full-section rules above include the heading artwork, count, grid gaps, and 
 
 Style the strip and folder controls without changing horizontal scrolling.
 
-```css
-[data-profile="content-panel"][data-section="gallery"][role="dialog"] [role="group"][aria-label="Folders"] {
-  background: #193446 !important;
-  border: 1px solid #91cfed !important;
-}
+![Gallery Folder Toolbar](./images/profile/header-gallery-folder-toolbar.png)
 
-[data-profile="content-panel"][data-section="gallery"][role="dialog"] [role="group"][aria-label="Folders"] {
+**Coverage:** Surface styling tested; added icon recolors pending review.
+
+```css
+/* Folder toolbar and scroll fades */
+[data-section=gallery] [aria-label="Folders"] {
+  background: #193446 ;
+  border: 1px solid #91cfed ;
   --scroll-shade-rgb: 25, 52, 70;
 }
 
-[data-profile="content-panel"][data-section="gallery"][role="dialog"] [role="group"][aria-label="Folders"] > button:has(> img[src="/img/pixel/folder_all.webp"]) {
+/* All folders and Create new folder */
+[data-section=gallery] [aria-label="Folders"]
+button:is(:has(img[src$="/folder_all.webp"]), [aria-label="Create new folder"]) {
   background: #49365e !important;
-  border: 1px solid #bd9bea !important;
-  color: #e0c7ff !important;
+  border: 1px solid #bd9bea ;
+  color: #e0c7ff ;
 }
 
-[data-profile="content-panel"][data-section="gallery"][role="dialog"] [role="group"][aria-label="Folders"] [data-folder-chip="true"] > button {
-  border-color: #91cfed !important;
-  color: #b9e6ff !important;
+/* Named folder chips and their labels */
+[data-section=gallery] [aria-label="Folders"] [data-folder-chip=true] > button {
+  border-color: #91cfed ;
+  color: #b9e6ff ;
 }
 
-[data-profile="content-panel"][data-section="gallery"][role="dialog"] [role="group"][aria-label="Folders"] button[aria-label="Create new folder"] {
-  background: #49365e !important;
-  border: 1px solid #bd9bea !important;
-  color: #e0c7ff !important;
+[data-section=gallery] [aria-label="Folders"] [data-folder-chip=true] > button .truncate {
+  color: #b9e6ff ;
 }
 
-[data-profile="content-panel"][data-section="gallery"][role="dialog"] [role="group"][aria-label="Folders"] [aria-label="Folder options"] {
-  color: #ffd580 !important;
+[data-section=gallery] [aria-label="Folders"] [aria-label="Folder options"] {
+  color: #ffd580 ;
 }
 
-[data-profile="content-panel"][data-section="gallery"][role="dialog"] [role="group"][aria-label="Folders"] [data-folder-chip="true"] > button > span.truncate {
-  color: #b9e6ff !important;
+[data-section=gallery] [aria-label="Folders"] button:focus-visible {
+  outline: 2px solid #ffd580 ;
+  outline-offset: 2px ;
 }
 
-[data-profile="content-panel"][data-section="gallery"][role="dialog"] [role="group"][aria-label="Folders"] button:focus-visible {
-  outline: 2px solid #ffd580 !important;
-  outline-offset: 2px !important;
+/* Folder artwork and button glyphs */
+[data-section=gallery] [aria-label="Folders"]
+img:is([src$="/folder_all.webp"], [src$="/folder.webp"], [src$="/folder_open.webp"], [src$="/lock.webp"], [src$="/rel_friends.webp"]) {
+  filter: grayscale(1) sepia(1) saturate(2.5) hue-rotate(155deg) brightness(1.15) ;
 }
 
-[data-profile="content-panel"][data-section="gallery"][role="dialog"] [role="group"][aria-label="Folders"] img:is([src="/img/pixel/folder_all.webp"],[src="/img/pixel/folder.webp"],[src="/img/pixel/folder_open.webp"],[src="/img/pixel/lock.webp"],[src="/img/pixel/rel_friends.webp"]) {
-  filter: grayscale(1) sepia(1) saturate(2.5) hue-rotate(155deg) brightness(1.15) !important;
-}
-
-[data-profile="content-panel"][data-section="gallery"][role="dialog"] [role="group"][aria-label="Folders"] :is(.fa-plus,.fa-ellipsis-h) {
-  color: #b9e6ff !important;
+[data-section=gallery] [aria-label="Folders"] :is(.fa-plus, .fa-ellipsis-h) {
+  color: #b9e6ff ;
 }
 ```
 
@@ -8019,19 +8063,30 @@ Style the strip and folder controls without changing horizontal scrolling.
 
 Identify the selected named folder through its recorded open-folder artwork.
 
+![Selected Gallery Folder](./images/profile/header-gallery-selected-folder.png)
+
+**Coverage:** Surface styling tested; added icon recolors pending review.
+
 ```css
-[data-profile="content-panel"][data-section="gallery"][role="dialog"] [role="group"][aria-label="Folders"] [data-folder-chip="true"] > button:has(> img[src="/img/pixel/folder_open.webp"]) {
+/* Selected named folder */
+[data-section=gallery] [aria-label="Folders"]
+[data-folder-chip=true] > button:has(img[src$="/folder_open.webp"]) {
   background: #49365e !important;
   border: 1px solid #bd9bea !important;
   color: #e0c7ff !important;
 }
 
-[data-profile="content-panel"][data-section="gallery"][role="dialog"] [role="group"][aria-label="Folders"] [data-folder-chip="true"] > button:has(> img[src="/img/pixel/folder_open.webp"]) > span.truncate {
+/* Selected folder name */
+[data-section=gallery] [aria-label="Folders"]
+[data-folder-chip=true] > button:has(img[src$="/folder_open.webp"]) .truncate {
   color: #ffe2a6 !important;
 }
 
-[data-profile="content-panel"][data-section="gallery"][role="dialog"] [role="group"][aria-label="Folders"] [data-folder-chip="true"] > button img:is([src="/img/pixel/folder_open.webp"]) {
-  filter: grayscale(1) sepia(1) saturate(2.5) hue-rotate(155deg) brightness(1.15) !important;
+/* Open folder icon */
+[data-section=gallery] [aria-label="Folders"]
+[data-folder-chip=true] > button img[src$="/folder_open.webp"] {
+  filter: grayscale(1) sepia(1) saturate(2.5)
+    hue-rotate(155deg) brightness(1.15) !important;
 }
 ```
 
@@ -8041,26 +8096,34 @@ Identify the selected named folder through its recorded open-folder artwork.
 
 Style the empty-state wrapper, illustration, and its two messages.
 
+![Empty Gallery Folder](./images/profile/gallery-empty-folder.png)
+
+**Coverage:** Surface styling tested; added icon recolors pending review.
+
 ```css
-[data-profile="content-panel"][data-section="gallery"][role="dialog"] [data-profile="content-scroll"] div:has(> img[src="/img/sketch/photo_frame.webp"]) {
-  background: #193446 !important;
-  border: 1px solid #91cfed !important;
+/* Empty folder card */
+[data-section=gallery] [data-profile=content-scroll]
+div:has(> img[src$="/photo_frame.webp"]) {
+  background: #193446 ;
+  border: 1px solid #91cfed ;
+  border-radius: 14px ;
 }
 
-[data-profile="content-panel"][data-section="gallery"][role="dialog"] [data-profile="content-scroll"] div:has(> img[src="/img/sketch/photo_frame.webp"]) {
-  border-radius: 14px !important;
+/* Empty folder illustration */
+[data-section=gallery] [data-profile=content-scroll]
+img[src$="/photo_frame.webp"] {
+  filter: sepia(1) saturate(2) hue-rotate(155deg) ;
 }
 
-[data-profile="content-panel"][data-section="gallery"][role="dialog"] [data-profile="content-scroll"] div:has(> img[src="/img/sketch/photo_frame.webp"]) > img[src="/img/sketch/photo_frame.webp"] {
-  filter: sepia(1) saturate(2) hue-rotate(155deg) !important;
+/* Empty folder heading and helper text */
+[data-section=gallery] [data-profile=content-scroll]
+div:has(> img[src$="/photo_frame.webp"]) > p:first-of-type {
+  color: #e0c7ff ;
 }
 
-[data-profile="content-panel"][data-section="gallery"][role="dialog"] [data-profile="content-scroll"] div:has(> img[src="/img/sketch/photo_frame.webp"]) > p:first-of-type {
-  color: #e0c7ff !important;
-}
-
-[data-profile="content-panel"][data-section="gallery"][role="dialog"] [data-profile="content-scroll"] div:has(> img[src="/img/sketch/photo_frame.webp"]) > p:nth-of-type(2) {
-  color: #b9e6ff !important;
+[data-section=gallery] [data-profile=content-scroll]
+div:has(> img[src$="/photo_frame.webp"]) > p:nth-of-type(2) {
+  color: #b9e6ff ;
 }
 ```
 
@@ -8070,30 +8133,47 @@ Style the empty-state wrapper, illustration, and its two messages.
 
 Cover the two Upload trigger placements, Select, and thumbnail options.
 
+![Empty Gallery Folder Upload Button](./images/profile/input-gallery-empty-folder-upload-button.png)
+
+**Coverage:** Surface styling tested; added icon recolors pending review.
+
 ```css
-[data-profile="content-panel"][data-section="gallery"][role="dialog"] :is(button[aria-label="Upload images"], button[aria-label="Select multiple images to move or delete"], button[aria-label="Image options"]) {
-  background: #49365e !important;
-  border: 1px solid #bd9bea !important;
-  color: #e0c7ff !important;
+/* Upload, multi-select, and image options buttons */
+[data-section=gallery]
+button:is(
+  [aria-label="Upload images"],
+  [aria-label="Select multiple images to move or delete"],
+  [aria-label="Image options"]
+) {
+  background: #49365e ;
+  border: 1px solid #bd9bea ;
+  color: #e0c7ff ;
 }
 
-[data-profile="content-panel"][data-section="gallery"][role="dialog"] :is(button[aria-label="Upload images"], button[aria-label="Select multiple images to move or delete"], button[aria-label="Image options"]):focus-visible {
-  outline: 2px solid #ffd580 !important;
-  outline-offset: 2px !important;
+[data-section=gallery]
+button:is(
+  [aria-label="Upload images"],
+  [aria-label="Select multiple images to move or delete"],
+  [aria-label="Image options"]
+):focus-visible {
+  outline: 2px solid #ffd580 ;
+  outline-offset: 2px ;
 }
 
-[data-profile="content-panel"][data-section="gallery"][role="dialog"] [data-profile="gallery-actions"] button[aria-label="Upload images"] img[src="/img/pixel/expression-upload.webp"] {
-  filter: sepia(1) saturate(2) hue-rotate(220deg) !important;
+/* Upload artwork */
+[data-section=gallery]
+button[aria-label="Upload images"] img[src$="/expression-upload.webp"] {
+  filter: sepia(1) saturate(2) hue-rotate(220deg) ;
 }
 
-[data-profile="content-panel"][data-section="gallery"][role="dialog"] [data-profile="gallery-grid"] :is(i[data-profile="icon"],button[aria-label="Close"] > i) {
-  color: #b9e6ff !important;
+/* Gallery grid icons and close glyph */
+[data-section=gallery] [data-profile=gallery-grid]
+:is(i[data-profile=icon], button[aria-label="Close"] > i) {
+  color: #b9e6ff ;
 }
 ```
 
 **Customization:** Gallery Upload itself is excluded: only its existing trigger buttons are styled.  Opened menus and multi-select mode require separate captures.
-
----
 
 ## Content Sections
 
@@ -8107,7 +8187,6 @@ Each content panel uses `data-profile="content-panel"`. Its `data-section` value
 
 | Section | Exact panel selector |
 | --- | --- |
-| Featured | `[data-profile="content-panel"][data-section="featured"]` |
 | Favorites | `[data-profile="content-panel"][data-section="favorites"]` |
 | Lorebooks | `[data-profile="content-panel"][data-section="lorebooks"]` |
 | Plugins | `[data-profile="content-panel"][data-section="plugins"]` |
@@ -8125,11 +8204,11 @@ The table includes Favorites alongside the section-container values used by the 
 
 ```css
 /* Favorites panel: outer surface only. */
-[data-profile="content-panel"][data-section="favorites"] {
-  background: #193446 !important;
-  border: 1px solid #91cfed !important;
-  border-radius: 16px !important;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35) !important;
+[data-section="favorites"] {
+  background: #193446 ;
+  border: 1px solid #91cfed ;
+  border-radius: 16px ;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35) ;
 }
 ```
 
@@ -8161,28 +8240,28 @@ This example styles the Favorites header, title, heading image, and little numbe
 ```css
 /* Header surface. */
 [data-section="favorites"] [data-profile="content-header"] {
-  background: #24483e !important;
-  border-bottom: 1px solid #8fd8bb !important;
-  border-radius: 16px 16px 0 0 !important;
+  background: #24483e ;
+  border-bottom: 1px solid #8fd8bb ;
+  border-radius: 16px 16px 0 0 ;
 }
 
 /* Title text. */
 [data-section="favorites"] [data-profile="content-title"] {
-  color: #b8ffe0 !important;
-  text-shadow: 0 1px 3px #10251e !important;
+  color: #b8ffe0 ;
+  text-shadow: 0 1px 3px #10251e ;
 }
 
 /* Favorites heading image only. */
 [data-section="favorites"] [data-profile="content-header"]
 img[src="/img/pixel/heart.webp"] {
-  filter: sepia(1) saturate(2) hue-rotate(95deg) !important;
+  filter: sepia(1) saturate(2) hue-rotate(95deg) ;
 }
 
 /* Number beside the heading image, when present. */
 [data-section="favorites"] [data-profile="content-count"] {
-  color: #ffd580 !important;
-  font-weight: 700 !important;
-  text-shadow: 0 1px 3px #10251e !important;
+  color: #ffd580 ;
+  font-weight: 700 ;
+  text-shadow: 0 1px 3px #10251e ;
 }
 ```
 
@@ -8215,28 +8294,14 @@ Content chains use background artwork, not `<img>` elements. Both use `/img/nav/
 ```css
 /* Left content chain: artwork, size, and position. */
 [data-profile="content-chain-left"] {
-  background-image: url("/img/nav/break_link.webp") !important;
-  background-size: 100% auto !important;
-  background-repeat: no-repeat !important;
-  background-position: center top !important;
-  width: 18px !important;
-  height: 37px !important;
-  top: -8px !important;
-  left: 24px !important;
+  background-image: url("/img/nav/break_link.webp") ;
   filter: sepia(1) saturate(2) hue-rotate(95deg)
     drop-shadow(0 1px 2px rgba(0, 0, 0, 0.55)) !important;
 }
 
 /* Right content chain: independent tint and position. */
 [data-profile="content-chain-right"] {
-  background-image: url("/img/nav/break_link.webp") !important;
-  background-size: 100% auto !important;
-  background-repeat: no-repeat !important;
-  background-position: center top !important;
-  width: 18px !important;
-  height: 37px !important;
-  top: -8px !important;
-  right: 24px !important;
+  background-image: url("/img/nav/break_link.webp") ;
   filter: sepia(1) saturate(2) hue-rotate(285deg)
     drop-shadow(0 1px 2px rgba(0, 0, 0, 0.55)) !important;
 }
@@ -8260,34 +8325,34 @@ The search box uses `[data-profile="search"]`. Inside it, `.header-search` is th
 
 ```css
 /* Favorites search box: surface and border. */
-[data-section="favorites"] [data-profile="search"] .header-search {
-  background: #193446 !important;
-  border: 1px solid #91cfed !important;
-  border-radius: 12px !important;
+ [data-profile="search"] .header-search {
+  background: #193446 ;
+  border: 1px solid #91cfed ;
+  border-radius: 12px ;
 }
 
 /* Typed text and typing cursor. */
-[data-section="favorites"] [data-profile="search"] .header-search-input {
-  background: transparent !important;
-  color: #e2f4ff !important;
-  caret-color: #8fd8bb !important;
+ [data-profile="search"] .header-search-input {
+  background: transparent ;
+  color: #e2f4ff ;
+  caret-color: #8fd8bb ;
 }
 
 /* Placeholder text shown before typing. */
-[data-section="favorites"] [data-profile="search"]
+ [data-profile="search"]
 .header-search-input::placeholder {
-  color: #91cfed !important;
-  opacity: 1 !important;
+  color: #91cfed ;
+  opacity: 1 ;
 }
 
 /* Magnifying-glass font icon only. */
-[data-section="favorites"] [data-profile="search"] .fa-search {
-  color: #8fd8bb !important;
+ [data-profile="search"] .fa-search {
+  color: #8fd8bb ;
 }
 
 /* Search box border while its input has focus. */
-[data-section="favorites"] [data-profile="search"] .header-search:focus-within {
-  border-color: #8fd8bb !important;
+ [data-profile="search"] .header-search:focus-within {
+  border-color: #8fd8bb ;
 }
 ```
 
@@ -8304,29 +8369,29 @@ The captured Favorites filter uses `data-profile="content-type-filter"`. Its but
 ```css
 /* Filter button surface. */
 [data-profile="content-type-filter"] button {
-  background: #24483e !important;
-  border: 1px solid #8fd8bb !important;
-  border-radius: 12px !important;
+  background: #24483e ;
+  border: 1px solid #8fd8bb ;
+  border-radius: 12px ;
 }
 
 /* Selected filter label, such as All Types. */
 [data-profile="content-type-filter"] button > span {
-  color: #b8ffe0 !important;
+  color: #b8ffe0 ;
 }
 
 /* Filter artwork inside the button. */
 [data-profile="content-type-filter"] button > img {
-  filter: sepia(1) saturate(2) hue-rotate(95deg) !important;
+  filter: sepia(1) saturate(2) hue-rotate(95deg) ;
 }
 
 /* Dropdown chevron: font icon. */
 [data-profile="content-type-filter"] button > .fa-chevron-down {
-  color: #8fd8bb !important;
+  color: #8fd8bb ;
 }
 
 /* Filter button hover surface. */
 [data-profile="content-type-filter"] button:hover {
-  background: #306052 !important;
+  background: #306052 ;
 }
 ```
 
@@ -8343,29 +8408,29 @@ The sort control uses `data-profile="content-sort"`. Its button is labeled “So
 ```css
 /* Sort button surface. */
 [data-profile="content-sort"] button {
-  background: #49365e !important;
-  border: 1px solid #bd9bea !important;
-  border-radius: 12px !important;
+  background: #49365e ;
+  border: 1px solid #bd9bea ;
+  border-radius: 12px ;
 }
 
 /* Selected sort label. */
 [data-profile="content-sort"] button > span {
-  color: #e0c7ff !important;
+  color: #e0c7ff ;
 }
 
 /* Sort artwork inside the button. */
 [data-profile="content-sort"] button > img {
-  filter: sepia(1) saturate(2) hue-rotate(220deg) !important;
+  filter: sepia(1) saturate(2) hue-rotate(220deg) ;
 }
 
 /* Dropdown chevron: font icon. */
 [data-profile="content-sort"] button > .fa-chevron-down {
-  color: #bd9bea !important;
+  color: #bd9bea ;
 }
 
 /* Sort button hover surface. */
 [data-profile="content-sort"] button:hover {
-  background: #604778 !important;
+  background: #604778 ;
 }
 ```
 
@@ -8391,58 +8456,58 @@ This example gives the card a blue edge, its header a purple surface, the empty 
 
 ```css
 /* Search-results card: blue surface and edge. */
-[data-profile="scope"] .surface-post:has(> div > .surface-header + div > [aria-live="polite"][aria-busy]) {
-  background: #193446 !important;
-  border: 1px solid #91cfed !important;
-  border-radius: 14px !important;
-  box-shadow: 0 4px 12px #09182380 !important;
+.surface-post:has(> div > .surface-header + div > [aria-live="polite"][aria-busy]) {
+  background: #193446 ;
+  border: 1px solid #91cfed ;
+  border-radius: 14px ;
+  box-shadow: 0 4px 12px #09182380 ;
 }
 
 /* Results header: purple surface. */
-[data-profile="scope"] .surface-header:has(+ div > [aria-live="polite"][aria-busy]) {
-  background: #49365e !important;
-  border-bottom: 1px solid #bd9bea !important;
+ .surface-header:has(+ div > [aria-live="polite"][aria-busy]) {
+  background: #49365e ;
+  border-bottom: 1px solid #bd9bea ;
 }
 
 /* Search results title. */
-[data-profile="scope"] .surface-header:has(+ div > [aria-live="polite"][aria-busy]) > h3 {
-  color: #e0c7ff !important;
-  text-shadow: none !important;
+ .surface-header:has(+ div > [aria-live="polite"][aria-busy]) > h3 {
+  color: #e0c7ff ;
+  text-shadow: none ;
 }
 
 /* Matches for… caption; query text stays native. */
-[data-profile="scope"] .surface-header:has(+ div > [aria-live="polite"][aria-busy]) > span {
-  color: #e2f4ff !important;
+ .surface-header:has(+ div > [aria-live="polite"][aria-busy]) > span {
+  color: #e2f4ff ;
 }
 
 /* Live results body: shared by empty and populated results. */
-[data-profile="scope"] .surface-header + div > [aria-live="polite"][aria-busy] {
-  background: #122b39 !important;
+ .surface-header + div > [aria-live="polite"][aria-busy] {
+  background: #122b39 ;
 }
 
 /* Empty state: direct message only. */
-[data-profile="scope"] .surface-header + div > [aria-live="polite"][aria-busy] > p {
-  background: #352440 !important;
-  color: #f0e3ff !important;
-  padding: 14px !important;
-  margin: 0 !important;
+ .surface-header + div > [aria-live="polite"][aria-busy] > p {
+  background: #352440 ;
+  color: #f0e3ff ;
+  padding: 14px ;
+  margin: 0 ;
 }
 
 /* Populated state: result-group surface and spacing. */
-[data-profile="scope"] .surface-header + div > [aria-live="polite"][aria-busy] > section {
-  background: #193446 !important;
-  padding: 10px !important;
+ .surface-header + div > [aria-live="polite"][aria-busy] > section {
+  background: #193446 ;
+  padding: 10px ;
 }
 
 /* Group heading, such as Posts. */
-[data-profile="scope"] .surface-header + div > [aria-live="polite"][aria-busy] > section > h4 {
-  color: #8fd8bb !important;
-  padding-bottom: 8px !important;
+ .surface-header + div > [aria-live="polite"][aria-busy] > section > h4 {
+  color: #8fd8bb ;
+  padding-bottom: 8px ;
 }
 
 /* Existing result count, not post metadata. */
-[data-profile="scope"] .surface-header + div > [aria-live="polite"][aria-busy] > section > h4 > span.tabular-nums {
-  color: #ffd580 !important;
+ .surface-header + div > [aria-live="polite"][aria-busy] > section > h4 > span.tabular-nums {
+  color: #ffd580 ;
 }
 ```
 
@@ -8472,23 +8537,23 @@ These are three separate layers: the body holds the content, the scroll region m
 
 ```css
 /* Body: background and space around the scrolling area. */
-[data-section="favorites"] [data-profile="content-body"] {
-  background: #193446 !important;
-  padding: 12px !important;
+[data-profile="content-body"] {
+  background: #193446 ;
+  padding: 12px ;
 }
 
 /* Scroll region: inner surface and space around its content. */
-[data-section="favorites"] [data-profile="content-scroll"] {
-  background: #122b39 !important;
-  border: 1px solid #416b80 !important;
-  border-radius: 12px !important;
-  padding: 16px !important;
+[data-profile="content-scroll"] {
+  background: #122b39 ;
+  border: 1px solid #416b80 ;
+  border-radius: 12px ;
+  padding: 16px ;
 }
 
 /* Card grid: spacing between columns and rows. */
-[data-profile="grid"][data-section="favorites"] {
-  column-gap: 16px !important;
-  row-gap: 24px !important;
+[data-profile="grid"] {
+  column-gap: 16px ;
+  row-gap: 24px ;
 }
 ```
 
@@ -8502,8 +8567,8 @@ Add this rule if you also want to change card sizing and how many fit in each ro
 
 ```css
 /* Fit as many columns as the available width allows. */
-[data-profile="grid"][data-section="favorites"] {
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 140px), 1fr)) !important;
+[data-profile="grid"] {
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 140px), 1fr)) ;
 }
 ```
 
@@ -8517,11 +8582,11 @@ Empty sections show messages such as “No lorebooks found.” In the supplied H
 
 ```css
 /* Favorites empty-state message only. */
-[data-section="favorites"] [data-profile="content-scroll"]
+[data-profile="content-scroll"]
 > div.text-center > p {
-  color: #b8ffe0 !important;
-  font-weight: 700 !important;
-  text-shadow: 0 1px 3px #10251e !important;
+  color: #b8ffe0 ;
+  font-weight: 700 ;
+  text-shadow: 0 1px 3px #10251e ;
 }
 ```
 
@@ -8535,17 +8600,15 @@ These overlays soften the top and bottom edges of the scrolling content. They ha
 
 ```css
 /* Top edge: mint fading downward. */
-[data-section="favorites"] [data-profile="content-fade-top"] {
+[data-profile="content-fade-top"] {
   background: linear-gradient(180deg, rgba(143, 216, 187, 0.85), rgba(143, 216, 187, 0)) !important;
-  height: 24px !important;
-  pointer-events: none !important;
+  height: 24px ;
 }
 
 /* Bottom edge: pink fading upward. */
-[data-section="favorites"] [data-profile="content-fade-bottom"] {
+[data-profile="content-fade-bottom"] {
   background: linear-gradient(0deg, rgba(237, 145, 183, 0.85), rgba(237, 145, 183, 0)) !important;
-  height: 24px !important;
-  pointer-events: none !important;
+  height: 24px ;
 }
 ```
 
@@ -8561,21 +8624,21 @@ The footer uses `data-profile="content-footer"`. Its surface and text have separ
 
 ```css
 /* Favorites footer surface. */
-[data-section="favorites"] [data-profile="content-footer"] {
-  background: #24483e !important;
-  border-top: 1px solid #8fd8bb !important;
-  box-shadow: 0 -3px 8px rgba(0, 0, 0, 0.25) !important;
+[data-profile="content-footer"] {
+  background: #24483e ;
+  border-top: 1px solid #8fd8bb ;
+  box-shadow: 0 -3px 8px rgba(0, 0, 0, 0.25) ;
 }
 
 /* Standard footer text: section name and username. */
-[data-section="favorites"] [data-profile="content-footer"] > span {
-  color: #b8ffe0 !important;
+[data-profile="content-footer"] > span {
+  color: #b8ffe0 ;
 }
 
 /* Footer-tip text in the captured alternate layout. */
-[data-section="favorites"] [data-profile="content-footer"]
+[data-profile="content-footer"]
 [data-modal-footer-tip] {
-  color: #b8ffe0 !important;
+  color: #b8ffe0 ;
 }
 ```
 
@@ -8590,39 +8653,39 @@ The captured button appears in two places: floating at the lower-right of the co
 ```css
 /* Button surface in either content-panel placement. */
 [data-profile="content-panel"] .back-to-top-button button {
-  background: #24483e !important;
-  border: 1px solid #8fd8bb !important;
-  border-radius: 50% !important;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.35) !important;
+  background: #24483e ;
+  border: 1px solid #8fd8bb ;
+  border-radius: 50% ;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.35) ;
 }
 
 /* Up-arrow artwork in either placement. */
 [data-profile="content-panel"] .back-to-top-button
 img[src="/img/sketch/arrow_up.webp"] {
-  filter: sepia(1) saturate(2) hue-rotate(95deg) !important;
+  filter: sepia(1) saturate(2) hue-rotate(95deg) ;
 }
 
 /* Enabled button hover. */
 [data-profile="content-panel"] .back-to-top-button button:enabled:hover {
-  background: #306052 !important;
+  background: #306052 ;
 }
 
 /* Floating placement: distance from the body’s lower-right corner. */
 [data-profile="content-body"] .back-to-top-button {
-  bottom: 20px !important;
-  right: 20px !important;
+  bottom: 20px ;
+  right: 20px ;
 }
 
 /* Floating placement: button size. */
 [data-profile="content-body"] .back-to-top-button button {
-  width: 40px !important;
-  height: 40px !important;
+  width: 40px ;
+  height: 40px ;
 }
 
 /* Footer placement: independently sized button. */
 [data-profile="content-footer"] .back-to-top-button button {
-  width: 32px !important;
-  height: 32px !important;
+  width: 32px ;
+  height: 32px ;
 }
 ```
 
@@ -8662,15 +8725,15 @@ Try these two rules to see the difference between card types:
 
 ```css
 /* Character cards inside Favorites: pink outline. */
-[data-section="favorites"] [data-profile="card"][data-card="characters"] {
-  outline: 2px solid #ed91b7 !important;
-  outline-offset: 3px !important;
+[data-card="characters"] {
+  outline: 2px solid #ed91b7 ;
+  outline-offset: 3px ;
 }
 
 /* Lorebook cards inside Favorites: mint outline. */
-[data-section="favorites"] [data-profile="card"][data-card="lorebooks"] {
-  outline: 2px solid #8fd8bb !important;
-  outline-offset: 3px !important;
+[data-card="lorebooks"] {
+  outline: 2px solid #8fd8bb ;
+  outline-offset: 3px ;
 }
 ```
 
@@ -8702,37 +8765,37 @@ The exact section value is `bundles`. Its heading uses `/img/pixel/templates.web
 ```css
 /* Bundles panel. */
 [data-profile="content-panel"][data-section="bundles"] {
-  background: #513329 !important;
-  border: 1px solid #edb091 !important;
-  border-radius: 16px !important;
+  background: #513329 ;
+  border: 1px solid #edb091 ;
+  border-radius: 16px ;
 }
 
 /* Header surface. */
 [data-section="bundles"] [data-profile="content-header"] {
-  background: #694234 !important;
-  border-bottom: 1px solid #edb091 !important;
+  background: #694234 ;
+  border-bottom: 1px solid #edb091 ;
 }
 
 /* Heading text. */
 [data-section="bundles"] [data-profile="content-title"] {
-  color: #ffd0b8 !important;
+  color: #ffd0b8 ;
 }
 
 /* Heading image. */
 [data-section="bundles"] [data-profile="content-header"]
 img[src="/img/pixel/templates.webp"] {
-  filter: sepia(1) saturate(2) hue-rotate(335deg) !important;
+  filter: sepia(1) saturate(2) hue-rotate(335deg) ;
 }
 
 /* Heading count, when present. */
 [data-section="bundles"] [data-profile="content-count"] {
-  color: #ffd580 !important;
+  color: #ffd580 ;
 }
 
 /* Card wrappers inside this section. */
 [data-section="bundles"] [data-profile="card"][data-card="bundles"] {
-  outline: 2px solid #edb091 !important;
-  outline-offset: 3px !important;
+  outline: 2px solid #edb091 ;
+  outline-offset: 3px ;
 }
 ```
 
@@ -8744,22 +8807,21 @@ The captured Bundles section still uses `[data-profile="grid"][data-section="bun
 
 ```css
 /* Bundle-card title strip only. */
-[data-section="bundles"] [data-card="bundles"] [data-profile="card-header"] {
-  background: #694234 !important;
+[data-card="bundles"] [data-profile="card-header"] {
+  background: #694234 ;
 }
 
 /* Bundle-card title text only. */
-[data-section="bundles"] [data-card="bundles"]
+[data-card="bundles"]
 [data-profile="card-header"] [data-profile="card-tip"] > span {
-  color: #ffd0b8 !important;
+  color: #ffd0b8 ;
 }
 
 /* Bundle-card description text only. */
-[data-section="bundles"] [data-card="bundles"] [data-profile="card-tip"] > p {
-  color: #ffeadf !important;
+[data-card="bundles"] [data-profile="card-tip"] > p {
+  color: #ffeadf ;
 }
 ```
-
 **Customization:** Style the card title strip and description separately from the section heading.
 
 The captured header includes search but no sort trigger. Use `bundles` with the shared body, scroll, grid, empty-state, and footer examples in the shared content-section examples. The heading image is `templates.webp`, despite the section being named Bundles.
@@ -8771,37 +8833,37 @@ The exact section value is `binderies`. Its heading uses `/img/pixel/bindery.web
 ```css
 /* Bindery panel. */
 [data-profile="content-panel"][data-section="binderies"] {
-  background: #49365e !important;
-  border: 1px solid #bd9bea !important;
-  border-radius: 16px !important;
+  background: #49365e ;
+  border: 1px solid #bd9bea ;
+  border-radius: 16px ;
 }
 
 /* Header surface. */
 [data-section="binderies"] [data-profile="content-header"] {
-  background: #604778 !important;
-  border-bottom: 1px solid #bd9bea !important;
+  background: #604778 ;
+  border-bottom: 1px solid #bd9bea ;
 }
 
 /* Heading text. */
 [data-section="binderies"] [data-profile="content-title"] {
-  color: #e0c7ff !important;
+  color: #e0c7ff ;
 }
 
 /* Heading image. */
 [data-section="binderies"] [data-profile="content-header"]
 img[src="/img/pixel/bindery.webp"] {
-  filter: sepia(1) saturate(2) hue-rotate(220deg) !important;
+  filter: sepia(1) saturate(2) hue-rotate(220deg) ;
 }
 
 /* Heading count, when present. */
 [data-section="binderies"] [data-profile="content-count"] {
-  color: #ffd580 !important;
+  color: #ffd580 ;
 }
 
 /* Card wrappers inside this section. */
 [data-section="binderies"] [data-profile="card"][data-card="binderies"] {
-  outline: 2px solid #bd9bea !important;
-  outline-offset: 3px !important;
+  outline: 2px solid #bd9bea ;
+  outline-offset: 3px ;
 }
 ```
 
@@ -8831,7 +8893,6 @@ These are the exact section values and native heading images captured in this la
 
 | Visible section | `data-section` | Heading image |
 | --- | --- | --- |
-| Featured | `featured` | `/img/pixel/star.webp` |
 | Favorites | `favorites` | `/img/pixel/heart.webp` |
 | Lorebooks | `lorebooks` | `/img/pixel/lorebooks.webp` |
 | Plugins | `plugins` | `/img/pixel/plugins.webp` |
@@ -8840,7 +8901,8 @@ These are the exact section values and native heading images captured in this la
 | Characters | `characters` | `/img/pixel/characters.webp` |
 | Prompts | `prompts` | `/img/pixel/prompts.webp` |
 | Bundles | `bundles` | `/img/pixel/templates.webp` |
-| Bindery | `binderies` | `/img/pixel/bindery.webp` |
+| Bindery | `binderies` |
+| Profile-style previews | `profileStyles` | `/img/pixel/bindery.webp` |
 | Gallery | `gallery` | `/img/pixel/lab-gallery.webp` |
 
 Use the section value with `[data-profile="content-panel"]` for the panel. For a heading-image rule, target the image inside that section’s `[data-profile="content-header"]` so other images stay separate.
@@ -8856,7 +8918,6 @@ A section identifies **where content appears**. A card type identifies **what ki
 | Lorebook cards wherever rendered | `[data-profile="card"][data-card="lorebooks"]` |
 | Lorebook cards inside Favorites | `[data-section="favorites"] [data-profile="card"][data-card="lorebooks"]` |
 | Lorebook cards inside Lorebooks | `[data-section="lorebooks"] [data-profile="card"][data-card="lorebooks"]` |
-| Profile-style preview cards | `[data-profile="card"][data-card="profileStyles"]` |
 
 Favorites contains multiple card types, so its section and card-type values often differ. Bindery uses `binderies` for both. Gallery uses `gallery-grid` and image-view tiles; no gallery card-type selector was captured.
 
@@ -8983,7 +9044,11 @@ The shelf uses featured-section, its heading uses featured-title, and the count 
 
 **Creator rail, frames, and avatar borders**
 
-The frame image and its masked tint are separate layers. Style each directly; the avatar rule changes only its border.
+![Favorite Creators Shelf](./images/profile/favorite-creators-shelf.png)
+
+Style card layers, named navigation controls and edge fade.
+
+**Coverage:** Surface styling tested; added icon recolors pending review.
 
 ```css
 [data-profile="scope"] [data-profile="featured-rail"] {
@@ -8991,39 +9056,39 @@ The frame image and its masked tint are separate layers. Style each directly; th
   --carousel-fade-width: 3rem;
 }
 
-[data-profile="scope"] [data-profile="featured-rail"] [data-profile="creator-card"] > span > span:first-child {
+[data-profile="featured-rail"] [data-profile="creator-card"] > span > span:first-child {
   background: #193446 !important;
 }
 
-[data-profile="scope"] [data-profile="featured-rail"] [data-profile="creator-card"] > span > img[src="/img/marketplace/frame-rising-creator.webp"] {
-  filter: sepia(1) saturate(2) hue-rotate(155deg) !important;
+[data-profile="featured-rail"] [data-profile="creator-card"] > span > img[src="/img/marketplace/frame-rising-creator.webp"] {
+  filter: sepia(1) saturate(2) hue-rotate(155deg) 
 }
 
-[data-profile="scope"] [data-profile="featured-rail"] [data-profile="creator-card"] > span > span[aria-hidden="true"] {
+[data-profile="featured-rail"] [data-profile="creator-card"] > span > span[aria-hidden="true"] {
   background-color: #91cfed !important;
 }
 
-[data-profile="scope"] [data-profile="featured-rail"] [data-profile="creator-card"] > span > span:last-child > img {
+[data-profile="featured-rail"] [data-profile="creator-card"] > span > span:last-child > img {
   border-color: #bd9bea !important;
 }
 
-[data-profile="scope"] [data-profile="featured-rail"] button:is([aria-label="Scroll featured work left"],[aria-label="Scroll featured work right"]) {
-  background: #49365e !important;
-  border: 1px solid #bd9bea !important;
-  color: #e0c7ff !important;
+[data-profile="featured-rail"] button:is([aria-label="Scroll featured work left"],[aria-label="Scroll featured work right"]) {
+  background: #49365e ;
+  border: 1px solid #bd9bea ;
+  color: #e0c7ff ;
 }
 
-[data-profile="scope"] [data-profile="featured-rail"] [data-profile="creator-card"]:focus-visible {
-  outline: 2px solid #ffd580 !important;
-  outline-offset: 2px !important;
+[data-profile="featured-rail"] [data-profile="creator-card"]:focus-visible {
+  outline: 2px solid #ffd580 ;
+  outline-offset: 2px
 }
 
-[data-profile="scope"] [data-profile="featured-rail"] button:is([aria-label="Scroll featured work left"],[aria-label="Scroll featured work right"]) img:is([src="/img/Icons/pixel_arrow.webp"]) {
-  filter: grayscale(1) sepia(1) saturate(2.5) hue-rotate(155deg) brightness(1.15) !important;
+[data-profile="featured-rail"] button:is([aria-label="Scroll featured work left"],[aria-label="Scroll featured work right"]) img:is([src="/img/Icons/pixel_arrow.webp"]) {
+  filter: grayscale(1) sepia(1) saturate(2.5) hue-rotate(155deg) brightness(1.15) ;
 }
 ```
 
-**Customization:** Change the inset card surface, frame-image filter, mask color, avatar border, arrow surfaces/artwork, and edge-fade variables. The direct-child selectors follow the captured card layers. The native frame path is `/img/marketplace/frame-rising-creator.webp`; it is used by both the image and mask.
+**Customization:** Cards retain their 3:1 ratio, clamped width, and shrink-0 behavior. Preserve arrow transforms and conditional visibility. Edge controls extend beyond the viewport; do not clip their parent. The card layer selectors follow the supplied direct-child structure.
 
 **Creator names and status text**
 
@@ -9106,22 +9171,22 @@ The **shell** is the clickable wrapper that sets the card’s size. The **lift l
 ```css
 /* Shell: pink outline around the clickable card area. */
 [data-card="lorebooks"] [data-profile="card-shell"] {
-  outline: 2px solid #ed91b7 !important;
-  outline-offset: 4px !important;
-  border-radius: 16px !important;
+  outline: 2px solid #ed91b7 ;
+  outline-offset: 4px ;
+  border-radius: 16px ;
 }
 
 /* Lift layer: mint glow following its rendered artwork. */
 [data-card="lorebooks"] [data-profile="card-lift"] {
   filter: drop-shadow(0 0 5px #8fd8bb)
-    drop-shadow(0 4px 10px rgba(0, 0, 0, 0.4)) !important;
+    drop-shadow(0 4px 10px rgba(0, 0, 0, 0.4)) ;
 }
 
 /* Stronger lift-layer glow while hovering the shell. */
 [data-card="lorebooks"] [data-profile="card-shell"]:hover
 [data-profile="card-lift"] {
   filter: drop-shadow(0 0 8px #b8ffe0)
-    drop-shadow(0 6px 14px rgba(0, 0, 0, 0.45)) !important;
+    drop-shadow(0 6px 14px rgba(0, 0, 0, 0.45)) ;
 }
 ```
 
@@ -9142,7 +9207,7 @@ The frame is a separate image directly inside `card-lift`. Target that image to 
 [data-card="lorebooks"] [data-profile="card-lift"]
 > img[src="/img/content/frame_library_lorebooks.webp"] {
   filter: sepia(1) saturate(2) hue-rotate(285deg)
-    drop-shadow(0 0 3px #ed91b7) !important;
+    drop-shadow(0 0 3px #ed91b7) ;
 }
 ```
 
@@ -9168,17 +9233,17 @@ The **cover container** holds and clips the cover area. The **cover image** is t
 ```css
 /* Lorebook cover container: surface, border, and clipping shape. */
 [data-card="lorebooks"] [data-profile="card-cover"] {
-  background: #352440 !important;
-  border: 2px solid #ed91b7 !important;
-  border-radius: 10px !important;
-  box-sizing: border-box !important;
+  background: #352440 ;
+  border: 2px solid #ed91b7 ;
+  border-radius: 10px ;
+  box-sizing: border-box ;
 }
 
 /* Lorebook cover image: crop position and artwork treatment. */
 [data-card="lorebooks"] [data-profile="card-cover-img"] {
-  object-fit: cover !important;
-  object-position: 50% 35% !important;
-  filter: brightness(1.1) saturate(1.3) !important;
+  object-fit: cover ;
+  object-position: 50% 35% ;
+  filter: brightness(1.1) saturate(1.3) ;
 }
 ```
 
@@ -9195,8 +9260,8 @@ Use this in place of the crop rule if you want the whole image visible.
 ```css
 /* Full cover image, with empty space where its proportions differ. */
 [data-card="lorebooks"] [data-profile="card-cover-img"] {
-  object-fit: contain !important;
-  object-position: center !important;
+  object-fit: contain ;
+  object-position: center ;
 }
 ```
 
@@ -9217,29 +9282,14 @@ These are separate overlay elements. The captured character card has all three, 
 ![Tint, Wash, and Fade Overlays](./images/profile/message-card-tint-wash-and-fade.png)
 
 ```css
-/* Frame tint: mint color layer. */
-[data-card="characters"] [data-profile="card-tint"] {
-  background: #8fd8bb !important;
-  opacity: 0.65 !important;
-  pointer-events: none !important;
-}
-
-/* Frame wash: pink-to-purple gradient. */
-[data-card="characters"] [data-profile="card-wash"] {
-  background: linear-gradient(160deg, #ed91b7, #49365e) !important;
-  opacity: 0.55 !important;
-  pointer-events: none !important;
-}
-
 /* Cover fade: clear at the top, dark toward the bottom. */
-[data-card="characters"] [data-profile="card-fade"] {
+[data-profile="card-fade"] {
   background: linear-gradient(
     180deg,
     rgba(25, 52, 70, 0) 30%,
     rgba(25, 52, 70, 0.7) 60%,
     rgba(25, 52, 70, 0.95) 100%
   ) !important;
-  pointer-events: none !important;
 }
 ```
 
@@ -9262,20 +9312,20 @@ Some card types expose separate structural regions. Plugins has all three captur
 ```css
 /* Plugin card header surface. */
 [data-card="plugins"] [data-profile="card-header"] {
-  background: #49365e !important;
-  border-radius: 5px !important;
+  background: #49365e ;
+  border-radius: 5px ;
 }
 
 /* Plugin card body surface. */
 [data-card="plugins"] [data-profile="card-body"] {
-  background: #193446 !important;
-  border-radius: 5px !important;
+  background: #193446 ;
+  border-radius: 5px ;
 }
 
 /* Plugin card footer surface and divider. */
 [data-card="plugins"] [data-profile="card-footer"] {
-  background: #24483e !important;
-  border-top: 1px solid #8fd8bb !important;
+  background: #24483e ;
+  border-top: 1px solid #8fd8bb ;
 }
 ```
 
@@ -9306,28 +9356,28 @@ Change `plugins` to another type only where the matching hook exists. These are 
 ```css
 /* Title wrapper inside the card header. */
 [data-card="plugins"] [data-profile="card-header"] [data-profile="card-tip"] {
-  background: #49365e !important;
-  border-radius: 4px !important;
+  background: #49365e ;
+  border-radius: 4px ;
 }
 
 /* Title text only. */
 [data-card="plugins"] [data-profile="card-header"] [data-profile="card-tip"] > span {
-  color: #e0c7ff !important;
-  text-shadow: 0 1px 3px #24182f !important;
+  color: #e0c7ff ;
+  text-shadow: 0 1px 3px #24182f ;
 }
 
 /* Wrapper containing the captured description span. */
 [data-card="plugins"] [data-profile="card-body"]
 [data-profile="card-tip"]:has(> span[translate="yes"]) {
-  background: #193446 !important;
-  border-radius: 4px !important;
+  background: #193446 ;
+  border-radius: 4px ;
 }
 
 /* Description text only. */
 [data-card="plugins"] [data-profile="card-body"]
 [data-profile="card-tip"] > span[translate="yes"] {
-  color: #e2f4ff !important;
-  text-shadow: none !important;
+  color: #e2f4ff ;
+  text-shadow: none ;
 }
 ```
 
@@ -9351,24 +9401,24 @@ Captured Plugin cards have bordered tag pills inside a `card-tip` row. The addit
 
 /* Text inside each tag pill. */
 [data-card="plugins"] [data-profile="card-tip"] > span > span.border > span {
-  color: #b8ffe0 !important;
+  color: #b8ffe0 ;
 }
 
 /* Tag images, when present. */
 [data-card="plugins"] [data-profile="card-tip"] > span > span.border > img {
-  filter: sepia(1) saturate(2) hue-rotate(95deg) !important;
+  filter: sepia(1) saturate(2) hue-rotate(95deg) ;
 }
 
 /* Tag pill hover surface. */
 [data-card="plugins"] [data-profile="card-tip"] > span > span.border:hover {
-  background: #306052 !important;
+  background: #306052 ;
 }
 
 /* Additional-tag count, such as +4. */
 [data-card="plugins"] [data-profile="card-tags-more"] {
-  color: #ffd580 !important;
-  font-weight: 700 !important;
-  text-shadow: 0 1px 3px #24182f !important;
+  color: #ffd580 ;
+  font-weight: 700 ;
+  text-shadow: 0 1px 3px #24182f ;
 }
 ```
 
@@ -9393,38 +9443,38 @@ Each captured statistic has a `data-stat` value. The number is a child `<span>`;
 ```css
 /* Views number only. */
 [data-profile="card"] [data-stat="views"] > span {
-  color: #91cfed !important;
-  font-weight: 700 !important;
+  color: #91cfed ;
+  font-weight: 700 ;
 }
 
 /* Views image only. */
 [data-profile="card"] [data-stat="views"] [data-profile="card-stat-icon"] {
-  filter: sepia(1) saturate(2) hue-rotate(155deg) !important;
-  opacity: 1 !important;
+  filter: sepia(1) saturate(2) hue-rotate(155deg) ;
+  opacity: 1 ;
 }
 
 /* Downloads number only. */
 [data-profile="card"] [data-stat="downloads"] > span {
-  color: #ffb8d6 !important;
-  font-weight: 700 !important;
+  color: #ffb8d6 ;
+  font-weight: 700 ;
 }
 
 /* Downloads image only. */
 [data-profile="card"] [data-stat="downloads"] [data-profile="card-stat-icon"] {
-  filter: sepia(1) saturate(2) hue-rotate(285deg) !important;
-  opacity: 1 !important;
+  filter: sepia(1) saturate(2) hue-rotate(285deg) ;
+  opacity: 1 ;
 }
 
 /* Bundle pieces number only. */
 [data-profile="card"] [data-stat="pieces"] > span {
-  color: #ffd580 !important;
-  font-weight: 700 !important;
+  color: #ffd580 ;
+  font-weight: 700 ;
 }
 
 /* Bundle pieces image only. */
 [data-profile="card"] [data-stat="pieces"] [data-profile="card-stat-icon"] {
-  filter: sepia(1) saturate(2) hue-rotate(335deg) !important;
-  opacity: 1 !important;
+  filter: sepia(1) saturate(2) hue-rotate(335deg) ;
+  opacity: 1 ;
 }
 ```
 
@@ -9454,7 +9504,7 @@ Ratings use the `card-rating` wrapper. The captured markers are acorn images wit
 /* Empty rating artwork: softer pink tint. */
 [data-profile="card-rating"] img[src="/img/Icons/icon_acon_emtpy.webp"] {
   filter: brightness(0) invert(0.7) sepia(1) saturate(2) hue-rotate(285deg) !important;
-  opacity: 0.6 !important;
+  opacity: 0.6 ;
 }
 ```
 
@@ -9483,7 +9533,7 @@ Vines use `data-profile="card-vine"`. The two captured images have separate file
 /* Vine A artwork: mint tint. */
 [data-card="characters"] [data-profile="card-vine"]
 > img[src="/img/content/vine_corner_a.webp"] {
-  filter: sepia(1) saturate(2) hue-rotate(95deg) !important;
+  filter: sepia(1) saturate(2) hue-rotate(95deg) ;
 }
 
 /* Vine B wrapper: independent size. */
@@ -9494,13 +9544,9 @@ Vines use `data-profile="card-vine"`. The two captured images have separate file
 /* Vine B artwork: pink tint. */
 [data-card="characters"] [data-profile="card-vine"]
 > img[src="/img/content/vine_corner_b.webp"] {
-  filter: sepia(1) saturate(2) hue-rotate(285deg) !important;
+  filter: sepia(1) saturate(2) hue-rotate(285deg) ;
 }
 
-/* Keep the decorations click-through. */
-[data-card="characters"] [data-profile="card-vine"] {
-  pointer-events: none !important;
-}
 ```
 
 **Customization:** Change each vine’s width and image tint separately. `:has(...)` selects the wrapper containing that particular image. These examples keep native corner positions, flips, and stacking.
@@ -9517,12 +9563,12 @@ The Featured sticker is an image. The corner ribbon is a rotated text element; t
 /* Featured sticker artwork only. */
 [data-profile="card"] img[src="/img/content/featured_sticker.webp"] {
   filter: sepia(1) saturate(2) hue-rotate(285deg)
-    drop-shadow(0 2px 4px rgba(0, 0, 0, 0.6)) !important;
+    drop-shadow(0 2px 4px rgba(0, 0, 0, 0.6)) ;
 }
 
 /* Corner ribbon surface in the captured cover structure. */
 [data-profile="card"] [data-profile="card-cover"] .rotate-45 {
-  background: #24483e !important;
+  background: #24483e ;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
 }
 
@@ -9555,14 +9601,14 @@ Normal and featured cards can use different frame images. Match the exact filena
 /* Normal Character frame: mint tint. */
 [data-card="characters"] [data-profile="card-lift"]
 > img[src="/img/content/frame_library.webp"] {
-  filter: sepia(1) saturate(2) hue-rotate(95deg) !important;
+  filter: sepia(1) saturate(2) hue-rotate(95deg) 
 }
 
 /* Featured Character frame: pink tint and glow. */
 [data-card="characters"] [data-profile="card-lift"]
 > img[src="/img/content/frame_library_featured.webp"] {
   filter: sepia(1) saturate(2) hue-rotate(285deg)
-    drop-shadow(0 0 4px #ed91b7) !important;
+    drop-shadow(0 0 4px #ed91b7) 
 }
 ```
 
@@ -9590,9 +9636,9 @@ A fallback cover is native artwork displayed in place of an uploaded cover. The 
 /* Native Plugin fallback artwork only. */
 [data-card="plugins"]
 [data-profile="card-cover-img"][src="/img/content/fallback_plugins.webp"] {
-  filter: sepia(1) saturate(2) hue-rotate(95deg) !important;
-  object-fit: contain !important;
-  object-position: center !important;
+  filter: sepia(1) saturate(2) hue-rotate(95deg) ;
+  object-fit: contain ;
+  object-position: center ;
 }
 ```
 
@@ -9609,48 +9655,48 @@ These preview cards use the exact, case-sensitive value `data-card="profileStyle
 ```css
 /* Profile-style card wrapper. */
 [data-profile="card"][data-card="profileStyles"] {
-  outline: 2px solid #bd9bea !important;
-  outline-offset: 3px !important;
+  outline: 2px solid #bd9bea ;
+  outline-offset: 3px ;
 }
 
 /* Portrait frame artwork only. */
 [data-card="profileStyles"] [data-profile="card-lift"]
 > img[src="/img/content/frame_library_themes_portrait.webp"] {
-  filter: sepia(1) saturate(2) hue-rotate(220deg) !important;
+  filter: sepia(1) saturate(2) hue-rotate(220deg) ;
 }
 
 /* Card title strip. */
 [data-card="profileStyles"] [data-profile="card-header"] {
-  background: #49365e !important;
+  background: #49365e ;
 }
 
 /* Card title text. */
 [data-card="profileStyles"] [data-profile="card-header"]
 [data-profile="card-tip"] > span {
-  color: #e0c7ff !important;
+  color: #e0c7ff ;
 }
 
 /* Preview-image container. */
 [data-card="profileStyles"] [data-profile="card-cover"] {
-  background: #24182f !important;
-  border: 1px solid #bd9bea !important;
-  box-sizing: border-box !important;
+  background: #24182f ;
+  border: 1px solid #bd9bea ;
+  box-sizing: border-box ;
 }
 
 /* Preview image: keep the whole screenshot visible. */
 [data-card="profileStyles"] [data-profile="card-cover-img"] {
-  object-fit: contain !important;
-  object-position: center !important;
+  object-fit: contain ;
+  object-position: center ;
 }
 
 /* Downloads number. */
 [data-card="profileStyles"] [data-stat="downloads"] > span {
-  color: #ffd580 !important;
+  color: #ffd580 ;
 }
 
 /* Preview caption and its arrow. */
 [data-card="profileStyles"] [data-profile="card-footer"] > span:not([data-stat]) {
-  color: #b8ffe0 !important;
+  color: #b8ffe0 ;
 }
 ```
 
@@ -9731,8 +9777,6 @@ Bundle cards still have `card-header`, `card-tip`, `card-tags-more`, and `card-s
 
 These rules apply to Bundle cards wherever they appear. Add `[data-section="bundles"]` or `[data-section="favorites"]` first to limit them to one section.
 
----
-
 ## Published Posts, Polls, and Media
 
 ### Post Structure, Author, Body, and Privacy
@@ -9754,42 +9798,42 @@ The feed, its item list, and its continuation control have separate hooks.
 ```css
 /* Feed container: surrounding surface and spacing. */
 [data-profile="feed"] {
-  background: #193446 !important;
-  border: 1px solid #91cfed !important;
-  border-radius: 16px !important;
-  padding: 8px !important;
+  background: #193446 ;
+  border: 1px solid #91cfed ;
+  border-radius: 16px ;
+  padding: 8px ;
 }
 
 /* Item list: inner spacing. */
 [data-profile="feed-list"] {
-  padding: 4px !important;
+  padding: 4px ;
 }
 
 /* Continuation wrapper: space above Load more posts. */
 [data-profile="feed-more"] {
-  padding-top: 16px !important;
+  padding-top: 16px ;
 }
 
 /* Load more posts button surface. */
 [data-profile="feed-more"] button {
-  background: #24483e !important;
-  border: 1px solid #8fd8bb !important;
-  border-radius: 999px !important;
+  background: #24483e ;
+  border: 1px solid #8fd8bb ;
+  border-radius: 999px ;
 }
 
 /* Load more posts label. */
 [data-profile="feed-more"] button > span:last-child {
-  color: #b8ffe0 !important;
+  color: #b8ffe0 ;
 }
 
 /* Dialogue image inside Load more posts. */
 [data-profile="feed-more"] img[src="/img/pixel/dialogue.webp"] {
-  filter: sepia(1) saturate(2) hue-rotate(95deg) !important;
+  filter: sepia(1) saturate(2) hue-rotate(95deg) ;
 }
 
 /* Enabled continuation button hover. */
 [data-profile="feed-more"] button:enabled:hover {
-  background: #306052 !important;
+  background: #306052 ;
 }
 ```
 
@@ -9806,16 +9850,16 @@ The supplied continuation button says “Load more posts” and uses `/img/pixel
 ```css
 /* Post surface, border, rounding, spacing, and shadow. */
 [data-profile="post"] {
-  background: #193446 !important;
-  border: 1px solid #91cfed !important;
-  border-radius: 16px !important;
-  padding: 16px !important;
-  box-shadow: 0 5px 14px rgba(0, 0, 0, 0.35) !important;
+  background: #193446 ;
+  border: 1px solid #91cfed ;
+  border-radius: 16px ;
+  padding: 16px ;
+  box-shadow: 0 5px 14px rgba(0, 0, 0, 0.35) ;
 }
 
 /* Post hover border. */
 [data-profile="post"]:hover {
-  border-color: #b9e6ff !important;
+  border-color: #b9e6ff ;
 }
 ```
 
@@ -9830,56 +9874,56 @@ The post header holds the avatar, author information, and options trigger. The a
 ```css
 /* Author-name row: its own surface and spacing. */
 [data-profile="post-header"] div:has(> [data-profile="post-author"]) {
-  background: #24483e !important;
-  border-radius: 8px !important;
-  padding: 4px 6px !important;
+  background: #24483e ;
+  border-radius: 8px ;
+  padding: 4px 6px ;
 }
 
 /* Avatar wrapper: surface and border. */
 [data-profile="post-avatar"] {
-  background: #24483e !important;
-  border: 2px solid #8fd8bb !important;
-  border-radius: 50% !important;
-  box-sizing: border-box !important;
+  background: #24483e ;
+  border: 2px solid #8fd8bb ;
+  border-radius: 50% ;
+  box-sizing: border-box ;
 }
 
 /* Avatar image: crop and position. */
 [data-profile="post-avatar"] > img {
-  object-fit: cover !important;
-  object-position: center !important;
+  object-fit: cover ;
+  object-position: center ;
 }
 
 /* Author display name. */
 [data-profile="post-author"] {
-  color: #b8ffe0 !important;
-  text-shadow: 0 1px 3px #10251e !important;
+  color: #b8ffe0 ;
+  text-shadow: 0 1px 3px #10251e ;
 }
 
 /* Author display name on hover. */
 [data-profile="post-author"]:hover {
-  color: #ffd580 !important;
+  color: #ffd580 ;
 }
 
 /* Username beneath the name row in the captured header. */
 [data-profile="post-header"] p[translate="no"] {
-  color: #91cfed !important;
+  color: #91cfed ;
 }
 
 /* Metadata pill surface, such as Posted · 6d. */
 [data-profile="post-pill"] {
-  background: #49365e !important;
-  border: 1px solid #bd9bea !important;
-  border-radius: 999px !important;
+  background: #49365e ;
+  border: 1px solid #bd9bea ;
+  border-radius: 999px ;
 }
 
 /* Metadata pill text. */
 [data-profile="post-pill"] {
-  color: #e0c7ff !important;
+  color: #e0c7ff ;
 }
 
 /* Metadata pill hover surface. */
 [data-profile="post-pill"]:hover {
-  background: #604778 !important;
+  background: #604778 ;
 }
 ```
 
@@ -9898,37 +9942,37 @@ The portrait rule keeps native dimensions and original image colors. Name and me
 ```css
 /* Post-body surface and spacing. */
 [data-profile="post-body"] {
-  background: #122b39 !important;
-  border: 1px solid #416b80 !important;
-  border-radius: 12px !important;
-  padding: 12px !important;
+  background: #122b39 ;
+  border: 1px solid #416b80 ;
+  border-radius: 12px ;
+  padding: 12px ;
 }
 
 /* Base rich-text color and line spacing. */
 [data-profile="post-body"] .rich-text-content {
-  color: #e2f4ff !important;
-  line-height: 1.6 !important;
+  color: #e2f4ff ;
+  line-height: 1.6 ;
 }
 
 /* Paragraph text. */
 [data-profile="post-body"] .rich-text-content p {
-  color: #e2f4ff !important;
+  color: #e2f4ff ;
 }
 
 /* List-item text. */
 [data-profile="post-body"] .rich-text-content li {
-  color: #b8ffe0 !important;
+  color: #b8ffe0 ;
 }
 
 /* Links inside the written post. */
 [data-profile="post-body"] .rich-text-content a {
-  color: #ffd580 !important;
-  text-decoration: underline !important;
+  color: #ffd580 ;
+  text-decoration: underline ;
 }
 
 /* Link hover color. */
 [data-profile="post-body"] .rich-text-content a:hover {
-  color: #ffb8d6 !important;
+  color: #ffb8d6 ;
 }
 ```
 
@@ -9966,7 +10010,7 @@ span:is(
 }
 ```
 
-**Customization:** Change surface, border, visible text, and image tint independently. The captured span has an inline text-shadow, which the important text-shadow rule overrides. This targets an already-published followers-only post; it does not change its audience or style the composer privacy button.
+**Customization:** Change surface, border, visible text, and image tint independently. The captured span has an inline text-shadow, which the important text-shadow rule overrides. This targets an already-published followers-only post; it does not change its audience or style the composer privacy button. The latest HTML confirms the label correction; a successful visual retest has not yet been reported.
 
 ### Pinned Tape and Post Options
 
@@ -9981,12 +10025,12 @@ The captured pinned post has `/img/sketch/tape_plain.webp` as a direct child of 
 ```css
 /* Pinned-post tape artwork only. */
 [data-profile="post"] > img[src="/img/sketch/tape_plain.webp"] {
-  width: 64px !important;
-  height: auto !important;
-  rotate: -8deg !important;
+  width: 64px ;
+  height: auto ;
+  rotate: -8deg ;
   filter: sepia(1) saturate(2) hue-rotate(285deg)
-    drop-shadow(0 2px 3px rgba(0, 0, 0, 0.35)) !important;
-  pointer-events: none !important;
+    drop-shadow(0 2px 3px rgba(0, 0, 0, 0.35)) ;
+  pointer-events: none ;
 }
 ```
 
@@ -10003,20 +10047,20 @@ The options wrapper is `post-actions`. Its button is labeled “Post options” 
 ```css
 /* Post options button surface. */
 [data-profile="post-actions"] button[aria-label="Post options"] {
-  background: #49365e !important;
-  border: 1px solid #bd9bea !important;
-  border-radius: 50% !important;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35) !important;
+  background: #49365e ;
+  border: 1px solid #bd9bea ;
+  border-radius: 50% ;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35) ;
 }
 
 /* Ellipsis font icon. */
 [data-profile="post-actions"] [data-icon="ellipsis-h"] {
-  color: #e0c7ff !important;
+  color: #e0c7ff ;
 }
 
 /* Enabled trigger hover surface. */
 [data-profile="post-actions"] button[aria-label="Post options"]:enabled:hover {
-  background: #604778 !important;
+  background: #604778 ;
 }
 ```
 
@@ -10059,35 +10103,35 @@ The captured Level Up event contains a native Level image with the `.aspect-squa
 ```css
 /* Whole post containing the captured Level Up signature. */
 [data-profile="post"]:has(img[src^="/img/Level/"].aspect-square) {
-  background: #352440 !important;
-  border: 1px solid #ffd580 !important;
-  border-radius: 16px !important;
+  background: #352440 ;
+  border: 1px solid #ffd580 ;
+  border-radius: 16px ;
 }
 
 /* Inner event panel: the element containing the image row. */
 [data-profile="post"] div:has(> div > img[src^="/img/Level/"].aspect-square) {
-  background: #193446 !important;
-  border: 1px solid #91cfed !important;
-  border-radius: 12px !important;
+  background: #193446 ;
+  border: 1px solid #91cfed ;
+  border-radius: 12px ;
 }
 
 /* Level artwork tile: surface, border, and glow. */
 [data-profile="post"] img[src^="/img/Level/"].aspect-square {
   background: #49365e !important;
-  border: 1px solid #bd9bea !important;
-  border-radius: 12px !important;
-  filter: drop-shadow(0 0 4px #bd9bea) !important;
+  border: 1px solid #bd9bea ;
+  border-radius: 12px ;
+  filter: drop-shadow(0 0 4px #bd9bea) ;
 }
 
 /* Reached Level title beside the artwork. */
 [data-profile="post"] img[src^="/img/Level/"].aspect-square + div > p {
-  color: #ffd580 !important;
-  text-shadow: 0 1px 3px #24182f !important;
+  color: #ffd580 ;
+  text-shadow: 0 1px 3px #24182f ;
 }
 
 /* Event subtitle beneath the title. */
 [data-profile="post"] img[src^="/img/Level/"].aspect-square + div > div {
-  color: #b9e6ff !important;
+  color: #b9e6ff ;
 }
 ```
 
@@ -10106,48 +10150,48 @@ The captured RP-partner, relationship, and marriage events share `/img/pixel/hea
 ```css
 /* Whole relationship-family post. */
 [data-profile="post"]:has(img[src="/img/pixel/heart.webp"].aspect-square) {
-  background: #352440 !important;
-  border: 1px solid #ed91b7 !important;
-  border-radius: 16px !important;
+  background: #352440 ;
+  border: 1px solid #ed91b7 ;
+  border-radius: 16px ;
 }
 
 /* Inner event panel. */
 [data-profile="post"] div:has(> div > img[src="/img/pixel/heart.webp"].aspect-square) {
-  background: #562b43 !important;
-  border: 1px solid #ed91b7 !important;
-  border-radius: 12px !important;
+  background: #562b43 ;
+  border: 1px solid #ed91b7 ;
+  border-radius: 12px ;
 }
 
 /* Heart artwork tile. */
 [data-profile="post"] img[src="/img/pixel/heart.webp"].aspect-square {
   background: #49365e !important;
-  border: 1px solid #bd9bea !important;
-  border-radius: 12px !important;
-  filter: drop-shadow(0 0 4px #ed91b7) !important;
+  border: 1px solid #bd9bea ;
+  border-radius: 12px ;
+  filter: drop-shadow(0 0 4px #ed91b7) ;
 }
 
 /* Event title: RP partners, In a relationship, or Married. */
 [data-profile="post"] img[src="/img/pixel/heart.webp"].aspect-square + div > p {
-  color: #ffb8d6 !important;
-  text-shadow: 0 1px 3px #24182f !important;
+  color: #ffb8d6 ;
+  text-shadow: 0 1px 3px #24182f ;
 }
 
 /* Description paragraph beneath the event title. */
 [data-profile="post"] img[src="/img/pixel/heart.webp"].aspect-square + div
 .rich-text-content p {
-  color: #ffe9f2 !important;
+  color: #ffe9f2 ;
 }
 
 /* Participant links inside the event description. */
 [data-profile="post"] img[src="/img/pixel/heart.webp"].aspect-square + div
 .rich-text-content a {
-  color: #8fd8bb !important;
+  color: #8fd8bb ;
 }
 
 /* Participant-link hover. */
 [data-profile="post"] img[src="/img/pixel/heart.webp"].aspect-square + div
 .rich-text-content a:hover {
-  color: #b8ffe0 !important;
+  color: #b8ffe0 ;
 }
 ```
 
@@ -10254,39 +10298,41 @@ Style the two embed variants and their shared card/title structure, using each n
 
 The exact wrapper is `[data-profile="post-embed"][data-embed="published"]`. This identifies the embed type without matching a title, username, or cover image.
 
+![Published Content Embed](./images/profile/message-embed-published-content.png)
+
 ```css
 /* Published embed-card surface. */
-[data-profile="post-embed"][data-embed="published"] [data-profile="embed-card"] {
-  background: #24483e !important;
-  border: 1px solid #8fd8bb !important;
-  border-radius: 12px !important;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35) !important;
+[data-embed="published"] [data-profile="embed-card"] {
+  background: #24483e ;
+  border: 1px solid #8fd8bb ;
+  border-radius: 12px ;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35) ;
 }
 
 /* Embedded content title. */
-[data-profile="post-embed"][data-embed="published"] [data-profile="embed-title"] {
-  color: #b8ffe0 !important;
-  text-shadow: 0 1px 3px #10251e !important;
+[data-embed="published"] [data-profile="embed-title"] {
+  color: #b8ffe0 ;
+  text-shadow: 0 1px 3px #10251e ;
 }
 
 /* Native corner artwork, separate from the content cover. */
-[data-profile="post-embed"][data-embed="published"] [data-profile="embed-card"]
+[data-embed="published"] [data-profile="embed-card"]
 > img[src="/img/Icons/icon_action_create_clean.svg"] {
   filter: sepia(1) saturate(2) hue-rotate(95deg) !important;
-  opacity: 0.65 !important;
+  opacity: 0.65 ;
 }
 
 /* Published corner-ribbon surface and text. */
-[data-profile="post-embed"][data-embed="published"] [data-profile="embed-card"] .rotate-45 {
+[data-embed="published"] [data-profile="embed-card"] .rotate-45 {
   background: #24483e !important;
   color: #b8ffe0 !important;
-  text-shadow: none !important;
+  text-shadow: none ;
 }
 
 /* Description paragraph in the captured text column. */
-[data-profile="post-embed"][data-embed="published"] [data-profile="embed-card"]
+[data-embed="published"] [data-profile="embed-card"]
 > div > p {
-  color: #e2f4ff !important;
+  color: #e2f4ff ;
 }
 ```
 
@@ -10300,39 +10346,41 @@ Published embeds use `data-embed="published"`; Updated embeds use `data-embed="u
 
 The exact wrapper is `[data-profile="post-embed"][data-embed="updated"]`. This identifies the embed type without matching a title, username, or cover image.
 
+![Updated Content Embed](./images/profile/message-embed-updated-content.png)
+
 ```css
 /* Updated embed-card surface. */
-[data-profile="post-embed"][data-embed="updated"] [data-profile="embed-card"] {
-  background: #193446 !important;
-  border: 1px solid #91cfed !important;
-  border-radius: 12px !important;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35) !important;
+[data-embed="updated"] [data-profile="embed-card"] {
+  background: #193446 ;
+  border: 1px solid #91cfed ;
+  border-radius: 12px ;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35) ;
 }
 
 /* Embedded content title. */
-[data-profile="post-embed"][data-embed="updated"] [data-profile="embed-title"] {
-  color: #b9e6ff !important;
-  text-shadow: 0 1px 3px #10251e !important;
+[data-embed="updated"] [data-profile="embed-title"] {
+  color: #b9e6ff ;
+  text-shadow: 0 1px 3px #10251e ;
 }
 
 /* Native corner artwork, separate from the content cover. */
-[data-profile="post-embed"][data-embed="updated"] [data-profile="embed-card"]
+[data-embed="updated"] [data-profile="embed-card"]
 > img[src="/img/Icons/feed_filter_updates.webp"] {
-  filter: sepia(1) saturate(2) hue-rotate(155deg) !important;
-  opacity: 0.65 !important;
+  filter: sepia(1) saturate(2) hue-rotate(155deg) ;
+  opacity: 0.65 ;
 }
 
 /* Updated corner-ribbon surface and text. */
-[data-profile="post-embed"][data-embed="updated"] [data-profile="embed-card"] .rotate-45 {
+[data-embed="updated"] [data-profile="embed-card"] .rotate-45 {
   background: #193446 !important;
   color: #b9e6ff !important;
-  text-shadow: none !important;
+  text-shadow: none ;
 }
 
 /* Description paragraph in the captured text column. */
-[data-profile="post-embed"][data-embed="updated"] [data-profile="embed-card"]
+[data-embed="updated"] [data-profile="embed-card"]
 > div > p {
-  color: #e2f4ff !important;
+  color: #e2f4ff ;
 }
 ```
 
@@ -10347,27 +10395,71 @@ These shared hooks style both Published and Updated embeds.
 ```css
 /* Shared embed-card surface. */
 [data-profile="post-embed"] [data-profile="embed-card"] {
-  background: #193446 !important;
-  border: 1px solid #91cfed !important;
-  border-radius: 12px !important;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35) !important;
+  background: #193446 ;
+  border: 1px solid #91cfed ;
+  border-radius: 12px ;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35) ;
 }
 
 /* Embedded title text. */
 [data-profile="post-embed"] [data-profile="embed-title"] {
-  color: #b9e6ff !important;
-  text-shadow: 0 1px 3px #10251e !important;
+  color: #b9e6ff ;
+  text-shadow: 0 1px 3px #10251e ;
 }
 
 /* Title when its button is hovered. */
 [data-profile="post-embed"] button:hover > [data-profile="embed-title"] {
-  color: #ffd580 !important;
+  color: #ffd580 ;
 }
 ```
 
 **Customization:** Change the card surface and title independently.
 
 Use these as a shared base. Earlier selectors containing `[data-embed="published"]` or `[data-embed="updated"]` are more specific and take priority for overlapping properties.
+
+#### Bary Is Dead Embed
+
+The Bary embed uses `[data-embed=bary]`. Its card surface is the direct child `div`. The title and detail text use the captured inner structure, and the acorn button has an accessible label that starts with `Give an acorn`.
+
+![Bary Is Dead Embed](./images/profile/message-embed-bary-is-dead.png)
+
+```css
+/* Card surface and accent edge. */
+[data-embed=bary] > div {
+  background: #193446 ;
+  border: 1px solid #91cfed ;
+  border-inline-start: 3px solid #bd9bea ;
+}
+
+/* Title and detail text. */
+[data-embed=bary] > div > div > div > p {
+  color: #e0c7ff ;
+}
+
+[data-embed=bary] > div > div > div > div {
+  color: #b9e6ff ;
+}
+
+/* Acorn button. */
+[data-embed=bary] button[aria-label^="Give an acorn"] {
+  background: #49365e ;
+  border-color: #bd9bea ;
+  color: #e0c7ff ;
+}
+
+/* Empty acorn artwork, when rendered. The native filename is spelled "emtpy". */
+[data-embed=bary] img[src$="/icon_acon_emtpy.webp"] {
+  filter: grayscale(1) brightness(1.2);
+}
+
+/* Filled acorn. */
+[data-embed=bary] img[src$="/icon_acon.png"] {
+  filter: sepia(1) saturate(2) hue-rotate(220deg);
+}
+```
+
+**Customization.** Edit the accent edge, text colors, and acorn button independently. The `data-embed=bary` qualifier limits these rules to the Bary embed.
+
 
 ### Post Media, Reveal Wrappers, and Native Artwork
 
@@ -10432,20 +10524,20 @@ Scope artwork rules to its interface location and exact native filename.
 /* Native Share icon only. */
 [data-profile="post-engagement"] button[aria-label="Share"]
 img[src="/img/Icons/feed_action_share.webp"] {
-  filter: sepia(1) saturate(2) hue-rotate(285deg) !important;
+  filter: sepia(1) saturate(2) hue-rotate(285deg) ;
 }
 
 /* Uploaded attachment button surface. */
 [data-profile="post-media-grid"]
 button[aria-label^="Open image "] {
-  background: #122b39 !important;
-  border-radius: 10px !important;
+  background: #122b39 ;
+  border-radius: 10px ;
 }
 
 /* Visible attachment image: rounded corners. */
 [data-profile="post-media-grid"]
 button[aria-label^="Open image "] > img {
-  border-radius: 10px !important;
+  border-radius: 10px ;
 }
 ```
 
@@ -10465,7 +10557,7 @@ The supplied open and ended poll HTML both contain a header and nested answer bu
 
 The shared signature requires a direct header structure and the captured nested answer-row structure. It identifies the inner poll card in both supplied layouts without requiring End poll. The earlier End poll signature remains useful only for the open capture where that control exists.
 
-This structural selector follows the open and ended poll layouts shown here. It depends on their header and answer-row structure.
+**Coverage:** This is a structural selector verified against the two supplied poll layouts, not a dedicated universal poll hook. Other viewer or future layouts remain unverified.
 
 **Card, header, voting rows, results, feedback, and End poll**
 
@@ -10474,98 +10566,98 @@ This structural selector follows the open and ended poll layouts shown here. It 
 ```css
 /* Captured inner poll card. */
 .surface-post:has(> .relative > .surface-header):has(> .relative > div > div > button[aria-pressed]) {
-  background: #193446 !important;
-  border: 1px solid #91cfed !important;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35) !important;
+  background: #193446 ;
+  border: 1px solid #91cfed ;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35) ;
 }
 
 /* Header surface. */
 .surface-post:has(> .relative > .surface-header):has(> .relative > div > div > button[aria-pressed]) > .relative > .surface-header {
-  background: #49365e !important;
-  border-bottom: 1px solid #bd9bea !important;
+  background: #49365e ;
+  border-bottom: 1px solid #bd9bea ;
 }
 
 /* Question: title wrapper and nested text. */
 .surface-post:has(> .relative > .surface-header):has(> .relative > div > div > button[aria-pressed]) > .relative > .surface-header h3,
 .surface-post:has(> .relative > .surface-header):has(> .relative > div > div > button[aria-pressed]) > .relative > .surface-header h3 > span {
-  color: #e0c7ff !important;
+  color: #e0c7ff ;
 }
 
 /* Header vote count in the captured metadata row. */
 .surface-post:has(> .relative > .surface-header):has(> .relative > div > div > button[aria-pressed]) > .relative > .surface-header > div > span.tabular-nums {
-  color: #ffd580 !important;
+  color: #ffd580 ;
 }
 
 /* Voting rows: shared text and separators. */
 .surface-post:has(> .relative > .surface-header):has(> .relative > div > div > button[aria-pressed]) button[aria-pressed] {
-  color: #e2f4ff !important;
-  border-bottom: 1px solid #416b80 !important;
+  color: #e2f4ff ;
+  border-bottom: 1px solid #416b80 ;
 }
 
 /* Unselected rows. */
 .surface-post:has(> .relative > .surface-header):has(> .relative > div > div > button[aria-pressed]) button[aria-pressed="false"] {
-  background: #122b39 !important;
+  background: #122b39 ;
 }
 
 /* Enabled unselected hover. */
 .surface-post:has(> .relative > .surface-header):has(> .relative > div > div > button[aria-pressed]) button[aria-pressed="false"]:enabled:hover {
-  background: #254b63 !important;
+  background: #254b63 ;
 }
 
 /* Selected rows. */
 .surface-post:has(> .relative > .surface-header):has(> .relative > div > div > button[aria-pressed]) button[aria-pressed="true"] {
-  background: #24483e !important;
-  box-shadow: inset 3px 0 0 #8fd8bb !important;
+  background: #24483e ;
+  box-shadow: inset 3px 0 0 #8fd8bb ;
 }
 
 /* Answer text, including its inner span. */
 .surface-post:has(> .relative > .surface-header):has(> .relative > div > div > button[aria-pressed]) button[aria-pressed] > span:first-child,
 .surface-post:has(> .relative > .surface-header):has(> .relative > div > div > button[aria-pressed]) button[aria-pressed] > span:first-child > span {
-  color: #e2f4ff !important;
+  color: #e2f4ff ;
 }
 
 /* Selected answer text. */
 .surface-post:has(> .relative > .surface-header):has(> .relative > div > div > button[aria-pressed]) button[aria-pressed="true"] > span:first-child,
 .surface-post:has(> .relative > .surface-header):has(> .relative > div > div > button[aria-pressed]) button[aria-pressed="true"] > span:first-child > span {
-  color: #b8ffe0 !important;
+  color: #b8ffe0 ;
 }
 
 /* Combined result count and percentage. */
 .surface-post:has(> .relative > .surface-header):has(> .relative > div > div > button[aria-pressed]) button[aria-pressed] > span.tabular-nums {
-  color: #ffd580 !important;
+  color: #ffd580 ;
 }
 
 /* Live feedback surface and text. */
 .surface-post:has(> .relative > .surface-header):has(> .relative > div > div > button[aria-pressed]) [aria-live="polite"] {
-  background: #122b39 !important;
-  border-top: 1px solid #416b80 !important;
-  color: #91cfed !important;
+  background: #122b39 ;
+  border-top: 1px solid #416b80 ;
+  color: #91cfed ;
 }
 .surface-post:has(> .relative > .surface-header):has(> .relative > div > div > button[aria-pressed]) [aria-live="polite"] > span {
-  color: #91cfed !important;
+  color: #91cfed ;
 }
 
 /* End poll button. */
 .surface-post:has(> .relative > .surface-header):has(> .relative > div > div > button[aria-pressed]) button[aria-label="End poll"] {
-  background: #49365e !important;
-  border: 1px solid #bd9bea !important;
-  color: #e0c7ff !important;
+  background: #49365e ;
+  border: 1px solid #bd9bea ;
+  color: #e0c7ff ;
 }
 
 /* Native lock artwork. */
 .surface-post:has(> .relative > .surface-header):has(> .relative > div > div > button[aria-pressed]) button[aria-label="End poll"]
 img[src="/img/pixel/lock.webp"] {
-  filter: sepia(1) saturate(2) hue-rotate(220deg) !important;
+  filter: sepia(1) saturate(2) hue-rotate(220deg) ;
 }
 
 /* End poll enabled hover. */
 .surface-post:has(> .relative > .surface-header):has(> .relative > div > div > button[aria-pressed]) button[aria-label="End poll"]:enabled:hover {
-  background: #604778 !important;
+  background: #604778 ;
 }
 
 /* Retain subdued disabled controls when LoreBary sets disabled. */
 .surface-post:has(> .relative > .surface-header):has(> .relative > div > div > button[aria-pressed]) button:disabled {
-  opacity: 0.5 !important;
+  opacity: 0.5 ;
 }
 
 ```
@@ -10586,7 +10678,7 @@ Hover applies to enabled unselected answers; selected answers retain their selec
 
 **Results, counts, percentages, and progress artwork**
 
-Each result is a combined text node, such as 1 · 100%, inside span.tabular-nums. Count and percentage therefore recolor together.
+Each result is a combined text node, such as 1 · 100%, inside span.tabular-nums. Count and percentage therefore recolor together. No separate progress bar, meter, or progress artwork is present in the supplied poll; those examples remain pending.
 
 Do not use nth-child as a proxy for vote count, percentage, or selection.
 
@@ -10595,6 +10687,21 @@ Do not use nth-child as a proxy for vote count, percentage, or selection.
 The open capture reports Vote saved. Choose another answer to change it. The ended capture reports Poll ended. Results are final. Both messages use the same aria-live=polite div and child span, so the shared rules style either without matching message text.
 
 Keep native message updates and live announcements. Styling does not replace the feedback text.
+
+**Open/ended and owner/viewer variations**
+
+| Evidence | Status |
+| --- | --- |
+| Selected and unselected answer rows | Captured |
+| Combined counts and percentages | Captured |
+| Vote-saved live feedback | Captured |
+| End poll control with lock artwork | Captured |
+| Disabled voting rows | Captured in the ended poll |
+| Disabled End poll control | Not captured |
+| Ended-poll layout, time badge, and final feedback | Captured |
+| Ended layout without End poll | Captured |
+| Separate viewer variation | Pending |
+| Future deadline metadata or progress bar | Not present in supplied captures |
 
 **Poll Tape and Ended-Time Badge**
 
@@ -10605,21 +10712,21 @@ Keep native message updates and live announcements. Styling does not replace the
 div:has(> .surface-post > .relative > .surface-header):has(
   > .surface-post > .relative > div > div > button[aria-pressed]
 ) > img[src="/img/sketch/tape_plain.webp"] {
-  width: 56px !important;
-  height: auto !important;
-  rotate: -5deg !important;
+  width: 56px!important;
+  height: auto!important;
+  rotate: -5deg ;
   filter: sepia(1) saturate(2) hue-rotate(285deg)
-    drop-shadow(0 2px 3px rgba(0, 0, 0, 0.35)) !important;
-  pointer-events: none !important;
+    drop-shadow(0 2px 3px rgba(0, 0, 0, 0.35)) ;
+  pointer-events: none ;
 }
 
 /* Time badge in the poll header metadata. */
 .surface-post:has(> .relative > .surface-header):has(> .relative > div > div > button[aria-pressed])
 > .relative > .surface-header > div > time[datetime] {
-  background: #49365e !important;
-  border: 1px solid #bd9bea !important;
-  border-radius: 999px !important;
-  color: #e0c7ff !important;
+  background: #49365e ;
+  border: 1px solid #bd9bea ;
+  border-radius: 999px ;
+  color: #e0c7ff ;
 }
 ```
 
@@ -10632,8 +10739,6 @@ The ended capture replaces End poll with time[datetime]. Its two answer buttons 
 Do not infer the poll ended from one selected answer or a particular timestamp. The supplied ended layout establishes the combination of its time badge, disabled answers, absent End poll, and final-results feedback. No CSS rule changes those states.
 
 HTML matching is confirmed for these supplied structures; visual styling still requires checking.
-
----
 
 ## Comment, Share, and Like Buttons
 
@@ -10671,9 +10776,9 @@ The existing engagement example supplies button surfaces, raster recolors, and t
 
 ```css
 /* Existing reaction number only. */
-[data-profile="scope"] [data-profile="post-likes"] > span.tabular-nums {
-  color: var(--theme-accent, #d7ad63) !important;
-  font-weight: 700 !important;
+[data-profile="post-likes"] > span.tabular-nums {
+  color: var(--theme-accent, #d7ad63) ;
+  font-weight: 700 ;
 }
 
 ```
@@ -10682,8 +10787,8 @@ The existing engagement example supplies button surfaces, raster recolors, and t
 
 ```css
 /* Existing comment count. */
-[data-profile="scope"] [data-profile="post-comment-count"] {
-  color: var(--theme-accent, #d7ad63) !important;
+[data-profile="post-comment-count"] {
+  color:#d7ad63 ;
 }
 
 ```
@@ -10692,14 +10797,14 @@ The existing engagement example supplies button surfaces, raster recolors, and t
 
 ```css
 /* Share foreground artwork, separately from its backing plate. */
-[data-profile="scope"] [data-profile="post-engagement"]
+[data-profile="post-engagement"]
 button[aria-label="Share"] img[src="/img/Icons/feed_action_share.webp"] {
-  filter: sepia(1) saturate(2) hue-rotate(95deg) !important;
+  filter: sepia(1) saturate(2) hue-rotate(95deg) ;
 }
 
-[data-profile="scope"] [data-profile="post-engagement"]
+[data-profile="post-engagement"]
 button[aria-label="Share"] img[src="/img/Icons/btn_pixel_plate_24.webp"] {
-  filter: sepia(1) saturate(2) hue-rotate(220deg) !important;
+  filter: sepia(1) saturate(2) hue-rotate(220deg) ;
 }
 ```
 
@@ -10757,18 +10862,18 @@ The composer and published posts use different roots. Pair them only when the sa
   [data-profile="composer-editor"],
   [data-profile="post-body"] .rich-text-content
 ) {
-  color: #e2f4ff !important;
-  line-height: 1.6 !important;
+  color: #e2f4ff ;
+  line-height: 1.6 ;
 }
 
 /* Editable paragraph treatment. */
 [data-profile="composer-editor"] p {
-  color: #e2f4ff !important;
+  color: #e2f4ff ;
 }
 
 /* Published paragraph treatment. */
 [data-profile="post-body"] .rich-text-content p {
-  color: #e2f4ff !important;
+  color: #e2f4ff ;
 }
 ```
 
@@ -11073,7 +11178,7 @@ Place table-specific styles after earlier shared paragraph styles when uniform t
 
 The captured published table is directly inside rich-text-content; no table-only scroll wrapper is supplied. Its enclosing post preview has its own clipping/height behavior, which is not evidence of a dedicated horizontal table scroller.
 
-Do not invent a wrapper hook or change the entire post’s overflow to create table scrolling. The width example alone does not guarantee every long word or wide table will fit.
+Do not invent a wrapper hook or change the entire post’s overflow to create table scrolling. Wide-table wrapper styling remains pending until its markup is captured. The width example alone does not guarantee every long word or wide table will fit.
 
 **Composer versus published targets**
 
@@ -11120,10 +11225,6 @@ hr.editor-divider.editor-divider-dotted {
 The supplied native CSS now establishes that div.editor-divider-paws draws `/img/pixel/paw.webp` as a repeated background. It is not an img or a mask. Native dimensions are height:16px and width:112px, with background-size:16px 16px, background-repeat:space, margin:14px auto, image-rendering:pixelated, and opacity:.75.
 
 The example filters only this dedicated divider, preserving paw size, repetition, and native pixel rendering. It does not filter its post parent or user artwork. Set opacity back to .75 for native softness; filter:none restores original artwork colors. The filter changes the rendered divider artwork; adjust its hue and opacity to suit your palette.
-
-For an About-editor variant or another editor, confirm that its own captured ancestor and divider markup match before adapting the published-post scope.
-
-The capture also contains inline-timestamp elements. Their detailed styling is not covered by this divider tutorial.
 
 **Table overflow: additional evidence**
 
@@ -12102,11 +12203,34 @@ Paste this complete block after your regular **Profile CSS**. If you already hav
 Start with both doors closed. Open the left door and check that you can interact with the exposed half while the right half stays covered. Then open the right door and close the left. The covers span the full profile, including the banner, and scroll with the page.
 
 ---
-## Experimental Profile Dialogs
+## Profile Dialogs and Mobile Panels
 
-Current mobile captures include a separate `[data-profile="scope"][data-profile-portal="true"]` wrapper. This allows Profile-scoped rules to reach those dialogs. Earlier captures below placed dialogs outside Profile scope; those placement-specific examples remain available. A rule depending on the main page’s ancestry or variables should not be assumed to cover every portal.
+The selector map identifies the native overlay, card, and controls. Some mobile dialogs render in a separate `[data-profile=scope][data-profile-portal=true]` wrapper. Keep any variables a dialog needs on its own root so the recipe also works when it renders outside the main profile.
 
-The current Gallery, post/comments, New folder, and About Me examples use the captured component roots. Gallery Upload’s interface is excluded from this guide’s styling coverage; its trigger controls are included.
+The examples retain the original styling values and screenshots. Review the revised selectors in the matching dialog and test states such as keyboard focus, selection, and disabled controls separately. Popular Creations still needs a current dialog capture.
+
+### Shared Dialog Selectors
+
+| Part | Native selector |
+| --- | --- |
+| Full-screen overlay | `[data-profile=modal]` |
+| Backdrop | `[data-profile=modal-backdrop]` |
+| Dialog card | `[data-profile=modal-panel]` |
+| Header and title | `[data-profile=modal-header]`, `[data-profile=modal-title]` |
+| Body and footer | `[data-profile=modal-body]`, `[data-profile=modal-footer]` |
+| Followers and Following | `[data-profile=modal][data-modal=follow]` |
+| About Me editor | `[data-profile=modal][data-modal=about]` |
+| Mobile profile details | `[data-profile=modal][data-modal=details]` |
+| Send a Wave | `[data-profile=modal][data-modal=wave]` |
+| Gallery dialog | `[data-profile=content-panel][data-section=gallery][role=dialog]` |
+
+Scope shared hooks to the dialog you want to style. For example, this tints the backdrop behind **Send a Wave** if the backdrop is nested inside the wave wrapper.
+
+```css
+[data-profile=modal][data-modal=wave] [data-profile=modal-backdrop] {
+  background-color: rgb(25 52 70 / 65%);
+}
+```
 
 ### Mobile Gallery Panel
 
@@ -12118,7 +12242,7 @@ Distinguish the Gallery dialog’s main surfaces.
   border: 1px solid #91cfed !important;
 }
 
-[data-profile="content-panel"][data-section="gallery"][role="dialog"] > [data-profile="content-header"] {
+[data-profile="content-panel"][data-section="gallery"][role="dialog"] [data-profile="content-header"] {
   background: #49365e !important;
   border: 1px solid #bd9bea !important;
   color: #e0c7ff !important;
@@ -12128,7 +12252,7 @@ Distinguish the Gallery dialog’s main surfaces.
   color: #e0c7ff !important;
 }
 
-[data-profile="content-panel"][data-section="gallery"][role="dialog"] > [data-profile="content-body"] {
+[data-profile="content-panel"][data-section="gallery"][role="dialog"] [data-profile="content-body"] {
   background: #193446 !important;
 }
 
@@ -12136,7 +12260,7 @@ Distinguish the Gallery dialog’s main surfaces.
   background: #122b39 !important;
 }
 
-[data-profile="content-panel"][data-section="gallery"][role="dialog"] > [data-profile="content-footer"] {
+[data-profile="content-panel"][data-section="gallery"][role="dialog"] [data-profile="content-footer"] {
   background: #49365e !important;
   border-top: 1px solid #bd9bea !important;
 }
@@ -12147,7 +12271,7 @@ Distinguish the Gallery dialog’s main surfaces.
   color: #e0c7ff !important;
 }
 
-[data-profile="content-panel"][data-section="gallery"][role="dialog"] > [data-profile="content-header"] img:is([src="/img/pixel/lab-gallery.webp"]) {
+[data-profile="content-panel"][data-section="gallery"][role="dialog"] [data-profile="content-header"] img[src="/img/pixel/lab-gallery.webp"] {
   filter: grayscale(1) sepia(1) saturate(2.5) hue-rotate(155deg) brightness(1.15) !important;
 }
 
@@ -12155,7 +12279,7 @@ Distinguish the Gallery dialog’s main surfaces.
   filter: grayscale(1) sepia(1) saturate(2.5) hue-rotate(155deg) brightness(1.15) !important;
 }
 
-[data-profile="content-panel"][data-section="gallery"][role="dialog"] > [data-profile="content-footer"] img:is([src="/img/Icons/btn_pixel_plate_24.webp"],[src="/img/pixel/check.webp"],[src="/img/sketch/arrow_up.webp"]) {
+[data-profile="content-panel"][data-section="gallery"][role="dialog"] [data-profile="content-footer"] img:is([src="/img/Icons/btn_pixel_plate_24.webp"],[src="/img/pixel/check.webp"],[src="/img/sketch/arrow_up.webp"]) {
   filter: grayscale(1) sepia(1) saturate(2.5) hue-rotate(155deg) brightness(1.15) !important;
 }
 
@@ -12164,11 +12288,34 @@ Distinguish the Gallery dialog’s main surfaces.
 }
 ```
 
-**Customization:** Uses content-panel, not modal-panel.  Direct targeting also accommodates the earlier outside-scope placement.
+**Customization.** The Gallery dialog uses the `content-panel` hook. Keep `[role=dialog]` here to reserve these surfaces for the dialog. Use the Gallery folder and action recipes for controls shared with the full Gallery page.
+
+**Gallery grid, action area, and scroll fades**
+
+| Part | Selector inside the Gallery dialog |
+| --- | --- |
+| Grid | `[data-profile=gallery-grid]` |
+| Actions wrapper | `[data-profile=gallery-actions]` |
+| Scroll surface | `[data-profile=content-scroll]` |
+| Top and bottom fade layers | `[data-profile=content-fade-top]`, `[data-profile=content-fade-bottom]` |
+
+Use the grid hook for Gallery tiles and the actions hook for the toolbar wrapper when it is present. Use [Gallery Action Controls](#gallery-action-controls) for individual triggers. The fade hooks apply where LoreBary renders the two edge layers.
+
+```css
+[data-profile=content-panel][data-section=gallery][role=dialog]
+[data-profile=content-fade-top] {
+  background: linear-gradient(to bottom, #122b39, transparent);
+}
+
+[data-profile=content-panel][data-section=gallery][role=dialog]
+[data-profile=content-fade-bottom] {
+  background: linear-gradient(to top, #122b39, transparent);
+}
+```
 
 ### New Folder Dialog
 
-Style the form shell, its three cards, name field, and footer.
+Style the form shell, its three cards, name field, and footer. The **New folder** label identifies this panel in the available capture.
 
 ```css
 [data-profile="modal-panel"][role="dialog"][aria-label="New folder"] {
@@ -12205,7 +12352,7 @@ Style the form shell, its three cards, name field, and footer.
   background: #122b39 !important;
   border-color: #91cfed !important;
   color: #e2f4ff !important;
-  caret-color: #ffd580 !important;
+  caret-color: #ffd580;
 }
 
 [data-profile="modal-panel"][role="dialog"][aria-label="New folder"] input[aria-label="Folder name"]::placeholder {
@@ -12231,7 +12378,7 @@ Style the form shell, its three cards, name field, and footer.
   color: #e0c7ff !important;
 }
 
-[data-profile="modal-panel"][role="dialog"][aria-label="New folder"] > [data-profile="modal-header"] img:is([src="/img/pixel/folder.webp"]) {
+[data-profile="modal-panel"][role="dialog"][aria-label="New folder"] > [data-profile="modal-header"] img[src="/img/pixel/folder.webp"] {
   filter: grayscale(1) sepia(1) saturate(2.5) hue-rotate(155deg) brightness(1.15) !important;
 }
 
@@ -12257,12 +12404,12 @@ Show selected states separately while preserving the actual color choices.
 ```css
 [data-profile="modal-panel"][role="dialog"][aria-label="New folder"] button:is([aria-label="Blue"],[aria-label="Purple"],[aria-label="Pink"],[aria-label="Rose"],[aria-label="Amber"],[aria-label="Emerald"],[aria-label="Teal"],[aria-label="Cyan"],[aria-label="Indigo"],[aria-label="Slate"])[aria-pressed="true"] {
   outline: 2px solid #ffd580 !important;
-  outline-offset: 2px !important;
+  outline-offset: 2px;
 }
 
 [data-profile="modal-panel"][role="dialog"][aria-label="New folder"] button:is([aria-label="Blue"],[aria-label="Purple"],[aria-label="Pink"],[aria-label="Rose"],[aria-label="Amber"],[aria-label="Emerald"],[aria-label="Teal"],[aria-label="Cyan"],[aria-label="Indigo"],[aria-label="Slate"]):focus-visible {
   outline: 2px solid #ffd580 !important;
-  outline-offset: 2px !important;
+  outline-offset: 2px;
 }
 
 [data-profile="modal-panel"][role="dialog"][aria-label="New folder"] [data-profile="modal-body"] button:has(> span > img:is([src="/img/pixel/lock.webp"],[src="/img/pixel/rel_friends.webp"],[src="/img/pixel/globe.webp"])) {
@@ -12281,7 +12428,7 @@ Show selected states separately while preserving the actual color choices.
 
 [data-profile="modal-panel"][role="dialog"][aria-label="New folder"] [data-profile="modal-body"] button:has(> span > img:is([src="/img/pixel/lock.webp"],[src="/img/pixel/rel_friends.webp"],[src="/img/pixel/globe.webp"])):focus-visible {
   outline: 2px solid #ffd580 !important;
-  outline-offset: 2px !important;
+  outline-offset: 2px;
 }
 
 [data-profile="modal-panel"][role="dialog"][aria-label="New folder"] [data-profile="modal-body"] button img:is([src="/img/pixel/lock.webp"],[src="/img/pixel/rel_friends.webp"],[src="/img/pixel/globe.webp"]) {
@@ -12293,7 +12440,7 @@ Show selected states separately while preserving the actual color choices.
 
 ### Mobile Post and Comments Sheet
 
-Separate the post/comments sheet shell from the post and comment-row surfaces.
+Separate the post/comments sheet shell from the post and comment-row surfaces. The panel's body contains the post, which identifies the sheet in the available capture.
 
 ```css
 [data-profile="modal-panel"][role="dialog"]:has(> [data-profile="modal-body"] > [data-profile="post"]) {
@@ -12326,7 +12473,7 @@ Separate the post/comments sheet shell from the post and comment-row surfaces.
 
 [data-profile="modal-panel"][role="dialog"]:has(> [data-profile="modal-body"] > [data-profile="post"]) [data-profile="comment-avatar"] {
   border-color: #91cfed !important;
-  --tw-ring-color: #bd9bea !important;
+  --tw-ring-color: #bd9bea;
 }
 
 [data-profile="modal-panel"][role="dialog"]:has(> [data-profile="modal-body"] > [data-profile="post"]) [data-profile="comment-time"] {
@@ -12345,7 +12492,7 @@ Separate the post/comments sheet shell from the post and comment-row surfaces.
   color: #e0c7ff !important;
 }
 
-[data-profile="modal-panel"][role="dialog"]:has(> [data-profile="modal-body"] > [data-profile="post"]) > [data-profile="modal-header"] img:is([src="/img/Icons/feed_filter_posts.webp"]) {
+[data-profile="modal-panel"][role="dialog"]:has(> [data-profile="modal-body"] > [data-profile="post"]) > [data-profile="modal-header"] img[src="/img/Icons/feed_filter_posts.webp"] {
   filter: grayscale(1) sepia(1) saturate(2.5) hue-rotate(155deg) brightness(1.15) !important;
 }
 
@@ -12380,7 +12527,7 @@ Reach the reused post-like/post-likes hooks within comments.
 
 [data-profile="modal-panel"][role="dialog"]:has(> [data-profile="modal-body"] > [data-profile="post"]) [data-profile="comment"] [data-profile="post-likes"] > span[aria-hidden="true"] > span[title] {
   background: #49365e !important;
-  --tw-ring-color: #193446 !important;
+  --tw-ring-color: #193446;
 }
 
 [data-profile="modal-panel"][role="dialog"]:has(> [data-profile="modal-body"] > [data-profile="post"]) [data-profile="comment"] [data-profile="comment-reply-btn"] {
@@ -12397,7 +12544,7 @@ Reach the reused post-like/post-likes hooks within comments.
 
 [data-profile="modal-panel"][role="dialog"]:has(> [data-profile="modal-body"] > [data-profile="post"]) [data-profile="comment"] :is([data-profile="post-like"],[data-profile="post-likes"],[data-profile="comment-reply-btn"]):focus-visible {
   outline: 2px solid #ffd580 !important;
-  outline-offset: 2px !important;
+  outline-offset: 2px;
 }
 
 [data-profile="modal-panel"][role="dialog"]:has(> [data-profile="modal-body"] > [data-profile="post"]) [data-profile="comment"] :is(i[data-profile="icon"],button[aria-label="Close"] > i) {
@@ -12406,6 +12553,52 @@ Reach the reused post-like/post-likes hooks within comments.
 ```
 
 **Customization:** Keep emoji fonts and native --rx sizing. No filter is applied to emoji or entire buttons. Reaction-picker and reaction-list dialogs are outside this lesson.
+
+### Comment Rows, Replies, and List States
+
+Use these native hooks inside the post/comments sheet when the corresponding row, reply, or state is present.
+
+| Part | Native selector |
+| --- | --- |
+| Comment row and author | `[data-profile=comment-row]`, `[data-profile=comment-author]` |
+| Comment avatar and time | `[data-profile=comment-avatar]`, `[data-profile=comment-time]` |
+| Sign-in prompt and deleted comment | `[data-profile=comment-locked]`, `[data-profile=comment-deleted]` |
+| Load more comments | `[data-profile=comment-more]` |
+| Reply and reply header | `[data-profile=reply]`, `[data-profile=reply-header]` |
+| Reply author, time, and avatar | `[data-profile=reply-author]`, `[data-profile=reply-time]`, `[data-profile=reply-avatar]` |
+| Deleted reply | `[data-profile=reply-deleted]` |
+
+This example gives author names, reply dates, and comment-list messages separate colors.
+
+```css
+[data-profile=modal-panel][role=dialog]:has(> [data-profile=modal-body] > [data-profile=post])
+:is([data-profile=comment-author], [data-profile=reply-author]) {
+  color: #e0c7ff;
+}
+
+[data-profile=modal-panel][role=dialog]:has(> [data-profile=modal-body] > [data-profile=post])
+:is([data-profile=comment-time], [data-profile=reply-time]) {
+  color: #b9e6ff;
+}
+
+[data-profile=modal-panel][role=dialog]:has(> [data-profile=modal-body] > [data-profile=post])
+:is([data-profile=comment-locked], [data-profile=comment-deleted], [data-profile=reply-deleted]) {
+  color: #91cfed;
+}
+
+[data-profile=modal-panel][role=dialog]:has(> [data-profile=modal-body] > [data-profile=post])
+[data-profile=comment-more] {
+  color: #ffd580;
+}
+```
+
+The active composer has a separate `[data-profile=comment-submit]` hook. This example styles its text when the actual submit control is rendered, including in placements outside the post sheet.
+
+```css
+[data-profile=comment-submit] {
+  color: #e0c7ff;
+}
+```
 
 ### Mobile Comment Composer Preview
 
@@ -12440,10 +12633,10 @@ Style the footer preview without interfering with its opening overlay.
 
 [data-profile="modal-panel"][role="dialog"]:has(> [data-profile="modal-body"] > [data-profile="post"]) [data-post-comment-composer="true"] button[aria-haspopup="dialog"]:focus-visible {
   outline: 2px solid #ffd580 !important;
-  outline-offset: 2px !important;
+  outline-offset: 2px;
 }
 
-[data-profile="modal-panel"][role="dialog"]:has(> [data-profile="modal-body"] > [data-profile="post"]) [data-post-comment-composer="true"] .back-to-top-button img:is([src="/img/sketch/arrow_up.webp"]) {
+[data-profile="modal-panel"][role="dialog"]:has(> [data-profile="modal-body"] > [data-profile="post"]) [data-post-comment-composer="true"] .back-to-top-button img[src="/img/sketch/arrow_up.webp"] {
   filter: grayscale(1) sepia(1) saturate(2.5) hue-rotate(155deg) brightness(1.15) !important;
 }
 ```
@@ -12455,116 +12648,132 @@ Style the footer preview without interfering with its opening overlay.
 Style the editor shell and tools while preserving the authored biography.
 
 ```css
-[data-profile="scope"] [data-profile="modal"][data-modal="about"] [data-profile="modal-panel"] {
+[data-profile=modal][data-modal=about] [data-profile="modal-panel"] {
   background: #193446 !important;
   border: 1px solid #91cfed !important;
 }
 
-[data-profile="scope"] [data-profile="modal"][data-modal="about"] [data-profile="modal-header"] {
+[data-profile=modal][data-modal=about] [data-profile="modal-header"] {
   background: #49365e !important;
   border: 1px solid #bd9bea !important;
   color: #e0c7ff !important;
 }
 
-[data-profile="scope"] [data-profile="modal"][data-modal="about"] [data-profile="modal-title"] {
+[data-profile=modal][data-modal=about] [data-profile="modal-title"] {
   color: #e0c7ff !important;
 }
 
-[data-profile="scope"] [data-profile="modal"][data-modal="about"] [data-profile="modal-body"] {
+[data-profile=modal][data-modal=about] [data-profile="modal-body"] {
   background: #122b39 !important;
 }
 
-[data-profile="scope"] [data-profile="modal"][data-modal="about"] .rich-text-editor-toolbar {
+[data-profile=modal][data-modal=about] .rich-text-editor-toolbar {
   background: #49365e !important;
   border: 1px solid #bd9bea !important;
   color: #e0c7ff !important;
 }
 
-[data-profile="scope"] [data-profile="modal"][data-modal="about"] .rich-text-editor-toolbar button {
+[data-profile=modal][data-modal=about] .rich-text-editor-toolbar button {
   background: #49365e !important;
   border: 1px solid #bd9bea !important;
   color: #e0c7ff !important;
 }
 
-[data-profile="scope"] [data-profile="modal"][data-modal="about"] .rich-text-editor-toolbar button[aria-pressed="true"] {
+[data-profile=modal][data-modal=about] .rich-text-editor-toolbar button[aria-pressed="true"] {
   background: #24483e !important;
   border-color: #8fd8bb !important;
 }
 
-[data-profile="scope"] [data-profile="modal"][data-modal="about"] [data-profile="modal-body"] [contenteditable="true"][role="textbox"][aria-label="Tell us about yourself..."] {
+[data-profile=modal][data-modal=about] [data-profile="modal-body"] [contenteditable="true"][role="textbox"][aria-label="Tell us about yourself..."] {
   background: #193446 !important;
   border-color: #91cfed !important;
 }
 
-[data-profile="scope"] [data-profile="modal"][data-modal="about"] [data-profile="modal-body"] [contenteditable="true"][role="textbox"][aria-label="Tell us about yourself..."][data-placeholder]::before {
+[data-profile=modal][data-modal=about] [data-profile="modal-body"] [contenteditable="true"][role="textbox"][aria-label="Tell us about yourself..."][data-placeholder]::before {
   color: #91cfed !important;
 }
 
-[data-profile="scope"] [data-profile="modal"][data-modal="about"] [data-profile="modal-body"] [contenteditable="true"][role="textbox"][aria-label="Tell us about yourself..."] .image-delete-btn {
+[data-profile=modal][data-modal=about] [data-profile="modal-body"] [contenteditable="true"][role="textbox"][aria-label="Tell us about yourself..."] .image-delete-btn {
   background: #49365e !important;
   border: 1px solid #bd9bea !important;
   color: #e0c7ff !important;
 }
 
-[data-profile="scope"] [data-profile="modal"][data-modal="about"] [data-profile="modal-body"] [contenteditable="true"][role="textbox"][aria-label="Tell us about yourself..."] .image-frame-btn {
+[data-profile=modal][data-modal=about] [data-profile="modal-body"] [contenteditable="true"][role="textbox"][aria-label="Tell us about yourself..."] .image-frame-btn {
   background: #49365e !important;
   border: 1px solid #bd9bea !important;
   color: #e0c7ff !important;
 }
 
-[data-profile="scope"] [data-profile="modal"][data-modal="about"] [data-profile="modal-body"] [contenteditable="true"][role="textbox"][aria-label="Tell us about yourself..."] .image-frame-btn.active {
+[data-profile=modal][data-modal=about] [data-profile="modal-body"] [contenteditable="true"][role="textbox"][aria-label="Tell us about yourself..."] .image-frame-btn.active {
   outline: 2px solid #ffd580 !important;
 }
 
-[data-profile="scope"] [data-profile="modal"][data-modal="about"] [data-profile="modal-footer"] {
+[data-profile=modal][data-modal=about] [data-profile="modal-footer"] {
   background: #49365e !important;
   border: 1px solid #bd9bea !important;
   color: #e0c7ff !important;
 }
 
-[data-profile="scope"] [data-profile="modal"][data-modal="about"] [data-profile="modal-footer"] button {
+[data-profile=modal][data-modal=about] [data-profile="modal-footer"] button {
   background: #49365e !important;
   border: 1px solid #bd9bea !important;
   color: #e0c7ff !important;
 }
 
-[data-profile="scope"] [data-profile="modal"][data-modal="about"] button[aria-label="Close"]:focus-visible {
+[data-profile=modal][data-modal=about] button[aria-label="Close"]:focus-visible {
   outline: 2px solid #ffd580 !important;
-  outline-offset: 2px !important;
+  outline-offset: 2px;
 }
 
-[data-profile="scope"] [data-profile="modal"][data-modal="about"] [data-profile="modal-header"] img:is([src="/img/pixel/idcard.webp"]) {
+[data-profile=modal][data-modal=about] [data-profile="modal-header"] img[src="/img/pixel/idcard.webp"] {
   filter: grayscale(1) sepia(1) saturate(2.5) hue-rotate(155deg) brightness(1.15) !important;
 }
 
-[data-profile="scope"] [data-profile="modal"][data-modal="about"] :is(i[data-profile="icon"],button[aria-label="Close"] > i) {
+[data-profile=modal][data-modal=about] :is(i[data-profile="icon"],button[aria-label="Close"] > i) {
   color: #b9e6ff !important;
 }
 
-[data-profile="scope"] [data-profile="modal"][data-modal="about"] .rich-text-editor-toolbar i {
+[data-profile=modal][data-modal=about] .rich-text-editor-toolbar i {
   color: #b9e6ff !important;
 }
 
-[data-profile="scope"] [data-profile="modal"][data-modal="about"] :is(.image-delete-btn,.image-frame-btn) i {
+[data-profile=modal][data-modal=about] :is(.image-delete-btn,.image-frame-btn) i {
   color: #e0c7ff !important;
 }
 ```
 
 **Customization:** There is no composer-editor or comment-editor hook here. The editor and outer body each scroll. Footer buttons are styled together because Cancel lacks a dedicated semantic hook; Save can be distinguished by :has([data-icon="check"]). Keep the native 100–300px editor height range. This lesson intentionally avoids overriding authored descendant text and artwork.
 
-### Experimental: Followers and Following Dialogs
+### Mobile Profile Details
 
-**Experimental — Profile-scope exception:** Target the named dialog root directly and define its variables there; this layout sits outside Profile scope.
+The details panel has its own `data-modal=details` wrapper. Apply the same palette to the shared panel parts when they are present.
+
+```css
+[data-profile=modal][data-modal=details] [data-profile=modal-panel] {
+  background: #193446;
+  border: 1px solid #91cfed;
+}
+
+[data-profile=modal][data-modal=details] [data-profile=modal-header] {
+  background: #49365e;
+}
+
+[data-profile=modal][data-modal=details] [data-profile=modal-title] {
+  color: #e0c7ff;
+}
+```
+### Followers and Following Dialogs
 
 **Followers and Following: Headers, Titles, Bodies, Search, Lists, and Footers**
 
-The examples share a palette defined on the two named roots. Keep this root block with the component rules.
+The examples share a palette defined on the panel inside `[data-modal=follow]`. The header, search, list, and footer use that dialog wrapper to scope their styles.
 
 ![Followers and Following Dialog Surfaces](./images/profile/header-followers-and-following-dialog-surfaces.png)
 
 ```css
-/* Named roots and self-contained palette. */
-[data-profile="modal-panel"]:is([aria-label="Followers"], [aria-label="Following"]) {
+/* Follow dialog panel and shared palette. */
+[data-modal=follow] [data-profile=modal-panel] {
   --fd-bg: #193446;
   --fd-head: #49365e;
   --fd-edge: #91cfed;
@@ -12576,14 +12785,16 @@ The examples share a palette defined on the two named roots. Keep this root bloc
 }
 
 /* Header variants. */
-[data-profile="modal-panel"]:is([aria-label="Followers"], [aria-label="Following"])
+
+  [data-modal=follow]
 :is([data-profile="modal-header"], .surface-header) {
   background: var(--fd-head) !important;
   border-bottom: 1px solid var(--fd-edge) !important;
 }
 
 /* Title hook or captured header h3. */
-[data-profile="modal-panel"]:is([aria-label="Followers"], [aria-label="Following"])
+
+  [data-modal=follow]
 :is([data-profile="modal-title"], .surface-header h3) {
   background: none !important;
   color: var(--fd-title) !important;
@@ -12592,26 +12803,28 @@ The examples share a palette defined on the two named roots. Keep this root bloc
 }
 
 /* Body hook where present. */
-[data-profile="modal-panel"]:is([aria-label="Followers"], [aria-label="Following"])
+
+  [data-modal=follow] 
 [data-profile="modal-body"] {
   background: var(--fd-bg) !important;
 }
 
 /* Captured body variant containing the decorative sketch. */
-[data-profile="modal-panel"]:is([aria-label="Followers"], [aria-label="Following"])
+[data-modal=follow] [data-profile=modal-panel]
 > div:has(> img[src="/img/sketch/bary_pencil.webp"]) {
   background: var(--fd-bg) !important;
 }
 
 /* Search area. */
-[data-profile="modal-panel"]:is([aria-label="Followers"], [aria-label="Following"])
+
+  [data-modal=follow]
 [data-profile="modal-search"] {
   background: #122b39 !important;
   border-bottom: 1px solid var(--fd-edge) !important;
 }
 
 /* Visible search-field wrapper. */
-[data-profile="modal-panel"]:is([aria-label="Followers"], [aria-label="Following"])
+  [data-modal=follow]
 [data-profile="modal-search"] .header-search {
   background: #122b39 !important;
   border: 1px solid var(--fd-edge) !important;
@@ -12619,40 +12832,46 @@ The examples share a palette defined on the two named roots. Keep this root bloc
 }
 
 /* Search input text. */
-[data-profile="modal-panel"]:is([aria-label="Followers"], [aria-label="Following"])
+
+  [data-modal=follow]
 [data-profile="modal-search"] input {
   background: transparent !important;
   color: var(--fd-text) !important;
-  caret-color: #ffd580 !important;
+  caret-color: #ffd580;
 }
 
 /* Search placeholder. */
-[data-profile="modal-panel"]:is([aria-label="Followers"], [aria-label="Following"])
+
+  [data-modal=follow]
 [data-profile="modal-search"] input::placeholder {
   color: var(--fd-edge) !important;
   opacity: 1 !important;
 }
 
 /* List surface. */
-[data-profile="modal-panel"]:is([aria-label="Followers"], [aria-label="Following"])
+
+  [data-modal=follow]
 [data-profile="modal-list"] {
   background: transparent !important;
 }
 
 /* List rows. */
-[data-profile="modal-panel"]:is([aria-label="Followers"], [aria-label="Following"])
-[data-profile="modal-list"] > div {
+
+  [data-modal=follow]
+[data-profile="modal-list"] > * {
   border-bottom: 1px solid #416b80 !important;
 }
 
 /* Row hover. */
-[data-profile="modal-panel"]:is([aria-label="Followers"], [aria-label="Following"])
-[data-profile="modal-list"] > div:hover {
+
+  [data-modal=follow]
+[data-profile="modal-list"] > *:hover {
   background: #24483e !important;
 }
 
 /* Footer variants. */
-[data-profile="modal-panel"]:is([aria-label="Followers"], [aria-label="Following"])
+
+  [data-modal=follow]
 :is([data-profile="modal-footer"], .surface-footer, [data-modal-footer="true"]) {
   background: #122b39 !important;
   border-top: 1px solid var(--fd-edge) !important;
@@ -12670,24 +12889,26 @@ These examples keep native dialog positioning, sizing, scrolling, search behavio
 
 **Followers and Following: Heading Icon and Decorative Bary Sketch**
 
-These Experimental examples use exact native paths inside the named Followers and Following roots. They do not require the palette variables from the preceding tutorial.
+These examples use exact native artwork paths inside the follow dialog. They do not require the palette variables from the preceding tutorial.
 
 ![Followers and Following Heading Icon](./images/profile/header-followers-and-following-heading-icon.png)
 
 ```css
 /* Heading icon inside the header. */
-[data-profile="modal-panel"]:is([aria-label="Followers"], [aria-label="Following"])
+
+  [data-modal=follow]
 :is([data-profile="modal-header"], .surface-header)
 img[src="/img/pixel/characters.webp"] {
-  filter: sepia(1) saturate(2) hue-rotate(220deg) !important;
+  filter: sepia(1) saturate(2) hue-rotate(220deg) ;
 }
 
 /* Decorative Bary sketch. */
-[data-profile="modal-panel"]:is([aria-label="Followers"], [aria-label="Following"])
+
+  [data-modal=follow] 
 img[src="/img/sketch/bary_pencil.webp"] {
-  filter: sepia(1) saturate(2) hue-rotate(155deg) !important;
-  opacity: 0.2 !important;
-  pointer-events: none !important;
+  filter: sepia(1) saturate(2) hue-rotate(155deg) ;
+  opacity: 0.2 ;
+  pointer-events: none ;
 }
 ```
 
@@ -12695,37 +12916,33 @@ img[src="/img/sketch/bary_pencil.webp"] {
 
 **Followers and Following: List-Row Avatars and Badges**
 
-These Experimental examples style the captured direct row-avatar images separately from nested native badge artwork.
+These examples style the captured direct row-avatar images separately from nested native badge artwork.
 
 ![List-Row Avatars and Badges](./images/profile/message-list-row-avatars-and-badges.png)
 
 ```css
 /* Row avatars: border and shadow. */
-[data-profile="modal-panel"]:is([aria-label="Followers"], [aria-label="Following"])
-[data-profile="modal-list"] > div > img {
-  border: 2px solid #8fd8bb !important;
-  border-radius: 50% !important;
-  box-shadow: 0 0 6px rgba(143, 216, 187, 0.3) !important;
-  box-sizing: border-box !important;
-}
-
-/* Row-avatar crop. */
-[data-profile="modal-panel"]:is([aria-label="Followers"], [aria-label="Following"])
-[data-profile="modal-list"] > div > img {
-  object-fit: cover !important;
-  object-position: center !important;
+[data-modal=follow]
+[data-profile="modal-list"] > * > img {
+  border: 2px solid #8fd8bb ;
+  border-radius: 50% ;
+  box-shadow: 0 0 6px rgba(143, 216, 187, 0.3) ;
+  box-sizing: border-box ;
+  object-fit: cover ;
+  object-position: center ;
 }
 
 /* Native badge artwork within list rows. */
-[data-profile="modal-panel"]:is([aria-label="Followers"], [aria-label="Following"])
+
+ [data-modal=follow]
 [data-profile="modal-list"] img[src^="/img/Badges/"] {
-  filter: drop-shadow(0 0 3px rgba(189, 155, 234, 0.5)) !important;
+  filter: drop-shadow(0 0 3px rgba(189, 155, 234, 0.5)) ;
 }
 ```
 
 **Customization:** Change avatar borders, rounding, shadow, and crop independently from badge glow. Avatar dimensions remain native; no color filter is applied to portraits.
 
-The avatar selector follows modal-list → row div → direct image. The badge selector is restricted to the native /img/Badges/ directory within the list. Its drop shadow preserves badge colors but replaces any earlier filter on those matching images.
+The avatar selector targets a direct image in a list row. The badge selector is restricted to the native /img/Badges/ directory within the list. Its drop shadow preserves badge colors but replaces any earlier filter on those matching images.
 
 The native-path badge rule does not cover uploaded custom badges. Do not broaden it to every row image, because that would also affect avatars. To treat one native badge differently, replace the path prefix with its exact captured filename.
 
@@ -12737,29 +12954,29 @@ Both visible Follow and Following row buttons use modal-row-follow in these layo
 
 ```css
 /* Shared row-button surface and text. */
-[data-profile="modal-panel"]:is([aria-label="Followers"], [aria-label="Following"])
+[data-modal=follow]
 [data-profile="modal-row-follow"] {
-  background: #24483e !important;
-  border: 1px solid #8fd8bb !important;
-  border-radius: 999px !important;
-  color: #b8ffe0 !important;
+  background: #24483e ;
+  border: 1px solid #8fd8bb ;
+  border-radius: 999px ;
+  color: #b8ffe0 ;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08),
-    0 2px 6px rgba(0, 0, 0, 0.3) !important;
+    0 2px 6px rgba(0, 0, 0, 0.3) ;
 }
 
 /* Enabled hover. */
-[data-profile="modal-panel"]:is([aria-label="Followers"], [aria-label="Following"])
+[data-modal=follow]
 [data-profile="modal-row-follow"]:enabled:hover {
-  background: #306052 !important;
-  border-color: #b8ffe0 !important;
-  color: #ffd580 !important;
+  background: #306052 ;
+  border-color: #b8ffe0 ;
+  color: #ffd580 ;
 }
 
 /* Keyboard focus. */
-[data-profile="modal-panel"]:is([aria-label="Followers"], [aria-label="Following"])
+[data-modal=follow]
 [data-profile="modal-row-follow"]:focus-visible {
-  outline: 2px solid #ffd580 !important;
-  outline-offset: 2px !important;
+  outline: 2px solid #ffd580 ;
+  outline-offset: 2px;
 }
 ```
 
@@ -12769,43 +12986,73 @@ Both visible Follow and Following row buttons use modal-row-follow in these layo
 
 The captured Follow and Following row buttons have identical attributes and classes and differ only in visible text. No captured attribute or class establishes a CSS selector that distinguishes those two states.
 
-The shared modal-row-follow rule therefore applies to both labels. Standard CSS cannot select an element by its text content; :has() does not supply a text-content selector.
+The shared `modal-row-follow` rule applies to both labels. Standard CSS cannot select an element by its text content; :has() does not supply a text-content selector.
 
 Do not invent aria-pressed, data-following, or state-class selectors for these buttons. :hover, :focus-visible, and :disabled describe interaction states, not whether a person is currently followed.
 
-Also distinguish the dialog name from a row-button state: aria-label=Following on the dialog root identifies the Following list, not the follow status of each button inside it.
+The panel label `aria-label="Following"` identifies the Following list. Follow and Following row buttons share the `modal-row-follow` hook.
 
-### Experimental: Followers and Following Close Button
+#### Restore Sleeping Bary in Followers and Following
 
-**Experimental — Profile-scope exception:** Target the named dialog root directly and define its variables there; this layout sits outside Profile scope.
+The mobile dialogs can show the same sleeping Bary artwork as desktop. Paste this into **Profile CSS**. It draws Bary once in the lower-right corner and lets taps pass through to the list.
 
-Use the exact Close label under the named dialog roots.
+```css
+@media (max-width: 767px) {
+  [data-profile=modal-panel]:is([aria-label=Followers], [aria-label=Following]) {
+    position: relative;
+  }
+
+  [data-profile=modal-panel]:is([aria-label=Followers], [aria-label=Following])
+  img[src="/img/sketch/bary_pencil.webp"] {
+    display: none;
+  }
+
+  [data-profile=modal-panel]:is([aria-label=Followers], [aria-label=Following])::after {
+    content: "";
+    position: absolute;
+    right: 12px;
+    bottom: 42px;
+    width: min(48%, 210px);
+    height: 180px;
+    background: url("/img/sketch/bary_pencil.webp") right bottom / contain no-repeat;
+    opacity: .32;
+    z-index: 1;
+    pointer-events: none;
+  }
+}
+```
+
+Adjust `right` and `bottom` to move Bary, or change `opacity` to make the sketch more or less visible.
+
+### Followers and Following Close Button
+
+Use the Close label within the follow dialog.
 
 ![Followers and Following Close Button](./images/profile/header-followers-and-following-close-button.png)
 
 ```css
 /* Close-button surface and inherited font-icon color. */
-[data-profile="modal-panel"]:is([aria-label="Followers"], [aria-label="Following"])
+[data-modal=follow]
 button[aria-label="Close"] {
-  background: #49365e !important;
-  border: 1px solid #bd9bea !important;
-  border-radius: 50% !important;
-  color: #e0c7ff !important;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35) !important;
+  background: #49365e ;
+  border: 1px solid #bd9bea ;
+  border-radius: 50% ;
+  color: #e0c7ff ;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35) ;
 }
 
 /* Enabled hover. */
-[data-profile="modal-panel"]:is([aria-label="Followers"], [aria-label="Following"])
+ [data-modal=follow]
 button[aria-label="Close"]:enabled:hover {
-  background: #604778 !important;
-  color: #ffd580 !important;
+  background: #604778 ;
+  color: #ffd580 ;
 }
 
 /* Keyboard focus. */
-[data-profile="modal-panel"]:is([aria-label="Followers"], [aria-label="Following"])
+[data-modal=follow]
 button[aria-label="Close"]:focus-visible {
-  outline: 2px solid #ffd580 !important;
-  outline-offset: 2px !important;
+  outline: 2px solid #ffd580 ;
+  outline-offset: 2px;
 }
 ```
 
@@ -12813,28 +13060,26 @@ button[aria-label="Close"]:focus-visible {
 
 They target Close only in Followers and Following, leaving unrelated dialogs separate.
 
-Keep the Experimental status until the specific example is visually verified. No variables or animations are required by this block.
+### Send a Wave
 
-### Experimental: Send a Wave
-
-**Experimental — Profile-scope exception:** Target the named dialog root directly and define its variables there; this layout sits outside Profile scope.
+The `[data-modal=wave]` wrapper scopes the note, wish controls, and artwork. The dialog panel supplies the background and the variables used by the sketch treatment.
 
 **Header and sketch artwork**
 
 ![Header and Sketch Artwork](./images/profile/header-wave-header-and-sketch-artwork.png)
 
 ```css
-[data-profile="modal-panel"][aria-label="Send a wave"] :is([data-profile="modal-header"], .surface-header) {
-  background: #49365e !important;
-  border-bottom: 1px solid #bd9bea !important;
+[data-modal=wave] :is([data-profile="modal-header"], .surface-header) {
+  background: #49365e ;
+  border-bottom: 1px solid #bd9bea ;
 }
-[data-profile="modal-panel"][aria-label="Send a wave"] .surface-header h3 {
-  background: none !important;
-  color: #e0c7ff !important;
-  -webkit-text-fill-color: #e0c7ff !important;
+[data-modal=wave] :is([data-profile=modal-title], .surface-header h3) {
+  background: none ;
+  color: #e0c7ff ;
+  -webkit-text-fill-color: #e0c7ff ;
 }
-[data-profile="modal-panel"][aria-label="Send a wave"] .surface-header img[src="/img/pixel/wave.webp"] {
-  filter: sepia(1) saturate(2) hue-rotate(220deg) !important;
+[data-modal=wave] :is([data-profile=modal-header], .surface-header) img[src="/img/pixel/wave.webp"] {
+  filter: sepia(1) saturate(2) hue-rotate(220deg) ;
 }
 
 ```
@@ -12848,11 +13093,11 @@ The static screenshot shows the frame artwork and glow; LoreBary controls the an
 ![Bary Animation Frame Recolor](./images/profile/input-bary-animation-frame-recolor.png)
 
 ```css
-[data-profile="modal-panel"][aria-label="Send a wave"] img:is(
+[data-modal=wave] img:is(
   [src="/img/Animation/animation_bary_wink1.webp"],
   [src="/img/Animation/animation_bary_wink2.webp"]
 ) {
-  filter: drop-shadow(0 0 4px #bd9bea) !important;
+  filter: drop-shadow(0 0 4px #bd9bea) ;
 }
 ```
 
@@ -12865,42 +13110,42 @@ Replace earlier sketch styling with this block. It supplies the background and C
 ![Wave Note and Tape Fastener](./images/profile/input-wave-note-and-tape-fastener.png)
 
 ```css
-/* Wave root: background and local replacement variables. */
-[data-profile="modal-panel"][aria-label="Send a wave"] {
+/* Wave dialog panel and local replacement variables. */
+[data-modal=wave] [data-profile=modal-panel] {
   --wv-bg: #193446;
   --wv-sketch: url("/img/sketch/bary_pencil.webp");
   --wv-sketch-color: #91cfed;
-  background: var(--wv-bg) !important;
-  border: 1px solid #91cfed !important;
-  color: #e2f4ff !important;
+  background: var(--wv-bg) ;
+  border: 1px solid #91cfed ;
+  color: #e2f4ff ;
 }
 
 /* Inner body surface. */
-[data-profile="modal-panel"][aria-label="Send a wave"] .surface-post {
-  background: var(--wv-bg) !important;
-  border-color: #416b80 !important;
+[data-modal=wave] .surface-post {
+  background: var(--wv-bg) ;
+  border-color: #416b80 ;
 }
 
 /* Container holding the captured decorative sketch. */
-[data-profile="modal-panel"][aria-label="Send a wave"]
+[data-modal=wave]
 div:has(> img[src="/img/sketch/bary_pencil.webp"]) {
-  position: relative !important;
+  position: relative ;
   isolation: isolate;
-  background: var(--wv-bg) !important;
+  background: var(--wv-bg) ;
 }
 
 /* Keep native sketch geometry while using a masked replacement. */
-[data-profile="modal-panel"][aria-label="Send a wave"]
+[data-modal=wave]
 img[src="/img/sketch/bary_pencil.webp"] {
-  display: block !important;
-  opacity: 0 !important;
-  pointer-events: none !important;
+  display: block ;
+  opacity: 0 ;
+  pointer-events: none ;
 }
 
 /* Decorative replacement, drawn within its container. */
-[data-profile="modal-panel"][aria-label="Send a wave"]
+[data-modal=wave]
 div:has(> img[src="/img/sketch/bary_pencil.webp"])::before {
-  content: "" !important;
+  content: "" ;
   position: absolute;
   right: 8px;
   bottom: 8px;
@@ -12915,84 +13160,84 @@ div:has(> img[src="/img/sketch/bary_pencil.webp"])::before {
 }
 
 /* Close button. */
-[data-profile="modal-panel"][aria-label="Send a wave"] button[aria-label="Close"] {
-  background: #49365e !important;
-  border: 1px solid #bd9bea !important;
-  border-radius: 50% !important;
-  color: #e0c7ff !important;
+[data-modal=wave] button[aria-label="Close"] {
+  background: #49365e ;
+  border: 1px solid #bd9bea ;
+  border-radius: 50% ;
+  color: #e0c7ff ;
 }
-[data-profile="modal-panel"][aria-label="Send a wave"] button[aria-label="Close"]:enabled:hover {
-  background: #604778 !important;
-  color: #ffd580 !important;
+[data-modal=wave] button[aria-label="Close"]:enabled:hover {
+  background: #604778 ;
+  color: #ffd580 ;
 }
-[data-profile="modal-panel"][aria-label="Send a wave"] button[aria-label="Close"]:focus-visible {
-  outline: 2px solid #ffd580 !important;
-  outline-offset: 2px !important;
+[data-modal=wave] button[aria-label="Close"]:focus-visible {
+  outline: 2px solid #ffd580 ;
+  outline-offset: 2px;
 }
 
 /* Rectangular note with room for an inset tape fastener. */
-[data-profile="modal-panel"][aria-label="Send a wave"] section.sketch-note {
-  position: relative !important;
-  box-sizing: border-box !important;
-  height: auto !important;
-  min-height: 100px !important;
-  padding: 44px 20px 18px !important;
-  background: #122b39 !important;
-  border: 1px solid #91cfed !important;
-  border-radius: 14px !important;
-  clip-path: none !important;
-  -webkit-mask: none !important;
-  mask: none !important;
-  overflow: visible !important;
-  color: #e2f4ff !important;
+[data-modal=wave] section.sketch-note {
+  position: relative ;
+  box-sizing: border-box ;
+  height: auto ;
+  min-height: 100px ;
+  padding: 44px 20px 18px ;
+  background: #122b39 ;
+  border: 1px solid #91cfed ;
+  border-radius: 14px ;
+  clip-path: none ;
+  -webkit-mask: none ;
+  mask: none ;
+  overflow: visible ;
+  color: #e2f4ff ;
 }
 
 /* Remove former note/replacement decoration layers. */
-[data-profile="modal-panel"][aria-label="Send a wave"] section.sketch-note::before,
-[data-profile="modal-panel"][aria-label="Send a wave"] section.sketch-note::after {
-  content: none !important;
+[data-modal=wave] section.sketch-note::before,
+[data-modal=wave] section.sketch-note::after {
+  content: none ;
 }
 
 /* Let the captured text column fit the new note surface. */
-[data-profile="modal-panel"][aria-label="Send a wave"] section.sketch-note > div {
-  position: relative !important;
-  width: 100% !important;
-  min-width: 0 !important;
-  box-sizing: border-box !important;
-  padding: 0 !important;
+[data-modal=wave] section.sketch-note > div {
+  position: relative ;
+  width: 100% ;
+  min-width: 0 ;
+  box-sizing: border-box ;
+  padding: 0 ;
 }
-[data-profile="modal-panel"][aria-label="Send a wave"] section.sketch-note p {
-  color: #e2f4ff !important;
+[data-modal=wave] section.sketch-note p {
+  color: #e2f4ff ;
 }
 
 /* Tape stays inside the note instead of crossing its top edge. */
-[data-profile="modal-panel"][aria-label="Send a wave"] section.sketch-note
+[data-modal=wave] section.sketch-note
 > img[src="/img/sketch/tape.webp"] {
-  position: absolute !important;
-  top: 6px !important;
-  left: 50% !important;
-  right: auto !important;
-  bottom: auto !important;
-  transform: translateX(-50%) !important;
-  translate: none !important;
-  rotate: 0deg !important;
-  width: min(140px, 60%) !important;
-  height: 28px !important;
-  object-fit: contain !important;
-  filter: sepia(1) saturate(2) hue-rotate(285deg) !important;
-  pointer-events: none !important;
-  z-index: 2 !important;
+  position: absolute ;
+  top: 6px ;
+  left: 50% ;
+  right: auto ;
+  bottom: auto ;
+  transform: translateX(-50%) ;
+  translate: none ;
+  rotate: 0deg ;
+  width: min(140px, 60%) ;
+  height: 28px ;
+  object-fit: contain ;
+  filter: sepia(1) saturate(2) hue-rotate(285deg) ;
+  pointer-events: none ;
+  z-index: 2 ;
 }
 ```
 
-**Customization:** Change --wv-bg, --wv-sketch-color, and --wv-sketch on the Wave root. The sketch variable supplies a silhouette mask. The note clears native clipping and decoration layers, and inset tape stays within the note bounds. Verify the longest wish after applying this Experimental layout change.
+**Customization:** Change --wv-bg, --wv-sketch-color, and --wv-sketch on the Wave root. The sketch variable supplies a silhouette mask. The note clears native clipping and decoration layers, and inset tape stays within the note bounds. Verify the longest wish after applying the note styling.
 
 **Changing wish text**
 
 ```css
-[data-profile="modal-panel"][aria-label="Send a wave"] section.sketch-note [aria-live="polite"] {
-  color: #ffd580 !important;
-  text-shadow: 0 1px 3px #10251e !important;
+[data-modal=wave] section.sketch-note [aria-live="polite"] {
+  color: #ffd580 ;
+  text-shadow: 0 1px 3px #10251e ;
 }
 ```
 
@@ -13003,24 +13248,24 @@ div:has(> img[src="/img/sketch/bary_pencil.webp"])::before {
 ![Wave Wish Pills](./images/profile/input-wave-wish-pills.png)
 
 ```css
-[data-profile="modal-panel"][aria-label="Send a wave"] [role="radiogroup"][aria-label="Wish"]
+[data-modal=wave] [role="radiogroup"][aria-label="Wish"]
 button[role="radio"][aria-checked="false"] > span {
-  background: #193446 !important;
-  border: 1px solid #91cfed !important;
-  border-radius: 10px !important;
-  color: #e2f4ff !important;
+  background: #193446 ;
+  border: 1px solid #91cfed ;
+  border-radius: 10px ;
+  color: #e2f4ff ;
 }
-[data-profile="modal-panel"][aria-label="Send a wave"] [role="radiogroup"][aria-label="Wish"]
+[data-modal=wave] [role="radiogroup"][aria-label="Wish"]
 button[role="radio"][aria-checked="true"] > span {
-  background: #24483e !important;
-  border: 1px solid #8fd8bb !important;
-  border-radius: 10px !important;
-  color: #b8ffe0 !important;
+  background: #24483e ;
+  border: 1px solid #8fd8bb ;
+  border-radius: 10px ;
+  color: #b8ffe0 ;
 }
-[data-profile="modal-panel"][aria-label="Send a wave"] [role="radiogroup"][aria-label="Wish"]
+[data-modal=wave] [role="radiogroup"][aria-label="Wish"]
 button[role="radio"]:focus-visible > span {
-  outline: 2px solid #ffd580 !important;
-  outline-offset: 2px !important;
+  outline: 2px solid #ffd580 ;
+  outline-offset: 2px;
 }
 ```
 
@@ -13031,67 +13276,63 @@ button[role="radio"]:focus-visible > span {
 ![Wave Footer and Send Button](./images/profile/footer-wave-footer-and-send-button.png)
 
 ```css
-[data-profile="modal-panel"][aria-label="Send a wave"] :is(.surface-footer, [data-modal-footer="true"]) {
-  background: #122b39 !important;
-  border-top: 1px solid #416b80 !important;
-  color: #e2f4ff !important;
+[data-modal=wave] :is([data-profile=modal-footer], .surface-footer, [data-modal-footer="true"]) {
+  background: #122b39 ;
+  border-top: 1px solid #416b80 ;
+  color: #e2f4ff ;
 }
-[data-profile="modal-panel"][aria-label="Send a wave"] [data-modal-footer-tip="true"] {
-  color: #91cfed !important;
+[data-modal=wave] [data-modal-footer-tip="true"] {
+  color: #91cfed ;
 }
-[data-profile="modal-panel"][aria-label="Send a wave"] button[aria-label="Send wave"] {
-  background: #24483e !important;
-  border: 1px solid #8fd8bb !important;
-  border-radius: 10px !important;
+[data-modal=wave] button[aria-label="Send wave"] {
+  background: #24483e ;
+  border: 1px solid #8fd8bb ;
+  border-radius: 10px ;
 }
-[data-profile="modal-panel"][aria-label="Send a wave"] button[aria-label="Send wave"] > span {
-  color: #b8ffe0 !important;
+[data-modal=wave] button[aria-label="Send wave"] > span {
+  color: #b8ffe0 ;
 }
-[data-profile="modal-panel"][aria-label="Send a wave"] button[aria-label="Send wave"]
+[data-modal=wave] button[aria-label="Send wave"]
 > img[src="/img/Icons/btn_pixel_plate_24.webp"] {
-  filter: sepia(1) saturate(2) hue-rotate(95deg) !important;
+  filter: sepia(1) saturate(2) hue-rotate(95deg) ;
 }
-[data-profile="modal-panel"][aria-label="Send a wave"] button[aria-label="Send wave"]
+[data-modal=wave] button[aria-label="Send wave"]
 img[src="/img/pixel/wave.webp"] {
-  filter: sepia(1) saturate(2) hue-rotate(285deg) !important;
+  filter: sepia(1) saturate(2) hue-rotate(285deg) ;
 }
-[data-profile="modal-panel"][aria-label="Send a wave"] button[aria-label="Send wave"]:enabled:hover {
-  border-color: #ffd580 !important;
+[data-modal=wave] button[aria-label="Send wave"]:enabled:hover {
+  border-color: #ffd580 ;
 }
 ```
 
 **Customization:** The plate and nested wave icon receive separate filters. The plate covers much of the button background. Header and Send artwork are separated by their component scopes.
 
-### Experimental: Section Dialogs
-
-**Experimental — Profile-scope exception:** Target the named dialog root directly and define its variables there; this layout sits outside Profile scope.
+### Section Dialogs
 
 Use `[data-profile="content-panel"][role="dialog"]` directly, without requiring a Profile-scope ancestor. The role distinguishes the dialog form from regular full-section panels.
 
 **Dialog root and surfaces — mobile**
 
-**Mobile layout:** These rules target the captured mobile section dialog. They remain Experimental because that dialog sits outside Profile scope.
-
 ![Section Dialog Surfaces](./images/profile/header-section-dialog-surfaces.png)
 
 ```css
-[data-profile="content-panel"][role="dialog"] {
+[data-profile="content-panel"] {
   --sd-bg: #193446;
   --sd-edge: #91cfed;
   --sd-text: #e2f4ff;
-  background: var(--sd-bg) !important;
-  border: 1px solid var(--sd-edge) !important;
-  color: var(--sd-text) !important;
+  background: var(--sd-bg) ;
+  border: 1px solid var(--sd-edge) ;
+  color: var(--sd-text) ;
 }
-[data-profile="content-panel"][role="dialog"] [data-profile="content-header"] {
-  background: #49365e !important;
-  border-bottom: 1px solid #bd9bea !important;
+[data-profile="content-panel"] [data-profile="content-header"] {
+  background: #49365e ;
+  border-bottom: 1px solid #bd9bea ;
 }
-[data-profile="content-panel"][role="dialog"] [data-profile="content-title"] {
-  color: #e0c7ff !important;
+[data-profile="content-panel"] [data-profile="content-title"] {
+  color: #e0c7ff ;
 }
-[data-profile="content-panel"][role="dialog"] [data-profile="content-body"] {
-  background: var(--sd-bg) !important;
+[data-profile="content-panel"] [data-profile="content-body"] {
+  background: var(--sd-bg) ;
 }
 ```
 
@@ -13102,30 +13343,30 @@ Use `[data-profile="content-panel"][role="dialog"]` directly, without requiring 
 ![Section Dialog Navigation and Close Buttons](./images/profile/header-section-dialog-navigation-and-close-buttons.png)
 
 ```css
-[data-profile="content-panel"][role="dialog"] button:is(
+[data-profile="content-panel"] button:is(
   [aria-label^="Previous section:"],
   [aria-label^="Next section:"],
   [aria-label="Close"]
 ) {
-  background: #24483e !important;
-  border: 1px solid #8fd8bb !important;
-  color: #b8ffe0 !important;
+  background: #24483e ;
+  border: 1px solid #8fd8bb ;
+  color: #b8ffe0 ;
 }
-[data-profile="content-panel"][role="dialog"] button[aria-label^="Previous section:"]
+[data-profile="content-panel"] button[aria-label^="Previous section:"]
 img[src$="/arrow-left-v2.webp"] {
-  filter: sepia(1) saturate(2) hue-rotate(95deg) !important;
+  filter: sepia(1) saturate(2) hue-rotate(95deg) ;
 }
-[data-profile="content-panel"][role="dialog"] button[aria-label^="Next section:"]
+[data-profile="content-panel"] button[aria-label^="Next section:"]
 img[src$="/arrow-right-v2.webp"] {
-  filter: sepia(1) saturate(2) hue-rotate(155deg) !important;
+  filter: sepia(1) saturate(2) hue-rotate(155deg) ;
 }
-[data-profile="content-panel"][role="dialog"] button:is(
+[data-profile="content-panel"] button:is(
   [aria-label^="Previous section:"],
   [aria-label^="Next section:"],
   [aria-label="Close"]
 ):enabled:hover {
-  background: #306052 !important;
-  color: #ffd580 !important;
+  background: #306052 ;
+  color: #ffd580 ;
 }
 ```
 
@@ -13134,16 +13375,16 @@ img[src$="/arrow-right-v2.webp"] {
 **Header versus body action placement**
 
 ```css
-[data-profile="content-panel"][role="dialog"] [data-profile="content-actions"] {
-  gap: 8px !important;
+[data-profile="content-panel"] [data-profile="content-actions"] {
+  gap: 8px ;
 }
-[data-profile="content-panel"][role="dialog"] [data-profile="content-header"]
+[data-profile="content-panel"] [data-profile="content-header"]
 [data-profile="content-actions"] {
-  background: #49365e !important;
+  background: #49365e ;
 }
-[data-profile="content-panel"][role="dialog"] [data-profile="content-body"]
+[data-profile="content-panel"] [data-profile="content-body"]
 [data-profile="content-actions"] {
-  background: #122b39 !important;
+  background: #122b39 ;
 }
 ```
 
@@ -13154,42 +13395,42 @@ img[src$="/arrow-right-v2.webp"] {
 ![Section Dialog Search and Sort](./images/profile/header-section-dialog-search-and-sort.png)
 
 ```css
-[data-profile="content-panel"][role="dialog"] [data-profile="search"] .header-search {
-  background: #122b39 !important;
-  border: 1px solid var(--sd-edge) !important;
-  border-radius: 10px !important;
+[data-profile="content-panel"] [data-profile="search"] .header-search {
+  background: #122b39 ;
+  border: 1px solid var(--sd-edge) ;
+  border-radius: 10px ;
 }
-[data-profile="content-panel"][role="dialog"] [data-profile="search"] .header-search-input {
-  background: transparent !important;
-  color: var(--sd-text) !important;
-  caret-color: #ffd580 !important;
+[data-profile="content-panel"] [data-profile="search"] .header-search-input {
+  background: transparent ;
+  color: var(--sd-text) ;
+  caret-color: #ffd580;
 }
-[data-profile="content-panel"][role="dialog"] [data-profile="search"] .header-search-input::placeholder {
-  color: var(--sd-edge) !important;
-  opacity: 1 !important;
+[data-profile="content-panel"] [data-profile="search"] .header-search-input::placeholder {
+  color: var(--sd-edge) ;
+  opacity: 1 ;
 }
-[data-profile="content-panel"][role="dialog"] [data-profile="search"] .fa-search {
-  color: #ffd580 !important;
+[data-profile="content-panel"] [data-profile="search"] .fa-search {
+  color: #ffd580 ;
 }
-[data-profile="content-panel"][role="dialog"] [data-profile="content-type-filter"]
+[data-profile="content-panel"] [data-profile="content-type-filter"]
 button[aria-label="Filter favorites by type"],
-[data-profile="content-panel"][role="dialog"] [data-profile="content-sort"]
+[data-profile="content-panel"] [data-profile="content-sort"]
 button[aria-label="Sort items"] {
-  background: #24483e !important;
-  border: 1px solid #8fd8bb !important;
-  color: #b8ffe0 !important;
+  background: #24483e ;
+  border: 1px solid #8fd8bb ;
+  color: #b8ffe0 ;
 }
-[data-profile="content-panel"][role="dialog"] :is(
+[data-profile="content-panel"] :is(
   button[aria-label="Filter favorites by type"],
   button[aria-label="Sort items"]
 ) > span {
-  color: #b8ffe0 !important;
+  color: #b8ffe0 ;
 }
-[data-profile="content-panel"][role="dialog"] :is(
+[data-profile="content-panel"] :is(
   button[aria-label="Filter favorites by type"],
   button[aria-label="Sort items"]
 ) > img {
-  filter: sepia(1) saturate(2) hue-rotate(95deg) !important;
+  filter: sepia(1) saturate(2) hue-rotate(95deg) ;
 }
 ```
 
@@ -13198,9 +13439,8 @@ button[aria-label="Sort items"] {
 **Scroll area**
 
 ```css
-[data-profile="content-panel"][role="dialog"] [data-profile="content-scroll"] {
-  background: #122b39 !important;
-  scrollbar-color: #91cfed #122b39;
+[data-profile="content-panel"] [data-profile="content-scroll"] {
+  background: #122b39;
 }
 ```
 
@@ -13211,41 +13451,41 @@ button[aria-label="Sort items"] {
 ![Section Dialog Footer and Okay Button](./images/profile/footer-section-dialog-footer-and-okay-button.png)
 
 ```css
-[data-profile="content-panel"][role="dialog"] [data-profile="content-footer"] {
-  background: #122b39 !important;
-  border-top: 1px solid #416b80 !important;
-  color: var(--sd-text) !important;
+[data-profile="content-panel"] [data-profile="content-footer"] {
+  background: #122b39 ;
+  border-top: 1px solid #416b80 ;
+  color: var(--sd-text) ;
 }
-[data-profile="content-panel"][role="dialog"] [data-profile="content-footer"]
+[data-profile="content-panel"] [data-profile="content-footer"]
 [data-modal-footer-tip] {
-  color: #91cfed !important;
+  color: #91cfed ;
 }
-[data-profile="content-panel"][role="dialog"] .back-to-top-button button {
-  background: #24483e !important;
-  border: 1px solid #8fd8bb !important;
-  border-radius: 50% !important;
+[data-profile="content-panel"] .back-to-top-button button {
+  background: #24483e ;
+  border: 1px solid #8fd8bb ;
+  border-radius: 50% ;
 }
-[data-profile="content-panel"][role="dialog"] .back-to-top-button
+[data-profile="content-panel"] .back-to-top-button
 img[src="/img/sketch/arrow_up.webp"] {
-  filter: sepia(1) saturate(2) hue-rotate(95deg) !important;
+  filter: sepia(1) saturate(2) hue-rotate(95deg) ;
 }
-[data-profile="content-panel"][role="dialog"] [data-profile="content-footer"]
+[data-profile="content-panel"] [data-profile="content-footer"]
 button.dashboard-action-button:has(img[src="/img/pixel/check.webp"]) {
-  border: 1px solid #8fd8bb !important;
-  border-radius: 10px !important;
+  border: 1px solid #8fd8bb ;
+  border-radius: 10px ;
 }
-[data-profile="content-panel"][role="dialog"] [data-profile="content-footer"]
+[data-profile="content-panel"] [data-profile="content-footer"]
 button.dashboard-action-button:has(img[src="/img/pixel/check.webp"])
 > img[src="/img/Icons/btn_pixel_plate_24.webp"] {
-  filter: sepia(1) saturate(2) hue-rotate(95deg) !important;
+  filter: sepia(1) saturate(2) hue-rotate(95deg) ;
 }
-[data-profile="content-panel"][role="dialog"] [data-profile="content-footer"]
+[data-profile="content-panel"] [data-profile="content-footer"]
 button.dashboard-action-button:has(img[src="/img/pixel/check.webp"]) > span {
-  color: #b8ffe0 !important;
+  color: #b8ffe0 ;
 }
-[data-profile="content-panel"][role="dialog"] [data-profile="content-footer"]
+[data-profile="content-panel"] [data-profile="content-footer"]
 button.dashboard-action-button img[src="/img/pixel/check.webp"] {
-  filter: drop-shadow(0 0 3px #8fd8bb) !important;
+  filter: drop-shadow(0 0 3px #8fd8bb) ;
 }
 ```
 
@@ -13324,7 +13564,352 @@ Mobile failure checklist:
 
 ---
 
+## Common Fixes
+
+### Raise Avatar Controls
+
+A decorative avatar frame can cover the **Change Avatar** and **Remove Avatar** controls. Even the transparent parts of the frame can intercept clicks. Make the artwork click-through and raise the native action buttons above it.
+
+```css
+/* Let clicks pass through the decorative avatar frame. */
+[data-profile=avatar-wrap]::after {
+  pointer-events: none;
+}
+
+/* Keep the native avatar actions above the frame. */
+[data-profile=avatar-actions] {
+  z-index: 5;
+}
+```
+
+Add `pointer-events: none` to your existing frame rule. If the artwork uses `::before`, use that pseudo-element in place of `::after`. Set the action group’s `z-index` higher than the frame’s. The native action group is already positioned, so you can raise its stacking level without moving the buttons.
+
+Preview on your own editable profile. Click the avatar to check that the image picker opens, then check that the remove control appears above the frame.
+
+
+### Fix Editor Toolbox Color Flood
+
+If the **Text Color** indicator starts showing your theme color instead of the color you picked, check for a toolbar rule that paints every button and its child spans. LoreBary uses a separate span with an inline background to display the selected color.
+
+![Editor Toolbox Color Flood](./images/profile/input-editor-toolbox-color-flood.png)
+
+#### Reproduce the problem
+
+Temporarily add this to your Profile CSS, open **Write a Post**, and select green from **Text Color**.
+
+```css
+/* Deliberately too broad. */
+[data-profile=composer-toolbar] button,
+[data-profile=composer-toolbar] button > span {
+  background: #c026d3 !important;
+}
+```
+
+The toolbar turns magenta, and the bar under the Text Color icon turns magenta too. The `button > span` selector matches the color indicator and overrides the green background LoreBary set on it. The broad `button` selector can also paint swatch buttons if they render inside the toolbar.
+
+#### Fix the selector
+
+**Replace the entire demo rule** with this one.
+
+```css
+/* Paint the toolbar controls and skip buttons with inline backgrounds. */
+[data-profile=composer-toolbar]
+button:is(
+  [data-profile=composer-btn],
+  [aria-label="Insert"],
+  [aria-label="Text background"],
+  [aria-label="Edit as HTML"]
+):not([style*="background"]) {
+  background: #c026d3 !important;
+}
+```
+
+This rule targets the toolbar buttons themselves. The indicator span can show its own color, and swatch buttons with inline backgrounds keep their individual colors.
+
+#### Check the result
+
+Select green again. The **Text Color button** should stay magenta, and its **indicator bar** should show green. If the bar still shows magenta, look for another rule that sets a `background` or `background-color` on toolbar button spans or on `[data-btn=text-color-bar]`.
+
+### About Me “View All”
+
+Style the **View All** button if you want visitors to expand the bio themselves. To show the full bio by default, remove its height limit and hide the button.
+
+#### Style the View All button
+
+```css
+[data-profile=about-more] {
+  background: #49365e;
+  border: 1px solid #bd9bea;
+  color: #e0c7ff;
+}
+
+[data-profile=about-more]:focus-visible {
+  outline: 2px solid #ffd580;
+  outline-offset: 2px;
+}
+
+/* Font icon. */
+[data-profile=about-more] i {
+  color: #ffd580;
+}
+
+/* Image icon. */
+[data-profile=about-more] img {
+  filter: sepia(1) saturate(2) hue-rotate(220deg);
+}
+```
+
+The button’s `color` sets the label color. Use the icon rule that matches what your button renders.
+
+#### Show the full bio and hide View All
+
+```css
+/* Show the full About Me bio. */
+[data-profile=about-bio] {
+  max-height: none;
+  overflow: visible;
+}
+
+/* Hide View All once the full bio is visible. */
+[data-profile=about-more] {
+  display: none;
+}
+```
+
+Use both rules together. The first removes the clipping from the bio. The second hides the button. Try it with a bio long enough to show **View All** before applying the CSS, then check that the last line is visible.
+
+### Scrolling on Content Cards
+
+On full Profile content pages like **Favorites**, LoreBary gives the outer Profile container a viewport-based height and scrolls the cards inside an inner panel. To make the whole content view scroll together, give the outer container the scrollbar and let the inner wrappers grow with the card grid.
+
+#### Move scrolling to the outer Profile container
+
+```css
+@media (min-width: 768px) {
+  /* Give the outer Profile container the scrollbar. */
+  [data-profile=scope][data-profile-view=content] {
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  /* Let the wrappers along the path to the card grid grow. */
+  [data-profile-view=content] [data-profile=body],
+  [data-profile-view=content]
+  [data-profile=body-inner]:has([data-profile=content-scroll]),
+  [data-profile-view=content]
+  [data-profile=body-inner] :has([data-profile=content-scroll]),
+  [data-profile-view=content]
+  [data-profile=body-inner] [data-profile=content-scroll] {
+    height: auto;
+    min-height: 0;
+    max-height: none;
+    flex: none;
+    overflow: visible;
+  }
+
+  /* Hide the fades that belonged to the inner scroller. */
+  [data-profile-view=content]
+  :is([data-profile=content-fade-top], [data-profile=content-fade-bottom]) {
+    display: none;
+  }
+}
+```
+
+Keep LoreBary’s native height on the outer Profile container. That height gives its `overflow-y: auto` rule a boundary to scroll within. The inner wrappers use `height: auto` so the full card grid can extend past that boundary.
+
+Test on a full content page with enough cards to scroll. At **768px and above**, scrolling over the cards should move the whole content view, including its header and footer. Below that width, the native inner scroller remains in use.
+
+For a side-banner layout, see [Compact Content View — Banner on the Left or Right](#compact-content-view--banner-on-the-left-or-right).
+
+#### Optional compact header and spacing
+
+Add this separately to tighten the spacing around the content-page controls and cards. These rules apply at all widths.
+
+```css
+[data-profile-view=content] [data-profile=action-bar] {
+  padding-block: 4px;
+}
+
+[data-profile-view=content] [data-profile=tabs] {
+  margin-block: 0 4px;
+}
+
+[data-profile-view=content] [data-profile=body-inner] {
+  padding-block: 0 4px;
+  gap: 6px;
+}
+
+[data-profile-view=content] [data-profile=content-panel] {
+  padding: 8px;
+}
+
+[data-profile-view=content] [data-profile=content-body] {
+  padding: 4px;
+}
+```
+
+### Compact Content View — Banner on the Left or Right
+
+This Scene Queen layout turns the banner into a full-height side panel on Profile content pages such as **Favorites**. The avatar and identity sit at the bottom of the banner, and the native navigation tabs sit directly above the content cards.
+
+To move the scrollbar to the outer profile container, see [Scrolling on Content Cards](#scrolling-on-content-cards).
+
+#### Banner on the Left
+
+Paste this block into your Profile CSS. Keep `[data-profile=scope][data-profile-view=content]` together in the selectors. The two-column layout applies to full content views at all widths.
+
+```css
+/* Content-page grid. */
+[data-profile=scope][data-profile-view=content] {
+  display: grid;
+  grid-template-columns: minmax(0, clamp(200px, 19vw, 240px)) minmax(0, 1fr);
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: .75rem;
+  padding: .75rem;
+  box-sizing: border-box;
+}
+
+[data-profile=scope][data-profile-view=content] :is([data-profile=hero-frame], [data-profile=hero]) {
+  display: contents;
+}
+
+/* Banner artwork spans the left column. */
+[data-profile=scope][data-profile-view=content] [data-profile=hero]::before,
+[data-profile=scope][data-profile-view=content] [data-profile=hero] > :is([data-profile=hero-tint], div[style*="background-image"]) {
+  grid-area: 1 / 1 / -1 / 2;
+  position: relative;
+  inset: auto;
+  min-width: 0;
+  border-radius: .75rem;
+  z-index: 1;
+}
+
+[data-profile=scope][data-profile-view=content] [data-profile=hero]::before {
+  content: "";
+  background: inherit;
+  border: inherit;
+}
+
+[data-profile=scope][data-profile-view=content] [data-profile=hero] > [data-profile=hero-tint] {
+  background: linear-gradient(transparent 35%, rgba(14, 13, 23, .96) 100%);
+  mask-image: none;
+  -webkit-mask-image: none;
+}
+
+/* Identity at the bottom of the banner. */
+[data-profile=scope][data-profile-view=content] [data-profile=hero-content] {
+  grid-area: 1 / 1 / -1 / 2;
+  align-self: end;
+  position: relative;
+  min-width: 0;
+  padding: .875rem;
+  background: linear-gradient(transparent, rgba(14, 13, 23, .88) 38%);
+  border-radius: 0 0 .75rem .75rem;
+  z-index: 2;
+}
+
+[data-profile=scope][data-profile-view=content] [data-profile=hero-row] {
+  flex-direction: column;
+  gap: .625rem;
+  padding: 0;
+}
+
+[data-profile=scope][data-profile-view=content] [data-profile=identity-card] {
+  width: 100%;
+  min-width: 0;
+  text-align: center;
+}
+
+[data-profile=scope][data-profile-view=content] :is([data-profile=identity], [data-profile=badges]) {
+  justify-content: center;
+}
+
+[data-profile=scope][data-profile-view=content] [data-profile=display-name] {
+  font-size: 1.125rem !important;
+  overflow-wrap: anywhere;
+}
+
+/* Scene Queen badges. */
+[data-profile=scope][data-profile-view=content] [data-profile=hero-content]::before,
+[data-profile=scope][data-profile-view=content] [data-profile=hero-content]::after {
+  display: table;
+  position: static;
+  grid-area: auto;
+  width: auto;
+  aspect-ratio: auto;
+  translate: none;
+  margin: 0 auto;
+  border: 1px solid #fd74b7;
+  border-radius: .375rem;
+  padding: .25rem .5rem;
+  font: 700 .625rem/1 system-ui, sans-serif;
+  letter-spacing: .075em;
+}
+
+/* Position the native level and navigation strips. */
+[data-profile=scope][data-profile-view=content] [data-profile=hero] > :is([data-profile=level-notch], [data-profile=tab-notch]) {
+  position: relative;
+  inset: auto;
+  translate: none;
+  transform: none;
+  margin: 0;
+  box-sizing: border-box;
+  z-index: 3;
+}
+
+[data-profile=scope][data-profile-view=content] [data-profile=level-notch] {
+  grid-area: 1 / 1 / -1 / 2;
+  place-self: start center;
+}
+
+/* Navigation above the cards. */
+[data-profile=scope][data-profile-view=content] [data-profile=tab-notch] {
+  grid-area: 1 / 2;
+  height: auto;
+  width: 100%;
+  min-width: 0;
+  max-width: none;
+  border-radius: .5rem;
+}
+
+[data-profile=scope][data-profile-view=content] > [data-profile=body] {
+  grid-area: 2 / 2;
+  min-width: 0;
+  min-height: 0;
+}
+
+[data-profile=scope][data-profile-view=content] [data-profile=body-inner] {
+  padding: 0;
+}
+```
+
+#### Banner on the Right
+
+Swap the column widths in the first rule:
+
+```css
+grid-template-columns: minmax(0, 1fr) minmax(0, clamp(200px, 19vw, 240px));
+```
+
+Then update the existing `grid-area` declarations:
+
+| Element | Left-banner version | Right-banner version |
+| --- | --- | --- |
+| Banner artwork, identity overlay, and level notch | `1 / 1 / -1 / 2` | `1 / 2 / -1 / 3` |
+| Navigation tabs (`tab-notch`) | `1 / 2` | `1 / 1` |
+| Content body | `2 / 2` | `2 / 1` |
+
+The artwork, identity overlay, and level notch each have their own rule. Change all three together so they share the same column. The tabs and cards move to the opposite column, with the tabs still above the cards.
+
+#### Adjust the banner width
+
+Edit `clamp(200px, 19vw, 240px)` to change the banner’s minimum, preferred, and maximum width. The `minmax(0, 1fr)` column gives the tabs and cards the rest of the available space.
+
+---
+
 ## Profile Selector Quick Reference
+
+Start with the native selector for the element you want to style. Add a parent or state qualifier when the same selector appears in multiple places or when a rule is meant for one view. For example, use `[data-modal=wave]` for the Wave dialog and `[data-modal=wave] [data-profile=modal-panel]` for its card.
 
 ### Identity and navigation
 
@@ -13396,187 +13981,397 @@ Attribute matching operators:
 [attr*="contains"]     /* contains text */
 ```
 
+### Native Profile Selectors
+
+The following tables cover the full native list. Selectors that use a sibling or descendant combinator, such as the Share button or modal avatar, describe a relationship in the markup. A native listing establishes the available target. Refer to the individual tutorial for tested states and layouts.
+
+#### Profile Shell, Banner, and Identity
+
+| Target | Selector |
+| --- | --- |
+| Any glyph icon | `[data-profile="icon"]` |
+| Avatar area | `[data-profile="avatar-wrap"]` |
+| Avatar buttons | `[data-profile="avatar-actions"]` |
+| Avatar frame | `[data-profile="avatar"]` |
+| Avatar image | `[data-profile="avatar-img"]` |
+| Background image | `[data-profile="page-background"]` |
+| Background tint | `[data-profile="page-tint"]` |
+| Banner | `[data-profile="hero"]` |
+| Banner content | `[data-profile="hero-content"]` |
+| Banner frame | `[data-profile="hero-frame"]` |
+| Banner row | `[data-profile="hero-row"]` |
+| Banner tint | `[data-profile="hero-tint"]` |
+| Body | `[data-profile="body"]` |
+| Body inner | `[data-profile="body-inner"]` |
+| Body tint | `[data-profile="body-tint"]` |
+| Compact profile banner | `[data-profile="hero"][data-compact="true"]` |
+| Content page layout | `[data-profile="scope"][data-profile-view="content"]` |
+| Display name | `[data-profile="display-name"]` |
+| Haunting streak | `[data-profile="streak"]` |
+| Level badge | `[data-profile="level"]` |
+| Level icon | `[data-profile="level-icon"]` |
+| Level notch | `[data-profile="level-notch"]` |
+| Level text | `[data-profile="level-text"]` |
+| Member since | `[data-profile="member-since"]` |
+| Member since icon | `[data-profile="member-since-icon"]` |
+| Member since inner | `[data-profile="member-since-inner"]` |
+| Member since text | `[data-profile="member-since-text"]` |
+| Meta block | `[data-profile="meta"]` |
+| Name card | `[data-profile="identity-card"]` |
+| Name column | `[data-profile="identity-col"]` |
+| Name row | `[data-profile="identity"]` |
+| Name text | `[data-profile="name-text"]` |
+| Quote | `[data-profile="quote"]` |
+| Quote text | `[data-profile="quote-text"]` |
+| Remove avatar button | `[data-profile="avatar-remove"]` |
+| Streak icon | `[data-profile="streak-icon"]` |
+| Streak number | `[data-profile="streak-count"]` |
+| Whole profile | `[data-profile="scope"]` |
+
+#### Profile Navigation, Counts, and Actions
+
+| Target | Selector |
+| --- | --- |
+| Action bar | `[data-profile="action-bar"]` |
+| Active tab | `[data-profile="tab"][data-active="true"]` |
+| Count number | `[data-profile="count-value"]` |
+| Follow button | `[data-profile="action-follow"]` |
+| Follow counts | `[data-profile="counts"]` |
+| Followers button | `[data-profile="count-followers"]` |
+| Following button | `[data-profile="count-following"]` |
+| Left actions | `[data-profile="actions"]` |
+| Letter button | `[data-profile="action-letter"]` |
+| Menu bar | `[data-profile="tabs"]` |
+| Menu bar notch | `[data-profile="tab-notch"]` |
+| Right actions | `[data-profile="actions-right"]` |
+| Tab | `[data-profile="tab"]` |
+| Tab count | `[data-profile="tab-count"]` |
+| Tab pane | `[data-profile="tab-pane"]` |
+| Wave button | `[data-profile="action-wave"]` |
+| Alerts button | `[data-profile="action-bell"]` |
+| About tab key | `[data-tab="about"]` |
+| Bundles tab key | `[data-tab="bundles"]` |
+| Characters tab key | `[data-tab="characters"]` |
+| Favorites tab key | `[data-tab="favorites"]` |
+| Lorebooks tab key | `[data-tab="lorebooks"]` |
+| Personas tab key | `[data-tab="personas"]` |
+| Plugins tab key | `[data-tab="plugins"]` |
+| Prompts tab key | `[data-tab="prompts"]` |
+| Scenarios tab key | `[data-tab="scenarios"]` |
+
+#### About Me and Profile HTML
+
+| Target | Selector |
+| --- | --- |
+| About card | `[data-profile="about-card"]` |
+| About column | `[data-profile="about"]` |
+| About columns | `[data-profile="about-row"]` |
+| Additional info | `[data-profile="additional-info"]` |
+| Bio text | `[data-profile="about-bio"]` |
+| Custom HTML block | `[data-profile="html-block"]` |
+| Edit button | `[data-profile="about-edit"]` |
+| Empty about | `[data-profile="about-empty"]` |
+| Info panel | `[data-profile="info-group"]` |
+| Left about chain | `[data-profile="about-chain-left"]` |
+| Relationships panel | `[data-profile="info-group"][data-info="relationships"]` |
+| Right about chain | `[data-profile="about-chain-right"]` |
+| Show more | `[data-profile="about-more"]` |
+| Boundaries information group | `[data-info="boundaries"]` |
+| Preferences information group | `[data-info="preferences"]` |
+| Relationships information group | `[data-info="relationships"]` |
+| Roleplay information group | `[data-info="roleplay"]` |
+| Socials information group | `[data-info="socials"]` |
+
+#### Composer and Toolbar
+
+| Target | Selector |
+| --- | --- |
+| Any toolbar button | `[data-profile="composer-btn"]` |
+| Attach button | `[data-btn="attach"]` |
+| Bold button | `[data-btn="bold"]` |
+| Bullet list button | `[data-btn="bullet-list"]` |
+| Centre align button | `[data-btn="center"]` |
+| Composer body | `[data-profile="composer-body"]` |
+| Composer footer | `[data-profile="composer-footer"]` |
+| Composer header | `[data-profile="composer-header"]` |
+| Composer spot | `[data-profile="composer-slot"]` |
+| Composer text area | `[data-profile="composer-editor"]` |
+| Composer toolbar | `[data-profile="composer-toolbar"]` |
+| Emoji picker button | `[data-btn="emote"]` |
+| GIF button | `[data-btn="gifs-stickers"]` |
+| GIF picker button | `[data-btn="gif"]` |
+| Heading button | `[data-btn="heading"]` |
+| Insert link button | `[data-btn="insert-link"]` |
+| Italic button | `[data-btn="italic"]` |
+| Justify button | `[data-btn="justify"]` |
+| Left align button | `[data-btn="left-align"]` |
+| Normal text button | `[data-btn="normal"]` |
+| Numbered list button | `[data-btn="numbered-list"]` |
+| Post button | `[data-profile="composer-submit"]` |
+| Right align button | `[data-btn="right-align"]` |
+| Sticker picker button | `[data-btn="sticker"]` |
+| Text colour button | `[data-btn="text-color"]` |
+| Underline button | `[data-btn="underline"]` |
+| Text color bar | `[data-btn="text-color-bar"]` |
+
+#### Published Posts, Feed, and Embeds
+
+| Target | Selector |
+| --- | --- |
+| Any post decoration | `[data-profile="post-decoration"]` |
+| Comment button | `[data-profile="post-comment-button"]` |
+| Comment count | `[data-profile="post-comment-count"]` |
+| Embed — Bary | `[data-profile="post-embed"][data-embed="bary"]` |
+| Embed — leaderboard | `[data-profile="post-embed"][data-embed="leaderboard"]` |
+| Embed — multiplayer | `[data-profile="post-embed"][data-embed="multiplayer"]` |
+| Embed — new upload | `[data-profile="post-embed"][data-embed="published"]` |
+| Embed — update | `[data-profile="post-embed"][data-embed="updated"]` |
+| Embed card | `[data-profile="embed-card"]` |
+| Embed title | `[data-profile="embed-title"]` |
+| Embedded content card | `[data-profile="post-embed"]` |
+| Feed column | `[data-profile="feed"]` |
+| Feed empty | `[data-profile="feed-empty"]` |
+| Feed loading | `[data-profile="feed-loading"]` |
+| Like button | `[data-profile="post-like"]` |
+| Likes summary | `[data-profile="post-likes"]` |
+| Load more | `[data-profile="feed-more"]` |
+| Post | `[data-profile="post"]` |
+| Post author | `[data-profile="post-author"]` |
+| Post avatar | `[data-profile="post-avatar"]` |
+| Post body | `[data-profile="post-body"]` |
+| Post engagement bar | `[data-profile="post-engagement"]` |
+| Post GIF | `[data-profile="post-gif"]` |
+| Post header | `[data-profile="post-header"]` |
+| Post list | `[data-profile="feed-list"]` |
+| Post media | `[data-profile="post-media"]` |
+| Post media grid | `[data-profile="post-media-grid"]` |
+| Post menu | `[data-profile="post-actions"]` |
+| Post read more | `[data-profile="post-more"]` |
+| Post type pill | `[data-profile="post-pill"]` |
+| Repost count | `[data-profile="post-reposts"]` |
+| Share button | `[data-profile="post-comment-button"] + *` |
+| Spoiler overlay | `[data-profile="media-reveal"]` |
+
+#### Comments and Replies
+
+| Target | Selector |
+| --- | --- |
+| Comment | `[data-profile="comment"]` |
+| Comment author | `[data-profile="comment-author"]` |
+| Comment avatar | `[data-profile="comment-avatar"]` |
+| Comment row | `[data-profile="comment-row"]` |
+| Comment submit | `[data-profile="comment-submit"]` |
+| Comment text area | `[data-profile="comment-editor"]` |
+| Comment timestamp | `[data-profile="comment-time"]` |
+| Comment toolbar | `[data-profile="comment-toolbar"]` |
+| Deleted comment | `[data-profile="comment-deleted"]` |
+| Deleted reply | `[data-profile="reply-deleted"]` |
+| Load more comments | `[data-profile="comment-more"]` |
+| Reply | `[data-profile="reply"]` |
+| Reply author | `[data-profile="reply-author"]` |
+| Reply avatar | `[data-profile="reply-avatar"]` |
+| Reply button | `[data-profile="comment-reply-btn"]` |
+| Reply header | `[data-profile="reply-header"]` |
+| Reply timestamp | `[data-profile="reply-time"]` |
+| Sign-in prompt | `[data-profile="comment-locked"]` |
+
+#### Gallery, Featured Creators, and Content Sections
+
+| Target | Selector |
+| --- | --- |
+| Binderies container | `[data-profile="content-panel"][data-section="binderies"]` |
+| Bottom scroll fade | `[data-profile="content-fade-bottom"]` |
+| Bundles container | `[data-profile="content-panel"][data-section="bundles"]` |
+| Chained container frame | `[data-profile="content-chain-frame"]` |
+| Characters container | `[data-profile="content-panel"][data-section="characters"]` |
+| Chats container | `[data-profile="content-panel"][data-section="chats"]` |
+| Content body | `[data-profile="content-body"]` |
+| Content container | `[data-profile="content-panel"]` |
+| Content count | `[data-profile="content-count"]` |
+| Content footer | `[data-profile="content-footer"]` |
+| Content grid | `[data-profile="grid"]` |
+| Content header | `[data-profile="content-header"]` |
+| Content sorting | `[data-profile="content-sort"]` |
+| Content title | `[data-profile="content-title"]` |
+| Content type filter | `[data-profile="content-type-filter"]` |
+| Favorites container | `[data-profile="content-panel"][data-section="favorites"]` |
+| Featured container | `[data-profile="content-panel"][data-section="featured"]` |
+| Featured empty | `[data-profile="featured-empty"]` |
+| Featured rail | `[data-profile="featured-rail"]` |
+| Featured section | `[data-profile="featured-section"]` |
+| Featured tab | `[data-profile="featured"]` |
+| Featured title | `[data-profile="featured-title"]` |
+| Featured view all button | `[data-profile="featured-view-all"]` |
+| Gallery buttons | `[data-profile="gallery-actions"]` |
+| Gallery container | `[data-profile="content-panel"][data-section="gallery"]` |
+| Gallery grid | `[data-profile="gallery-grid"]` |
+| Gallery preview | `[data-profile="gallery-preview"]` |
+| Left container chain | `[data-profile="content-chain-left"]` |
+| Loading state | `[data-profile="loading"]` |
+| Lorebooks container | `[data-profile="content-panel"][data-section="lorebooks"]` |
+| Personas container | `[data-profile="content-panel"][data-section="personas"]` |
+| Plugins container | `[data-profile="content-panel"][data-section="plugins"]` |
+| Popular content | `[data-profile="popular-content"]` |
+| Profile search | `[data-profile="search"]` |
+| Prompts container | `[data-profile="content-panel"][data-section="prompts"]` |
+| Right container chain | `[data-profile="content-chain-right"]` |
+| Scenarios container | `[data-profile="content-panel"][data-section="scenarios"]` |
+| Scrollable content | `[data-profile="content-scroll"]` |
+| Search and sorting area | `[data-profile="content-actions"]` |
+| Top scroll fade | `[data-profile="content-fade-top"]` |
+
+#### Content Cards, Badges, and Stats
+
+| Target | Selector |
+| --- | --- |
+| Author badge | `[data-profile="author-badge"]` |
+| Badge icons | `[data-profile="badge-list"]` |
+| Badge row | `[data-profile="badges"]` |
+| Bindery card | `[data-card="binderies"]` |
+| Card body | `[data-profile="card-body"]` |
+| Card colour tint | `[data-profile="card-tint"]` |
+| Card cover | `[data-profile="card-cover"]` |
+| Card cover gradient | `[data-profile="card-fade"]` |
+| Card cover image | `[data-profile="card-cover-img"]` |
+| Card footer | `[data-profile="card-footer"]` |
+| Card frame ornament | `[data-profile="card-vine"]` |
+| Card frame wash | `[data-profile="card-wash"]` |
+| Card header | `[data-profile="card-header"]` |
+| Card inner layer | `[data-profile="card-lift"]` |
+| Card overlay panel | `[data-profile="card-overlay"]` |
+| Card rating | `[data-profile="card-rating"]` |
+| Card shell | `[data-profile="card-shell"]` |
+| Card stat icon | `[data-profile="card-stat-icon"]` |
+| Card tag overflow count | `[data-profile="card-tags-more"]` |
+| Card tooltip wrapper | `[data-profile="card-tip"]` |
+| Character card | `[data-card="characters"]` |
+| Content card | `[data-profile="card"]` |
+| Creator card | `[data-profile="creator-card"]` |
+| Donator badge | `[data-badge="donatorSingle"]` |
+| Downloads stat | `[data-stat="downloads"]` |
+| Draft outline | `[data-profile="card-draft-outline"]` |
+| Featured creator badge | `[data-badge="featured"]` |
+| Hidden overflow tag | `[data-overflow="true"]` |
+| Likes stat | `[data-stat="likes"]` |
+| Lorebook card | `[data-card="lorebooks"]` |
+| Mod badge | `[data-badge="mod"]` |
+| Monthly donator badge | `[data-badge="donatorMonthly"]` |
+| Persona card | `[data-card="personas"]` |
+| Plugin card | `[data-card="plugins"]` |
+| Prompt card | `[data-card="prompts"]` |
+| Scenario card | `[data-card="scenarios"]` |
+| Staff badge | `[data-badge="staff"]` |
+| Verified check | `[data-profile="verified"]` |
+| Views stat | `[data-stat="views"]` |
+| Pieces stat | `[data-stat="pieces"]` |
+
+#### Rich Text and Decorations
+
+| Target | Selector |
+| --- | --- |
+| Collapsible section | `[data-decoration="collapsible"]` |
+| Divider | `[data-decoration="divider"]` |
+| Dotted divider | `[data-decoration="divider-dotted"]` |
+| More menu icon | `[data-icon="ellipsis-h"]` |
+| Paw trail | `[data-decoration="paws"]` |
+| Quote block | `[data-decoration="quote"]` |
+| Send icon | `[data-icon="paper-plane"]` |
+| Spoiler | `[data-decoration="spoiler"]` |
+| Verified check icon | `[data-icon="check"]` |
+
+#### Dialogs and Modals
+
+| Target | Selector |
+| --- | --- |
+| Avatar zoom | `[data-profile="modal"][data-modal="avatar-zoom"]` |
+| Block confirm | `[data-profile="modal"][data-modal="block"]` |
+| Followers and Following wrapper | `[data-profile="modal"][data-modal="follow"]` |
+| Mobile biography editor | `[data-profile="modal"][data-modal="about"]` |
+| Mobile profile details | `[data-profile="modal"][data-modal="details"]` |
+| Modal avatar | `[data-profile="modal-list"] img` |
+| Modal backdrop | `[data-profile="modal-backdrop"]` |
+| Modal body | `[data-profile="modal-body"]` |
+| Modal card | `[data-profile="modal-panel"]` |
+| Modal empty state | `[data-profile="modal-list"] ~ p` |
+| Modal footer | `[data-profile="modal-footer"]` |
+| Modal header | `[data-profile="modal-header"]` |
+| Modal list | `[data-profile="modal-list"]` |
+| Modal overlay (full screen) | `[data-profile="modal"]` |
+| Modal row | `[data-profile="modal-list"] > *` |
+| Modal row follow button | `[data-profile="modal-row-follow"]` |
+| Modal search field | `[data-profile="modal-search"]` |
+| Modal title | `[data-profile="modal-title"]` |
+| Remove avatar | `[data-profile="modal"][data-modal="remove-avatar"]` |
+| Remove banner | `[data-profile="modal"][data-modal="remove-banner"]` |
+| Wave | `[data-profile="modal"][data-modal="wave"]` |
+
+### Native CSS Custom Properties
+
+Set these properties on the component that consumes them. Custom properties inherit, so a declaration higher in the profile can affect several components.
+
+| Property | Use |
+| --- | --- |
+| `--library-card-shadow` | Library card shadow. The property is listed in the supplied inventory. Its consuming selector and value format still need confirmation before adding a copyable recipe. |
+| `--scroll-shade-rgb` | RGB channels for the scroll-fade color. Use a channel list such as `25, 52, 70` on the folder toolbar or featured rail. |
+| `--scroll-shade-solid` | Solid scroll-shade stop. The captured tab-notch example sets it to `transparent`. |
+| `--scroll-shade-clear` | Clear scroll-shade stop. The captured tab-notch example sets it to `transparent`. |
+
+```css
+/* Match the folder strip's fades to a #193446 surface. */
+[data-section=gallery] [aria-label="Folders"] {
+  --scroll-shade-rgb: 25, 52, 70;
+}
+
+/* Make these two stops transparent on the navigation notch. */
+[data-profile=tab-notch] {
+  --scroll-shade-solid: transparent;
+  --scroll-shade-clear: transparent;
+}
+```
+
 ### Additional Component and State Selectors
 
-These entries extend the existing quick reference with compound, named-control, and structural targets. The component tutorials provide the complete rules.
+These recipes qualify the native hooks with a state, a label, or a captured structure. For example, add `[data-profile=composer-toolbar]` before a `[data-btn]` selector when the rule is meant only for the post composer. Check label and structural selectors in the view where you use them.
 
 | UI area | Individual target | CSS selector / target |
 | --- | --- | --- |
-| About & information | About Bio | `[data-profile="scope"] [data-profile="about-bio"]` |
-| About & information | About Chain Left | `[data-profile="scope"] [data-profile="about-chain-left"]` |
-| About & information | About Chain Right | `[data-profile="scope"] [data-profile="about-chain-right"]` |
-| Profile shell & header | Action Bar | `[data-profile="scope"] [data-profile="action-bar"]` |
-| Profile shell & header | Action Follow | `[data-profile="scope"] [data-profile="action-follow"]` |
-| Profile shell & header | Action Letter | `[data-profile="scope"] [data-profile="action-letter"]` |
-| Profile shell & header | Action Wave | `[data-profile="scope"] [data-profile="action-wave"]` |
-| Profile shell & header | Author Badge | `[data-profile="scope"] [data-profile="author-badge"]` |
-| Profile shell & header | Badge List | `[data-profile="scope"] [data-profile="badge-list"]` |
-| Profile shell & header | Badges | `[data-profile="scope"] [data-profile="badges"]` |
-| Profile shell & header | Body | `[data-profile="scope"] [data-profile="body"]` |
-| Profile shell & header | Card Fade | `[data-profile="scope"] [data-profile="card-fade"]` |
-| Profile shell & header | Card Rating | `[data-profile="scope"] [data-profile="card-rating"]` |
-| Profile shell & header | Card Stat Icon | `[data-profile="scope"] [data-profile="card-stat-icon"]` |
-| Profile shell & header | Card Tint | `[data-profile="scope"] [data-profile="card-tint"]` |
-| Profile shell & header | Card Wash | `[data-profile="scope"] [data-profile="card-wash"]` |
-| Feed & composer | Composer Btn | `[data-profile="scope"] [data-profile="composer-btn"]` |
-| Feed & composer | Composer Submit | `[data-profile="scope"] [data-profile="composer-submit"]` |
-| Content & navigation | Content Body | `[data-profile="scope"] [data-profile="content-body"]` |
-| Content & navigation | Content Chain Left | `[data-profile="scope"] [data-profile="content-chain-left"]` |
-| Content & navigation | Content Chain Right | `[data-profile="scope"] [data-profile="content-chain-right"]` |
-| Content & navigation | Content Fade Bottom | `[data-profile="scope"] [data-profile="content-fade-bottom"]` |
-| Content & navigation | Content Fade Top | `[data-profile="scope"] [data-profile="content-fade-top"]` |
-| Content & navigation | Content Footer | `[data-profile="scope"] [data-profile="content-footer"]` |
-| Content & navigation | Content Header | `[data-profile="scope"] [data-profile="content-header"]` |
-| Content & navigation | Content Panel | `[data-profile="scope"] [data-profile="content-panel"]` |
-| Content & navigation | Content Scroll | `[data-profile="scope"] [data-profile="content-scroll"]` |
-| Content & navigation | Content Sort | `[data-profile="scope"] [data-profile="content-sort"]` |
-| Content & navigation | Content Type Filter | `[data-profile="scope"] [data-profile="content-type-filter"]` |
-| Profile shell & header | Hero Content | `[data-profile="scope"] [data-profile="hero-content"]` |
-| Profile shell & header | Hero Frame | `[data-profile="scope"] [data-profile="hero-frame"]` |
-| Profile shell & header | Hero Row | `[data-profile="scope"] [data-profile="hero-row"]` |
-| Profile shell & header | Hero Tint | `[data-profile="scope"] [data-profile="hero-tint"]` |
-| Profile shell & header | Identity | `[data-profile="scope"] [data-profile="identity"]` |
-| Profile shell & header | Identity Card | `[data-profile="scope"] [data-profile="identity-card"]` |
-| Profile shell & header | Identity Col | `[data-profile="scope"] [data-profile="identity-col"]` |
-| About & information | Info Group | `[data-profile="scope"] [data-profile="info-group"]` |
-| Profile shell & header | Level Notch | `[data-profile="scope"] [data-profile="level-notch"]` |
-| Profile shell & header | Level Text | `[data-profile="scope"] [data-profile="level-text"]` |
 | Modals | Modal List | `[data-profile="modal-panel"] [data-profile="modal-list"]` |
-| Modals | Modal Panel | `[data-profile="modal-panel"]` |
 | Modals | Modal Row Follow | `[data-profile="modal-panel"] [data-profile="modal-row-follow"]` |
 | Modals | Modal Search | `[data-profile="modal-panel"] [data-profile="modal-search"]` |
-| Profile shell & header | Name Text | `[data-profile="scope"] [data-profile="name-text"]` |
-| Profile shell & header | Page Tint | `[data-profile="scope"] [data-profile="page-tint"]` |
-| Feed & composer | Post Actions | `[data-profile="scope"] [data-profile="post-actions"]` |
-| Feed & composer | Post Author | `[data-profile="scope"] [data-profile="post-author"]` |
-| Feed & composer | Post Avatar | `[data-profile="scope"] [data-profile="post-avatar"]` |
-| Feed & composer | Post Comment Button | `[data-profile="scope"] [data-profile="post-comment-button"]` |
-| Feed & composer | Post Embed | `[data-profile="scope"] [data-profile="post-embed"]` |
-| Feed & composer | Post Pill | `[data-profile="scope"] [data-profile="post-pill"]` |
-| Profile shell & header | Quote | `[data-profile="scope"] [data-profile="quote"]` |
-| Profile shell & header | Quote Text | `[data-profile="scope"] [data-profile="quote-text"]` |
-| Content & navigation | Search | `[data-profile="scope"] [data-profile="search"]` |
-| Content & navigation | Tab Pane | `[data-profile="scope"] [data-profile="tab-pane"]` |
-| Named targets | data-tab / about | `[data-profile="scope"] [data-tab="about"]` |
-| Named targets | data-tab / bundles | `[data-profile="scope"] [data-tab="bundles"]` |
-| Named targets | data-tab / characters | `[data-profile="scope"] [data-tab="characters"]` |
-| Named targets | data-tab / favorites | `[data-profile="scope"] [data-tab="favorites"]` |
-| Named targets | data-tab / lorebooks | `[data-profile="scope"] [data-tab="lorebooks"]` |
-| Named targets | data-tab / personas | `[data-profile="scope"] [data-tab="personas"]` |
-| Named targets | data-tab / plugins | `[data-profile="scope"] [data-tab="plugins"]` |
-| Named targets | data-tab / prompts | `[data-profile="scope"] [data-tab="prompts"]` |
-| Named targets | data-tab / scenarios | `[data-profile="scope"] [data-tab="scenarios"]` |
-| Named targets | data-btn / attach | `[data-profile="scope"] [data-btn="attach"]` |
-| Named targets | data-btn / bold | `[data-profile="scope"] [data-btn="bold"]` |
-| Named targets | data-btn / bullet-list | `[data-profile="scope"] [data-btn="bullet-list"]` |
-| Named targets | data-btn / center | `[data-profile="scope"] [data-btn="center"]` |
-| Named targets | data-btn / gifs-stickers | `[data-profile="scope"] [data-btn="gifs-stickers"]` |
-| Named targets | data-btn / heading | `[data-profile="scope"] [data-btn="heading"]` |
-| Named targets | data-btn / italic | `[data-profile="scope"] [data-btn="italic"]` |
-| Named targets | data-btn / justify | `[data-profile="scope"] [data-btn="justify"]` |
-| Named targets | data-btn / left-align | `[data-profile="scope"] [data-btn="left-align"]` |
-| Named targets | data-btn / normal | `[data-profile="scope"] [data-btn="normal"]` |
-| Named targets | data-btn / numbered-list | `[data-profile="scope"] [data-btn="numbered-list"]` |
-| Named targets | data-btn / right-align | `[data-profile="scope"] [data-btn="right-align"]` |
-| Named targets | data-btn / text-color | `[data-profile="scope"] [data-btn="text-color"]` |
-| Named targets | data-btn / underline | `[data-profile="scope"] [data-btn="underline"]` |
-| Named targets | data-info / boundaries | `[data-profile="scope"] [data-info="boundaries"]` |
-| Named targets | data-info / preferences | `[data-profile="scope"] [data-info="preferences"]` |
-| Named targets | data-info / relationships | `[data-profile="scope"] [data-info="relationships"]` |
-| Named targets | data-info / roleplay | `[data-profile="scope"] [data-info="roleplay"]` |
-| Named targets | data-info / socials | `[data-profile="scope"] [data-info="socials"]` |
 | Named targets | data-profile-view / about | `[data-profile="scope"][data-profile-view="about"]` |
-| Modals | Followers | `[data-profile="modal-panel"][aria-label="Followers"]` |
-| Modals | Following | `[data-profile="modal-panel"][aria-label="Following"]` |
-| Modals | Send a wave | `[data-profile="modal-panel"][aria-label="Send a wave"]` |
-| Event posts | Level Up | `[data-profile="scope"] [data-profile="post"]:has(img[src^="/img/Level/"].aspect-square)` |
-| Event posts | Relationship / marriage | `[data-profile="scope"] [data-profile="post"]:has(img[src="/img/pixel/heart.webp"].aspect-square)` |
-| Event posts | Glorp badge | `[data-profile="scope"] [data-profile="post"]:has(img[src="/img/Badges/badge_glorp.webp"].aspect-square)` |
-| About & information | About me tab | `[data-profile="scope"] [data-profile="about"] [role="tab"][aria-label="About me"]` |
-| About & information | Roleplay tab | `[data-profile="scope"] [data-profile="about"] [role="tab"][aria-label="Roleplay"]` |
-| About & information | Relationships tab | `[data-profile="scope"] [data-profile="about"] [role="tab"][aria-label="Relationships"]` |
-| About & information | Links & socials tab | `[data-profile="scope"] [data-profile="about"] [role="tab"][aria-label="Links & socials"]` |
-| Feed & composer | Insert | `[data-profile="scope"] [data-profile="composer-toolbar"] button[aria-label="Insert"]` |
-| Feed & composer | Text background | `[data-profile="scope"] [data-profile="composer-toolbar"] button[aria-label="Text background"]` |
-| Feed & composer | Edit as HTML | `[data-profile="scope"] [data-profile="composer-toolbar"] button[aria-label="Edit as HTML"]` |
-| Controls | Post options | `[data-profile="scope"] [data-profile="post-actions"] > button[aria-label="Post options"]` |
-| Controls | Share | `[data-profile="scope"] [data-profile="post"] button[aria-label="Share"]` |
-| Controls | Send wave | `[data-profile="modal-panel"][aria-label="Send a wave"] button[aria-label="Send wave"]` |
+| Modals | Followers panel | `[data-modal=follow] [data-profile=modal-panel][aria-label="Followers"]` |
+| Modals | Following panel | `[data-modal=follow] [data-profile=modal-panel][aria-label="Following"]` |
+| Modals | Wave panel | `[data-modal=wave] [data-profile=modal-panel]` |
+| Event posts | Level Up | `[data-profile="post"]:has(img[src^="/img/Level/"].aspect-square)` |
+| Event posts | Relationship / marriage | `[data-profile="post"]:has(img[src="/img/pixel/heart.webp"].aspect-square)` |
+| Event posts | Glorp badge | `[data-profile="post"]:has(img[src="/img/Badges/badge_glorp.webp"].aspect-square)` |
+| About & information | About me tab | `[data-profile="about"] [role="tab"][aria-label="About me"]` |
+| About & information | Roleplay tab | `[data-profile="about"] [role="tab"][aria-label="Roleplay"]` |
+| About & information | Relationships tab | `[data-profile="about"] [role="tab"][aria-label="Relationships"]` |
+| About & information | Links & socials tab | `[data-profile="about"] [role="tab"][aria-label="Links & socials"]` |
+| Feed & composer | Insert | `[data-profile="composer-toolbar"] button[aria-label="Insert"]` |
+| Feed & composer | Text background | `[data-profile="composer-toolbar"] button[aria-label="Text background"]` |
+| Feed & composer | Edit as HTML | `[data-profile="composer-toolbar"] button[aria-label="Edit as HTML"]` |
+| Controls | Post options | `[data-profile="post-actions"] > button[aria-label="Post options"]` |
+| Controls | Share | `[data-profile="post"] button[aria-label="Share"]` |
+| Controls | Send wave | `[data-modal=wave] button[aria-label="Send wave"]` |
 | Controls | Back to top | `[data-profile="content-panel"] button[aria-label="Back to top"]` |
-| HTML additions | About Row | `[data-profile="scope"] [data-profile="about-row"]` |
-| HTML additions | Actions | `[data-profile="scope"] [data-profile="actions"]` |
-| HTML additions | Actions Right | `[data-profile="scope"] [data-profile="actions-right"]` |
-| HTML additions | Card | `[data-profile="scope"] [data-profile="card"]` |
-| HTML additions | Card Body | `[data-profile="scope"] [data-profile="card-body"]` |
-| HTML additions | Card Cover | `[data-profile="scope"] [data-profile="card-cover"]` |
-| HTML additions | Card Cover Img | `[data-profile="scope"] [data-profile="card-cover-img"]` |
-| HTML additions | Card Footer | `[data-profile="scope"] [data-profile="card-footer"]` |
-| HTML additions | Card Header | `[data-profile="scope"] [data-profile="card-header"]` |
-| HTML additions | Card Lift | `[data-profile="scope"] [data-profile="card-lift"]` |
-| HTML additions | Card Shell | `[data-profile="scope"] [data-profile="card-shell"]` |
-| HTML additions | Card Tags More | `[data-profile="scope"] [data-profile="card-tags-more"]` |
-| HTML additions | Card Tip | `[data-profile="scope"] [data-profile="card-tip"]` |
-| HTML additions | Card Vine | `[data-profile="scope"] [data-profile="card-vine"]` |
-| HTML additions | Content Actions | `[data-profile="scope"] [data-profile="content-actions"]` |
-| HTML additions | Content Chain Frame | `[data-profile="scope"] [data-profile="content-chain-frame"]` |
-| HTML additions | Content Count | `[data-profile="scope"] [data-profile="content-count"]` |
-| HTML additions | Content Title | `[data-profile="scope"] [data-profile="content-title"]` |
-| HTML additions | Count Value | `[data-profile="scope"] [data-profile="count-value"]` |
-| HTML additions | Counts | `[data-profile="scope"] [data-profile="counts"]` |
-| HTML additions | Feed | `[data-profile="scope"] [data-profile="feed"]` |
-| HTML additions | Grid | `[data-profile="scope"] [data-profile="grid"]` |
-| HTML additions | Icon | `[data-profile="scope"] [data-profile="icon"]` |
-| HTML additions | Member Since | `[data-profile="scope"] [data-profile="member-since"]` |
-| HTML additions | Member Since Inner | `[data-profile="scope"] [data-profile="member-since-inner"]` |
-| HTML additions | Member Since Text | `[data-profile="scope"] [data-profile="member-since-text"]` |
-| HTML additions | Meta | `[data-profile="scope"] [data-profile="meta"]` |
-| HTML additions | Page Background | `[data-profile="scope"] [data-profile="page-background"]` |
-| HTML additions | Post Decoration | `[data-profile="scope"] [data-profile="post-decoration"]` |
-| HTML additions | Streak Count | `[data-profile="scope"] [data-profile="streak-count"]` |
-| Named HTML targets | data-btn / text-color-bar | `[data-profile="scope"] [data-btn="text-color-bar"]` |
-| Named HTML targets | data-card / bundles | `[data-profile="scope"] [data-card="bundles"]` |
-| Named HTML targets | data-card / characters | `[data-profile="scope"] [data-card="characters"]` |
-| Named HTML targets | data-card / lorebooks | `[data-profile="scope"] [data-card="lorebooks"]` |
-| Named HTML targets | data-card / personas | `[data-profile="scope"] [data-card="personas"]` |
-| Named HTML targets | data-card / plugins | `[data-profile="scope"] [data-card="plugins"]` |
-| Named HTML targets | data-card / prompts | `[data-profile="scope"] [data-card="prompts"]` |
-| Named HTML targets | data-card / scenarios | `[data-profile="scope"] [data-card="scenarios"]` |
-| Named HTML targets | data-profile-view / content | `[data-profile="scope"][data-profile-view="content"]` |
-| Named HTML targets | data-stat / downloads | `[data-profile="scope"] [data-stat="downloads"]` |
-| Named HTML targets | data-stat / pieces | `[data-profile="scope"] [data-stat="pieces"]` |
-| Named HTML targets | data-stat / views | `[data-profile="scope"] [data-stat="views"]` |
-| Wave & modals | Wish options | `[data-profile="modal-panel"][aria-label="Send a wave"] [role="radiogroup"][aria-label="Wish"]` |
-| Wave & modals | Wish selected | `[data-profile="modal-panel"][aria-label="Send a wave"] button[role="radio"][aria-checked="true"] > span` |
-| Wave & modals | Wish unselected | `[data-profile="modal-panel"][aria-label="Send a wave"] button[role="radio"][aria-checked="false"] > span` |
-| Wave & modals | Wave note | `[data-profile="modal-panel"][aria-label="Send a wave"] section.sketch-note` |
-| Wave & modals | Wave tape | `[data-profile="modal-panel"][aria-label="Send a wave"] img.sketch-note__fastener--tape` |
-| Wave & modals | Wave changing wish | `[data-profile="modal-panel"][aria-label="Send a wave"] [aria-live="polite"]` |
+| Named HTML targets | data-card / bundles | `[data-card="bundles"]` |
+| Wave & modals | Wish options | `[data-modal=wave] [role="radiogroup"][aria-label="Wish"]` |
+| Wave & modals | Wave note | `[data-modal=wave] section.sketch-note` |
+| Wave & modals | Wave tape | `[data-modal=wave] section.sketch-note > img[src="/img/sketch/tape.webp"]` |
 | Wave & modals | Modal footer | `[data-profile="modal-panel"] [data-modal-footer="true"]` |
-| Wave & modals | Modal footer tip | `[data-profile="modal-panel"] [data-modal-footer-tip="true"]` |
-| Wave & modals | Wave close | `[data-profile="modal-panel"][aria-label="Send a wave"] button[aria-label="Close"]` |
-| Content sections | Lorebooks panel | `[data-profile="scope"] [data-profile="content-panel"][data-section="lorebooks"]` |
-| Content sections | Plugins panel | `[data-profile="scope"] [data-profile="content-panel"][data-section="plugins"]` |
-| Content sections | Scenarios panel | `[data-profile="scope"] [data-profile="content-panel"][data-section="scenarios"]` |
-| Content sections | Personas panel | `[data-profile="scope"] [data-profile="content-panel"][data-section="personas"]` |
-| Content sections | Characters panel | `[data-profile="scope"] [data-profile="content-panel"][data-section="characters"]` |
-| Content sections | Prompts panel | `[data-profile="scope"] [data-profile="content-panel"][data-section="prompts"]` |
-| Content sections | Bundles panel | `[data-profile="scope"] [data-profile="content-panel"][data-section="bundles"]` |
-| About & information | About you group | `[data-profile="scope"] [data-profile="info-group"][data-info="about"]` |
-| Additional HTML hooks | Embed Card | `[data-profile="scope"] [data-profile="embed-card"]` |
-| Additional HTML hooks | Embed Title | `[data-profile="scope"] [data-profile="embed-title"]` |
-| Additional HTML hooks | Feed More | `[data-profile="scope"] [data-profile="feed-more"]` |
-| Additional HTML hooks | Media Reveal | `[data-profile="scope"] [data-profile="media-reveal"]` |
+| Wave & modals | Modal footer tip | `[data-modal=wave] [data-modal-footer-tip="true"]` |
+| Wave & modals | Wave close | `[data-modal=wave] button[aria-label="Close"]` |
+| About & information | About you group | `[data-profile="info-group"][data-info="about"]` |
 | Additional HTML hooks | Modal Body | `[data-profile="modal-panel"] [data-profile="modal-body"]` |
 | Additional HTML hooks | Modal Footer | `[data-profile="modal-panel"] [data-profile="modal-footer"]` |
 | Additional HTML hooks | Modal Header | `[data-profile="modal-panel"] [data-profile="modal-header"]` |
 | Additional HTML hooks | Modal Title | `[data-profile="modal-panel"] [data-profile="modal-title"]` |
-| Additional HTML hooks | Post Media | `[data-profile="scope"] [data-profile="post-media"]` |
-| Additional HTML hooks | Post Media Grid | `[data-profile="scope"] [data-profile="post-media-grid"]` |
 | Additional components | Bindery tab | `[data-profile="tabs"] [data-profile="tab"][data-tab="binderies"]` |
 | Additional components | Personal subtab | `[data-profile="about"] [role="tab"][aria-label="Personal"]` |
 | Additional components | Main sections left | `[data-profile="tabs"] button[aria-label="Scroll Profile sections left"]` |
 | Additional components | Main sections right | `[data-profile="tabs"] button[aria-label="Scroll Profile sections right"]` |
-| Additional components | Gallery panel | `[data-profile="content-panel"][data-section="gallery"]` |
 | Additional components | Content dialog | `[data-profile="content-panel"][role="dialog"]` |
 | Additional components | Previous section | `[data-profile="content-panel"] button[aria-label^="Previous section:"]` |
 | Additional components | Next section | `[data-profile="content-panel"] button[aria-label^="Next section:"]` |
@@ -13585,45 +14380,20 @@ These entries extend the existing quick reference with compound, named-control, 
 | Additional components | Popular creations Close | `[role="dialog"][aria-label="Popular creations"] button[aria-label="Close"]` |
 | Additional components | Popular carousel left | `[data-profile="popular-content"] button[aria-label="Scroll popular creations left"]` |
 | Additional components | Popular carousel right | `[data-profile="popular-content"] button[aria-label="Scroll popular creations right"]` |
-| Additional components | Published embed | `[data-profile="post-embed"][data-embed="published"]` |
-| Additional components | Updated embed | `[data-profile="post-embed"][data-embed="updated"]` |
-| Additional components | Featured creator link | `[data-profile="scope"] [data-featured-link="true"]` |
+| Additional components | Featured creator link | `[data-featured-link="true"]` |
 | Additional components | Profile style card | `[data-profile="card"][data-card="profileStyles"]` |
 | Additional components | About expansion button | `button[data-profile="about-more"]` |
-| Additional components | Feed continuation wrapper | `[data-profile="feed-more"]` |
-| Profile actions / Bindery | Bindery panel | `[data-profile="content-panel"][data-section="binderies"]` |
 | Profile actions / Bindery | Profile Follow state | `[data-profile="action-follow"][aria-label="Follow"]` |
 | Profile actions / Bindery | Profile Following state | `[data-profile="action-follow"][aria-label="Following"]` |
-| Profile actions / Bindery | Profile Alerts action | `[data-profile="action-bell"]` |
 | Composer additions | Composer card in feed | `[data-profile="feed-list"] > .surface-post:has(> div > [data-profile="composer-header"])` |
 | Composer additions | Composer placeholder | `[data-profile="composer-editor"][data-placeholder]::before` |
 | Composer additions | Poke Bary control | `.surface-post > .relative:has(> [data-profile="composer-header"]) > button[aria-label="Poke Bary"]` |
-| Composer additions | Cheeky paw image | `[data-profile="scope"] img[src="/img/Icons/feed_bary_cheeky_paw.webp"]` |
-| Composer additions | Privacy label variants | `:is([data-profile="composer-header"], [data-profile="composer-footer"]) button:is([aria-label="Private post, followers only"], [aria-label="Visible to followers only"])` |
+| Composer additions | Peeking Ears and Cheeky Paw | `img:is([src$="/feed_bary_peeking_ears.webp"], [src$="/feed_bary_cheeky_paw.webp"])` |
+| Composer additions | Footer privacy toggle | `[data-profile=composer-footer] button:is(:has(> img[src$="/universes.webp"]), [aria-pressed]:has(> img[src$="/lock.webp"]))` |
 | Composer additions | Notify checkbox track | `[data-profile="composer-footer"] input[type="checkbox"][aria-label="Notify followers"] + div` |
 | Composer additions | Notify checkbox thumb | `[data-profile="composer-footer"] input[type="checkbox"][aria-label="Notify followers"] + div::after` |
-| Toolbar buttons | bold | `[data-profile="composer-toolbar"] [data-profile="composer-btn"][data-btn="bold"]` |
-| Toolbar buttons | italic | `[data-profile="composer-toolbar"] [data-profile="composer-btn"][data-btn="italic"]` |
-| Toolbar buttons | underline | `[data-profile="composer-toolbar"] [data-profile="composer-btn"][data-btn="underline"]` |
-| Toolbar buttons | heading | `[data-profile="composer-toolbar"] [data-profile="composer-btn"][data-btn="heading"]` |
-| Toolbar buttons | normal | `[data-profile="composer-toolbar"] [data-profile="composer-btn"][data-btn="normal"]` |
-| Toolbar buttons | bullet-list | `[data-profile="composer-toolbar"] [data-profile="composer-btn"][data-btn="bullet-list"]` |
-| Toolbar buttons | numbered-list | `[data-profile="composer-toolbar"] [data-profile="composer-btn"][data-btn="numbered-list"]` |
-| Toolbar buttons | left-align | `[data-profile="composer-toolbar"] [data-profile="composer-btn"][data-btn="left-align"]` |
-| Toolbar buttons | center | `[data-profile="composer-toolbar"] [data-profile="composer-btn"][data-btn="center"]` |
-| Toolbar buttons | right-align | `[data-profile="composer-toolbar"] [data-profile="composer-btn"][data-btn="right-align"]` |
-| Toolbar buttons | justify | `[data-profile="composer-toolbar"] [data-profile="composer-btn"][data-btn="justify"]` |
-| Toolbar buttons | text-color | `[data-profile="composer-toolbar"] [data-profile="composer-btn"][data-btn="text-color"]` |
-| Toolbar buttons | attach | `[data-profile="composer-toolbar"] [data-profile="composer-btn"][data-btn="attach"]` |
-| Toolbar buttons | gifs-stickers | `[data-profile="composer-toolbar"] [data-profile="composer-btn"][data-btn="gifs-stickers"]` |
-| Toolbar buttons | Insert | `[data-profile="composer-toolbar"] button[aria-label="Insert"]` |
-| Toolbar buttons | Text background | `[data-profile="composer-toolbar"] button[aria-label="Text background"]` |
-| Toolbar buttons | Edit as HTML | `[data-profile="composer-toolbar"] button[aria-label="Edit as HTML"]` |
 | Toolbar buttons | Font glyph by captured icon value | `[data-profile="composer-toolbar"] [data-profile="icon"][data-icon="bold"]` |
 | Toolbar buttons | Explicitly pressed control | `[data-profile="composer-toolbar"] button[aria-pressed="true"]` |
-| Post additions | Level Up post | `[data-profile="post"]:has(img[src^="/img/Level/"].aspect-square)` |
-| Post additions | Relationship event post | `[data-profile="post"]:has(img[src="/img/pixel/heart.webp"].aspect-square)` |
-| Post additions | Glorp event post | `[data-profile="post"]:has(img[src="/img/Badges/badge_glorp.webp"].aspect-square)` |
 | Post additions | Share button | `[data-profile="post-engagement"] button[aria-label="Share"]` |
 | Post additions | Reaction number | `[data-profile="post-likes"] > span.tabular-nums` |
 | Post additions | Post options trigger | `[data-profile="post-actions"] button[aria-label="Post options"]` |
@@ -13636,15 +14406,15 @@ These entries extend the existing quick reference with compound, named-control, 
 | Preview additions | Popular shelf card | `[data-profile="popular-content"] > section` |
 | Preview additions | Popular carousel row | `[data-profile="popular-content"] .marketplace-shelf` |
 | Preview additions | See all preview header action | `:is([data-profile="gallery-preview"], [data-profile="popular-content"]) > section > header button.dashboard-action-button` |
-| Experimental dialog additions | Named list-dialog roots | `[data-profile="modal-panel"]:is([aria-label="Followers"], [aria-label="Following"])` |
-| Experimental dialog additions | List-dialog header variants | `[data-profile="modal-panel"]:is([aria-label="Followers"], [aria-label="Following"]) :is([data-profile="modal-header"], .surface-header)` |
-| Experimental dialog additions | List-dialog body | `[data-profile="modal-panel"]:is([aria-label="Followers"], [aria-label="Following"]) [data-profile="modal-body"]` |
-| Experimental dialog additions | List-dialog footer variants | `[data-profile="modal-panel"]:is([aria-label="Followers"], [aria-label="Following"]) :is([data-profile="modal-footer"], .surface-footer, [data-modal-footer="true"])` |
-| Experimental dialog additions | List-row avatar | `[data-profile="modal-panel"]:is([aria-label="Followers"], [aria-label="Following"]) [data-profile="modal-list"] > div > img` |
-| Experimental dialog additions | List-row shared Follow button | `[data-profile="modal-panel"]:is([aria-label="Followers"], [aria-label="Following"]) [data-profile="modal-row-follow"]` |
-| Experimental dialog additions | Wave changing wish | `[data-profile="modal-panel"][aria-label="Send a wave"] section.sketch-note [aria-live="polite"]` |
-| Experimental dialog additions | Selected wish pill | `[data-profile="modal-panel"][aria-label="Send a wave"] [role="radiogroup"][aria-label="Wish"] button[role="radio"][aria-checked="true"] > span` |
-| Experimental dialog additions | Unselected wish pill | `[data-profile="modal-panel"][aria-label="Send a wave"] [role="radiogroup"][aria-label="Wish"] button[role="radio"][aria-checked="false"] > span` |
+| Dialog additions | Shared follow panel | `[data-modal=follow] [data-profile=modal-panel]` |
+| Experimental dialog additions | List-dialog header variants | `[data-modal=follow] :is([data-profile="modal-header"], .surface-header)` |
+| Experimental dialog additions | List-dialog body | `[data-modal=follow] [data-profile="modal-body"]` |
+| Experimental dialog additions | List-dialog footer variants | `[data-modal=follow] :is([data-profile="modal-footer"], .surface-footer, [data-modal-footer="true"])` |
+| Experimental dialog additions | List-row avatar | `[data-modal=follow] [data-profile=modal-list] > * > img` |
+| Experimental dialog additions | Follow dialog row button | `[data-modal=follow] [data-profile=modal-row-follow]` |
+| Experimental dialog additions | Wave changing wish | `[data-modal=wave] section.sketch-note [aria-live="polite"]` |
+| Experimental dialog additions | Selected wish pill | `[data-modal=wave] [role="radiogroup"][aria-label="Wish"] button[role="radio"][aria-checked="true"] > span` |
+| Experimental dialog additions | Unselected wish pill | `[data-modal=wave] [role="radiogroup"][aria-label="Wish"] button[role="radio"][aria-checked="false"] > span` |
 | Experimental dialog additions | Dialog-only scroll | `[data-profile="content-panel"][role="dialog"] [data-profile="content-scroll"]` |
 | Experimental dialog additions | Dialog Back to top | `[data-profile="content-panel"][role="dialog"] .back-to-top-button button` |
 | Experimental dialog additions | Dialog Okay signature | `[data-profile="content-panel"][role="dialog"] [data-profile="content-footer"] button.dashboard-action-button:has(img[src="/img/pixel/check.webp"])` |
@@ -13675,32 +14445,27 @@ These entries extend the existing quick reference with compound, named-control, 
 | Rich-text additions | Paw divider wrapper | `[data-profile="post-body"] .rich-text-content [data-decoration="paws"]` |
 | Post additions | Published private indicator, both labels | `[data-profile="post-header"] span:is([aria-label="Private post, followers only"], [aria-label="Visible to followers only"])` |
 | Rich-text additions | Published paw artwork wrapper | `[data-profile="post-body"] .rich-text-content .editor-divider-paws[data-profile="post-decoration"][data-decoration="paws"]` |
-| Main navigation | Featured tab | `[data-profile="scope"] [data-profile="tabs"] [data-profile="tab"][data-tab="featured"]` |
-| Main navigation | Featured selected | `[data-profile="scope"] [data-profile="tabs"] [data-profile="tab"][data-tab="featured"][aria-selected="true"]` |
-| Main navigation | Featured star | `[data-profile="scope"] [data-profile="tabs"] [data-profile="tab"][data-tab="featured"] img[src="/img/pixel/star.webp"]` |
-| Main navigation | Featured counter | `[data-profile="scope"] [data-profile="tabs"] [data-profile="tab"][data-tab="featured"] [data-profile="tab-count"]` |
+| Main navigation | Featured tab | `[data-profile="tabs"] [data-profile="tab"][data-tab="featured"]` |
+| Main navigation | Featured selected | `[data-profile="tabs"] [data-profile="tab"][data-tab="featured"][aria-selected="true"]` |
+| Main navigation | Featured star | `[data-profile="tabs"] [data-profile="tab"][data-tab="featured"] img[src="/img/pixel/star.webp"]` |
+| Main navigation | Featured counter | `[data-profile="tabs"] [data-profile="tab"][data-tab="featured"] [data-profile="tab-count"]` |
 
 ### Current Mobile and Rail Selectors
 
 | Component | Selector | Notes |
 | --- | --- | --- |
 | Profile portal scope | `[data-profile="scope"][data-profile-portal="true"]` | Separate scope wrapper in current complete captures. |
-| Gallery folders | `[data-section="gallery"] [role="group"][aria-label="Folders"]` | Horizontal scrolling strip. |
-| Named folder | `[data-folder-chip="true"] > button` | Scope to Gallery. |
-| Selected named folder | `[data-folder-chip="true"] > button:has(> img[src="/img/pixel/folder_open.webp"])` | Captured artwork signature; not an All selection hook. |
+| Gallery folders | `[data-section=gallery] [aria-label="Folders"]` | Horizontal scrolling strip. |
+| Named folder | `[data-section=gallery] [aria-label="Folders"] [data-folder-chip=true] > button` | Named folder button. |
+| Selected named folder | `[data-section=gallery] [aria-label="Folders"] [data-folder-chip=true] > button:has(img[src$="/folder_open.webp"])` | Open-folder artwork in the captured selected state. |
 | New folder | `[data-profile="modal-panel"][role="dialog"][aria-label="New folder"]` | Color swatches and privacy both use aria-pressed. |
 | Post/comments sheet | `[data-profile="modal-panel"]:has(> [data-profile="modal-body"] > [data-profile="post"])` | Comments are siblings of the post. |
 | Comment preview | `[data-post-comment-composer="true"]` | Inert preview opens a separate editor. |
 | Featured rail | `[data-profile="featured-rail"]` | Creator cards, scroll viewport, and arrow controls. |
-| Featured panel | `[data-profile="content-panel"][data-section="featured"]` | Separate from the navigation tab and nested shelf. |
-| Favorite Creators shelf | `[data-profile="featured-section"][data-section="creators"]` | Scope to the Featured panel. |
-| Favorite Creators heading | `[data-profile="featured-section"][data-section="creators"] > header > [data-profile="featured-title"]` | Shelf heading, not outer content-title. |
-| Favorite Creators count | `[data-profile="featured-section"][data-section="creators"] > header > span` | Header’s direct count span. |
-| Creator name | `[data-profile="creator-card"] > span > span:last-child > span > span[translate="no"]` | Explicitly colored name span; scope to the intended shelf. |
-| Creator status | `[data-profile="creator-card"] > span > span:last-child > span > span:last-child` | Status text span; scope to the intended shelf. |
-| Remove poll answer | `fieldset:has(> input[aria-label="Poll question"]) button[aria-label^="Remove answer "]` | Numbered labels; preserve the trailing prefix space. |
-| Remove-answer artwork | `fieldset:has(> input[aria-label="Poll question"]) button[aria-label^="Remove answer "] img[src="/img/pixel/trash.webp"]` | Separate from the header’s Remove poll control. |
-| About editor modal | `[data-profile="modal"][data-modal="about"]` | Toolbar class and named textbox; no composer-editor hook. |
+| About editor modal | `[data-modal=about]` | Toolbar class and named textbox; no composer-editor hook. |
+| Followers and Following | `[data-modal=follow]` | Both lists share this wrapper. Use the descendant `[data-profile=modal-panel]` for the card, and add the panel label to style one list. |
+| Send a Wave | `[data-modal=wave]` | Scope controls or artwork to this dialog. |
+| Mobile Profile Details | `[data-modal=details]` | Scope the details panel to this dialog. |
 
 ### Native Artwork Paths and Reuse
 
@@ -13760,7 +14525,7 @@ For an image row, place its component scope before `img[src="EXACT_PATH"]`, unle
 | --- | --- | --- | --- |
 | `/img/Icons/feed_action_heart.webp` | Like-button artwork | `[data-profile="post-like"]` | Image |
 | `/img/Icons/feed_action_share.webp` | Share foreground artwork | `[data-profile="post-engagement"] button[aria-label="Share"]` | Image |
-| `/img/Icons/feed_bary_cheeky_paw.webp` | Cheeky paw; parent still unconfirmed | `[data-profile="scope"] img` | Image |
+| `/img/Icons/feed_bary_cheeky_paw.webp` | Cheeky paw; parent still unconfirmed | `img[src$="/feed_bary_cheeky_paw.webp"]` | Image |
 | `/img/Icons/feed_bary_peeking_ears.webp` | Poke Bary above composer | `button[aria-label="Poke Bary"] > img` | Image |
 | `/img/Icons/feed_filter_posts.webp` | Comment-button artwork | `[data-profile="post-comment-button"]` | Image |
 | `/img/Icons/feed_filter_updates.webp` | Updated embed corner artwork | `[data-profile="post-embed"][data-embed="updated"] [data-profile="embed-card"] > img` | Image |
@@ -13770,7 +14535,7 @@ For an image row, place its component scope before `img[src="EXACT_PATH"]`, unle
 | `/img/pixel/lab-write.webp` | Composer heading artwork | `[data-profile="composer-header"]` | Image |
 | `/img/pixel/lock.webp` | Privacy and End poll artwork | `Composer privacy button, post-header privacy span, or button[aria-label="End poll"]` | Image |
 | `/img/pixel/plus_squirrel.webp` | Add answer artwork | `Poll card fieldset + div > button` | Image |
-| `/img/pixel/trash.webp` | Remove poll or individual answer artwork | `button[aria-label="Remove poll"]`; `fieldset:has(> input[aria-label="Poll question"]) button[aria-label^="Remove answer "]` | Image |
+| `/img/pixel/trash.webp` | Remove poll artwork | `button[aria-label="Remove poll"]` | Image |
 | `/img/pixel/universes.webp` | Public privacy-control artwork | `Composer privacy button` | Image |
 | `/img/sketch/dialogue.webp` | About dialogue sketch | `[data-profile="about"]` | Image |
 
@@ -13778,7 +14543,6 @@ For an image row, place its component scope before `img[src="EXACT_PATH"]`, unle
 
 | Native path | Visible role | Component scope | Representation |
 | --- | --- | --- | --- |
-| `/img/marketplace/frame-rising-creator.webp` | Favorite Creator card frame and tint silhouette | `[data-profile="creator-card"] > span` | Image and separate CSS mask |
 | `/img/content/fallback_plugins.webp` | Fallback cover | `[data-card="plugins"] [data-profile="card-cover-img"]` | Image; frame paths can also be consumed by card masks |
 | `/img/content/featured_sticker.webp` | Featured sticker | `[data-profile="card"]` | Image; frame paths can also be consumed by card masks |
 | `/img/content/frame_library.webp` | Frame artwork | `[data-profile="card-lift"] > img` | Image; frame paths can also be consumed by card masks |
@@ -13865,12 +14629,12 @@ For an image row, place its component scope before `img[src="EXACT_PATH"]`, unle
 
 | Native path | Visible role | Component scope | Representation |
 | --- | --- | --- | --- |
-| `/img/Animation/animation_bary_wink1.webp` | Wave animation frame | `[data-profile="modal-panel"][aria-label="Send a wave"]` | Image; optional mask replacement is separate |
-| `/img/Animation/animation_bary_wink2.webp` | Wave animation frame | `[data-profile="modal-panel"][aria-label="Send a wave"]` | Image; optional mask replacement is separate |
+| `/img/Animation/animation_bary_wink1.webp` | Wave animation frame | `[data-modal=wave]` | Image; optional mask replacement is separate |
+| `/img/Animation/animation_bary_wink2.webp` | Wave animation frame | `[data-modal=wave]` | Image; optional mask replacement is separate |
 | `/img/Banner/profile-bary-study.webp` | Native default hero background | `[data-profile="hero"] direct background layer` | Inline CSS background; no dedicated layer hook established |
 | `/img/Icons/btn_pixel_plate.webp` | Native button backing plate; use the exact variant | `Named button > img[src="/img/Icons/btn_pixel_plate.webp"]` | Image |
 | `/img/Icons/btn_pixel_plate_24.webp` | Native button backing plate; use the exact variant | `Named button > img[src="/img/Icons/btn_pixel_plate_24.webp"]` | Image |
-| `/img/Icons/explicit_curtain_cover.webp` | Native media concealment artwork; retain reveal behavior | `[data-profile="media-reveal"] matching native image` | Image |
+| `/img/Icons/explicit_curtain_cover.webp` | Native media concealment artwork; retain reveal behavior | `[data-profile="media-reveal"] matching native image` | Catalogue-only placement; detailed styling pending |
 | `/img/nav/break_link.webp` | About/content chains | `Named about/content-chain-left and -right hooks` | CSS background; not an img selector |
 | `/img/profile/paper-tab.webp` | About subtab backing | `[data-profile="about"] [role="tab"]` | Captured image backing |
 | `/img/sketch/bary_pencil.webp` | Dialog decorative sketch | `Exact named dialog root img[src="/img/sketch/bary_pencil.webp"]` | Image; Wave tutorial also uses it as a mask |
@@ -13898,7 +14662,7 @@ Frame images, frame tint/wash masks, and decorative mask replacements are separa
 
 Dynamic /api/ covers, user uploads, profile/row avatars, and the native default-avatar path are excluded from this interface-artwork index. They are content/portrait targets even when a native fallback image is used. Native plugin fallback artwork is retained as the explicitly documented cover fallback.
 
-Excluded menu-content artwork is not imported into this reference. The catalogue’s lab-bookmark path is held out because its intended in-scope component is not mapped here.
+Excluded menu-content artwork is not imported into this reference. The catalogue’s lab-bookmark path is held out because its intended in-scope component is not mapped here. Exact tag and badge paths are listed as recorded; they do not establish every state or placement as tested.
 
 Supplied individual Level filenames remain deferred for the later Level inventory. The event tutorial continues to use the recorded /img/Level/ prefix plus aspect-square without treating that prefix as a complete filename catalogue.
 
@@ -14751,11 +15515,11 @@ Keep the particle count and size modest on mobile. `pointer-events: none` preven
 
 ## Changelog
 
-- **2026-11-25:** Added a number of snippets for Lab and Profile
+- **2026-11-26:** Added a number of snippets Profile
 - **2026-10-25:** Added a number of Profile focused snippets from @pikachuthehedgehogtheherooftime
 - **2026-10-11:** Added a number of Lab focused snippets from @pikachuthehedgehogtheherooftime
 - **2026-10-10:** Replaced legacy Laboratory button snippets with the live-verified LoreBary 2.5 composer and tool-row selectors. Added dedicated styling maps for Write for me, Time skip, Dice roll, HTML Mode, Visual Expressions, Polish replies, Scene music, Reply choices, and their long-press settings and dropdowns.
 - **2026-10-10:** Added Part II for Profile Themes with example images, typography, sticker positioning, status-card layout, and before/after comparisons. Moved the animation collection to Part III and added a shared Laboratory/Profile foreground-particle recipe.
 - **2026-07-17:** Previous Laboratory / Chat Themes guide update.
 
-**Last Updated:** 2026-10-11
+**Last Updated:** 2026-11-26
